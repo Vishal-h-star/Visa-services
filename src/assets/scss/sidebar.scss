@@ -1,0 +1,117 @@
+.category-filter-icon {
+  display: none;
+
+  .filter-slide{
+    width: fit-content;
+    color: #5F6368;
+    background-color: #dfe0e1;
+    border-radius: 100px;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    line-height: 13px;
+
+    .filter-icon{
+      font-size: 20px;
+      font-weight: bold;
+      transition: all .5s;
+
+      &:hover{
+        transform: rotate(270deg);
+      }
+    }
+
+    i{
+      margin: 0 .3rem;
+    }
+    span{
+      letter-spacing: 1.1px;
+      font-family: $poppins;
+    }
+  }
+
+  @media #{$lg-med-layout} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.catalog__filter {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  position: sticky;
+  left: 0;
+  top: 100px;
+  background-color: $white;
+
+  @media #{$lg-med-layout} {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    z-index: 45456;
+    transform: translateX(-120%);
+    transition: transform 0.2s ease;
+    overflow-y: scroll;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    top: 0;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+
+.search-box{
+  width: fit-content;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 12px;
+  margin: .3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // margin-bottom: 1.5rem;
+
+  input[type="text"]{
+    border: none;
+    width: 100%;
+  }
+}
+
+.desktop-device{
+  margin-bottom: 1.5rem;
+
+  @media #{$lg-med-layout} {
+    display: none;
+  }
+}
+
+
+.service-mobile-list {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  position: sticky;
+  left: 0;
+  top: 100px;
+  background-color: $white;
+
+  @media #{$lg-med-layout} {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    z-index: 454;
+    transform: translateX(-120%);
+    transition: transform 0.2s ease;
+    overflow-y: scroll;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    top: 0;
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}

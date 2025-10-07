@@ -1,0 +1,39 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~aos/dist/aos.css";
+
+@import "variable";
+@import "base";
+@import "title";
+@import "hero";
+@import './importantButtons.scss';
+@import './homePageContent.scss';
+@import './whatsappButton.scss';
+@import "about";
+@import "career";
+@import "services";
+@import "servicepage";
+@import "button";
+@import "navbar";
+@import "testimonial";
+@import "footer";
+@import "newsletter";
+@import "features";
+@import "blog";
+@import "backdrop";
+@import "modal";
+@import "./Navigation/mainheader.scss";
+@import "./Navigation/mainnavigation.scss";
+@import "./Navigation/navlinks.scss";
+@import "./Navigation/sidedrawer.scss";
+
+
+@import "contact";
+@import "form";
+@import "iput";
+@import "sidebar";
+@import "Slider";
+@import "checkbox";
+@import "hardware";
+@import "similarproducts";
+@import "enquiry";
+@import "nodata";

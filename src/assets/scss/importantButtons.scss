@@ -1,0 +1,34 @@
+.important-buttons{
+   padding: 3rem 0;
+}
+.important-buttons .heading{
+   text-align: center;
+  margin-bottom: 3rem;
+}
+
+
+.imp_buttons {
+  font: inherit;
+  padding: 1rem 1.5rem;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  background:  #1877f2;;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  width:80%;
+  transition: all 0.5s;
+
+  &:hover,
+  &:active {
+    background: $theme-hover-color;
+    border-color: $theme-hover-color;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

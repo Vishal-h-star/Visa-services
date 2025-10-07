@@ -1,0 +1,28 @@
+.similar_product_wrapper{
+    .hardware-img{
+        height: 250px;
+        max-height: 250px;
+        width: 100%;
+        overflow: hidden;
+        border-bottom: 1px solid $theme-color;
+    }
+
+    .hardware-desc{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .hardware-link{
+        color: $theme-hover-color;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all .3s ease-in-out;
+
+        &:hover{
+            transform: scale(1.2);
+        }
+    }
+}

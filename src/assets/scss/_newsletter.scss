@@ -1,0 +1,21 @@
+.newsletter_wrapper {
+  background-color: #192538;
+  // background-image: linear-gradient(to right, rgba(25, 37, 56,.7), rgba(25, 37, 56,.7)), url('../images/service/logistics.jpg');
+
+  .counter {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    
+    @media #{$xs-med-layout}{
+      grid-template-columns: auto auto;
+    }
+
+    .counter-number{
+      line-height: 50px;
+      margin-bottom: .1rem;
+    }
+    p{
+      color: #fff;
+    }
+  }
+}

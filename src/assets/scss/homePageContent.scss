@@ -1,0 +1,78 @@
+.homeContent {
+  //  border:2px solid blue;
+  padding: 2.5rem 6rem;
+  background-color: #fbfbfb;
+  background-color: #1877f2;
+  background-color: #3578e5;
+}
+.homeInstructionsContainer {
+  padding: 2rem 1rem;
+  background-color: white;
+  border-radius: 5px;
+}
+.side_item_one {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px #0000001a;
+  color: #333;
+  font-family: Arial, sans-serif;
+  max-width: 300px;
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+}
+.impss {
+  background: #16832a;
+  border-radius: 5px;
+  color: #fff;
+  display: inline-block;
+  margin: 0.5rem 0;
+  padding: 6px;
+
+}
+.side_item_two {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px #0000001a;
+  color: #333;
+  font-family: Arial, sans-serif;
+  max-width: 300px;
+  padding: 10px;
+  text-align: left;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+}
+.side_item_two ul li{
+  list-style-type: none;
+}
+.side_item_two a {
+  color: #000;
+}
+hr {
+  color: inherit;
+  margin: 1rem 0;
+  opacity: 0.45;
+}
+.side_item_three img ,
+ .side_item_four img
+{
+    height: 175px;
+    width: 200px;
+  }
+
+.containt h4 {
+  color: blue;
+  font-size: calc(1.275rem + 0.3vw);
+}
+.containt p {
+  margin: 15px;
+  color: #212529;
+  padding: 10px;
+  line-height: 1.6;
+}
+

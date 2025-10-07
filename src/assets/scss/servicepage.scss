@@ -1,0 +1,209 @@
+.servicepage_background-banner-1 {
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(33, 33, 33, 0.7),
+      rgba(66, 66, 66, 0.7)
+    ),
+    url(../images/service/servicebanner1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 5rem;
+}
+
+.servicepage2_wrapper {
+  .service-list {
+    // width: 100%;
+    // height: fit-content;
+    // position: sticky;
+    // top: 100px;
+
+    .service-menu-items {
+      height: 90%;
+
+      .service-menu-item {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        -webkit-transition: all 0.3s ease-in-out 0s;
+        transition: all 0.3s ease-in-out 0s;
+
+        // &:hover {
+        //   box-shadow: 5px 8px 10px rgb(0 0 0 / 25%), 0 -1px 1px rgb(0 0 0 / 13%);
+        // }
+
+        .nav-link {
+          padding: 0;
+          display: flex;
+          align-items: center;
+
+          &.active,
+          &:hover {
+            box-shadow: 5px 7px 8px rgb(0 0 0 / 25%),
+              0 -1px 1px rgb(0 0 0 / 13%);
+
+              .icon{
+                color: $theme-hover-color;
+              }
+          }
+
+          i,
+          .icon {
+            float: left;
+            width: 58px;
+            min-width: 58px;
+            min-height: 58px;
+            margin-right: 17px;
+            text-align: center;
+            background: #eee;
+            font-size: 24px;
+            color: rgba(57, 57, 57, 1);
+            display: flex;
+            align-items: center;
+            padding: 0 17px;
+            -webkit-transition: all 0.3s ease-in-out 0s;
+            transition: all 0.3s ease-in-out 0s;
+          }
+          span {
+            padding: 10px 0;
+            min-height: 58px;
+            position: relative;
+            display: block;
+            color: $theme-color;
+            font-size: 15px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+  .service-quote {
+    background: #eee;
+    padding-left: 60px;
+    padding-right: 20px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 15px;
+    padding-top: 26px;
+    padding-bottom: 10px;
+
+    &::before {
+      content: "";
+      width: 27px;
+      height: 24px;
+      background: url(../images/quote.png) no-repeat 0 0;
+      display: inline-block;
+      position: absolute;
+      top: 30px;
+      left: 34px;
+    }
+
+    p {
+      line-height: 25.6px;
+      font-weight: 600;
+    }
+  }
+
+  .servicepage-img {
+    margin: 1.5rem 0;
+    height: 495px;
+    width: 100%;
+    overflow: hidden;
+
+    .img-fluid {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .servicepage-name {
+    margin-top: 2rem;
+    text-transform: uppercase;
+    font-size: 38px;
+  }
+  .content-row {
+    margin-bottom: 1.5rem;
+  }
+
+  .file-row {
+    background: #ddd;
+    padding-top: 24px;
+    padding-bottom: 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.9rem;
+    justify-content: space-around;
+
+    a {
+      color: #000;
+      font-weight: 600;
+      line-height: 20px;
+      display: inline-block;
+      border: 1px solid #ddd;
+      padding: 14px 25px;
+      margin-right: 6px;
+      background: #fff;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      span {
+        font-size: 17px;
+        font-weight: bold;
+        margin: 0 0.5rem 0 0;
+        color: $theme-color;
+      }
+    }
+  }
+
+  .content-div {
+    .img-div {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+    }
+
+    .service-name {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 25px;
+    }
+
+    li {
+      font-weight: 500;
+      position: relative;
+      padding-left: 1.3em;
+      margin: 0 0 5px;
+      color: #333333da;
+
+      &:before {
+        position: absolute;
+        height: 20px;
+        width: 20px;
+        left: 0;
+        top: 0;
+        content: "\f105";
+        font-family: FontAwesome;
+        font-size: 20px;
+        color: $theme-hover-color;
+      }
+    }
+  }
+
+  .youtube-service {
+    width: 100%;
+    height: 370px;
+    background-image: url("../images/service/gpstracker.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
