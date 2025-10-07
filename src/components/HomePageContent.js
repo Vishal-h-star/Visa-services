@@ -120,9 +120,11 @@ export const HomePageContent = () => {
 
         
               <div class="side_item_four">
+       
                 <div>
                   <img
-                    src={image4}
+       
+       src={image4}
                     alt="kk"
                   />
                 </div>
