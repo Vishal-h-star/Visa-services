@@ -118,6 +118,7 @@ export const HomePageContent = () => {
                 </div>
               </div>
 
+        
               <div class="side_item_four">
                 <div>
                   <img
