@@ -11,6 +11,7 @@ import { BannerData } from '../components/Banner/BannerData'
 import { ImportantButtons } from '../components/ImportantButtons'
 import { HomePageContent } from '../components/HomePageContent'
 import { WhatsappButton } from '../components/WhatsappButton'
+import VisaApplicationForm from '../components/VisaApplicationForm'
 
 
 const Home = () => {

@@ -16,6 +16,7 @@ import Products from "./pages/Products";
 import ScrollToTop from "./components/ScrollTop";
 import BlogDetail from "./pages/BlogDetail";
 import Footer from "./components/Footer";
+import VisaApplicationForm from "./components/VisaApplicationForm";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/services" component={Services} />
         <Route exact path="/products" component={Products} />
         <Route exact path="/products/:id" component={ProductDetail}/>
+        <Route exact path="/Apply"  component={VisaApplicationForm} />
         <Route exact path="/services/:id" component={ServiceDetail} />
         <Route path="/blogs" exact component={Blogs} />
         <Route path="/blogs/:id" exact component={BlogDetail} />

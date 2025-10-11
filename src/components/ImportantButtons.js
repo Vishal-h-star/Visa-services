@@ -9,7 +9,7 @@ export const ImportantButtons = () => {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4 col-md-4 col-sm-6 col-12 text-center">
-               <Link><button className='imp_buttons'>Apply For E-Visa</button></Link>
+               <Link to='/Apply'><button className='imp_buttons'>Apply For E-Visa</button></Link>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-6 col-12  text-center">
               <Link><button className='imp_buttons'>Complete Partial Filled Form</button></Link>
