@@ -1,8 +1,12 @@
 // EnhancedVisaForm.jsx
 import React, { useState } from 'react';
-import {nationalities, portsOfArrival, visaServices, applicationTypes} from '../assets/data/FormData';
+import { nationalities, portsOfArrival, visaServices, applicationTypes } from '../assets/data/FormData';
+import { newApplicationSubmit } from '../apiCalls/visaApplication';
+import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 const VisaApplicationForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     applicationType: '',
     passportType: '',
@@ -29,7 +33,7 @@ const VisaApplicationForm = () => {
       ...prev,
       [name]: value
     }));
-    
+
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -43,8 +47,8 @@ const VisaApplicationForm = () => {
 
     // Required field validation
     const requiredFields = [
-      'applicationType', 'passportType', 'surname', 'givenName', 
-      'nationality', 'portOfArrival', 'dateOfBirth', 'email', 
+      'applicationType', 'passportType', 'surname', 'givenName',
+      'nationality', 'portOfArrival', 'dateOfBirth', 'email',
       'confirmEmail', 'contactNo', 'expectedArrival', 'visaService'
     ];
 
@@ -89,28 +93,37 @@ const VisaApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      setIsSubmitting(true);
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      console.log('Form submitted:', formData);
+      // setIsSubmitting(true);
 
-       setFormData({
-    applicationType: '',
-    passportType: '',
-    surname: '',
-    givenName: '',
-    nationality: '',
-    portOfArrival: '',
-    dateOfBirth: '',
-    email: '',
-    confirmEmail: '',
-    contactNo: '',
-    expectedArrival: '',
-    visaService: ''
-  })
+      const res = await newApplicationSubmit(formData);
+      if (res.status === 200) {
+        console.log(res.data, 'data we get from back')
+        // return
+        toast.success(`🦄 ${res.data.message}`);
+        setIsSubmitting(true);
+        navigate(`/apply2/${res.data.data.uniqueId}`); 
+      }
+
+      // console.log('Form submitted:', formData);
+
+      // return
+
+      setFormData({
+        applicationType: '',
+        passportType: '',
+        surname: '',
+        givenName: '',
+        nationality: '',
+        portOfArrival: '',
+        dateOfBirth: '',
+        email: '',
+        confirmEmail: '',
+        contactNo: '',
+        expectedArrival: '',
+        visaService: ''
+      })
       setIsSubmitting(false);
-      alert('Application submitted successfully!');
-      
+      // alert('Application submitted successfully!');
     }
   };
 
@@ -127,10 +140,10 @@ const VisaApplicationForm = () => {
         {/* Header Section */}
         <div className="form-header-section">
           <div className="header-icon">🛂</div>
-          <h1 className="form-title">India e-Visa Application</h1>
+          <h1 className="form-title">E-Visa Application</h1>
           <p className="form-subtitle">Complete your visa application in just a few minutes</p>
           <div className="progress-bar">
-            <div className="progress-fill" style={{width: '33%'}}></div>
+            <div className="progress-fill" style={{ width: '33%' }}></div>
           </div>
         </div>
 
@@ -141,7 +154,7 @@ const VisaApplicationForm = () => {
               <span className="section-number">01</span>
               <h2>Personal Information</h2>
             </div>
-            
+
             <div className="form-grid">
               <div className="form-field">
                 <label className="field-label">
@@ -243,7 +256,7 @@ const VisaApplicationForm = () => {
                     <option value="">Select arrival port</option>
                     {portsOfArrival.map(option => (
                       <option key={option.value} value={option.value}>
-                        {option.type === 'airport' ? '✈️' : '🚢'} {option.label}
+                        {option.type === 'airport' ? '✈️' : '🚢'} {option.label} - {option.value}
                       </option>
                     ))}
                   </select>
@@ -396,7 +409,7 @@ const VisaApplicationForm = () => {
                     className="visa-card-input"
                   />
                   <div className="visa-card-content">
-                    <div className="visa-card-icon" style={{backgroundColor: service.color}}>
+                    <div className="visa-card-icon" style={{ backgroundColor: service.color }}>
                       {service.icon}
                     </div>
                     <div className="visa-card-text">
@@ -411,10 +424,11 @@ const VisaApplicationForm = () => {
           </div>
 
           {/* Submit Button */}
-          <button 
-            type="submit" 
-            className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
-            disabled={isSubmitting}
+          <button
+            type="submit"
+            // className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+            className="submit-button"
+          // disabled={isSubmitting}
           >
             {isSubmitting ? (
               <>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Apply2 = () => {
+  const params = useParams();
+
+  console.log(params, 'params');
   const [formData, setFormData] = useState({
     applicationType: 'Normal Processing',
     protOfArrival:'Delhi Airport',
@@ -87,7 +91,7 @@ const Apply2 = () => {
           <h1 className="form-title">e-Visa Application</h1>
           <p className="form-subtitle">Complete your visa application form</p>
           <div className="application-id">
-            Temporary Application ID: <strong>DEH2024K077M</strong>
+            Temporary Application ID: <strong>{params?.id}</strong>
           </div>
           <div className="progress-bar">
             <div className="progress-fill" style={{width: '50%'}}></div>
