@@ -44,7 +44,8 @@ const ApplicationForm = () => {
         </div>
 
         {status && (
-           <Link to={`/Apply/${applicationNumber}`}>
+        //    <Link to={`/Apply/${applicationNumber}`}>
+        <Link to='/Apply3'>
             <button type="submit" className="submit-buttonPartial">
             Submit
             </button>
