@@ -346,6 +346,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     transition: all 0.3s ease;
     position: relative;
     background: white;
+    height: 200px;
 
     &:hover {
       border-color: #667eea;
@@ -368,6 +369,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
         font-weight: 600;
         color: $text-dark;
         margin: 0;
+        line-height: normal;
       }
     }
 
