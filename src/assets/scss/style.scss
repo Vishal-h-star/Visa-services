@@ -4,10 +4,13 @@
 @import "variable";
 @import "base";
 @import "title";
+@import './visaApplicationForm.scss';
+@import './Apply2.scss';
 @import "hero";
 @import './importantButtons.scss';
 @import './homePageContent.scss';
 @import './whatsappButton.scss';
+@import './PartialFilled.scss';
 @import "about";
 @import "career";
 @import "services";
@@ -25,6 +28,7 @@
 @import "./Navigation/mainnavigation.scss";
 @import "./Navigation/navlinks.scss";
 @import "./Navigation/sidedrawer.scss";
+
 
 
 @import "contact";
