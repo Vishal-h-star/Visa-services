@@ -15,7 +15,11 @@ export const nationalities = [
   { value: "Belgium", label: "Belgium", flag: "🇧🇪" },
   { value: "Belize", label: "Belize", flag: "🇧🇿" },
   { value: "Bolivia", label: "Bolivia", flag: "🇧🇴" },
-  { value: "Bosnia and Herzegovina", label: "Bosnia and Herzegovina", flag: "🇧🇦" },
+  {
+    value: "Bosnia and Herzegovina",
+    label: "Bosnia and Herzegovina",
+    flag: "🇧🇦",
+  },
   { value: "Botswana", label: "Botswana", flag: "🇧🇼" },
   { value: "Brazil", label: "Brazil", flag: "🇧🇷" },
   { value: "Brunei", label: "Brunei", flag: "🇧🇳" },
@@ -109,58 +113,177 @@ export const nationalities = [
   { value: "Zimbabwe", label: "Zimbabwe", flag: "🇿🇼" },
 ];
 
-
-
- export const portsOfArrival = [
-  { value: 'ahmedabad-airport', label: 'AHMEDABAD AIRPORT', type: 'airport' },
-  { value: 'amritsar-airport', label: 'AMRITSAR AIRPORT', type: 'airport' },
-  { value: 'bagdogra-airport', label: 'BAGDOGRA AIRPORT', type: 'airport' },
-  { value: 'bengaluru-airport', label: 'BENGALURU AIRPORT', type: 'airport' },
-  { value: 'bhubaneswar-airport', label: 'BHUBANESWAR AIRPORT', type: 'airport' },
-  { value: 'calicut-airport', label: 'CALICUT AIRPORT', type: 'airport' },
-  { value: 'chandigarh-airport', label: 'CHANDIGARH AIRPORT', type: 'airport' },
-  { value: 'chennai-airport', label: 'CHENNAI AIRPORT', type: 'airport' },
-  { value: 'chennai-seaport', label: 'CHENNAI SEAPORT', type: 'seaport' },
-  { value: 'cochin-airport', label: 'COCHIN AIRPORT', type: 'airport' },
-  { value: 'cochin-seaport', label: 'COCHIN SEAPORT', type: 'seaport' },
-  { value: 'coimbatore-airport', label: 'COIMBATORE AIRPORT', type: 'airport' },
-  { value: 'DL', label: 'DELHI AIRPORT', type: 'airport' },
-  { value: 'gaya-airport', label: 'GAYA AIRPORT', type: 'airport' },
-  { value: 'goa-airport-dabolim', label: 'GOA AIRPORT (DABOLIM)', type: 'airport' },
-  { value: 'goa-airport-mopa', label: 'GOA AIRPORT (MOPA)', type: 'airport' },
-  { value: 'goa-seaport', label: 'GOA SEAPORT', type: 'seaport' },
-  { value: 'guwahati-airport', label: 'GUWAHATI AIRPORT', type: 'airport' },
-  { value: 'hyderabad-airport', label: 'HYDERABAD AIRPORT', type: 'airport' },
-  { value: 'indore-airport', label: 'INDORE AIRPORT', type: 'airport' },
-  { value: 'jaipur-airport', label: 'JAIPUR AIRPORT', type: 'airport' },
-  { value: 'kannur-airport', label: 'KANNUR AIRPORT', type: 'airport' },
-  { value: 'kolkata-airport', label: 'KOLKATA AIRPORT', type: 'airport' },
-  { value: 'lucknow-airport', label: 'LUCKNOW AIRPORT', type: 'airport' },
-  { value: 'madurai-airport', label: 'MADURAI AIRPORT', type: 'airport' },
-  { value: 'mangalore-airport', label: 'MANGALORE AIRPORT', type: 'airport' },
-  { value: 'mangalore-seaport', label: 'MANGALORE SEAPORT', type: 'seaport' },
-  { value: 'mumbai-airport', label: 'MUMBAI AIRPORT', type: 'airport' },
-  { value: 'mumbai-seaport', label: 'MUMBAI SEAPORT', type: 'seaport' },
-  { value: 'nagpur-airport', label: 'NAGPUR AIRPORT', type: 'airport' },
-  { value: 'port-blair-airport', label: 'PORT BLAIR AIRPORT', type: 'airport' },
-  { value: 'pune-airport', label: 'PUNE AIRPORT', type: 'airport' },
-  { value: 'tiruchirapalli-airport', label: 'TIRUCHIRAPALLI AIRPORT', type: 'airport' },
-  { value: 'trivandrum-airport', label: 'TRIVANDRUM AIRPORT', type: 'airport' },
-  { value: 'varanasi-airport', label: 'VARANASI AIRPORT', type: 'airport' },
-  { value: 'visakhapatnam-airport', label: 'VISAKHAPATNAM AIRPORT', type: 'airport' }
+export const portsOfArrival = [
+  { value: "ahmedabad-airport", label: "AHMEDABAD AIRPORT", type: "airport" },
+  { value: "amritsar-airport", label: "AMRITSAR AIRPORT", type: "airport" },
+  { value: "bagdogra-airport", label: "BAGDOGRA AIRPORT", type: "airport" },
+  { value: "bengaluru-airport", label: "BENGALURU AIRPORT", type: "airport" },
+  {
+    value: "bhubaneswar-airport",
+    label: "BHUBANESWAR AIRPORT",
+    type: "airport",
+  },
+  { value: "calicut-airport", label: "CALICUT AIRPORT", type: "airport" },
+  { value: "chandigarh-airport", label: "CHANDIGARH AIRPORT", type: "airport" },
+  { value: "chennai-airport", label: "CHENNAI AIRPORT", type: "airport" },
+  { value: "chennai-seaport", label: "CHENNAI SEAPORT", type: "seaport" },
+  { value: "cochin-airport", label: "COCHIN AIRPORT", type: "airport" },
+  { value: "cochin-seaport", label: "COCHIN SEAPORT", type: "seaport" },
+  { value: "coimbatore-airport", label: "COIMBATORE AIRPORT", type: "airport" },
+  { value: "DL", label: "DELHI AIRPORT", type: "airport" },
+  { value: "gaya-airport", label: "GAYA AIRPORT", type: "airport" },
+  {
+    value: "goa-airport-dabolim",
+    label: "GOA AIRPORT (DABOLIM)",
+    type: "airport",
+  },
+  { value: "goa-airport-mopa", label: "GOA AIRPORT (MOPA)", type: "airport" },
+  { value: "goa-seaport", label: "GOA SEAPORT", type: "seaport" },
+  { value: "guwahati-airport", label: "GUWAHATI AIRPORT", type: "airport" },
+  { value: "hyderabad-airport", label: "HYDERABAD AIRPORT", type: "airport" },
+  { value: "indore-airport", label: "INDORE AIRPORT", type: "airport" },
+  { value: "jaipur-airport", label: "JAIPUR AIRPORT", type: "airport" },
+  { value: "kannur-airport", label: "KANNUR AIRPORT", type: "airport" },
+  { value: "kolkata-airport", label: "KOLKATA AIRPORT", type: "airport" },
+  { value: "lucknow-airport", label: "LUCKNOW AIRPORT", type: "airport" },
+  { value: "madurai-airport", label: "MADURAI AIRPORT", type: "airport" },
+  { value: "mangalore-airport", label: "MANGALORE AIRPORT", type: "airport" },
+  { value: "mangalore-seaport", label: "MANGALORE SEAPORT", type: "seaport" },
+  { value: "mumbai-airport", label: "MUMBAI AIRPORT", type: "airport" },
+  { value: "mumbai-seaport", label: "MUMBAI SEAPORT", type: "seaport" },
+  { value: "nagpur-airport", label: "NAGPUR AIRPORT", type: "airport" },
+  { value: "port-blair-airport", label: "PORT BLAIR AIRPORT", type: "airport" },
+  { value: "pune-airport", label: "PUNE AIRPORT", type: "airport" },
+  {
+    value: "tiruchirapalli-airport",
+    label: "TIRUCHIRAPALLI AIRPORT",
+    type: "airport",
+  },
+  { value: "trivandrum-airport", label: "TRIVANDRUM AIRPORT", type: "airport" },
+  { value: "varanasi-airport", label: "VARANASI AIRPORT", type: "airport" },
+  {
+    value: "visakhapatnam-airport",
+    label: "VISAKHAPATNAM AIRPORT",
+    type: "airport",
+  },
 ];
 
 export const visaServices = [
-    { value: 'tourist', label: 'eTOURIST VISA', icon: '🏖️', color: '#10b981' },
-    { value: 'medical', label: 'eMEDICAL VISA', icon: '🏥', color: '#ef4444' },
-    { value: 'business', label: 'eBUSINESS VISA', icon: '💼', color: '#3b82f6' },
-    { value: 'conference', label: 'eCONFERENCE VISA', icon: '👥', color: '#8b5cf6' },
-    { value: 'medical_attendant', label: 'eMEDICAL ATTENDANT VISA', icon: '👨‍⚕️', color: '#f59e0b' },
-    { value: 'ayush', label: 'e-Ayush Visa', icon: '🌿', color: '#22c55e' },
-    { value: 'ayush_attendant', label: 'e-Ayush Attendant', icon: '👩‍🌾', color: '#84cc16' }
-  ];
+  {
+    value: "tourist",
+    label: "eTOURIST VISA",
+    icon: "🏖️",
+    color: "#10b981",
+    options: [
+      { value: "30D", label: "eTOURIST VISA ( for 30 Days)" },
+      { value: "1YR", label: "eTOURIST VISA ( for 1 Year)" },
+      { value: "5YR", label: "eTOURIST VISA ( for 5 Years)" },
+    ],
+  },
+  {
+    value: "medical",
+    label: "eMEDICAL VISA",
+    icon: "🏥",
+    color: "#ef4444",
+    options: [
+      {
+        value: "shortTerm-self",
+        label: "Short Term Medical Treatment of Self",
+      },
+    ],
+  },
+  {
+    value: "business",
+    label: "eBUSINESS VISA",
+    icon: "💼",
+    color: "#3b82f6",
+    options: [
+      {
+        value: "setup_business",
+        label: "TO SET UP INDUSTRIAL/BUSINESS VENTURE",
+      },
+      { value: "sale_purchase", label: "SALE/PURCHASE/TRADE" },
+      {
+        value: "business_meetings",
+        label: "ATTEND TECHNICAL/BUSINESS MEETINGS",
+      },
+      { value: "recruit_manpower", label: "TO RECRUIT MANPOWER" },
+      {
+        value: "exhibitions",
+        label: "PARTICIPATION IN EXHIBITIONS, BUSINESS/TRADE FAIRS",
+      },
+      {
+        value: "project_expert",
+        label: "EXPERT/SPECIALIST IN CONNECTION WITH AN ONGOING PROJECT",
+      },
+      { value: "conduct_tours", label: "CONDUCTING TOURS" },
+      {
+        value: "gian_lectures",
+        label:
+          "TO DELIVER LECTURE(S) UNDER GLOBAL INITIATIVE FOR ACADEMIC NETWORKS (GIAN)",
+      },
+      { value: "pli_scheme", label: "PLI/SPECS/EMC 2.0 SCHEME" },
+      { value: "sports_activity", label: "SPORTS RELATED ACTIVITY" },
+      { value: "join_vessel", label: "TO JOIN THE VESSEL" },
+    ],
+  },
+  {
+    value: "conference",
+    label: "eCONFERENCE VISA",
+    icon: "👥",
+    color: "#8b5cf6",
+     options: [
+      {
+        value: "attend_conference",
+        label: "TO ATTEND A CONFERENCE/SEMINAR/WORKSHOP ORGANIZED BY A MINISTRY OR DEPARTMENT OF THE GOVERNMENT OF INDIA, STATE GOVERNMENTS OR UT ADMINISTRATIONS AND THEIR SUBORDINATE/ATTACHED ORGANIZATIONS AND PSUS AND PRIVATE CONFERENCES ORGANIZED BY PRIVATE PERSONS/COMPANIES/ORGANIZATIONS.",
+      },
+    ],
+  },
+  {
+    value: "medical_attendant",
+    label: "eMEDICAL ATTENDANT VISA",
+    icon: "👨‍⚕️",
+    color: "#f59e0b",
+    options: [
+      {
+        value: "patient_travelling_emedical_visa",
+        label: "TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON EMEDICAL VISA",
+      },
+    ],
+  },
+  { value: "ayush", label: "e-Ayush Visa", icon: "🌿", color: "#22c55e",
+     options:[
+        {
+            value:"treatment_under_ayush_Indian_sytems",
+            label:"TREATMENT UNDER AYUSH SYSTEMS/INDIAN SYSTEMS OF MEDICINE"
+        }
+     ],
+   },
+  {
+    value: "ayush_attendant",
+    label: "e-Ayush Attendant",
+    icon: "👩‍🌾",
+    color: "#84cc16",
+    option: [
+       {
+        value:'e-ayush_visa_holder',
+        label:'AS ATTENDANT TO AN E-AYUSH VISA HOLDER',
+       }
+    ]
+  },
+];
 
-export  const applicationTypes = [
-    { value: 'normal', label: 'Normal Processing', description: '3 to 5 business days', icon: '⏳' },
-    { value: 'urgent', label: 'Urgent Processing', description: '48 to 72 business hours', icon: '⚡' }
-  ];
+export const applicationTypes = [
+  {
+    value: "normal",
+    label: "Normal Processing",
+    description: "3 to 5 business days",
+    icon: "⏳",
+  },
+  {
+    value: "urgent",
+    label: "Urgent Processing",
+    description: "48 to 72 business hours",
+    icon: "⚡",
+  },
+];

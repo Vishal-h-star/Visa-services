@@ -16,7 +16,8 @@ const ApplicationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Application Number:', applicationNumber);
-    navigate(`/apply/${applicationNumber}`)
+    // navigate(`/apply/${applicationNumber}`)
+    navigate(`/Apply2/${applicationNumber}`)
     setStatus(false)
   };
 

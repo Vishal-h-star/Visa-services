@@ -25,6 +25,7 @@ const VisaApplicationForm = () => {
     contactNo: "",
     expectedArrival: "",
     visaService: "",
+    serviceSubCategory: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -70,6 +71,19 @@ const VisaApplicationForm = () => {
       }
     });
 
+    // Service sub category validation
+    const selectedService = visaServices.find(
+      (service) => service.value === formData.visaService
+    );
+    if (
+      selectedService &&
+      selectedService.options &&
+      selectedService.options.length > 0 &&
+      !formData.serviceSubCategory
+    ) {
+      newErrors.serviceSubCategory = "Please select a service sub category";
+    }
+
     // Email validation
     if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
@@ -105,6 +119,7 @@ const VisaApplicationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form Data:", formData);
     if (validateForm()) {
       const res = await newApplicationSubmit(formData);
       if (res.status === 200) {
@@ -127,8 +142,10 @@ const VisaApplicationForm = () => {
         contactNo: "",
         expectedArrival: "",
         visaService: "",
+        serviceSubCategory: "",
       });
       setIsSubmitting(false);
+      alert("Form is submitted");
     }
   };
 
@@ -144,12 +161,7 @@ const VisaApplicationForm = () => {
       <div className="enhanced-visa-card">
         {/* Header Section */}
         <div className="form-header-section">
-          {/* <div className="header-icon">🛂</div> */}
           <h1 className="form-title">E-Visa Application</h1>
-          {/* <p className="form-subtitle">Complete your visa application in just a few minutes</p>
-          <div className="progress-bar">
-            <div className="progress-fill" style={{ width: '33%' }}></div>
-          </div> */}
         </div>
 
         <form onSubmit={handleSubmit} className="enhanced-visa-form">
@@ -421,30 +433,67 @@ const VisaApplicationForm = () => {
                 )}
               </div>
 
-              {/* Visa Service - Normal Radio Buttons */}
+              {/* Visa Service - Fixed structure with subcategories below each service */}
               <div className="form-field-horizontal radio-field">
                 <label className="field-label">
                   <span className="label-text">Visa Service *</span>
                 </label>
-                <div className="radio-buttons-horizontal">
-                  {visaServices.map((service) => (
-                    <label key={service.value} className="radio-button-label">
-                      <input
-                        type="radio"
-                        name="visaService"
-                        value={service.value}
-                        checked={formData.visaService === service.value}
-                        onChange={handleChange}
-                        className="radio-button-input"
-                      />
-                      <span className="radio-button-custom"></span>
-                      <span className="radio-button-text">{service.label}</span>
-                    </label>
-                  ))}
+                <div className="radio-buttons-container">
+                  <div className="radio-buttons-horizontal">
+                    {visaServices.map((service) => (
+                      <div key={service.value} className="service-option-wrapper">
+                        <label className="radio-button-label">
+                          <input
+                            type="radio"
+                            name="visaService"
+                            value={service.value}
+                            checked={formData.visaService === service.value}
+                            onChange={handleChange}
+                            className="radio-button-input"
+                          />
+                          <span className="radio-button-custom"></span>
+                          <span className="radio-button-text">{service.label}</span>
+                        </label>
+                        
+                        {/* Subcategories appear directly below the selected service */}
+                        {service.options && formData.visaService === service.value && (
+                          <div className={`nested-options ${errors.serviceSubCategory ? 'error' : ''}`}>
+                            <div className="radio-buttons-horizontal">
+                              {service.options.map((option) => (
+                                <label
+                                  key={option.value}
+                                  className={`radio-button-label nested ${
+                                    formData.serviceSubCategory === option.value ? "active" : ""
+                                  }`}
+                                >
+                                  <input
+                                    type="radio"
+                                    name="serviceSubCategory"
+                                    value={option.value}
+                                    checked={formData.serviceSubCategory === option.value}
+                                    onChange={handleChange}
+                                  />
+                                  <span className="radio-button-custom"></span>
+                                  <span className="radio-button-text">
+                                    {option.label}
+                                  </span>
+                                </label>
+                              ))}
+                            </div>
+                            {errors.serviceSubCategory && (
+                              <span className="error-message">
+                                {errors.serviceSubCategory}
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  {errors.visaService && (
+                    <span className="error-message">{errors.visaService}</span>
+                  )}
                 </div>
-                {errors.visaService && (
-                  <span className="error-message">{errors.visaService}</span>
-                )}
               </div>
             </div>
           </div>

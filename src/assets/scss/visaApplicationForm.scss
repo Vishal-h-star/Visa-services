@@ -196,7 +196,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 
 .form-field-horizontal {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
   padding: 0.5rem 0;
 
@@ -273,8 +273,23 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     width: 100%;
   }
 }
-.radio-field{
-  align-items: start;
+
+.radio-field {
+  align-items: flex-start;
+  
+  .field-label {
+    flex: 0 0 250px;
+  }
+  
+  .radio-buttons-container {
+    flex: 1;
+    width: 100%;
+  }
+}
+
+// Service option wrapper to contain both service and its subcategories
+.service-option-wrapper {
+  width: 100%;
 }
 
 // Radio buttons styling for horizontal layout
@@ -282,7 +297,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-top: 0.5rem;
+  width: 100%;
 
   .radio-button-label {
     display: flex;
@@ -294,6 +309,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     cursor: pointer;
     transition: all 0.3s ease;
     background: white;
+    width: 100%;
 
     &:hover {
       border-color: #667eea;
@@ -348,6 +364,68 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     font-weight: 500;
     color: $text-dark;
     transition: color 0.3s ease;
+    flex: 1;
+  }
+}
+
+// Nested Options Styling - FIXED POSITIONING
+.nested-options {
+  margin-top: 0.75rem;
+  margin-left: 0;
+  padding: 1.25rem;
+  background: #f8f9ff;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  animation: slideDown 0.3s ease-out;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.error {
+    border-color: $error-color;
+    background: rgba(255, 107, 107, 0.05);
+  }
+}
+
+// Enhanced radio button styling for nested options
+.radio-buttons-horizontal .radio-button-label.nested {
+  background: white;
+  margin-bottom: 0.75rem;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  width: 100%;
+  
+  &:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+    transform: translateY(-1px);
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  // Selected state for nested radio buttons
+  input[type="radio"]:checked + .radio-button-custom {
+    border-color: #667eea;
+    background: #667eea;
+    
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  input[type="radio"]:checked ~ .radio-button-text {
+    color: #667eea;
+    font-weight: 600;
+  }
+  
+  // Active state styling
+  &.active {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e3f2fd 100%);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
   }
 }
 
@@ -462,6 +540,17 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 // Responsive Design
 @media (max-width: 768px) {
   .enhanced-visa-card {
@@ -495,15 +584,36 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     .field-label {
       flex: none;
       margin-bottom: 0.25rem;
+      width: 100%;
     }
 
     .input-container,
     .select-container {
       min-width: auto;
+      width: 100%;
     }
   }
 
- 
+  .radio-field {
+    .field-label {
+      flex: none;
+      width: 100%;
+    }
+    
+    .radio-buttons-container {
+      width: 100%;
+    }
+  }
+
+  .nested-options {
+    padding: 1rem;
+    width: 100%;
+  }
+  
+  .radio-buttons-horizontal .radio-button-label.nested {
+    padding: 1rem 0.75rem;
+    width: 100%;
+  }
 
   .form-fields-single-column {
     gap: 1rem;
