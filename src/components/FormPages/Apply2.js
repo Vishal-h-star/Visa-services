@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { nationalities ,religions,genders ,educationLevels} from '../../assets/data/FormData';
 
 const Apply2 = () => {
   const params = useParams();
 
-  console.log(params, 'params');
   const [formData, setFormData] = useState({
     applicationType: 'Normal Processing',
-    protOfArrival:'Delhi Airport',
+    protOfArrival: 'Delhi Airport',
     surname: '',
     givenName: '',
     previousSurname: '',
@@ -23,30 +23,23 @@ const Apply2 = () => {
     education: '',
     nationality: '',
     nationalityAcquired: '',
+    nationalityAcquiredDetails:'',
     livedInCountry: '',
     passportNumber: '',
     passportPlaceOfIssue: '',
     passportDateOfIssue: '',
     passportDateOfExpiry: '',
-    otherPassport: ''
+    otherPassport: '',
+    otherPassportCountryOfIssue:'',
+    otherPassport_PassportNo:'',
+    otherPassportDateOfIssue:'',
+    otherPassportPlaceOfIssue:'',
+    otherPassportNationaliyMentioned:'',
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const countries = [
-    'UNITED ARAB EMIRATES', 'DENMARK', 'UNITED STATES', 'UNITED KINGDOM', 'CANADA', 'AUSTRALIA'
-  ];
-
-  const religions = [
-    'CHRISTIAN', 'MUSLIM', 'HINDU', 'BUDDHIST', 'JEWISH', 'OTHER'
-  ];
-
-  const educationLevels = [
-    'HIGHER SECONDARY', 'GRADUATE', 'POST GRADUATE', 'DOCTORATE', 'OTHER'
-  ];
-
-  const genders = ['SELECT GENDER','MALE', 'FEMALE', 'OTHER'];
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -77,7 +70,6 @@ const Apply2 = () => {
 
   return (
     <div className="enhanced-visa-container">
-      {/* Background Elements */}
       <div className="background-shapes">
         <div className="shape shape-1"></div>
         <div className="shape shape-2"></div>
@@ -87,26 +79,16 @@ const Apply2 = () => {
       <div className="enhanced-visa-card">
         {/* Header Section */}
         <div className="form-header-section">
-          <div className="header-icon">🛂</div>
           <h1 className="form-title">e-Visa Application</h1>
-          <p className="form-subtitle">Complete your visa application form</p>
           <div className="application-id">
             Temporary Application ID: <strong>{params?.id}</strong>
-          </div>
-          <div className="progress-bar">
-            <div className="progress-fill" style={{width: '50%'}}></div>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="enhanced-visa-form">
           {/* Application Type Section */}
-          <div className="form-section">
-            <div className="section-header">
-              <span className="section-number">01</span>
-              <h2>Application Information</h2>
-            </div>
-            
-            <div className="form-grid">
+          <div className="form-section">            
+            <div className="form-grid single-row">
                <div className="form-field">
                 <label className="field-label">
                   <span className="label-text">Application Type *</span>
@@ -119,7 +101,6 @@ const Apply2 = () => {
                     className="field-input"
                     style={{backgroundColor: '#f8f9fa'}}
                   />
-                  {/* <span className="input-icon">✈️</span> */}
                 </div>
               </div>
 
@@ -141,18 +122,16 @@ const Apply2 = () => {
             </div>
           </div>
 
-          {/* Personal Details Section */}
+          {/* Combined Personal + Passport Details Section */}
           <div className="form-section">
-            <div className="section-header">
-              <span className="section-number">02</span>
-              <h2>Personal Details</h2>
+            <div className="section-header centered">
+              <h2>Application Detail Form</h2>
             </div>
-            
-            <div className="form-grid">
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Surname *</span>
-                </label>
+
+            <div className="form-grid full-row"> 
+              {/* Personal Details */}
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Surname *</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -161,14 +140,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">👤</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Given Name *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Given Name *</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -177,14 +153,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">📝</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Name Changed</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Name Changed</span></label>
                 <div className="checkbox-container">
                   <label className="checkbox-label">
                     <input
@@ -200,51 +173,40 @@ const Apply2 = () => {
                 </div>
               </div>
 
-                  {/* Show previous name fields only when checkbox is checked */}
-                    {formData.nameChanged && (
-                        <div className="previous-name-fields">
-                        <div className="form-grid">
-                            <div className="form-field">
-                            <label className="field-label">
-                                <span className="label-text">Previous Surname</span>
-                            </label>
-                            <div className="input-container">
-                                <input
-                                type="text"
-                                name="previousSurname"
-                                value={formData.previousSurname}
-                                onChange={handleChange}
-                                className="field-input"
-                                placeholder="Enter previous surname"
-                                />
-                                <span className="input-icon">👤</span>
-                            </div>
-                            </div>
+              {formData.nameChanged && (
+                <>
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Previous Surname</span></label>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="previousSurname"
+                        value={formData.previousSurname}
+                        onChange={handleChange}
+                        className="field-input"
+                         required
+                      />
+                    </div>
+                  </div>
 
-                            <div className="form-field">
-                            <label className="field-label">
-                                <span className="label-text">Previous Name</span>
-                            </label>
-                            <div className="input-container">
-                                <input
-                                type="text"
-                                name="previousGivenName"
-                                value={formData.previousName}
-                                onChange={handleChange}
-                                className="field-input"
-                                placeholder="Enter previous given name"
-                                />
-                                <span className="input-icon">📝</span>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    )}
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Previous Given Name</span></label>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="previousName"
+                        value={formData.previousName}
+                        onChange={handleChange}
+                        className="field-input"
+                         required
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Gender *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Gender *</span></label>
                 <div className="select-container">
                   <select
                     name="gender"
@@ -252,6 +214,7 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-select"
                   >
+                    <option value="">Select Gender</option>
                     {genders.map(gender => (
                       <option key={gender} value={gender}>{gender}</option>
                     ))}
@@ -260,10 +223,8 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Date of Birth *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Date of Birth *</span></label>
                 <div className="input-container">
                   <input
                     type="date"
@@ -272,14 +233,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">📅</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Town / City of Birth *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Town / City of Birth *</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -288,14 +246,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">🏙️</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Country of Birth *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Country of Birth *</span></label>
                 <div className="select-container">
                   <select
                     name="countryOfBirth"
@@ -303,18 +258,17 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-select"
                   >
-                    {countries.map(country => (
-                      <option key={country} value={country}>{country}</option>
+                    <option value="">Select Country of birth</option>
+                    {nationalities.map(country => (
+                      <option key={country} value={country.value}>{country.label}</option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Citizenship / National ID Number *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">National ID *</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -323,14 +277,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">🆔</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Religion *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Religion *</span></label>
                 <div className="select-container">
                   <select
                     name="religion"
@@ -338,6 +289,7 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-select"
                   >
+                    <option value=""> Select your religion</option>
                     {religions.map(religion => (
                       <option key={religion} value={religion}>{religion}</option>
                     ))}
@@ -346,10 +298,8 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Visible Identification Mark</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Visible Identification Mark</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -358,14 +308,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">🔍</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Educational Qualification *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Educational Qualification *</span></label>
                 <div className="select-container">
                   <select
                     name="education"
@@ -373,6 +320,7 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-select"
                   >
+                    <option value="">Select Qualification</option>
                     {educationLevels.map(level => (
                       <option key={level} value={level}>{level}</option>
                     ))}
@@ -381,10 +329,8 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Nationality *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Nationality *</span></label>
                 <div className="select-container">
                   <select
                     name="nationality"
@@ -392,18 +338,17 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-select"
                   >
-                    {countries.map(country => (
-                      <option key={country} value={country}>{country}</option>
+                     <option value="">Select Nationality</option>
+                    {nationalities.map(country => (
+                      <option key={country} value={country.value}>{country.label}</option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Nationality Acquired By / Naturalization *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Nationality Acquired By / Naturalization *</span></label>
                 <div className="select-container">
                   <select
                     name="nationalityAcquired"
@@ -419,12 +364,29 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              <div className="form-field full-width">
-                <label className="field-label">
-                  <span className="label-text">
-                    Have you lived for at least two years in the country where you are applying visa? *
-                  </span>
-                </label>
+              { formData.nationalityAcquired  === "By naturalization" && (
+                       <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text"> Prev. Nationality: *</span></label>
+                <div className="select-container">
+                  <select
+                    name="nationalityAcquiredDetails"
+                    value={formData.nationalityAcquiredDetails}
+                    onChange={handleChange}
+                    className="field-select"
+                     required
+                  >
+                    <option value="">Select Nationality</option>
+                    {nationalities.map( (country) =>
+                       <option value={country.value}>{country.label}</option>
+                       )}
+                  </select>
+                  <span className="select-arrow">▼</span>
+                </div>
+              </div> 
+              )}
+
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Lived in Country ≥ 2 years *</span></label>
                 <div className="radio-group">
                   <label className="radio-label">
                     <input
@@ -452,21 +414,14 @@ const Apply2 = () => {
                   </label>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Passport Details Section */}
-          <div className="form-section">
-            <div className="section-header">
-              <span className="section-number">03</span>
+              <div className="section-header centered">
               <h2>Passport Details</h2>
             </div>
-            
-            <div className="form-grid">
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Passport Number *</span>
-                </label>
+
+              {/* Passport Details */}
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Passport Number *</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -475,14 +430,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">📘</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Place of Issue *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Place of Issue *</span></label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -491,14 +443,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">🏛️</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Date of Issue *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Date of Issue *</span></label>
                 <div className="input-container">
                   <input
                     type="date"
@@ -507,14 +456,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">📅</span>
                 </div>
               </div>
 
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Date of Expiry *</span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Date of Expiry *</span></label>
                 <div className="input-container">
                   <input
                     type="date"
@@ -523,16 +469,11 @@ const Apply2 = () => {
                     onChange={handleChange}
                     className="field-input"
                   />
-                  <span className="input-icon">📅</span>
                 </div>
               </div>
 
-              <div className="form-field full-width">
-                <label className="field-label">
-                  <span className="label-text">
-                    Any other valid Passport/Nationality Certificate/ID card? *
-                  </span>
-                </label>
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Any other valid Passport/Nationality Certificate/ID card? *</span></label>
                 <div className="radio-group">
                   <label className="radio-label">
                     <input
@@ -560,10 +501,94 @@ const Apply2 = () => {
                   </label>
                 </div>
               </div>
+
+              {formData.otherPassport === "Yes"  && (
+                   <>
+               <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Country of Issue *</span></label>
+                    <div className="select-container">
+                  <select
+                    name="otherPassportCountryOfIssue"
+                    value={formData.otherPassportCountryOfIssue}
+                    onChange={handleChange}
+                    className="field-select"
+                     required
+                  >
+                    <option value="">Select Nationality</option>
+                    {nationalities.map( country => (
+                      <option key={country} value={country.value}>{country.label}</option>
+                    ))}
+                  </select>
+                  <span className="select-arrow">▼</span>
+                </div>
+              </div>
+
+               <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Passport No *</span></label>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    name="otherPassport_PassportNo"
+                    value={formData.otherPassport_PassportNo}
+                    onChange={handleChange}
+                    className="field-input"
+                     required
+                  />
+                </div>
+              </div>
+
+              <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Date of Issue *</span></label>
+                <div className="input-container">
+                  <input
+                    type="date"
+                    name="otherPassportDateOfIssue"
+                    value={formData.otherPassportDateOfIssue}
+                    onChange={handleChange}
+                    className="field-input"
+                     required
+                  />
+                </div>
+              </div>
+
+                <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Place of Issue *</span></label>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    name="otherPassportPlaceOfIssue"
+                    value={formData.otherPassportPlaceOfIssue}
+                    onChange={handleChange}
+                    className="field-input"
+                     required
+                  />
+                </div>
+              </div>
+
+                <div className="form-field form-field-inline">
+                <label className="field-label"><span className="label-text">Nationality Mentioned Therein *</span></label>
+               <div className="select-container">
+                  <select
+                    name="otherPassportNationaliyMentioned"
+                    value={formData.otherPassportNationaliyMentioned}
+                    onChange={handleChange}
+                    className="field-select"
+                    required
+                  >
+                    <option value="">Select Nationality</option>
+                    {nationalities.map( country => (
+                      <option key={country} value={country.value}>{country.label}</option>
+                    ))}
+                  </select>
+                  <span className="select-arrow">▼</span>
+                </div>
+              </div>
+                   </>
+              )}
+
             </div>
           </div>
 
-          {/* Submit Button */}
           <button 
             type="submit" 
             className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
@@ -583,7 +608,6 @@ const Apply2 = () => {
           </button>
         </form>
 
-        {/* Footer */}
         <div className="form-footer">
           <p>🔒 Your information is secure and encrypted</p>
         </div>

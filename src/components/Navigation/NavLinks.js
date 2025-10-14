@@ -17,12 +17,12 @@ const NavLinks = () => {
       </li>
       <li>
         <NavLink to="/blogs" exact>
-          Blogs
+          Privacy
         </NavLink>
       </li>
       <li>
         <NavLink to="/products" exact>
-          Products
+          <span> Document</span>
         </NavLink>
       </li>
       {/* <li className="submenu-heading">
@@ -226,11 +226,11 @@ const NavLinks = () => {
           Contact
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/career" exact>
           Career
         </NavLink>
-      </li>
+      </li> */}
     </ul>
   );
 };

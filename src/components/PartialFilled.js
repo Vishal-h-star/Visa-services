@@ -17,7 +17,7 @@ const ApplicationForm = () => {
     e.preventDefault();
     console.log('Application Number:', applicationNumber);
     // navigate(`/apply/${applicationNumber}`)
-    navigate(`/Apply2/${applicationNumber}`)
+    navigate(`/Apply/${applicationNumber}`)
     setStatus(false)
   };
 

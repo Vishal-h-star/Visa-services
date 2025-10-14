@@ -121,13 +121,13 @@ const VisaApplicationForm = () => {
     e.preventDefault();
     console.log("Form Data:", formData);
     if (validateForm()) {
-      const res = await newApplicationSubmit(formData);
-      if (res.status === 200) {
-        console.log(res.data, "data we get from back");
-        toast.success(`🦄 ${res.data.message}`);
-        setIsSubmitting(true);
-        navigate(`/apply2/${res.data.data.uniqueId}`);
-      }
+      // const res = await newApplicationSubmit(formData);
+      // if (res.status === 200) {
+      //   console.log(res.data, "data we get from back");
+      //   toast.success(`🦄 ${res.data.message}`);
+      //   setIsSubmitting(true);
+      //   navigate(`/apply2/${res.data.data.uniqueId}`);
+      // }
 
       setFormData({
         applicationType: "",

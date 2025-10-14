@@ -15,6 +15,7 @@ import VisaApplicationForm from "./components/VisaApplicationForm";
 import PartialFilled from "./components/PartialFilled";
 import Apply2 from "./components/FormPages/Apply2";
 import Apply3 from "./components/FormPages/Apply3";
+import VisaPaymentForm from "./components/FormPages/VisaPaymentForm";
 
 
 function App() {
@@ -31,7 +32,8 @@ function App() {
         <Route exact path="/Apply" element={<VisaApplicationForm />} />
         <Route exact path="/Apply/:id" element={<VisaApplicationForm />} />
         <Route exact path="/Apply2/:id" element={<Apply2 />} />
-        <Route path="/Apply3/:id" exact component={<Apply3 />} />
+        <Route path="/Apply3/:id" exact element={<Apply3 />} />
+        <Route path="/Payment/:id" exact element={<VisaPaymentForm/>}/>
         <Route exact path="/partial-Filled" element={<PartialFilled />} />
         <Route exact path="/contact" elemenmt={<Contact />} />
       </Routes>
