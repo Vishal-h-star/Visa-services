@@ -1,0 +1,22 @@
+.image-upload{
+   padding:1.2rem;
+}
+.section-image{
+    margin-top: 2rem;
+    padding: 0px 24px 24px 24px;
+}
+.section-image .image-title{
+   text-align: center;
+   font-size:1.3rem;
+}
+.uploade_image_div{
+    display: flex;
+    // background: blue;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.uploade_image_div img{
+    display: inline-block;
+}
+
