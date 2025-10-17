@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { nationalities ,religions,genders ,educationLevels} from '../../assets/data/FormData';
+import { getApplicationDataById, applicationSubmitStep2 } from '../../apiCalls/visaApplication';
+import { nationalities, religions, genders, educationLevels } from '../../assets/data/FormData';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Apply2 = () => {
+  const navigate = useNavigate();
   const params = useParams();
-
   const [formData, setFormData] = useState({
-    applicationType: 'Normal Processing',
-    protOfArrival: 'Delhi Airport',
+    applicationType: '',
+    portOfArrival: '',
     surname: '',
     givenName: '',
     previousSurname: '',
@@ -23,22 +26,37 @@ const Apply2 = () => {
     education: '',
     nationality: '',
     nationalityAcquired: '',
-    nationalityAcquiredDetails:'',
+    nationalityAcquiredDetails: '',
     livedInCountry: '',
     passportNumber: '',
     passportPlaceOfIssue: '',
     passportDateOfIssue: '',
     passportDateOfExpiry: '',
     otherPassport: '',
-    otherPassportCountryOfIssue:'',
-    otherPassport_PassportNo:'',
-    otherPassportDateOfIssue:'',
-    otherPassportPlaceOfIssue:'',
-    otherPassportNationaliyMentioned:'',
+    otherPassportCountryOfIssue: '',
+    otherPassport_PassportNo: '',
+    otherPassportDateOfIssue: '',
+    otherPassportPlaceOfIssue: '',
+    otherPassportNationaliyMentioned: '',
   });
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, 'res daa of application')
+    if (res.status === 200) {
+      setFormData(res.data.data)
+    }
+  }
+
+
+  useEffect(() => {
+    getApplicationData()
+  }, [params.id])
+
+
 
 
   const handleChange = (e) => {
@@ -47,7 +65,7 @@ const Apply2 = () => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
-    
+
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -58,23 +76,30 @@ const Apply2 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log('Form submitted:', formData);
-    
-    setIsSubmitting(false);
-    alert('Application submitted successfully!');
+    console.log("Form Data:", formData);
+    return
+    // if (validateForm()) {
+      console.log('hitting api')
+      const res = await applicationSubmitStep2(formData);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        // setIsSubmitting(true);
+        setIsSubmitting(false);
+        navigate(`/apply3/${res.data.data.uniqueId}`);
+      } else {
+        toast.error(`Some Error Happens!!`);
+      }
+    // }
   };
 
   return (
     <div className="enhanced-visa-container">
-      <div className="background-shapes">
+      {/* <div className="background-shapes">
         <div className="shape shape-1"></div>
         <div className="shape shape-2"></div>
         <div className="shape shape-3"></div>
-      </div>
+      </div> */}
 
       <div className="enhanced-visa-card">
         {/* Header Section */}
@@ -87,9 +112,9 @@ const Apply2 = () => {
 
         <form onSubmit={handleSubmit} className="enhanced-visa-form">
           {/* Application Type Section */}
-          <div className="form-section">            
+          <div className="form-section">
             <div className="form-grid single-row">
-               <div className="form-field">
+              <div className="form-field">
                 <label className="field-label">
                   <span className="label-text">Application Type *</span>
                 </label>
@@ -99,7 +124,7 @@ const Apply2 = () => {
                     value={formData.applicationType}
                     readOnly
                     className="field-input"
-                    style={{backgroundColor: '#f8f9fa'}}
+                    style={{ backgroundColor: '#f8f9fa' }}
                   />
                 </div>
               </div>
@@ -111,12 +136,11 @@ const Apply2 = () => {
                 <div className="input-container">
                   <input
                     type="text"
-                    value={formData.protOfArrival}
+                    value={formData.portOfArrival}
                     readOnly
                     className="field-input"
-                    style={{backgroundColor: '#f8f9fa'}}
+                    style={{ backgroundColor: '#f8f9fa' }}
                   />
-                  <span className="input-icon">✈️</span>
                 </div>
               </div>
             </div>
@@ -128,7 +152,7 @@ const Apply2 = () => {
               <h2>Application Detail Form</h2>
             </div>
 
-            <div className="form-grid full-row"> 
+            <div className="form-grid full-row">
               {/* Personal Details */}
               <div className="form-field form-field-inline">
                 <label className="field-label"><span className="label-text">Surname *</span></label>
@@ -184,7 +208,7 @@ const Apply2 = () => {
                         value={formData.previousSurname}
                         onChange={handleChange}
                         className="field-input"
-                         required
+                        required
                       />
                     </div>
                   </div>
@@ -198,7 +222,7 @@ const Apply2 = () => {
                         value={formData.previousName}
                         onChange={handleChange}
                         className="field-input"
-                         required
+                        required
                       />
                     </div>
                   </div>
@@ -260,7 +284,7 @@ const Apply2 = () => {
                   >
                     <option value="">Select Country of birth</option>
                     {nationalities.map(country => (
-                      <option key={country} value={country.value}>{country.label}</option>
+                      <option key={country.value} value={country.value}>{country.label}</option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -336,11 +360,12 @@ const Apply2 = () => {
                     name="nationality"
                     value={formData.nationality}
                     onChange={handleChange}
+                    readOnly
                     className="field-select"
                   >
-                     <option value="">Select Nationality</option>
+                    <option value="">Select Nationality</option>
                     {nationalities.map(country => (
-                      <option key={country} value={country.value}>{country.label}</option>
+                      <option key={country.value} value={country.value}>{country.label}</option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -364,25 +389,25 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              { formData.nationalityAcquired  === "By naturalization" && (
-                       <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text"> Prev. Nationality: *</span></label>
-                <div className="select-container">
-                  <select
-                    name="nationalityAcquiredDetails"
-                    value={formData.nationalityAcquiredDetails}
-                    onChange={handleChange}
-                    className="field-select"
-                     required
-                  >
-                    <option value="">Select Nationality</option>
-                    {nationalities.map( (country) =>
-                       <option value={country.value}>{country.label}</option>
-                       )}
-                  </select>
-                  <span className="select-arrow">▼</span>
+              {formData.nationalityAcquired === "By naturalization" && (
+                <div className="form-field form-field-inline">
+                  <label className="field-label"><span className="label-text"> Prev. Nationality: *</span></label>
+                  <div className="select-container">
+                    <select
+                      name="nationalityAcquiredDetails"
+                      value={formData.nationalityAcquiredDetails}
+                      onChange={handleChange}
+                      className="field-select"
+                      required
+                    >
+                      <option value="">Select Nationality</option>
+                      {nationalities.map((country) =>
+                        <option value={country.value}>{country.label}</option>
+                      )}
+                    </select>
+                    <span className="select-arrow">▼</span>
+                  </div>
                 </div>
-              </div> 
               )}
 
               <div className="form-field form-field-inline">
@@ -416,8 +441,8 @@ const Apply2 = () => {
               </div>
 
               <div className="section-header centered">
-              <h2>Passport Details</h2>
-            </div>
+                <h2>Passport Details</h2>
+              </div>
 
               {/* Passport Details */}
               <div className="form-field form-field-inline">
@@ -502,95 +527,95 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              {formData.otherPassport === "Yes"  && (
-                   <>
-               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Country of Issue *</span></label>
+              {formData.otherPassport === "Yes" && (
+                <>
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Country of Issue *</span></label>
                     <div className="select-container">
-                  <select
-                    name="otherPassportCountryOfIssue"
-                    value={formData.otherPassportCountryOfIssue}
-                    onChange={handleChange}
-                    className="field-select"
-                     required
-                  >
-                    <option value="">Select Nationality</option>
-                    {nationalities.map( country => (
-                      <option key={country} value={country.value}>{country.label}</option>
-                    ))}
-                  </select>
-                  <span className="select-arrow">▼</span>
-                </div>
-              </div>
+                      <select
+                        name="otherPassportCountryOfIssue"
+                        value={formData.otherPassportCountryOfIssue}
+                        onChange={handleChange}
+                        className="field-select"
+                        required
+                      >
+                        <option value="">Select Nationality</option>
+                        {nationalities.map(country => (
+                          <option key={country} value={country.value}>{country.label}</option>
+                        ))}
+                      </select>
+                      <span className="select-arrow">▼</span>
+                    </div>
+                  </div>
 
-               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Passport No *</span></label>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    name="otherPassport_PassportNo"
-                    value={formData.otherPassport_PassportNo}
-                    onChange={handleChange}
-                    className="field-input"
-                     required
-                  />
-                </div>
-              </div>
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Passport No *</span></label>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="otherPassport_PassportNo"
+                        value={formData.otherPassport_PassportNo}
+                        onChange={handleChange}
+                        className="field-input"
+                        required
+                      />
+                    </div>
+                  </div>
 
-              <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Date of Issue *</span></label>
-                <div className="input-container">
-                  <input
-                    type="date"
-                    name="otherPassportDateOfIssue"
-                    value={formData.otherPassportDateOfIssue}
-                    onChange={handleChange}
-                    className="field-input"
-                     required
-                  />
-                </div>
-              </div>
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Date of Issue *</span></label>
+                    <div className="input-container">
+                      <input
+                        type="date"
+                        name="otherPassportDateOfIssue"
+                        value={formData.otherPassportDateOfIssue}
+                        onChange={handleChange}
+                        className="field-input"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Place of Issue *</span></label>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    name="otherPassportPlaceOfIssue"
-                    value={formData.otherPassportPlaceOfIssue}
-                    onChange={handleChange}
-                    className="field-input"
-                     required
-                  />
-                </div>
-              </div>
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Place of Issue *</span></label>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="otherPassportPlaceOfIssue"
+                        value={formData.otherPassportPlaceOfIssue}
+                        onChange={handleChange}
+                        className="field-input"
+                        required
+                      />
+                    </div>
+                  </div>
 
-                <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Nationality Mentioned Therein *</span></label>
-               <div className="select-container">
-                  <select
-                    name="otherPassportNationaliyMentioned"
-                    value={formData.otherPassportNationaliyMentioned}
-                    onChange={handleChange}
-                    className="field-select"
-                    required
-                  >
-                    <option value="">Select Nationality</option>
-                    {nationalities.map( country => (
-                      <option key={country} value={country.value}>{country.label}</option>
-                    ))}
-                  </select>
-                  <span className="select-arrow">▼</span>
-                </div>
-              </div>
-                   </>
+                  <div className="form-field form-field-inline">
+                    <label className="field-label"><span className="label-text">Nationality Mentioned Therein *</span></label>
+                    <div className="select-container">
+                      <select
+                        name="otherPassportNationaliyMentioned"
+                        value={formData.otherPassportNationaliyMentioned}
+                        onChange={handleChange}
+                        className="field-select"
+                        required
+                      >
+                        <option value="">Select Nationality</option>
+                        {nationalities.map(country => (
+                          <option key={country} value={country.value}>{country.label}</option>
+                        ))}
+                      </select>
+                      <span className="select-arrow">▼</span>
+                    </div>
+                  </div>
+                </>
               )}
 
             </div>
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
             disabled={isSubmitting}
           >

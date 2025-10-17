@@ -120,32 +120,19 @@ const VisaApplicationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
+    // return
     if (validateForm()) {
-      // const res = await newApplicationSubmit(formData);
-      // if (res.status === 200) {
-      //   console.log(res.data, "data we get from back");
-      //   toast.success(`🦄 ${res.data.message}`);
-      //   setIsSubmitting(true);
-      //   navigate(`/apply2/${res.data.data.uniqueId}`);
-      // }
-
-      setFormData({
-        applicationType: "",
-        passportType: "",
-        surname: "",
-        givenName: "",
-        nationality: "",
-        portOfArrival: "",
-        dateOfBirth: "",
-        email: "",
-        confirmEmail: "",
-        contactNo: "",
-        expectedArrival: "",
-        visaService: "",
-        serviceSubCategory: "",
-      });
-      setIsSubmitting(false);
-      alert("Form is submitted");
+      console.log('hitting api')
+      const res = await newApplicationSubmit(formData);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        // setIsSubmitting(true);
+        setIsSubmitting(false);
+        navigate(`/apply2/${res.data.data.uniqueId}`);
+      } else{
+        toast.error(`Some Error Happens!!`);
+      }
     }
   };
 
@@ -178,9 +165,8 @@ const VisaApplicationForm = () => {
                     name="applicationType"
                     value={formData.applicationType}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.applicationType ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.applicationType ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Application Type</option>
                     {applicationTypes.map((option) => (
@@ -208,9 +194,8 @@ const VisaApplicationForm = () => {
                     name="passportType"
                     value={formData.passportType}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.passportType ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.passportType ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">Ordinary Passport</option>
@@ -274,9 +259,8 @@ const VisaApplicationForm = () => {
                     name="nationality"
                     value={formData.nationality}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.nationality ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.nationality ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Nationality</option>
                     {nationalities.map((option) => (
@@ -302,9 +286,8 @@ const VisaApplicationForm = () => {
                     name="portOfArrival"
                     value={formData.portOfArrival}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.portOfArrival ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.portOfArrival ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Port Of Arrival</option>
                     {portsOfArrival.map((option) => (
@@ -331,9 +314,8 @@ const VisaApplicationForm = () => {
                     name="dateOfBirth"
                     value={formData.dateOfBirth}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.dateOfBirth ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.dateOfBirth ? "error" : ""
+                      }`}
                   />
                   <span className="input-icon">📅</span>
                 </div>
@@ -374,9 +356,8 @@ const VisaApplicationForm = () => {
                     name="confirmEmail"
                     value={formData.confirmEmail}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.confirmEmail ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.confirmEmail ? "error" : ""
+                      }`}
                     placeholder="confirm@email.com"
                   />
                   <span className="input-icon">✅</span>
@@ -420,9 +401,8 @@ const VisaApplicationForm = () => {
                     name="expectedArrival"
                     value={formData.expectedArrival}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.expectedArrival ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.expectedArrival ? "error" : ""
+                      }`}
                   />
                   <span className="input-icon">✈️</span>
                 </div>
@@ -454,7 +434,7 @@ const VisaApplicationForm = () => {
                           <span className="radio-button-custom"></span>
                           <span className="radio-button-text">{service.label}</span>
                         </label>
-                        
+
                         {/* Subcategories appear directly below the selected service */}
                         {service.options && formData.visaService === service.value && (
                           <div className={`nested-options ${errors.serviceSubCategory ? 'error' : ''}`}>
@@ -462,9 +442,8 @@ const VisaApplicationForm = () => {
                               {service.options.map((option) => (
                                 <label
                                   key={option.value}
-                                  className={`radio-button-label nested ${
-                                    formData.serviceSubCategory === option.value ? "active" : ""
-                                  }`}
+                                  className={`radio-button-label nested ${formData.serviceSubCategory === option.value ? "active" : ""
+                                    }`}
                                 >
                                   <input
                                     type="radio"

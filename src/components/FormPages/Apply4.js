@@ -1,7 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import { portsOfArrival } from "../../assets/data/FormData";
+import { getApplicationDataById, applicationSubmitStep4 } from '../../apiCalls/visaApplication';
+
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Apply4 = () => {
+  const params = useParams();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     applicationType: "Normal Processing",
     portOfArrival: "",
@@ -19,8 +26,8 @@ const Apply4 = () => {
     visitedIndiaBeforePlaceOfVisa: "",
     visitedIndiaBeforeDateOfIssue: "",
     visaRefused: "no",
-    visaRefusedByWhomDetails:"",
-    countryVisitedLast10Years:"",
+    visaRefusedByWhomDetails: "",
+    countryVisitedLast10Years: "",
     saarcCountries: "no",
     referenceNameIndia: "",
     referenceAddressIndia: "",
@@ -32,6 +39,19 @@ const Apply4 = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, 'res daa of application')
+    if (res.status === 200) {
+      setFormData(res.data.data)
+    }
+  }
+
+
+  useEffect(() => {
+    getApplicationData()
+  }, [params.id])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,29 +114,21 @@ const Apply4 = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formErrors = validateForm();
-    if (Object.keys(formErrors).length > 0) {
-      setErrors(formErrors);
-      // Scroll to first error
-      const firstErrorField = Object.keys(formErrors)[0];
-      const element = document.querySelector(`[name="${firstErrorField}"]`);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (validateForm()) {
+      console.log('hitting api')
+      const res = await applicationSubmitStep4(formData);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        // setIsSubmitting(true);
+        setIsSubmitting(false);
+        navigate(`/apply5/${res.data.data.uniqueId}`);
+      } else {
+        toast.error(`Some Error Happens!!`);
       }
-      return;
     }
-
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      alert("Application submitted successfully!");
-      console.log("Form Data:", formData);
-    }, 2000);
   };
 
   return (
@@ -134,7 +146,7 @@ const Apply4 = () => {
           </div>
           <h1 className="form-title">e-Visa Application</h1>
           <div className="application-id">
-            Temporary Application ID: DBN2004677DN
+            Temporary Application ID: {params.id}
           </div>
         </div>
 
@@ -248,9 +260,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="placeVisited1"
-                    className={`field-input ${
-                      errors.placeVisited1 ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.placeVisited1 ? "error" : ""
+                      }`}
                     value={formData.placeVisited1}
                     onChange={handleChange}
                     placeholder="Enter place to visit"
@@ -291,9 +302,8 @@ const Apply4 = () => {
                 <div className="select-container">
                   <select
                     name="expectedPortOfExit"
-                    className={`field-select ${
-                      errors.expectedPortOfExit ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.expectedPortOfExit ? "error" : ""
+                      }`}
                     value={formData.expectedPortOfExit}
                     onChange={handleChange}
                   >
@@ -524,16 +534,16 @@ const Apply4 = () => {
                     Countries Visited In Last 10 Years
                   </span>
                 </div>
-                 <div className="input-container">
-                    <input
-                      type="text"
-                      name="countryVisitedLast10Years"
-                      className="field-input"
-                      value={formData.countryVisitedLast10Years}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    name="countryVisitedLast10Years"
+                    className="field-input"
+                    value={formData.countryVisitedLast10Years}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
               </div>
 
               <div className="section-header centered">
@@ -586,9 +596,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameIndia"
-                    className={`field-input ${
-                      errors.referenceNameIndia ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceNameIndia ? "error" : ""
+                      }`}
                     value={formData.referenceNameIndia}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -609,9 +618,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressIndia"
-                    className={`field-input ${
-                      errors.referenceAddressIndia ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceAddressIndia ? "error" : ""
+                      }`}
                     value={formData.referenceAddressIndia}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -631,12 +639,11 @@ const Apply4 = () => {
                 <div className="input-container">
                   <input
                     type="number"
-                    pattern="[0-9]*" 
+                    pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneIndia"
-                    className={`field-input ${
-                      errors.referencePhoneIndia ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referencePhoneIndia ? "error" : ""
+                      }`}
                     value={formData.referencePhoneIndia}
                     onChange={handleChange}
                     placeholder="Enter phone number"
@@ -659,9 +666,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameHome"
-                    className={`field-input ${
-                      errors.referenceNameHome ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceNameHome ? "error" : ""
+                      }`}
                     value={formData.referenceNameHome}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -682,9 +688,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressHome"
-                    className={`field-input ${
-                      errors.referenceAddressHome ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceAddressHome ? "error" : ""
+                      }`}
                     value={formData.referenceAddressHome}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -704,12 +709,11 @@ const Apply4 = () => {
                 <div className="input-container">
                   <input
                     type="number"
-                    pattern="[0-9]*" 
+                    pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneHome"
-                    className={`field-input ${
-                      errors.referencePhoneHome ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referencePhoneHome ? "error" : ""
+                      }`}
                     value={formData.referencePhoneHome}
                     onChange={handleChange}
                     placeholder="Enter phone number"

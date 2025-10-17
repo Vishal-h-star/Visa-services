@@ -1,14 +1,17 @@
-// This   component use the styling for  apply2.scss and apply3.scss
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getApplicationDataById, applicationSubmitStep3 } from '../../apiCalls/visaApplication';
 import { nationalities, maritalStatuses } from "../../assets/data/FormData";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 const Apply3 = () => {
+  const navigate = useNavigate();
+  const params = useParams();
   const [formData, setFormData] = useState({
     // Application Information
-    applicationType: "Normal Processing",
-    portOfArrival: "ESSEL AIRPORT",
-    temporaryAppId: "SIG2024G077M",
-
+    applicationType: "",
+    portOfArrival: "",
     // Present Address
     presentHouseNo: "",
     presentVillageTownCity: "",
@@ -48,7 +51,7 @@ const Apply3 = () => {
     SpouseBirthPlace: "",
     SpouseCtryOfBirth: "",
     grandparentPakistani: "",
-    grandparentPakistaniYes:"",
+    grandparentPakistaniYes: "",
 
     // Profession/Occupation Details
     presentOccupation: "",
@@ -69,7 +72,18 @@ const Apply3 = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  //   const countries = ['United States', 'United Kingdom', 'Canada', 'Australia', 'Pakistan', 'India', 'Germany', 'France'];
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, 'res daa of application')
+    if (res.status === 200) {
+      setFormData(res.data.data)
+    }
+  }
+
+
+  useEffect(() => {
+    getApplicationData()
+  }, [params.id])
 
   const occupations = [
     "Engineer",
@@ -188,11 +202,17 @@ const Apply3 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      setIsSubmitting(true);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form submitted:", formData);
-      setIsSubmitting(false);
-      alert("Application submitted successfully!");
+      console.log('hitting api')
+      const res = await applicationSubmitStep3(formData);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        // setIsSubmitting(true);
+        setIsSubmitting(false);
+        navigate(`/apply4/${res.data.data.uniqueId}`);
+      } else {
+        toast.error(`Some Error Happens!!`);
+      }
     }
   };
 
@@ -210,7 +230,7 @@ const Apply3 = () => {
           <h1 className="form-title">e-Visa Application</h1>
           <p className="form-subtitle">Complete your visa application form</p>
           <div className="application-id">
-            Temporary Application ID: <strong>{formData.temporaryAppId}</strong>
+            Temporary Application ID: <strong>{params?.id}</strong>
           </div>
         </div>
 
@@ -263,9 +283,8 @@ const Apply3 = () => {
                     name="presentHouseNo"
                     value={formData.presentHouseNo}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentHouseNo ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentHouseNo ? "error" : ""
+                      }`}
                     placeholder="Enter house number and street"
                   />
                   <span className="input-icon">🏠</span>
@@ -285,9 +304,8 @@ const Apply3 = () => {
                     name="presentVillageTownCity"
                     value={formData.presentVillageTownCity}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentVillageTownCity ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentVillageTownCity ? "error" : ""
+                      }`}
                     placeholder="Enter village/town/city"
                   />
                   <span className="input-icon">🏙️</span>
@@ -308,9 +326,8 @@ const Apply3 = () => {
                     name="presentCountry"
                     value={formData.presentCountry}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.presentCountry ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.presentCountry ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Country</option>
                     {nationalities.map((country) => (
@@ -336,9 +353,8 @@ const Apply3 = () => {
                     name="presentState"
                     value={formData.presentState}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentState ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentState ? "error" : ""
+                      }`}
                     placeholder="Enter state/province"
                   />
                   <span className="input-icon">🗺️</span>
@@ -358,9 +374,8 @@ const Apply3 = () => {
                     name="presentPostalCode"
                     value={formData.presentPostalCode}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentPostalCode ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentPostalCode ? "error" : ""
+                      }`}
                     placeholder="Enter postal code"
                   />
                   <span className="input-icon">📮</span>
@@ -382,9 +397,8 @@ const Apply3 = () => {
                     name="presentPhoneNo"
                     value={formData.presentPhoneNo}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentPhoneNo ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentPhoneNo ? "error" : ""
+                      }`}
                     placeholder="Enter phone number"
                   />
                   <span className="input-icon">📞</span>
@@ -404,9 +418,8 @@ const Apply3 = () => {
                     name="presentMobileNo"
                     value={formData.presentMobileNo}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentMobileNo ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentMobileNo ? "error" : ""
+                      }`}
                     placeholder="Enter mobile number"
                   />
                   <span className="input-icon">📱</span>
@@ -428,9 +441,8 @@ const Apply3 = () => {
                     name="presentEmail"
                     value={formData.presentEmail}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.presentEmail ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.presentEmail ? "error" : ""
+                      }`}
                     placeholder="your@email.com"
                   />
                   <span className="input-icon">📧</span>
@@ -551,9 +563,8 @@ const Apply3 = () => {
                         name="fatherName"
                         value={formData.fatherName}
                         onChange={handleChange}
-                        className={`field-input ${
-                          errors.fatherName ? "error" : ""
-                        }`}
+                        className={`field-input ${errors.fatherName ? "error" : ""
+                          }`}
                         placeholder="Enter father's name"
                       />
                       <span className="input-icon">👨</span>
@@ -572,9 +583,8 @@ const Apply3 = () => {
                         name="fatherNationality"
                         value={formData.fatherNationality}
                         onChange={handleChange}
-                        className={`field-select ${
-                          errors.fatherNationality ? "error" : ""
-                        }`}
+                        className={`field-select ${errors.fatherNationality ? "error" : ""
+                          }`}
                       >
                         <option value="">Select Nationality</option>
                         {nationalities.map((country) => (
@@ -628,9 +638,8 @@ const Apply3 = () => {
                         name="fatherPlaceOfBirth"
                         value={formData.fatherPlaceOfBirth}
                         onChange={handleChange}
-                        className={`field-input ${
-                          errors.fatherPlaceOfBirth ? "error" : ""
-                        }`}
+                        className={`field-input ${errors.fatherPlaceOfBirth ? "error" : ""
+                          }`}
                         placeholder="Enter place of birth"
                       />
                       <span className="input-icon">📍</span>
@@ -653,9 +662,8 @@ const Apply3 = () => {
                         name="fatherCountryOfBirth"
                         value={formData.fatherCountryOfBirth}
                         onChange={handleChange}
-                        className={`field-select ${
-                          errors.fatherCountryOfBirth ? "error" : ""
-                        }`}
+                        className={`field-select ${errors.fatherCountryOfBirth ? "error" : ""
+                          }`}
                       >
                         <option value="">Select Country</option>
                         {nationalities.map((country) => (
@@ -688,9 +696,8 @@ const Apply3 = () => {
                         name="motherName"
                         value={formData.motherName}
                         onChange={handleChange}
-                        className={`field-input ${
-                          errors.motherName ? "error" : ""
-                        }`}
+                        className={`field-input ${errors.motherName ? "error" : ""
+                          }`}
                         placeholder="Enter mother's name"
                       />
                       <span className="input-icon">👩</span>
@@ -709,9 +716,8 @@ const Apply3 = () => {
                         name="motherNationality"
                         value={formData.motherNationality}
                         onChange={handleChange}
-                        className={`field-select ${
-                          errors.motherNationality ? "error" : ""
-                        }`}
+                        className={`field-select ${errors.motherNationality ? "error" : ""
+                          }`}
                       >
                         <option value="">Select Nationality</option>
                         {nationalities.map((country) => (
@@ -765,9 +771,8 @@ const Apply3 = () => {
                         name="motherPlaceOfBirth"
                         value={formData.motherPlaceOfBirth}
                         onChange={handleChange}
-                        className={`field-input ${
-                          errors.motherPlaceOfBirth ? "error" : ""
-                        }`}
+                        className={`field-input ${errors.motherPlaceOfBirth ? "error" : ""
+                          }`}
                         placeholder="Enter place of birth"
                       />
                       <span className="input-icon">📍</span>
@@ -790,9 +795,8 @@ const Apply3 = () => {
                         name="motherCountryOfBirth"
                         value={formData.motherCountryOfBirth}
                         onChange={handleChange}
-                        className={`field-select ${
-                          errors.motherCountryOfBirth ? "error" : ""
-                        }`}
+                        className={`field-select ${errors.motherCountryOfBirth ? "error" : ""
+                          }`}
                       >
                         <option value="">Select Country</option>
                         {nationalities.map((country) => (
@@ -827,9 +831,8 @@ const Apply3 = () => {
                         name="maritalStatus"
                         value={formData.maritalStatus}
                         onChange={handleChange}
-                        className={`field-select ${
-                          errors.maritalStatus ? "error" : ""
-                        }`}
+                        className={`field-select ${errors.maritalStatus ? "error" : ""
+                          }`}
                       >
                         <option value="">Select Marital Status</option>
                         {maritalStatuses.map((status) => (
@@ -859,9 +862,8 @@ const Apply3 = () => {
                             name="spouseName"
                             value={formData.spouseName}
                             onChange={handleChange}
-                            className={`field-input ${
-                              errors.spouseName ? "error" : ""
-                            }`}
+                            className={`field-input ${errors.spouseName ? "error" : ""
+                              }`}
                             placeholder="Enter spouse name"
                           />
                         </div>
@@ -883,9 +885,8 @@ const Apply3 = () => {
                             name="SpouseNationality"
                             value={formData.SpouseNationality}
                             onChange={handleChange}
-                            className={`field-select ${
-                              errors.SpouseNationality ? "error" : ""
-                            }`}
+                            className={`field-select ${errors.SpouseNationality ? "error" : ""
+                              }`}
                           >
                             <option value="">Select nationality</option>
                             {nationalities.map((country) => (
@@ -915,9 +916,9 @@ const Apply3 = () => {
                             value={formData.SpousePrevNationality}
                             onChange={handleChange}
                             className="field-select"
-                            // className={`field-select ${
-                            //   errors.SpousePrevNationality ? "error" : ""
-                            // }`}
+                          // className={`field-select ${
+                          //   errors.SpousePrevNationality ? "error" : ""
+                          // }`}
                           >
                             <option value="">Select nationality</option>
                             {nationalities.map((country) => (
@@ -947,9 +948,8 @@ const Apply3 = () => {
                             name="SpouseBirthPlace"
                             value={formData.SpouseBirthPlace}
                             onChange={handleChange}
-                            className={`field-input ${
-                              errors.SpouseBirthPlace ? "error" : ""
-                            }`}
+                            className={`field-input ${errors.SpouseBirthPlace ? "error" : ""
+                              }`}
                             placeholder="Birth place"
                           />
                         </div>
@@ -971,9 +971,8 @@ const Apply3 = () => {
                             name="SpouseCtryOfBirth"
                             value={formData.SpouseCtryOfBirth}
                             onChange={handleChange}
-                            className={`field-select ${
-                              errors.SpouseCtryOfBirth ? "error" : ""
-                            }`}
+                            className={`field-select ${errors.SpouseCtryOfBirth ? "error" : ""
+                              }`}
                           >
                             <option value="">Select Country</option>
                             {nationalities.map((country) => (
@@ -1036,7 +1035,7 @@ const Apply3 = () => {
                     <div className="form-field form-field-inline">
                       <label className="field-label">
                         <span className="label-text">
-                              Give Details *
+                          Give Details *
                         </span>
                       </label>
                       <div className="input-container">
@@ -1045,9 +1044,8 @@ const Apply3 = () => {
                           name="grandparentPakistaniYes"
                           value={formData.grandparentPakistaniYes}
                           onChange={handleChange}
-                          className={`field-input ${
-                            errors.grandparentPakistaniYes ? "error" : ""
-                          }`}
+                          className={`field-input ${errors.grandparentPakistaniYes ? "error" : ""
+                            }`}
                           placeholder="Give details"
                         />
                       </div>
@@ -1070,9 +1068,8 @@ const Apply3 = () => {
                     name="presentOccupation"
                     value={formData.presentOccupation}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.presentOccupation ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.presentOccupation ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Occupation</option>
                     {occupations.map((occupation) => (
@@ -1100,9 +1097,8 @@ const Apply3 = () => {
                     name="employerName"
                     value={formData.employerName}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.employerName ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.employerName ? "error" : ""
+                      }`}
                     placeholder="Enter employer name"
                   />
                   <span className="input-icon">🏢</span>
@@ -1122,9 +1118,8 @@ const Apply3 = () => {
                     name="employerAddress"
                     value={formData.employerAddress}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.employerAddress ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.employerAddress ? "error" : ""
+                      }`}
                     placeholder="Enter employer address"
                   />
                   <span className="input-icon">📬</span>
@@ -1163,9 +1158,8 @@ const Apply3 = () => {
                     name="employerPhoneNo"
                     value={formData.employerPhoneNo}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.employerPhoneNo ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.employerPhoneNo ? "error" : ""
+                      }`}
                     placeholder="Enter phone number"
                   />
                   <span className="input-icon">📞</span>
@@ -1246,9 +1240,8 @@ const Apply3 = () => {
                           name="organizationName"
                           value={formData.organizationName}
                           onChange={handleChange}
-                          className={`field-input ${
-                            errors.organizationName ? "error" : ""
-                          }`}
+                          className={`field-input ${errors.organizationName ? "error" : ""
+                            }`}
                           placeholder="Enter organization name"
                         />
                         <span className="input-icon">🏛️</span>
@@ -1270,9 +1263,8 @@ const Apply3 = () => {
                           name="organizationDesignation"
                           value={formData.organizationDesignation}
                           onChange={handleChange}
-                          className={`field-input ${
-                            errors.organizationDesignation ? "error" : ""
-                          }`}
+                          className={`field-input ${errors.organizationDesignation ? "error" : ""
+                            }`}
                           placeholder="Enter designation"
                         />
                         <span className="input-icon">💼</span>
@@ -1294,9 +1286,8 @@ const Apply3 = () => {
                           name="organizationRank"
                           value={formData.organizationRank}
                           onChange={handleChange}
-                          className={`field-input ${
-                            errors.organizationRank ? "error" : ""
-                          }`}
+                          className={`field-input ${errors.organizationRank ? "error" : ""
+                            }`}
                           placeholder="Enter rank"
                         />
                         <span className="input-icon">⭐</span>
@@ -1318,9 +1309,8 @@ const Apply3 = () => {
                           name="organizationPlace"
                           value={formData.organizationPlace}
                           onChange={handleChange}
-                          className={`field-input ${
-                            errors.organizationPlace ? "error" : ""
-                          }`}
+                          className={`field-input ${errors.organizationPlace ? "error" : ""
+                            }`}
                           placeholder="Enter place of position"
                         />
                         <span className="input-icon">📍</span>
