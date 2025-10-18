@@ -1,10 +1,10 @@
 // VisaPaymentForm.jsx
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { PaypalPayment, PaypalPaymentApproval } from '../../apiCalls/paymentApi';
+import { getApplicationDataById } from '../../apiCalls/visaApplication';
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const VisaPaymentForm = () => {
   const params = useParams();
@@ -12,6 +12,18 @@ const VisaPaymentForm = () => {
   const [formData, setFormData] = useState({
     agreeTerms: false
   });
+
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, 'res daa of application')
+    if (res.status === 200) {
+      setFormData(res.data.data)
+    }
+  }
+
+  useEffect(() => {
+    getApplicationData()
+  }, [params.id])
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -74,11 +86,11 @@ const VisaPaymentForm = () => {
           <div className="application-info">
             <div className="info-row">
               <span className="label">Application Type :</span>
-              <span className="value">Normal Processing</span>
+              <span className="value">{formData?.applicationType}</span>
             </div>
             <div className="info-row">
               <span className="label">Port of arrival :</span>
-              <span className="value">DELHI AIRPORT</span>
+              <span className="value">{formData?.portOfArrival}</span>
             </div>
             <div className="info-row">
               <span className="label">Application ID:</span>
@@ -86,7 +98,7 @@ const VisaPaymentForm = () => {
             </div>
             <div className="info-row highlight">
               <span className="label">India e-Visa Fee:</span>
-              <span className="value">$65</span>
+              <span className="value">${formData?.amountToPay}</span>
             </div>
           </div>
         </div>
@@ -102,7 +114,7 @@ const VisaPaymentForm = () => {
             </p>
           </div>
 
-         
+
 
           {/* Disclaimer Section */}
           <div className="disclaimer-section">
@@ -137,7 +149,7 @@ const VisaPaymentForm = () => {
 
           {/* Action Buttons */}
           <div className="action-buttons">
-         
+
             <PayPalScriptProvider options={{ clientId: "AW7wrZ31MR2WX64_wcHuwcWCOFgeBnodMeS2Yh6ByB8SXc2xaCvhThUy3nPEiq5VQtSAAzBmT0YAEhBb" }}>
               <PayPalButtons
                 createOrder={createOrder}

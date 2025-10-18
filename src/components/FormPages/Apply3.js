@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getApplicationDataById, applicationSubmitStep3 } from '../../apiCalls/visaApplication';
 import { nationalities, maritalStatuses } from "../../assets/data/FormData";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const Apply3 = () => {
   const navigate = useNavigate();
