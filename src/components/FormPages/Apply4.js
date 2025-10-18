@@ -181,7 +181,6 @@ const Apply4 = () => {
                     className="field-input"
                     style={{ backgroundColor: "#f8f9fa" }}
                   />
-                  <span className="input-icon">✈️</span>
                 </div>
               </div>
             </div>
