@@ -221,7 +221,6 @@ const VisaApplicationForm = () => {
                     className={`field-input ${errors.surname ? "error" : ""}`}
                     placeholder="Enter your surname"
                   />
-                  <span className="input-icon">👤</span>
                 </div>
                 {errors.surname && (
                   <span className="error-message">{errors.surname}</span>
@@ -242,7 +241,6 @@ const VisaApplicationForm = () => {
                     className={`field-input ${errors.givenName ? "error" : ""}`}
                     placeholder="Enter your given name"
                   />
-                  <span className="input-icon">📝</span>
                 </div>
                 {errors.givenName && (
                   <span className="error-message">{errors.givenName}</span>
@@ -317,7 +315,6 @@ const VisaApplicationForm = () => {
                     className={`field-input ${errors.dateOfBirth ? "error" : ""
                       }`}
                   />
-                  <span className="input-icon">📅</span>
                 </div>
                 {errors.dateOfBirth && (
                   <span className="error-message">{errors.dateOfBirth}</span>
@@ -338,7 +335,6 @@ const VisaApplicationForm = () => {
                     className={`field-input ${errors.email ? "error" : ""}`}
                     placeholder="your@email.com"
                   />
-                  <span className="input-icon">📧</span>
                 </div>
                 {errors.email && (
                   <span className="error-message">{errors.email}</span>
@@ -360,7 +356,6 @@ const VisaApplicationForm = () => {
                       }`}
                     placeholder="confirm@email.com"
                   />
-                  <span className="input-icon">✅</span>
                 </div>
                 {errors.confirmEmail && (
                   <span className="error-message">{errors.confirmEmail}</span>
@@ -383,7 +378,6 @@ const VisaApplicationForm = () => {
                     className={`field-input ${errors.contactNo ? "error" : ""}`}
                     placeholder="+1234567890"
                   />
-                  <span className="input-icon">📞</span>
                 </div>
                 {errors.contactNo && (
                   <span className="error-message">{errors.contactNo}</span>
@@ -404,7 +398,6 @@ const VisaApplicationForm = () => {
                     className={`field-input ${errors.expectedArrival ? "error" : ""
                       }`}
                   />
-                  <span className="input-icon">✈️</span>
                 </div>
                 {errors.expectedArrival && (
                   <span className="error-message">

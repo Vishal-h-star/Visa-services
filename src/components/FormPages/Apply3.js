@@ -265,7 +265,6 @@ const Apply3 = () => {
                     className="field-input"
                     style={{ backgroundColor: "#f8f9fa" }}
                   />
-                  <span className="input-icon">✈️</span>
                 </div>
               </div>
             </div>
@@ -287,7 +286,7 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter house number and street"
                   />
-                  <span className="input-icon">🏠</span>
+      
                 </div>
                 {errors.presentHouseNo && (
                   <span className="error-message">{errors.presentHouseNo}</span>
@@ -308,7 +307,7 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter village/town/city"
                   />
-                  <span className="input-icon">🏙️</span>
+
                 </div>
                 {errors.presentVillageTownCity && (
                   <span className="error-message">
@@ -357,7 +356,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter state/province"
                   />
-                  <span className="input-icon">🗺️</span>
                 </div>
                 {errors.presentState && (
                   <span className="error-message">{errors.presentState}</span>
@@ -378,7 +376,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter postal code"
                   />
-                  <span className="input-icon">📮</span>
                 </div>
                 {errors.presentPostalCode && (
                   <span className="error-message">
@@ -401,7 +398,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter phone number"
                   />
-                  <span className="input-icon">📞</span>
                 </div>
                 {errors.presentPhoneNo && (
                   <span className="error-message">{errors.presentPhoneNo}</span>
@@ -422,7 +418,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter mobile number"
                   />
-                  <span className="input-icon">📱</span>
                 </div>
                 {errors.presentMobileNo && (
                   <span className="error-message">
@@ -445,7 +440,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="your@email.com"
                   />
-                  <span className="input-icon">📧</span>
                 </div>
                 {errors.presentEmail && (
                   <span className="error-message">{errors.presentEmail}</span>
@@ -486,7 +480,6 @@ const Apply3 = () => {
                     placeholder="Enter house number and street"
                     disabled={formData.sameAsPermanent}
                   />
-                  <span className="input-icon">🏠</span>
                 </div>
               </div>
 
@@ -504,7 +497,6 @@ const Apply3 = () => {
                     placeholder="Enter village/town/city"
                     disabled={formData.sameAsPermanent}
                   />
-                  <span className="input-icon">🏙️</span>
                 </div>
               </div>
 
@@ -522,7 +514,6 @@ const Apply3 = () => {
                     placeholder="Enter state/province"
                     disabled={formData.sameAsPermanent}
                   />
-                  <span className="input-icon">🗺️</span>
                 </div>
               </div>
 
@@ -540,7 +531,6 @@ const Apply3 = () => {
                     placeholder="Enter postal code"
                     disabled={formData.sameAsPermanent}
                   />
-                  <span className="input-icon">📮</span>
                 </div>
               </div>
 
@@ -550,7 +540,7 @@ const Apply3 = () => {
               {/*    fathers details */}
 
               <div className="subsection">
-                <h3 className="subsection-title">👨 Father's Details</h3>
+                <h3 className="subsection-title"> Father's Details</h3>
 
                 <div className="form-grid full-row">
                   <div className="form-field form-field-inline">
@@ -567,7 +557,6 @@ const Apply3 = () => {
                           }`}
                         placeholder="Enter father's name"
                       />
-                      <span className="input-icon">👨</span>
                     </div>
                     {errors.fatherName && (
                       <span className="error-message">{errors.fatherName}</span>
@@ -642,7 +631,6 @@ const Apply3 = () => {
                           }`}
                         placeholder="Enter place of birth"
                       />
-                      <span className="input-icon">📍</span>
                     </div>
                     {errors.fatherPlaceOfBirth && (
                       <span className="error-message">
@@ -684,7 +672,7 @@ const Apply3 = () => {
               </div>
               {/*  mothers details  */}
               <div className="subsection">
-                <h3 className="subsection-title">👨 Mother's Details</h3>
+                <h3 className="subsection-title">Mother's Details</h3>
                 <div className="form-grid full-row">
                   <div className="form-field form-field-inline">
                     <label className="field-label">
@@ -700,7 +688,6 @@ const Apply3 = () => {
                           }`}
                         placeholder="Enter mother's name"
                       />
-                      <span className="input-icon">👩</span>
                     </div>
                     {errors.motherName && (
                       <span className="error-message">{errors.motherName}</span>
@@ -775,7 +762,6 @@ const Apply3 = () => {
                           }`}
                         placeholder="Enter place of birth"
                       />
-                      <span className="input-icon">📍</span>
                     </div>
                     {errors.motherPlaceOfBirth && (
                       <span className="error-message">
@@ -818,7 +804,7 @@ const Apply3 = () => {
 
               {/* Spouse details */}
               <div className="subsection">
-                <h3 className="subsection-title">💍 Spouse Details</h3>
+                <h3 className="subsection-title">Spouse Details</h3>
                 <div className="form-grid full-row">
                   <div className="form-field form-field-inline">
                     <label className="field-label">
@@ -1101,7 +1087,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter employer name"
                   />
-                  <span className="input-icon">🏢</span>
                 </div>
                 {errors.employerName && (
                   <span className="error-message">{errors.employerName}</span>
@@ -1122,7 +1107,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter employer address"
                   />
-                  <span className="input-icon">📬</span>
                 </div>
                 {errors.employerAddress && (
                   <span className="error-message">
@@ -1144,7 +1128,6 @@ const Apply3 = () => {
                     className="field-input"
                     placeholder="Enter designation"
                   />
-                  <span className="input-icon">💼</span>
                 </div>
               </div>
 
@@ -1162,7 +1145,6 @@ const Apply3 = () => {
                       }`}
                     placeholder="Enter phone number"
                   />
-                  <span className="input-icon">📞</span>
                 </div>
                 {errors.employerPhoneNo && (
                   <span className="error-message">

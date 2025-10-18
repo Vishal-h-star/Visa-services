@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import sampleImage from "../../assets/images/sample_image.jpeg";
-
+import { useParams } from "react-router-dom";
 
 const Apply5 = () => {
+
+  const params = useParams();
   const [formData, setFormData] = useState({
     temporaryAppId: "asgsag",
     imageFile: null,
@@ -18,6 +20,11 @@ const Apply5 = () => {
       setFormData({ ...formData, imageFile: file });
     }
   };
+
+//  useEffect(() => {
+
+//    }, [params.id])
+
 
   // ✅ Validation function
   const validateForm = () => {
@@ -76,7 +83,7 @@ const Apply5 = () => {
           <h1 className="form-title">e-Visa Application</h1>
           <p className="form-subtitle">Complete your visa application form</p>
           <div className="application-id">
-            Temporary Application ID: <strong>{formData.temporaryAppId}</strong>
+            Temporary Application ID: <strong>{params.id}</strong>
           </div>
         </div>
 
