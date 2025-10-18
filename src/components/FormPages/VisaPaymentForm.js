@@ -1,10 +1,14 @@
 // VisaPaymentForm.jsx
 import React, { useState } from 'react';
-import payImage from '../../assets/images/paypal.svg'
-import { HiCreditCard } from 'react-icons/hi'; // Heroicons
-
+import { useParams } from 'react-router-dom';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { PaypalPayment, PaypalPaymentApproval } from '../../apiCalls/paymentApi';
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const VisaPaymentForm = () => {
+  const params = useParams();
+
   const [formData, setFormData] = useState({
     agreeTerms: false
   });
@@ -17,38 +21,46 @@ const VisaPaymentForm = () => {
     }));
   };
 
-  const formatCardNumber = (value) => {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    const matches = v.match(/\d{4,16}/g);
-    const match = (matches && matches[0]) || '';
-    const parts = [];
-    
-    for (let i = 0; i < match.length; i += 4) {
-      parts.push(match.substring(i, i + 4));
+  const createOrder = async () => {
+    try {
+      const response = await PaypalPayment(params.id);
+
+      // const response = await axios.post(
+      //   `${requestUrl}/paypal/create-paypal-order`,
+      //   {
+      //     subId: selectedSub.subId,
+      //     licenses: licenseCounts[selectedSub.subId],
+      //     billingCycle, // NEW
+      //   }
+      // );
+      // return response.data.orderID;
+    } catch (error) {
+      console.error("Error creating PayPal order:", error);
     }
-    
-    if (parts.length) {
-      return parts.join(' ');
-    }
-    return value;
   };
 
-  const formatExpiryDate = (value) => {
-    const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
-    if (v.length >= 2) {
-      return `${v.substring(0, 2)}/${v.substring(2, 4)}`;
+  const onApprove = async (data) => {
+    try {
+      const response = await PaypalPaymentApproval()
+      // const response = await axios.post(
+      //   `${requestUrl}/paypal/capture-paypal-order`,
+      //   {
+      //     orderID: data.orderID,
+      //   }
+      // );
+      // if (response.data.success) {
+      //   alert("Payment successful!");
+      //   navigate("/register", {
+      //     state: {
+      //       selectedSubId: selectedSub.subId,
+      //       selectedSubName: selectedSub.subName,
+      //       licenses: licenseCounts[selectedSub.subId],
+      //     },
+      //   });
+      // }
+    } catch (error) {
+      console.error("Error capturing PayPal order:", error);
     }
-    return value;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!formData.agreeTerms) {
-      alert('Please agree to the terms and conditions');
-      return;
-    }
-    // Handle payment submission
-    console.log('Payment data:', formData);
   };
 
   return (
@@ -58,7 +70,7 @@ const VisaPaymentForm = () => {
         <div className="payment-header">
           <h1 className='payment-heading'>e-Visa Application</h1>
           <h2 className='payment-heading2'>Online e-Visa Fee Payment</h2>
-          
+
           <div className="application-info">
             <div className="info-row">
               <span className="label">Application Type :</span>
@@ -70,7 +82,7 @@ const VisaPaymentForm = () => {
             </div>
             <div className="info-row">
               <span className="label">Application ID:</span>
-              <span className="value">DEN20246677IN</span>
+              <span className="value">{params.id}</span>
             </div>
             <div className="info-row highlight">
               <span className="label">India e-Visa Fee:</span>
@@ -90,82 +102,7 @@ const VisaPaymentForm = () => {
             </p>
           </div>
 
-          {/* Card Details Section */}
-          {/* <div className="card-details-section">
-            <h3>Enter Card Details</h3>
-            
-            <div className="form-row">
-              <div className="form-group full-width">
-                <label>Card Number</label>
-                <input
-                  type="text"
-                  name="cardNumber"
-                  value={formData.cardNumber}
-                  onChange={(e) => {
-                    const formattedValue = formatCardNumber(e.target.value);
-                    setFormData(prev => ({ ...prev, cardNumber: formattedValue }));
-                  }}
-                  placeholder="1234 5678 9012 3456"
-                  maxLength="19"
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group">
-                <label>Expiry Date</label>
-                <input
-                  type="text"
-                  name="expiryDate"
-                  value={formData.expiryDate}
-                  onChange={(e) => {
-                    const formattedValue = formatExpiryDate(e.target.value);
-                    setFormData(prev => ({ ...prev, expiryDate: formattedValue }));
-                  }}
-                  placeholder="MM/YY"
-                  maxLength="5"
-                />
-              </div>
-              
-              <div className="form-group">
-                <label>CVV</label>
-                <input
-                  type="text"
-                  name="cvv"
-                  value={formData.cvv}
-                  onChange={handleInputChange}
-                  placeholder="123"
-                  maxLength="4"
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="form-group full-width">
-                <label>Cardholder Name</label>
-                <input
-                  type="text"
-                  name="cardholderName"
-                  value={formData.cardholderName}
-                  onChange={handleInputChange}
-                  placeholder="As shown on card"
-                />
-              </div>
-            </div>
-
-            <div className="checkbox-group">
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  name="saveCard"
-                  checked={formData.saveCard}
-                  onChange={handleInputChange}
-                />
-                <span className="checkmark"></span>
-                Save card details for future payments
-              </label>
-            </div>
-          </div> */}
+         
 
           {/* Disclaimer Section */}
           <div className="disclaimer-section">
@@ -200,18 +137,20 @@ const VisaPaymentForm = () => {
 
           {/* Action Buttons */}
           <div className="action-buttons">
-            <button type="submit" className="pay-now-btn" onClick={handleSubmit}>
-              <img src={payImage}/>
-            </button>
-            <button type="button" className="pay-later-btn">
-               <span> <HiCreditCard size={35} color="#3b82f6" />  Debit or Credit Card</span>
-            </button>
+         
+            <PayPalScriptProvider options={{ clientId: "AW7wrZ31MR2WX64_wcHuwcWCOFgeBnodMeS2Yh6ByB8SXc2xaCvhThUy3nPEiq5VQtSAAzBmT0YAEhBb" }}>
+              <PayPalButtons
+                createOrder={createOrder}
+                onApprove={onApprove}
+                style={{ layout: "horizontal" }}
+              />
+            </PayPalScriptProvider>
           </div>
 
           {/* Application ID Note */}
           <div className="application-note">
             <p>
-              Please note down the Application ID: <strong>DEN20246677IN</strong> which will be required for Status Enquiry, e-Visa Printing and Payment of visa processing fee.
+              Please note down the Application ID: <strong>{params.id}</strong> which will be required for Status Enquiry, e-Visa Printing and Payment of visa processing fee.
             </p>
           </div>
         </div>
