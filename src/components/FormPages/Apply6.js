@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import passportImage from "../../assets/images/passportsample_image.jpeg";
 import { FaRegImage } from "react-icons/fa";
 import { IoEyeOutline, IoClose } from "react-icons/io5";
+import { useParams } from "react-router-dom";
 
 const Apply6 = () => {
+  const params = useParams();
   const [formData, setFormData] = useState({
     temporaryAppId: "asgsag",
     imageFile: null,
@@ -76,7 +78,7 @@ const Apply6 = () => {
           <h1 className="form-title">e-Visa Application</h1>
           <p className="form-subtitle">Complete your visa application form</p>
           <div className="application-id">
-            Temporary Application ID: <strong>{formData.temporaryAppId}</strong>
+            Temporary Application ID: <strong>{params.id}</strong>
           </div>
         </div>
 

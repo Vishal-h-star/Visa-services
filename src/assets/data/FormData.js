@@ -327,18 +327,15 @@ export const visaServices = [
   },
 ];
 
-export const applicationTypes = [
+export const  applicationTypes = [
   {
     value: "normal",
-    label: "Normal Processing",
-    description: "3 to 5 business days",
-    icon: "⏳",
+    label: "Normal Processing (3 to 5 )business days",
   },
   {
     value: "urgent",
-    label: "Urgent Processing",
+    label: "Urgent Processing (48 to 72) business hours",
     description: "48 to 72 business hours",
-    icon: "⚡",
   },
 ];
 
