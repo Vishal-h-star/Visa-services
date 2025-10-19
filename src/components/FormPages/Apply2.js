@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getApplicationDataById, applicationSubmitStep2 } from '../../apiCalls/visaApplication';
-import { nationalities, religions, genders, educationLevels } from '../../assets/data/FormData';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  getApplicationDataById,
+  applicationSubmitStep2,
+} from "../../apiCalls/visaApplication";
+import {
+  nationalities,
+  religions,
+  genders,
+  educationLevels,
+} from "../../assets/data/FormData";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -9,35 +17,35 @@ const Apply2 = () => {
   const navigate = useNavigate();
   const params = useParams();
   const [formData, setFormData] = useState({
-    applicationType: '',
-    portOfArrival: '',
-    surname: '',
-    givenName: '',
-    previousSurname: '',
-    previousName: '',
+    applicationType: "",
+    portOfArrival: "",
+    surname: "",
+    givenName: "",
+    previousSurname: "",
+    previousName: "",
     nameChanged: false,
-    gender: '',
-    dateOfBirth: '',
-    cityOfBirth: '',
-    countryOfBirth: '',
-    nationalId: '',
-    religion: '',
-    identificationMark: '',
-    education: '',
-    nationality: '',
-    nationalityAcquired: '',
-    nationalityAcquiredDetails: '',
-    livedInCountry: '',
-    passportNumber: '',
-    passportPlaceOfIssue: '',
-    passportDateOfIssue: '',
-    passportDateOfExpiry: '',
-    otherPassport: '',
-    otherPassportCountryOfIssue: '',
-    otherPassport_PassportNo: '',
-    otherPassportDateOfIssue: '',
-    otherPassportPlaceOfIssue: '',
-    otherPassportNationaliyMentioned: '',
+    gender: "",
+    dateOfBirth: "",
+    cityOfBirth: "",
+    countryOfBirth: "",
+    nationalId: "",
+    religion: "",
+    identificationMark: "",
+    education: "",
+    nationality: "",
+    nationalityAcquired: "",
+    nationalityAcquiredDetails: "",
+    livedInCountry: "",
+    passportNumber: "",
+    passportPlaceOfIssue: "",
+    passportDateOfIssue: "",
+    passportDateOfExpiry: "",
+    otherPassport: "",
+    otherPassportCountryOfIssue: "",
+    otherPassport_PassportNo: "",
+    otherPassportDateOfIssue: "",
+    otherPassportPlaceOfIssue: "",
+    otherPassportNationaliyMentioned: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -45,31 +53,27 @@ const Apply2 = () => {
 
   const getApplicationData = async () => {
     const res = await getApplicationDataById(params.id);
-    console.log(res, 'res daa of application')
+    console.log(res, "res daa of application");
     if (res.status === 200) {
-      setFormData(res.data.data)
+      setFormData(res.data.data);
     }
-  }
-
+  };
 
   useEffect(() => {
-    getApplicationData()
-  }, [params.id])
-
-
-
+    getApplicationData();
+  }, [params.id]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
 
     if (errors[name]) {
-      setErrors(prev => ({
+      setErrors((prev) => ({
         ...prev,
-        [name]: ''
+        [name]: "",
       }));
     }
   };
@@ -77,19 +81,19 @@ const Apply2 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    return
+    return;
     // if (validateForm()) {
-      console.log('hitting api')
-      const res = await applicationSubmitStep2(formData);
-      if (res.status === 200) {
-        console.log(res.data, "data we get from back");
-        toast.success(`🦄 ${res.data.message}`);
-        // setIsSubmitting(true);
-        setIsSubmitting(false);
-        navigate(`/apply3/${res.data.data.uniqueId}`);
-      } else {
-        toast.error(`Some Error Happens!!`);
-      }
+    console.log("hitting api");
+    const res = await applicationSubmitStep2(formData);
+    if (res.status === 200) {
+      console.log(res.data, "data we get from back");
+      toast.success(`🦄 ${res.data.message}`);
+      // setIsSubmitting(true);
+      setIsSubmitting(false);
+      navigate(`/apply3/${res.data.data.uniqueId}`);
+    } else {
+      toast.error(`Some Error Happens!!`);
+    }
     // }
   };
 
@@ -124,7 +128,7 @@ const Apply2 = () => {
                     value={formData.applicationType}
                     readOnly
                     className="field-input"
-                    style={{ backgroundColor: '#f8f9fa' }}
+                    style={{ backgroundColor: "#f8f9fa" }}
                   />
                 </div>
               </div>
@@ -139,7 +143,7 @@ const Apply2 = () => {
                     value={formData.portOfArrival}
                     readOnly
                     className="field-input"
-                    style={{ backgroundColor: '#f8f9fa' }}
+                    style={{ backgroundColor: "#f8f9fa" }}
                   />
                 </div>
               </div>
@@ -155,7 +159,9 @@ const Apply2 = () => {
             <div className="form-grid full-row">
               {/* Personal Details */}
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Surname *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Surname *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -168,7 +174,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Given Name *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Given Name *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -181,7 +189,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Name Changed</span></label>
+                <label className="field-label">
+                  <span className="label-text">Name Changed</span>
+                </label>
                 <div className="checkbox-container">
                   <label className="checkbox-label">
                     <input
@@ -191,7 +201,7 @@ const Apply2 = () => {
                       onChange={handleChange}
                       className="checkbox-input"
                     />
-                    <span className="checkbox-custom"></span>
+                    {/* <span className="checkbox-custom"></span> */}
                     Have you ever changed your name?
                   </label>
                 </div>
@@ -200,7 +210,9 @@ const Apply2 = () => {
               {formData.nameChanged && (
                 <>
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Previous Surname</span></label>
+                    <label className="field-label">
+                      <span className="label-text">Previous Surname</span>
+                    </label>
                     <div className="input-container">
                       <input
                         type="text"
@@ -214,7 +226,9 @@ const Apply2 = () => {
                   </div>
 
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Previous Given Name</span></label>
+                    <label className="field-label">
+                      <span className="label-text">Previous Given Name</span>
+                    </label>
                     <div className="input-container">
                       <input
                         type="text"
@@ -230,7 +244,9 @@ const Apply2 = () => {
               )}
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Gender *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Gender *</span>
+                </label>
                 <div className="select-container">
                   <select
                     name="gender"
@@ -239,8 +255,10 @@ const Apply2 = () => {
                     className="field-select"
                   >
                     <option value="">Select Gender</option>
-                    {genders.map(gender => (
-                      <option key={gender} value={gender}>{gender}</option>
+                    {genders.map((gender) => (
+                      <option key={gender} value={gender}>
+                        {gender}
+                      </option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -248,7 +266,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Date of Birth *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Date of Birth *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="date"
@@ -261,7 +281,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Town / City of Birth *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Town / City of Birth *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -274,7 +296,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Country of Birth *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Country of Birth *</span>
+                </label>
                 <div className="select-container">
                   <select
                     name="countryOfBirth"
@@ -283,8 +307,10 @@ const Apply2 = () => {
                     className="field-select"
                   >
                     <option value="">Select Country of birth</option>
-                    {nationalities.map(country => (
-                      <option key={country.value} value={country.value}>{country.label}</option>
+                    {nationalities.map((country) => (
+                      <option key={country.value} value={country.value}>
+                        {country.label}
+                      </option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -292,7 +318,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">National ID *</span></label>
+                <label className="field-label">
+                  <span className="label-text">National ID *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -305,7 +333,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Religion *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Religion *</span>
+                </label>
                 <div className="select-container">
                   <select
                     name="religion"
@@ -314,8 +344,10 @@ const Apply2 = () => {
                     className="field-select"
                   >
                     <option value=""> Select your religion</option>
-                    {religions.map(religion => (
-                      <option key={religion} value={religion}>{religion}</option>
+                    {religions.map((religion) => (
+                      <option key={religion} value={religion}>
+                        {religion}
+                      </option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -323,7 +355,11 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Visible Identification Mark</span></label>
+                <label className="field-label">
+                  <span className="label-text">
+                    Visible Identification Mark
+                  </span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -336,7 +372,11 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Educational Qualification *</span></label>
+                <label className="field-label">
+                  <span className="label-text">
+                    Educational Qualification *
+                  </span>
+                </label>
                 <div className="select-container">
                   <select
                     name="education"
@@ -345,8 +385,10 @@ const Apply2 = () => {
                     className="field-select"
                   >
                     <option value="">Select Qualification</option>
-                    {educationLevels.map(level => (
-                      <option key={level} value={level}>{level}</option>
+                    {educationLevels.map((level) => (
+                      <option key={level} value={level}>
+                        {level}
+                      </option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -354,7 +396,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Nationality *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Nationality *</span>
+                </label>
                 <div className="select-container">
                   <select
                     name="nationality"
@@ -364,8 +408,10 @@ const Apply2 = () => {
                     className="field-select"
                   >
                     <option value="">Select Nationality</option>
-                    {nationalities.map(country => (
-                      <option key={country.value} value={country.value}>{country.label}</option>
+                    {nationalities.map((country) => (
+                      <option key={country.value} value={country.value}>
+                        {country.label}
+                      </option>
                     ))}
                   </select>
                   <span className="select-arrow">▼</span>
@@ -373,7 +419,11 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Nationality Acquired By / Naturalization *</span></label>
+                <label className="field-label">
+                  <span className="label-text">
+                    Nationality Acquired By / Naturalization *
+                  </span>
+                </label>
                 <div className="select-container">
                   <select
                     name="nationalityAcquired"
@@ -391,7 +441,9 @@ const Apply2 = () => {
 
               {formData.nationalityAcquired === "By naturalization" && (
                 <div className="form-field form-field-inline">
-                  <label className="field-label"><span className="label-text"> Prev. Nationality: *</span></label>
+                  <label className="field-label">
+                    <span className="label-text"> Prev. Nationality: *</span>
+                  </label>
                   <div className="select-container">
                     <select
                       name="nationalityAcquiredDetails"
@@ -401,9 +453,9 @@ const Apply2 = () => {
                       required
                     >
                       <option value="">Select Nationality</option>
-                      {nationalities.map((country) =>
+                      {nationalities.map((country) => (
                         <option value={country.value}>{country.label}</option>
-                      )}
+                      ))}
                     </select>
                     <span className="select-arrow">▼</span>
                   </div>
@@ -411,26 +463,29 @@ const Apply2 = () => {
               )}
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Lived in Country ≥ 2 years *</span></label>
+                <label className="field-label">
+                  <span className="label-text">
+                    Lived in Country ≥ 2 years *
+                  </span>
+                </label>
                 <div className="radio-group">
                   <label className="radio-label">
                     <input
                       type="radio"
                       name="livedInCountry"
                       value="Yes"
-                      checked={formData.livedInCountry === 'Yes'}
+                      checked={formData.livedInCountry === "Yes"}
                       onChange={handleChange}
                       className="radio-input"
                     />
-                    <span className="radio-custom"></span>
-                    Yes
+                    <span>Yes</span>
                   </label>
                   <label className="radio-label">
                     <input
                       type="radio"
                       name="livedInCountry"
                       value="No"
-                      checked={formData.livedInCountry === 'No'}
+                      checked={formData.livedInCountry === "No"}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -446,7 +501,9 @@ const Apply2 = () => {
 
               {/* Passport Details */}
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Passport Number *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Passport Number *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -459,7 +516,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Place of Issue *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Place of Issue *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="text"
@@ -472,7 +531,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Date of Issue *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Date of Issue *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="date"
@@ -485,7 +546,9 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Date of Expiry *</span></label>
+                <label className="field-label">
+                  <span className="label-text">Date of Expiry *</span>
+                </label>
                 <div className="input-container">
                   <input
                     type="date"
@@ -498,14 +561,18 @@ const Apply2 = () => {
               </div>
 
               <div className="form-field form-field-inline">
-                <label className="field-label"><span className="label-text">Any other valid Passport/Nationality Certificate/ID card? *</span></label>
+                <label className="field-label">
+                  <span className="label-text">
+                    Any other valid Passport/Nationality Certificate/ID card? *
+                  </span>
+                </label>
                 <div className="radio-group">
                   <label className="radio-label">
                     <input
                       type="radio"
                       name="otherPassport"
                       value="Yes"
-                      checked={formData.otherPassport === 'Yes'}
+                      checked={formData.otherPassport === "Yes"}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -517,7 +584,7 @@ const Apply2 = () => {
                       type="radio"
                       name="otherPassport"
                       value="No"
-                      checked={formData.otherPassport === 'No'}
+                      checked={formData.otherPassport === "No"}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -530,7 +597,9 @@ const Apply2 = () => {
               {formData.otherPassport === "Yes" && (
                 <>
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Country of Issue *</span></label>
+                    <label className="field-label">
+                      <span className="label-text">Country of Issue *</span>
+                    </label>
                     <div className="select-container">
                       <select
                         name="otherPassportCountryOfIssue"
@@ -540,8 +609,10 @@ const Apply2 = () => {
                         required
                       >
                         <option value="">Select Nationality</option>
-                        {nationalities.map(country => (
-                          <option key={country} value={country.value}>{country.label}</option>
+                        {nationalities.map((country) => (
+                          <option key={country} value={country.value}>
+                            {country.label}
+                          </option>
                         ))}
                       </select>
                       <span className="select-arrow">▼</span>
@@ -549,7 +620,9 @@ const Apply2 = () => {
                   </div>
 
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Passport No *</span></label>
+                    <label className="field-label">
+                      <span className="label-text">Passport No *</span>
+                    </label>
                     <div className="input-container">
                       <input
                         type="text"
@@ -563,7 +636,9 @@ const Apply2 = () => {
                   </div>
 
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Date of Issue *</span></label>
+                    <label className="field-label">
+                      <span className="label-text">Date of Issue *</span>
+                    </label>
                     <div className="input-container">
                       <input
                         type="date"
@@ -577,7 +652,9 @@ const Apply2 = () => {
                   </div>
 
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Place of Issue *</span></label>
+                    <label className="field-label">
+                      <span className="label-text">Place of Issue *</span>
+                    </label>
                     <div className="input-container">
                       <input
                         type="text"
@@ -591,7 +668,11 @@ const Apply2 = () => {
                   </div>
 
                   <div className="form-field form-field-inline">
-                    <label className="field-label"><span className="label-text">Nationality Mentioned Therein *</span></label>
+                    <label className="field-label">
+                      <span className="label-text">
+                        Nationality Mentioned Therein *
+                      </span>
+                    </label>
                     <div className="select-container">
                       <select
                         name="otherPassportNationaliyMentioned"
@@ -601,8 +682,10 @@ const Apply2 = () => {
                         required
                       >
                         <option value="">Select Nationality</option>
-                        {nationalities.map(country => (
-                          <option key={country} value={country.value}>{country.label}</option>
+                        {nationalities.map((country) => (
+                          <option key={country} value={country.value}>
+                            {country.label}
+                          </option>
                         ))}
                       </select>
                       <span className="select-arrow">▼</span>
@@ -610,13 +693,12 @@ const Apply2 = () => {
                   </div>
                 </>
               )}
-
             </div>
           </div>
 
           <button
             type="submit"
-            className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
+            className={`submit-button ${isSubmitting ? "submitting" : ""}`}
             disabled={isSubmitting}
           >
             {isSubmitting ? (

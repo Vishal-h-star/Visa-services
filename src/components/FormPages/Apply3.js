@@ -455,7 +455,6 @@ const Apply3 = () => {
                       onChange={handleChange}
                       className="checkbox-input"
                     />
-                    <span className="checkbox-custom"></span>
                     Click Here for same address? If yes, click the box.
                   </label>
                 </div>
@@ -1225,7 +1224,7 @@ const Apply3 = () => {
                             }`}
                           placeholder="Enter organization name"
                         />
-                        <span className="input-icon">🏛️</span>
+          
                       </div>
                       {errors.organizationName && (
                         <span className="error-message">
@@ -1248,7 +1247,7 @@ const Apply3 = () => {
                             }`}
                           placeholder="Enter designation"
                         />
-                        <span className="input-icon">💼</span>
+                       
                       </div>
                       {errors.organizationDesignation && (
                         <span className="error-message">
@@ -1271,7 +1270,7 @@ const Apply3 = () => {
                             }`}
                           placeholder="Enter rank"
                         />
-                        <span className="input-icon">⭐</span>
+                       
                       </div>
                       {errors.organizationRank && (
                         <span className="error-message">
@@ -1294,7 +1293,7 @@ const Apply3 = () => {
                             }`}
                           placeholder="Enter place of position"
                         />
-                        <span className="input-icon">📍</span>
+                       
                       </div>
                       {errors.organizationPlace && (
                         <span className="error-message">
