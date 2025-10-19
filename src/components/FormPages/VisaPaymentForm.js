@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 const VisaPaymentForm = () => {
   const params = useParams();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     agreeTerms: false
@@ -35,8 +36,13 @@ const VisaPaymentForm = () => {
 
   const createOrder = async () => {
     try {
-      const response = await PaypalPayment(params.id);
+      const response = await PaypalPayment(params?.id);
       console.log(response, 'response')
+      toast.success(`OrderID : ${response?.data?.orderID}`)
+      setTimeout(() => {
+        // navigate(`/`)
+      }, 500);
+
       // const response = await axios.post(
       //   `${requestUrl}/paypal/create-paypal-order`,
       //   {
@@ -45,7 +51,7 @@ const VisaPaymentForm = () => {
       //     billingCycle, // NEW
       //   }
       // );
-      return response.data.orderID;
+      // return response?.data?.orderID;
     } catch (error) {
       console.error("Error creating PayPal order:", error);
     }
