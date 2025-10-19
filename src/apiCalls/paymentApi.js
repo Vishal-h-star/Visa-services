@@ -6,6 +6,7 @@ export const PaypalPayment = async (applicationId) => {
         console.log('sfdhf')
         const res = await publicRequest.post(`/payments/create-paypal-order?applicationId=${applicationId}`);
         console.log(res, 'res')
+        return res;
     }
     catch (err) {
         console.log(err, 'err')

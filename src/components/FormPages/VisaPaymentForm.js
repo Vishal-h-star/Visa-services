@@ -36,7 +36,7 @@ const VisaPaymentForm = () => {
   const createOrder = async () => {
     try {
       const response = await PaypalPayment(params.id);
-
+      console.log(response, 'response')
       // const response = await axios.post(
       //   `${requestUrl}/paypal/create-paypal-order`,
       //   {
@@ -45,7 +45,7 @@ const VisaPaymentForm = () => {
       //     billingCycle, // NEW
       //   }
       // );
-      // return response.data.orderID;
+      return response.data.orderID;
     } catch (error) {
       console.error("Error creating PayPal order:", error);
     }
@@ -150,11 +150,11 @@ const VisaPaymentForm = () => {
           {/* Action Buttons */}
           <div className="action-buttons">
 
-            <PayPalScriptProvider options={{ clientId: "AW7wrZ31MR2WX64_wcHuwcWCOFgeBnodMeS2Yh6ByB8SXc2xaCvhThUy3nPEiq5VQtSAAzBmT0YAEhBb" }}>
+            <PayPalScriptProvider options={{ clientId: "AZMiySmjW-ll8ocR2k986jXCRQxmDhle378hvSkqt8ydLfSPCxWBjf9pKEW1t0-jk6AcbmoFpEAdrpCg", currency: "USD", }}>
               <PayPalButtons
                 createOrder={createOrder}
                 onApprove={onApprove}
-                style={{ layout: "horizontal" }}
+                style={{ layout: "vertical" }}
               />
             </PayPalScriptProvider>
           </div>
