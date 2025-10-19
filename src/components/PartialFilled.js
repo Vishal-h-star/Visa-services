@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { getApplicationDataById } from '../apiCalls/visaApplication';
 
 const ApplicationForm = () => {
   const navigate = useNavigate();
@@ -13,12 +14,18 @@ const ApplicationForm = () => {
     setStatus(true);
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('Application Number:', applicationNumber);
-    // navigate(`/apply/${applicationNumber}`)
-    navigate(`/Apply/${applicationNumber}`)
-    setStatus(false)
+    const res = await getApplicationDataById(applicationNumber);
+    console.log(res, 'res daa of application')
+    if (res?.status === 200) {
+      console.log(res.data, 'rebsdjfdfvbjh')
+      navigate(`/Payment/${applicationNumber}`)
+
+      // return
+      // setFormData(res.data.data);
+    }
   };
 
   return (
@@ -49,9 +56,9 @@ const ApplicationForm = () => {
               </div>
 
               {/* {status && ( */}
-                <button type="submit" className="submit-buttonPartial">
-                  Submit
-                </button>
+              <button type="submit" className="submit-buttonPartial">
+                Submit
+              </button>
               {/* )} */}
             </form>
           </div>
