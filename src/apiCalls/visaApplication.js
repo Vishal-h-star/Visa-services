@@ -30,9 +30,9 @@ export const getApplicationDataById = async (applicaitonId) => {
 };
 
 
-export const applicationSubmitStep2 = async (formData, callback) => {
+export const applicationSubmitStep1 = async (formData, callback) => {
   try {
-    const res = await publicRequest.post(`/visaapplication/newApplication`, formData);
+    const res = await publicRequest.post(`/visaapplication/applicationSubmitStep1`, formData);
     console.log(res, "user");
     if (res.status === 200) {
       return res
