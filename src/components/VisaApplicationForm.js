@@ -26,6 +26,7 @@ const VisaApplicationForm = () => {
     expectedArrival: "",
     visaService: "",
     serviceSubCategory: "",
+    serviceSubCat_subCategory: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -420,6 +421,7 @@ const VisaApplicationForm = () => {
                 <label className="field-label">
                   <span className="label-text">Visa Service *</span>
                 </label>
+
                 <div className="radio-buttons-container">
                   <div className="radio-buttons-horizontal">
                     {visaServices.map((service) => (
@@ -427,6 +429,7 @@ const VisaApplicationForm = () => {
                         key={service.value}
                         className="service-option-wrapper"
                       >
+                        {/* --- Main Visa Service --- */}
                         <label className="radio-button-label">
                           <input
                             type="radio"
@@ -436,13 +439,12 @@ const VisaApplicationForm = () => {
                             onChange={handleChange}
                             className="radio-button-input"
                           />
-                          {/* <span className="radio-button-custom"></span> */}
                           <span className="radio-button-text">
                             {service.label}
                           </span>
                         </label>
 
-                        {/* Subcategories appear directly below the selected service */}
+                        {/* --- Subcategories (Level 2) --- */}
                         {service.options &&
                           formData.visaService === service.value && (
                             <div
@@ -452,33 +454,71 @@ const VisaApplicationForm = () => {
                             >
                               <div className="radio-buttons-horizontal">
                                 {service.options.map((option) => (
-                                  <label
+                                  <div
                                     key={option.value}
-                                    className={`radio-button-label nested ${
-                                      formData.serviceSubCategory ===
-                                      option.value
-                                        ? "active"
-                                        : ""
-                                    }`}
+                                    className="nested-group"
                                   >
-                                    <input
-                                      type="radio"
-                                      name="serviceSubCategory"
-                                      value={option.value}
-                                      checked={
+                                    <label
+                                      className={`radio-button-label nested ${
                                         formData.serviceSubCategory ===
                                         option.value
-                                      }
-                                      onChange={handleChange}
-                                      className="radio-button-input"
-                                    />
+                                          ? "active"
+                                          : ""
+                                      }`}
+                                    >
+                                      <input
+                                        type="radio"
+                                        name="serviceSubCategory"
+                                        value={option.value}
+                                        checked={
+                                          formData.serviceSubCategory ===
+                                          option.value
+                                        }
+                                        onChange={handleChange}
+                                        className="radio-button-input"
+                                      />
+                                      <span className="radio-button-text">
+                                        {option.label}
+                                      </span>
+                                    </label>
 
-                                    <span className="radio-button-text">
-                                      {option.label}
-                                    </span>
-                                  </label>
+                                    {/* --- Sub-options (Level 3) --- */}
+                                    {option.subOption &&
+                                      formData.serviceSubCategory ===
+                                        option.value && (
+                                        <div className="nested-options level3">
+                                          {option.subOption.map((sub) => (
+                                            <label
+                                              key={sub.value}
+                                              className={`radio-button-label nested ${
+                                                formData.serviceSubCat_subCategory ===
+                                                sub.value
+                                                  ? "active"
+                                                  : ""
+                                              }`}
+                                            >
+                                              <input
+                                                type="radio"
+                                                name="serviceSubCat_subCategory"
+                                                value={sub.value}
+                                                checked={
+                                                  formData.serviceSubCat_subCategory ===
+                                                  sub.value
+                                                }
+                                                onChange={handleChange}
+                                                className="radio-button-input"
+                                              />
+                                              <span className="radio-button-text">
+                                                {sub.label}
+                                              </span>
+                                            </label>
+                                          ))}
+                                        </div>
+                                      )}
+                                  </div>
                                 ))}
                               </div>
+
                               {errors.serviceSubCategory && (
                                 <span className="error-message">
                                   {errors.serviceSubCategory}
@@ -489,11 +529,128 @@ const VisaApplicationForm = () => {
                       </div>
                     ))}
                   </div>
+
                   {errors.visaService && (
                     <span className="error-message">{errors.visaService}</span>
                   )}
                 </div>
               </div>
+
+              {/* <div className="form-field-horizontal radio-field">
+                <label className="field-label">
+                  <span className="label-text">Visa Service *</span>
+                </label>
+
+                <div className="radio-buttons-container">
+                  <div className="radio-buttons-horizontal">
+                    {visaServices.map((service) => (
+                      <div
+                        key={service.value}
+                        className="service-option-wrapper"
+                      >
+                        
+                        <label className="radio-button-label">
+                          <input
+                            type="radio"
+                            name="visaService"
+                            value={service.value}
+                            checked={formData.visaService === service.value}
+                            onChange={handleChange}
+                          />
+                          <span className="radio-button-text">
+                            {service.label}
+                          </span>
+                        </label>
+
+                       
+                        {service.options &&
+                          formData.visaService === service.value && (
+                            <div
+                              className={`nested-options ${
+                                errors.serviceSubCategory ? "error" : ""
+                              }`}
+                            >
+                              <div className="radio-buttons-horizontal">
+                                {service.options.map((option) => (
+                                  <div
+                                    key={option.value}
+                                    className="nested-group"
+                                  >
+                                    <label
+                                      className={`radio-button-label nested ${
+                                        formData.serviceSubCategory ===
+                                        option.value
+                                          ? "active"
+                                          : ""
+                                      }`}
+                                    >
+                                      <input
+                                        type="radio"
+                                        name="serviceSubCategory"
+                                        value={option.value}
+                                        checked={
+                                          formData.serviceSubCategory ===
+                                          option.value
+                                        }
+                                        onChange={handleChange}
+                                      />
+                                      <span className="radio-button-text">
+                                        {option.label}
+                                      </span>
+                                    </label>
+
+                                 
+                                    {option.subOption &&
+                                      formData.serviceSubCategory ===
+                                        option.value && (
+                                        <div className="nested-options level3">
+                                          {option.subOption.map((sub) => (
+                                            <label
+                                              key={sub.value}
+                                              className={`radio-button-label nested ${
+                                                formData.serviceSubCat_subCategory ===
+                                                sub.value
+                                                  ? "active"
+                                                  : ""
+                                              }`}
+                                            >
+                                              <input
+                                                type="radio"
+                                                name="serviceSubCat_subCategory"
+                                                value={sub.value}
+                                                checked={
+                                                  formData.serviceSubCat_subCategory ===
+                                                  sub.value
+                                                }
+                                                onChange={handleChange}
+                                              />
+                                              <span className="radio-button-text">
+                                                {sub.label}
+                                              </span>
+                                            </label>
+                                          ))}
+                                        </div>
+                                      )}
+                                  </div>
+                                ))}
+                              </div>
+
+                              {errors.serviceSubCategory && (
+                                <span className="error-message">
+                                  {errors.serviceSubCategory}
+                                </span>
+                              )}
+                            </div>
+                          )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {errors.visaService && (
+                    <span className="error-message">{errors.visaService}</span>
+                  )}
+                </div>
+              </div> */}
             </div>
           </div>
 
