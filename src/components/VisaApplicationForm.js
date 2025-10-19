@@ -122,7 +122,7 @@ const VisaApplicationForm = () => {
     console.log("Form Data:", formData);
     // return
     if (validateForm()) {
-      console.log('hitting api')
+      console.log("hitting api");
       const res = await newApplicationSubmit(formData);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
@@ -130,7 +130,7 @@ const VisaApplicationForm = () => {
         // setIsSubmitting(true);
         setIsSubmitting(false);
         navigate(`/apply2/${res.data.data.uniqueId}`);
-      } else{
+      } else {
         toast.error(`Some Error Happens!!`);
       }
     }
@@ -165,8 +165,9 @@ const VisaApplicationForm = () => {
                     name="applicationType"
                     value={formData.applicationType}
                     onChange={handleChange}
-                    className={`field-select ${errors.applicationType ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.applicationType ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Application Type</option>
                     {applicationTypes.map((option) => (
@@ -194,8 +195,9 @@ const VisaApplicationForm = () => {
                     name="passportType"
                     value={formData.passportType}
                     onChange={handleChange}
-                    className={`field-select ${errors.passportType ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.passportType ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">Ordinary Passport</option>
@@ -257,15 +259,18 @@ const VisaApplicationForm = () => {
                     name="nationality"
                     value={formData.nationality}
                     onChange={handleChange}
-                    className={`field-select ${errors.nationality ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.nationality ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Nationality</option>
-                    {nationalities.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
+                    {nationalities
+                      .filter((option) => option.status === true)
+                      .map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label} - {option.value}
+                        </option>
+                      ))}
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
@@ -284,8 +289,9 @@ const VisaApplicationForm = () => {
                     name="portOfArrival"
                     value={formData.portOfArrival}
                     onChange={handleChange}
-                    className={`field-select ${errors.portOfArrival ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.portOfArrival ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Port Of Arrival</option>
                     {portsOfArrival.map((option) => (
@@ -312,8 +318,9 @@ const VisaApplicationForm = () => {
                     name="dateOfBirth"
                     value={formData.dateOfBirth}
                     onChange={handleChange}
-                    className={`field-input ${errors.dateOfBirth ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.dateOfBirth ? "error" : ""
+                    }`}
                   />
                 </div>
                 {errors.dateOfBirth && (
@@ -352,8 +359,9 @@ const VisaApplicationForm = () => {
                     name="confirmEmail"
                     value={formData.confirmEmail}
                     onChange={handleChange}
-                    className={`field-input ${errors.confirmEmail ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.confirmEmail ? "error" : ""
+                    }`}
                     placeholder="confirm@email.com"
                   />
                 </div>
@@ -395,8 +403,9 @@ const VisaApplicationForm = () => {
                     name="expectedArrival"
                     value={formData.expectedArrival}
                     onChange={handleChange}
-                    className={`field-input ${errors.expectedArrival ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.expectedArrival ? "error" : ""
+                    }`}
                   />
                 </div>
                 {errors.expectedArrival && (
@@ -414,7 +423,10 @@ const VisaApplicationForm = () => {
                 <div className="radio-buttons-container">
                   <div className="radio-buttons-horizontal">
                     {visaServices.map((service) => (
-                      <div key={service.value} className="service-option-wrapper">
+                      <div
+                        key={service.value}
+                        className="service-option-wrapper"
+                      >
                         <label className="radio-button-label">
                           <input
                             type="radio"
@@ -424,41 +436,56 @@ const VisaApplicationForm = () => {
                             onChange={handleChange}
                             className="radio-button-input"
                           />
-                          <span className="radio-button-custom"></span>
-                          <span className="radio-button-text">{service.label}</span>
+                          {/* <span className="radio-button-custom"></span> */}
+                          <span className="radio-button-text">
+                            {service.label}
+                          </span>
                         </label>
 
                         {/* Subcategories appear directly below the selected service */}
-                        {service.options && formData.visaService === service.value && (
-                          <div className={`nested-options ${errors.serviceSubCategory ? 'error' : ''}`}>
-                            <div className="radio-buttons-horizontal">
-                              {service.options.map((option) => (
-                                <label
-                                  key={option.value}
-                                  className={`radio-button-label nested ${formData.serviceSubCategory === option.value ? "active" : ""
+                        {service.options &&
+                          formData.visaService === service.value && (
+                            <div
+                              className={`nested-options ${
+                                errors.serviceSubCategory ? "error" : ""
+                              }`}
+                            >
+                              <div className="radio-buttons-horizontal">
+                                {service.options.map((option) => (
+                                  <label
+                                    key={option.value}
+                                    className={`radio-button-label nested ${
+                                      formData.serviceSubCategory ===
+                                      option.value
+                                        ? "active"
+                                        : ""
                                     }`}
-                                >
-                                  <input
-                                    type="radio"
-                                    name="serviceSubCategory"
-                                    value={option.value}
-                                    checked={formData.serviceSubCategory === option.value}
-                                    onChange={handleChange}
-                                  />
-                                  <span className="radio-button-custom"></span>
-                                  <span className="radio-button-text">
-                                    {option.label}
-                                  </span>
-                                </label>
-                              ))}
+                                  >
+                                    <input
+                                      type="radio"
+                                      name="serviceSubCategory"
+                                      value={option.value}
+                                      checked={
+                                        formData.serviceSubCategory ===
+                                        option.value
+                                      }
+                                      onChange={handleChange}
+                                      className="radio-button-input"
+                                    />
+
+                                    <span className="radio-button-text">
+                                      {option.label}
+                                    </span>
+                                  </label>
+                                ))}
+                              </div>
+                              {errors.serviceSubCategory && (
+                                <span className="error-message">
+                                  {errors.serviceSubCategory}
+                                </span>
+                              )}
                             </div>
-                            {errors.serviceSubCategory && (
-                              <span className="error-message">
-                                {errors.serviceSubCategory}
-                              </span>
-                            )}
-                          </div>
-                        )}
+                          )}
                       </div>
                     ))}
                   </div>
