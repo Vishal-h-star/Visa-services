@@ -1,4 +1,4 @@
-export const nationalities= [
+export const nationalities = [
   { label: "Albania", value: "ALB", status: true },
   { label: "Andorra", value: "AND", status: true },
   { label: "Angola", value: "AGO", status: true },
@@ -161,10 +161,8 @@ export const nationalities= [
   { label: "Venezuela", value: "VEN", status: true },
   { label: "Viet Nam", value: "VNM", status: true },
   { label: "Zambia", value: "ZMB", status: true },
-  { label: "Zimbabwe", value: "ZWE", status: true }
+  { label: "Zimbabwe", value: "ZWE", status: true },
 ];
-
-
 
 export const portsOfArrival = [
   { value: "ahmedabad-airport", label: "AHMEDABAD AIRPORT", type: "airport" },
@@ -183,7 +181,7 @@ export const portsOfArrival = [
   { value: "cochin-airport", label: "COCHIN AIRPORT", type: "airport" },
   { value: "cochin-seaport", label: "COCHIN SEAPORT", type: "seaport" },
   { value: "coimbatore-airport", label: "COIMBATORE AIRPORT", type: "airport" },
-  { value: "DL", label: "DELHI AIRPORT", type: "airport" },
+  { value: "delhi-airport", label: "DELHI AIRPORT", type: "airport" },
   { value: "gaya-airport", label: "GAYA AIRPORT", type: "airport" },
   {
     value: "goa-airport-dabolim",
@@ -228,9 +226,90 @@ export const visaServices = [
     icon: "🏖️",
     color: "#10b981",
     options: [
-      { value: "30D", label: "eTOURIST VISA ( for 30 Days)" },
-      { value: "1YR", label: "eTOURIST VISA ( for 1 Year)" },
-      { value: "5YR", label: "eTOURIST VISA ( for 5 Years)" },
+      {
+        value: "30D",
+        label: "eTOURIST VISA ( for 30 Days)",
+        subOption: [
+          {
+            value: "TOURISM-RECREATION-SIGHT-SEEING",
+            label: "TOURISM, RECREATION, SIGHT-SEEING",
+          },
+          {
+            value: "MEETING-FRIENDS-RELATIVES",
+            label: "MEETING FRIENDS/RELATIVES",
+          },
+          {
+            value: "SHORT-TERM-YOGA-PROGRAMME",
+            label: "SHORT TERM YOGA PROGRAMME",
+          },
+          {
+            value: "SHORT-TERM-COURSES",
+            label:
+              "SHORT TERM COURSES ON LOCAL LANGUAGES, MUSIC, DANCE, ARTS & CRAFTS, COOKING, MEDICINE ETC.",
+          },
+          {
+            value: "VOLUNTARY-WORK",
+            label:
+              "VOLUNTARY WORK OF SHORT DURATION (MAX ONE MONTH, NO PAYMENT)",
+          },
+        ],
+      },
+      {
+        value: "1YR",
+        label: "eTOURIST VISA ( for 1 Year)",
+        subOption: [
+          {
+            value: "RECREATION-SIGHT-SEEING",
+            label: "RECREATION/SIGHT-SEEING",
+          },
+          {
+            value: "MEETING-FRIENDS-RELATIVES",
+            label: "MEETING FRIENDS/RELATIVES",
+          },
+          {
+            value: "SHORT-TERM-YOGA-PROGRAMME",
+            label: "SHORT TERM YOGA PROGRAMME",
+          },
+          {
+            value: "SHORT-TERM-COURSES",
+            label:
+              "SHORT TERM COURSES ON LOCAL LANGUAGES, MUSIC, DANCE, ARTS & CRAFTS, COOKING, MEDICINE ETC.",
+          },
+          {
+            value: "VOLUNTARY-WORK",
+            label:
+              "VOLUNTARY WORK OF SHORT DURATION (MAX ONE MONTH, NO PAYMENT)",
+          },
+        ],
+      },
+      {
+        value: "5YR",
+        label: "eTOURIST VISA ( for 5 Years)",
+        subOption: [
+          {
+            value: "RECREATION-SIGHT-SEEING",
+            label: "RECREATION/SIGHT-SEEING",
+          },
+          {
+            value: "MEETING-FRIENDS-RELATIVES",
+            label: "MEETING FRIENDS/RELATIVES",
+          },
+          {
+            value: "SHORT-TERM-YOGA-PROGRAMME",
+            label: "SHORT TERM YOGA PROGRAMME",
+          },
+          {
+            value: "SHORT-TERM-COURSES",
+            label:
+              "SHORT TERM COURSES ON LOCAL LANGUAGES, MUSIC, DANCE, ARTS & CRAFTS, COOKING, MEDICINE ETC.",
+          },
+          {
+            value: "VOLUNTARY-WORK",
+            label:
+              "VOLUNTARY WORK OF SHORT DURATION (MAX ONE MONTH, NO PAYMENT)",
+          },
+        ],
+      },
     ],
   },
   {
@@ -322,7 +401,7 @@ export const visaServices = [
     label: "e-Ayush Attendant",
     icon: "👩‍🌾",
     color: "#84cc16",
-    option: [
+    options: [
       {
         value: "e-ayush_visa_holder",
         label: "AS ATTENDANT TO AN E-AYUSH VISA HOLDER",
@@ -331,13 +410,13 @@ export const visaServices = [
   },
 ];
 
-export const  applicationTypes = [
+export const applicationTypes = [
   {
-    value: "normal",
+    value: "normal-Processing (3 to 5) business days",
     label: "Normal Processing (3 to 5 )business days",
   },
   {
-    value: "urgent",
+    value: "urgent-Processing (48 to 72) business hours",
     label: "Urgent Processing (48 to 72) business hours",
     description: "48 to 72 business hours",
   },
