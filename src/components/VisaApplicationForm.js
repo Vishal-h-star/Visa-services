@@ -425,7 +425,7 @@ const VisaApplicationForm = () => {
                     }
                     onChange={(date) => {
                       const formattedDate = date
-                        ? data.toISOString().split("T")[0]
+                        ? date.toISOString().split("T")[0]
                         : "0";
                       handleChange({
                         target: {
