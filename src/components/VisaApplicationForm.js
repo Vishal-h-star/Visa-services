@@ -1,5 +1,8 @@
 // EnhancedVisaForm.jsx
 import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import {
   nationalities,
   portsOfArrival,
@@ -314,14 +317,29 @@ const VisaApplicationForm = () => {
                   <span className="label-text">Date of Birth *</span>
                 </label>
                 <div className="input-container">
-                  <input
-                    type="date"
-                    name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
+                  <DatePicker
+                    selected={
+                      formData.dateOfBirth
+                        ? new Date(formData.dateOfBirth)
+                        : null
+                    }
+                    onChange={(date) => {
+                      const formattedDate = date
+                        ? date.toISOString().split("T")[0]
+                        : "";
+                      handleChange({
+                        target: { name: "dateOfBirth", value: formattedDate },
+                      });
+                    }}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select your date of birth"
                     className={`field-input ${
                       errors.dateOfBirth ? "error" : ""
                     }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    maxDate={new Date()} // restrict DOB to past dates
                   />
                 </div>
                 {errors.dateOfBirth && (
@@ -399,14 +417,32 @@ const VisaApplicationForm = () => {
                   <span className="label-text">Expected Date of Arrival *</span>
                 </label>
                 <div className="input-container">
-                  <input
-                    type="date"
-                    name="expectedArrival"
-                    value={formData.expectedArrival}
-                    onChange={handleChange}
+                  <DatePicker
+                    selected={
+                      formData.expectedArrival
+                        ? new Date(formData.expectedArrival)
+                        : null
+                    }
+                    onChange={(date) => {
+                      const formattedDate = date
+                        ? data.toISOString().split("T")[0]
+                        : "0";
+                      handleChange({
+                        target: {
+                          name: "expectedArrival",
+                          value: formattedDate,
+                        },
+                      });
+                    }}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select expected arrival date"
                     className={`field-input ${
                       errors.expectedArrival ? "error" : ""
                     }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    minDate={new Date()} // restrict to future dates only
                   />
                 </div>
                 {errors.expectedArrival && (
