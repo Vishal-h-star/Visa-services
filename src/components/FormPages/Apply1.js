@@ -1,20 +1,21 @@
 // EnhancedVisaForm.jsx
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
+import React, { useState ,useEffect } from "react";
+import {
+  getApplicationDataById,applicationSubmitStep1
+} from "../../apiCalls/visaApplication";
+import { useParams } from "react-router-dom";
 import {
   nationalities,
   portsOfArrival,
   visaServices,
   applicationTypes,
-} from "../assets/data/FormData";
-import { newApplicationSubmit } from "../apiCalls/visaApplication";
+} from "../../assets/data/FormData";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const VisaApplicationForm = () => {
+const Apply1 = () => {
   const navigate = useNavigate();
+   const params = useParams();
   const [formData, setFormData] = useState({
     applicationType: "",
     passportType: "",
@@ -35,6 +36,18 @@ const VisaApplicationForm = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+    const getApplicationData = async () => {
+      const res = await getApplicationDataById(params.id);
+      console.log(res, "res daa of application");
+      if (res.status === 200) {
+        setFormData(res.data.data);
+      }
+    };
+  
+    useEffect(() => {
+      getApplicationData();
+    }, [params.id]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -52,6 +65,8 @@ const VisaApplicationForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
+
+  
 
     // Required field validation
     const requiredFields = [
@@ -122,23 +137,22 @@ const VisaApplicationForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Form Data:", formData);
-    // return
-    if (validateForm()) {
+      e.preventDefault();
+      console.log("Form Data:", formData);
+      // if (validateForm()) {
       console.log("hitting api");
-      const res = await newApplicationSubmit(formData);
+      const res = await applicationSubmitStep1(formData);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
         toast.success(`🦄 ${res.data.message}`);
         // setIsSubmitting(true);
         setIsSubmitting(false);
-        navigate(`/apply2/${res.data.data.uniqueId}`);
+        navigate(`/apply3/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
       }
-    }
-  };
+      // }
+    };
 
   return (
     <div className="enhanced-visa-container">
@@ -317,29 +331,14 @@ const VisaApplicationForm = () => {
                   <span className="label-text">Date of Birth *</span>
                 </label>
                 <div className="input-container">
-                  <DatePicker
-                    selected={
-                      formData.dateOfBirth
-                        ? new Date(formData.dateOfBirth)
-                        : null
-                    }
-                    onChange={(date) => {
-                      const formattedDate = date
-                        ? date.toISOString().split("T")[0]
-                        : "";
-                      handleChange({
-                        target: { name: "dateOfBirth", value: formattedDate },
-                      });
-                    }}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText="Select your date of birth"
+                  <input
+                    type="date"
+                    name="dateOfBirth"
+                    value={formData.dateOfBirth}
+                    onChange={handleChange}
                     className={`field-input ${
                       errors.dateOfBirth ? "error" : ""
                     }`}
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    maxDate={new Date()} // restrict DOB to past dates
                   />
                 </div>
                 {errors.dateOfBirth && (
@@ -417,32 +416,14 @@ const VisaApplicationForm = () => {
                   <span className="label-text">Expected Date of Arrival *</span>
                 </label>
                 <div className="input-container">
-                  <DatePicker
-                    selected={
-                      formData.expectedArrival
-                        ? new Date(formData.expectedArrival)
-                        : null
-                    }
-                    onChange={(date) => {
-                      const formattedDate = date
-                        ? date.toISOString().split("T")[0]
-                        : "0";
-                      handleChange({
-                        target: {
-                          name: "expectedArrival",
-                          value: formattedDate,
-                        },
-                      });
-                    }}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText="Select expected arrival date"
+                  <input
+                    type="date"
+                    name="expectedArrival"
+                    value={formData.expectedArrival}
+                    onChange={handleChange}
                     className={`field-input ${
                       errors.expectedArrival ? "error" : ""
                     }`}
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    minDate={new Date()} // restrict to future dates only
                   />
                 </div>
                 {errors.expectedArrival && (
@@ -715,4 +696,4 @@ const VisaApplicationForm = () => {
   );
 };
 
-export default VisaApplicationForm;
+export default Apply1;

@@ -21,8 +21,7 @@ const ApplicationForm = () => {
     console.log(res, 'res daa of application')
     if (res?.status === 200) {
       console.log(res.data, 'rebsdjfdfvbjh')
-      navigate(`/Apply/${applicationNumber}`)
-
+      navigate(`/Apply1/${applicationNumber}`)
       // return
       // setFormData(res.data.data);
     }
