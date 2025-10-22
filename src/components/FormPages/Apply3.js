@@ -11,6 +11,7 @@ const Apply3 = () => {
     // Application Information
     applicationType: "",
     portOfArrival: "",
+    
     // Present Address
     presentHouseNo: "",
     presentVillageTownCity: "",
@@ -61,11 +62,11 @@ const Apply3 = () => {
     pastOccupation: "",
 
     // Military/Police Organization
-    inMilitaryOrganization: "No",
-    organizationName: "",
-    organizationDesignation: "",
-    organizationRank: "",
-    organizationPlace: "",
+    inMilitaryOrganization: false,
+    forceOrganizationName: "",
+    forceOrganizationDesignation: "",
+    forceOrganizationRank: "",
+    forceorganizationPlace: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -179,12 +180,12 @@ const Apply3 = () => {
     }
 
     // Military organization fields validation if Yes is selected
-    if (formData.inMilitaryOrganization === "Yes") {
+    if (formData.inMilitaryOrganization === true) {
       const militaryFields = [
-        "organizationName",
-        "organizationDesignation",
-        "organizationRank",
-        "organizationPlace",
+        "forceOrganizationName",
+        "forceOrganizationDesignation",
+        "forceOrganizationRank",
+        "forceorganizationPlace",
       ];
       militaryFields.forEach((field) => {
         if (!formData[field] || formData[field].trim() === "") {
@@ -202,7 +203,7 @@ const Apply3 = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log('hitting api')
-      const res = await applicationSubmitStep3(formData);
+      const res = await applicationSubmitStep3(formData, params.id);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
         toast.success(`🦄 ${res.data.message}`);
@@ -1184,8 +1185,8 @@ const Apply3 = () => {
                     <input
                       type="radio"
                       name="inMilitaryOrganization"
-                      value="Yes"
-                      checked={formData.inMilitaryOrganization === "Yes"}
+                      value={true}
+                      checked={formData.inMilitaryOrganization === true}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -1196,8 +1197,8 @@ const Apply3 = () => {
                     <input
                       type="radio"
                       name="inMilitaryOrganization"
-                      value="No"
-                      checked={formData.inMilitaryOrganization === "No"}
+                      value={false}
+                      checked={formData.inMilitaryOrganization === false}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -1207,7 +1208,7 @@ const Apply3 = () => {
                 </div>
               </div>
 
-              {formData.inMilitaryOrganization === "Yes" && (
+              {formData.inMilitaryOrganization === true && (
                 <div className="military-fields full-width">
                   <div className="form-grid">
                     <div className="form-field">
@@ -1217,18 +1218,18 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationName"
-                          value={formData.organizationName}
+                          name="forceOrganizationName"
+                          value={formData.forceOrganizationName}
                           onChange={handleChange}
-                          className={`field-input ${errors.organizationName ? "error" : ""
+                          className={`field-input ${errors.forceOrganizationName ? "error" : ""
                             }`}
-                          placeholder="Enter organization name"
+                          placeholder="Enter Force organization name"
                         />
           
                       </div>
-                      {errors.organizationName && (
+                      {errors.forceOrganizationName && (
                         <span className="error-message">
-                          {errors.organizationName}
+                          {errors.forceOrganizationName}
                         </span>
                       )}
                     </div>
@@ -1240,18 +1241,18 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationDesignation"
-                          value={formData.organizationDesignation}
+                          name="forceOrganizationDesignation"
+                          value={formData.forceOrganizationDesignation}
                           onChange={handleChange}
-                          className={`field-input ${errors.organizationDesignation ? "error" : ""
+                          className={`field-input ${errors.forceOrganizationDesignation ? "error" : ""
                             }`}
                           placeholder="Enter designation"
                         />
                        
                       </div>
-                      {errors.organizationDesignation && (
+                      {errors.forceOrganizationDesignation && (
                         <span className="error-message">
-                          {errors.organizationDesignation}
+                          {errors.forceOrganizationDesignation}
                         </span>
                       )}
                     </div>
@@ -1263,18 +1264,18 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationRank"
-                          value={formData.organizationRank}
+                          name="forceOrganizationRank"
+                          value={formData.forceOrganizationRank}
                           onChange={handleChange}
-                          className={`field-input ${errors.organizationRank ? "error" : ""
+                          className={`field-input ${errors.forceOrganizationRank ? "error" : ""
                             }`}
                           placeholder="Enter rank"
                         />
                        
                       </div>
-                      {errors.organizationRank && (
+                      {errors.forceOrganizationRank && (
                         <span className="error-message">
-                          {errors.organizationRank}
+                          {errors.forceOrganizationRank}
                         </span>
                       )}
                     </div>
@@ -1286,18 +1287,18 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationPlace"
-                          value={formData.organizationPlace}
+                          name="forceorganizationPlace"
+                          value={formData.forceorganizationPlace}
                           onChange={handleChange}
-                          className={`field-input ${errors.organizationPlace ? "error" : ""
+                          className={`field-input ${errors.forceorganizationPlace ? "error" : ""
                             }`}
                           placeholder="Enter place of position"
                         />
                        
                       </div>
-                      {errors.organizationPlace && (
+                      {errors.forceorganizationPlace && (
                         <span className="error-message">
-                          {errors.organizationPlace}
+                          {errors.forceorganizationPlace}
                         </span>
                       )}
                     </div>
@@ -1859,19 +1860,19 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationName"
-                          value={formData.organizationName}
+                          name="forceOrganizationName"
+                          value={formData.forceOrganizationName}
                           onChange={handleChange}
                           className={`field-input ${
-                            errors.organizationName ? "error" : ""
+                            errors.forceOrganizationName ? "error" : ""
                           }`}
                           placeholder="Enter organization name"
                         />
                         <span className="input-icon">🏛️</span>
                       </div>
-                      {errors.organizationName && (
+                      {errors.forceOrganizationName && (
                         <span className="error-message">
-                          {errors.organizationName}
+                          {errors.forceOrganizationName}
                         </span>
                       )}
                     </div>
@@ -1883,19 +1884,19 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationDesignation"
-                          value={formData.organizationDesignation}
+                          name="forceOrganizationDesignation"
+                          value={formData.forceOrganizationDesignation}
                           onChange={handleChange}
                           className={`field-input ${
-                            errors.organizationDesignation ? "error" : ""
+                            errors.forceOrganizationDesignation ? "error" : ""
                           }`}
                           placeholder="Enter designation"
                         />
                         <span className="input-icon">💼</span>
                       </div>
-                      {errors.organizationDesignation && (
+                      {errors.forceOrganizationDesignation && (
                         <span className="error-message">
-                          {errors.organizationDesignation}
+                          {errors.forceOrganizationDesignation}
                         </span>
                       )}
                     </div>
@@ -1907,19 +1908,19 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationRank"
-                          value={formData.organizationRank}
+                          name="forceOrganizationRank"
+                          value={formData.forceOrganizationRank}
                           onChange={handleChange}
                           className={`field-input ${
-                            errors.organizationRank ? "error" : ""
+                            errors.forceOrganizationRank ? "error" : ""
                           }`}
                           placeholder="Enter rank"
                         />
                         <span className="input-icon">⭐</span>
                       </div>
-                      {errors.organizationRank && (
+                      {errors.forceOrganizationRank && (
                         <span className="error-message">
-                          {errors.organizationRank}
+                          {errors.forceOrganizationRank}
                         </span>
                       )}
                     </div>
@@ -1931,19 +1932,19 @@ const Apply3 = () => {
                       <div className="input-container">
                         <input
                           type="text"
-                          name="organizationPlace"
-                          value={formData.organizationPlace}
+                          name="forceorganizationPlace"
+                          value={formData.forceorganizationPlace}
                           onChange={handleChange}
                           className={`field-input ${
-                            errors.organizationPlace ? "error" : ""
+                            errors.forceorganizationPlace ? "error" : ""
                           }`}
                           placeholder="Enter place of position"
                         />
                         <span className="input-icon">📍</span>
                       </div>
-                      {errors.organizationPlace && (
+                      {errors.forceorganizationPlace && (
                         <span className="error-message">
-                          {errors.organizationPlace}
+                          {errors.forceorganizationPlace}
                         </span>
                       )}
                     </div>

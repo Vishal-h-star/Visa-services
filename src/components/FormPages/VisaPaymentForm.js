@@ -40,7 +40,7 @@ const VisaPaymentForm = () => {
       console.log(response, 'response')
       toast.success(`OrderID : ${response?.data?.orderID}`)
       setTimeout(() => {
-        // navigate(`/`)
+        navigate(`/`)
       }, 500);
 
       // const response = await axios.post(
@@ -51,7 +51,7 @@ const VisaPaymentForm = () => {
       //     billingCycle, // NEW
       //   }
       // );
-      // return response?.data?.orderID;
+      return response?.data?.orderID;
     } catch (error) {
       console.error("Error creating PayPal order:", error);
     }
@@ -92,11 +92,11 @@ const VisaPaymentForm = () => {
           <div className="application-info">
             <div className="info-row">
               <span className="label">Application Type :</span>
-              <span className="value">{formData?.applicationType}</span>
+              <span className="value text-uppercase">{formData?.applicationType}</span>
             </div>
             <div className="info-row">
               <span className="label">Port of arrival :</span>
-              <span className="value">{formData?.portOfArrival}</span>
+              <span className="value text-uppercase">{formData?.portOfArrival}</span>
             </div>
             <div className="info-row">
               <span className="label">Application ID:</span>

@@ -81,10 +81,10 @@ const Apply2 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    return;
+    // return;
     // if (validateForm()) {
     console.log("hitting api");
-    const res = await applicationSubmitStep2(formData);
+    const res = await applicationSubmitStep2(formData, params.id);
     if (res.status === 200) {
       console.log(res.data, "data we get from back");
       toast.success(`🦄 ${res.data.message}`);
@@ -403,7 +403,7 @@ const Apply2 = () => {
                   <select
                     name="nationality"
                     value={formData.nationality}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     readOnly
                     className="field-select"
                   >
@@ -571,8 +571,8 @@ const Apply2 = () => {
                     <input
                       type="radio"
                       name="otherPassport"
-                      value="Yes"
-                      checked={formData.otherPassport === "Yes"}
+                      value="true"
+                      checked={formData.otherPassport === "true"}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -583,8 +583,8 @@ const Apply2 = () => {
                     <input
                       type="radio"
                       name="otherPassport"
-                      value="No"
-                      checked={formData.otherPassport === "No"}
+                      value="false"
+                      checked={formData.otherPassport === "false"}
                       onChange={handleChange}
                       className="radio-input"
                     />
