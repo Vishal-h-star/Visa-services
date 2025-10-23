@@ -34,8 +34,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/Apply" element={<VisaApplicationForm />} />
-        <Route exact path="/Apply1" element={<Apply1/>} />
-        <Route exact path="/Apply/:id" element={<VisaApplicationForm />} />
+        <Route exact path="/Apply1/:id" element={<Apply1/>} />
+        {/* <Route exact path="/Apply/:id" element={<VisaApplicationForm />} /> */}
         <Route exact path="/Apply2/:id" element={<Apply2 />} />
         <Route path="/Apply3/:id" exact element={<Apply3 />} />
         <Route path="/Apply4/:id" exact element={<Apply4/>} />

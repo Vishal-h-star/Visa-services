@@ -40,6 +40,7 @@ const Apply1 = () => {
       const res = await getApplicationDataById(params.id);
       console.log(res, "res daa of application");
       if (res.status === 200) {
+        console.log(res.data.data, 'res data from application')
         setFormData(res.data.data);
       }
     };
@@ -139,19 +140,17 @@ const Apply1 = () => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       console.log("Form Data:", formData);
-      // if (validateForm()) {
       console.log("hitting api");
-      const res = await applicationSubmitStep1(formData);
+      const res = await applicationSubmitStep1(formData, params.id);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
         toast.success(`🦄 ${res.data.message}`);
         // setIsSubmitting(true);
         setIsSubmitting(false);
-        navigate(`/apply3/${res.data.data.uniqueId}`);
+        navigate(`/apply2/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
       }
-      // }
     };
 
   return (

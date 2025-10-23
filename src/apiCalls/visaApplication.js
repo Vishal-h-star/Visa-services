@@ -29,9 +29,10 @@ export const getApplicationDataById = async (applicaitonId) => {
   }
 };
 
+
 export const applicationSubmitStep1 = async (formData, applicationId) => {
   try {
-    const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep2?applicationId=${applicationId}`, formData);
+    const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep1?applicationId=${applicationId}`, formData);
     console.log(res, "user");
     if (res.status === 200) {
       return res
@@ -70,9 +71,9 @@ export const applicationSubmitStep3 = async (formData, applicationId) => {
   }
 };
 
-export const applicationSubmitStep4 = async (formData, callback) => {
+export const applicationSubmitStep4 = async (formData, applicationId) => {
   try {
-    const res = await publicRequest.post(`/visaapplication/newApplication`, formData);
+    const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep4?applicationId=${applicationId}`, formData);
     console.log(res, "user");
     if (res.status === 200) {
       return res
@@ -83,9 +84,9 @@ export const applicationSubmitStep4 = async (formData, callback) => {
   }
 };
 
-export const applicationSubmitStep5 = async (formData, callback) => {
+export const applicationSubmitStep5 = async (formData, applicationId) => {
   try {
-    const res = await publicRequest.post(`/visaapplication/newApplication`, formData);
+    const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep5?applicationId=${applicationId}`, formData);
     console.log(res, "user");
     if (res.status === 200) {
       return res
@@ -96,9 +97,9 @@ export const applicationSubmitStep5 = async (formData, callback) => {
   }
 };
 
-export const applicationSubmitStep6 = async (formData, callback) => {
+export const applicationSubmitStep6 = async (formData, applicationId) => {
   try {
-    const res = await publicRequest.post(`/visaapplication/newApplication`, formData);
+    const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep6?applicationId=${applicationId}`, formData);
     console.log(res, "user");
     if (res.status === 200) {
       return res
