@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
-import { portsOfArrival } from "../../assets/data/FormData";
-import { getApplicationDataById, applicationSubmitStep4 } from '../../apiCalls/visaApplication';
+import { useParams } from "react-router-dom";
+import { portsOfArrival, saarcContriesData } from "../../assets/data/FormData";
+import {
+  getApplicationDataById,
+  applicationSubmitStep4,
+} from "../../apiCalls/visaApplication";
 
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { ImportantButtons } from "./../ImportantButtons";
 
 const Apply4 = () => {
   const params = useParams();
@@ -29,6 +33,7 @@ const Apply4 = () => {
     visaRefusedByWhomDetails: "",
     countryVisitedLast10Years: "",
     saarcCountries: "no",
+    saarcDetails: [],
     referenceNameIndia: "",
     referenceAddressIndia: "",
     referencePhoneIndia: "",
@@ -37,27 +42,40 @@ const Apply4 = () => {
     referencePhoneHome: "",
   });
 
+  const [saarcInput, setSaarcInput] = useState({
+    country: "",
+    year: "",
+    visits: "",
+  });
+
+  const currentYear = new Date().getFullYear();
+  const years = [];
+  for (let i = 0; i < 4; i++) {
+    years.push(currentYear - i);
+  }
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const getApplicationData = async () => {
     const res = await getApplicationDataById(params.id);
-    console.log(res, 'res daa of application')
+    console.log(res, "res daa of application");
     if (res.status === 200) {
-      setFormData(res.data.data)
+      setFormData(res.data.data);
     }
-  }
-
+  };
 
   useEffect(() => {
-    getApplicationData()
-  }, [params.id])
+    getApplicationData();
+  }, [params.id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+      saarcDetails:
+        name === "saarcCountries" && value === "no" ? [] : prev.saarcDetails,
     }));
 
     // Clear error when user starts typing
@@ -67,6 +85,39 @@ const Apply4 = () => {
         [name]: "",
       }));
     }
+  };
+  // saarcCountries handleChange
+
+  const handleSaarcInputChange = (e) => {
+    const { name, value } = e.target;
+    setSaarcInput((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddSaarc = () => {
+    const { country, year, visits } = saarcInput;
+    if (!country || !year || !visits) {
+      // optional: set a specific error or toast
+      toast.error(
+        "Please fill country, year and number of visits before adding."
+      );
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      saarcDetails: [...(prev.saarcDetails || []), { country, year, visits }],
+    }));
+
+    // reset the small form
+    setSaarcInput({ country: "", year: "", visits: "" });
+  };
+
+  const handleRemoveSaarc = (index) => {
+    setFormData((prev) => {
+      const newArr = [...(prev.saarcDetails || [])];
+      newArr.splice(index, 1);
+      return { ...prev, saarcDetails: newArr };
+    });
   };
 
   const validateForm = () => {
@@ -85,6 +136,22 @@ const Apply4 = () => {
     if (!formData.referenceAddressIndia.trim()) {
       newErrors.referenceAddressIndia =
         "Reference address in India is required";
+    }
+    if (formData.saarcCountries === "yes") {
+      if (!formData.saarcDetails || formData.saarcDetails.length === 0) {
+        newErrors.saarcDetails =
+          "Please add at least one SAARC country visit detail";
+      } else {
+        formData.saarcDetails.forEach((item, idx) => {
+          if (!item.country)
+            newErrors[`saarcDetails_${idx}_country`] = "Country is required";
+          if (!item.year)
+            newErrors[`saarcDetails_${idx}_year`] = "Year is required";
+          if (!item.visits || Number(item.visits) <= 0)
+            newErrors[`saarcDetails_${idx}_visits`] =
+              "Please enter valid number of visits";
+        });
+      }
     }
     if (!formData.referencePhoneIndia.trim()) {
       newErrors.referencePhoneIndia =
@@ -117,7 +184,8 @@ const Apply4 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log('hitting api')
+      console.log("hitting api",formData);
+      return;
       const res = await applicationSubmitStep4(formData);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
@@ -259,8 +327,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="placeVisited1"
-                    className={`field-input ${errors.placeVisited1 ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.placeVisited1 ? "error" : ""
+                    }`}
                     value={formData.placeVisited1}
                     onChange={handleChange}
                     placeholder="Enter place to visit"
@@ -301,8 +370,9 @@ const Apply4 = () => {
                 <div className="select-container">
                   <select
                     name="expectedPortOfExit"
-                    className={`field-select ${errors.expectedPortOfExit ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.expectedPortOfExit ? "error" : ""
+                    }`}
                     value={formData.expectedPortOfExit}
                     onChange={handleChange}
                   >
@@ -583,6 +653,147 @@ const Apply4 = () => {
                 </div>
               </div>
 
+              {/* {formData.saarcCountries === "yes" && (
+                <>
+                  <div className="saarc_container">
+                    <div className="child">
+                      <select
+                        name="country"
+                        value={saarcInput.country}
+                        onChange={handleSaarcInputChange}
+                      >
+                        <option>Select Country</option>
+                        {saarcContriesData.map((country) => {
+                          return (
+                            <option key={country} value={country}>
+                              {country}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+
+                    <div className="child">
+                      <select
+                        name="year"
+                        value={saarcInput.year}
+                        onChange={handleSaarcInputChange}
+                      >
+                        <option>Select Year</option>
+                        {years.map((year) => {
+                          return (
+                            <option key={year} value={year}>
+                              {year}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </div>
+
+                    <div className="child">
+                      <input
+                        type="number"
+                        name="visits"
+                        min="1"
+                        value={saarcInput.visits}
+                        onChange={handleSaarcInputChange}
+                        placeholder="No. of visits"
+                      />
+                    </div>
+
+
+                    <div className="child">
+                      <button type="button" onClick={handleAddSaarc}> Add</button>
+                    </div>
+
+                  </div>
+                </>
+              )} */}
+
+              {/* Radio controls (already present) */}
+
+              {formData.saarcCountries === "yes" && (
+                <div className="saarc_section">
+                  <div className="saarc_container">
+                    <div className="child">
+                      <select
+                        name="country"
+                        value={saarcInput.country}
+                        onChange={handleSaarcInputChange}
+                      >
+                        <option value="">Select Country</option>
+                        {saarcContriesData.map((country) => (
+                          <option key={country} value={country}>
+                            {country}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="child">
+                      <select
+                        name="year"
+                        value={saarcInput.year}
+                        onChange={handleSaarcInputChange}
+                      >
+                        <option value="">Select Year</option>
+                        {years.map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div className="child">
+                      <input
+                        type="number"
+                        name="visits"
+                        min="1"
+                        value={saarcInput.visits}
+                        onChange={handleSaarcInputChange}
+                        placeholder="No. of visits"
+                      />
+                    </div>
+
+                    <div className="child">
+                      <button type="button"  className="saarcbutton" onClick={handleAddSaarc}>
+                        Add
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* show validation error */}
+                  {errors.saarcDetails && (
+                    <div className="error-message">{errors.saarcDetails}</div>
+                  )}
+
+                  {/* Display added records with remove button */}
+                  {formData.saarcDetails &&
+                    formData.saarcDetails.length > 0 && (
+                      <div className="saarc-list">
+                        <h4 className="saarc_details_heading">Added SAARC Visits</h4>
+                        <div className="saarc_details_container">
+                          {formData.saarcDetails.map((it, idx) => (
+                            <div key={idx} className="saarc-item">
+                             <div className="flex_saarc saarc_item_box"> {it.country} </div>
+                             <div className="flex_saarc  saarc_item_box">  {it.year} </div>
+                              <div className="flex_saarc  saarc_item_box"> {it.visits} </div>
+                              <button
+                                type="button"
+                                className="saarcbutton"
+                                onClick={() => handleRemoveSaarc(idx)}
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                </div>
+              )}
+
               <div className="section-header centered">
                 <h2>Reference</h2>
               </div>
@@ -595,8 +806,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameIndia"
-                    className={`field-input ${errors.referenceNameIndia ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceNameIndia ? "error" : ""
+                    }`}
                     value={formData.referenceNameIndia}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -617,8 +829,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressIndia"
-                    className={`field-input ${errors.referenceAddressIndia ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceAddressIndia ? "error" : ""
+                    }`}
                     value={formData.referenceAddressIndia}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -641,8 +854,9 @@ const Apply4 = () => {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneIndia"
-                    className={`field-input ${errors.referencePhoneIndia ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referencePhoneIndia ? "error" : ""
+                    }`}
                     value={formData.referencePhoneIndia}
                     onChange={handleChange}
                     placeholder="Enter phone number"
@@ -665,8 +879,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameHome"
-                    className={`field-input ${errors.referenceNameHome ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceNameHome ? "error" : ""
+                    }`}
                     value={formData.referenceNameHome}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -687,8 +902,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressHome"
-                    className={`field-input ${errors.referenceAddressHome ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceAddressHome ? "error" : ""
+                    }`}
                     value={formData.referenceAddressHome}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -711,8 +927,9 @@ const Apply4 = () => {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneHome"
-                    className={`field-input ${errors.referencePhoneHome ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referencePhoneHome ? "error" : ""
+                    }`}
                     value={formData.referencePhoneHome}
                     onChange={handleChange}
                     placeholder="Enter phone number"
