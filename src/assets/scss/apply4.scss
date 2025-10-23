@@ -1,0 +1,47 @@
+.saarc_container {
+  // border:2px solid blue;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 10px;
+}
+.child {
+  // border:2px solid blue;
+}
+.child > select,
+input,
+button {
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+  border:none;  
+}
+.saarc-list {
+  //   border: 2px solid blue;
+  margin-top: 10px;
+}
+.saarc_details_heading {
+  margin: 10px 0;
+}
+.saarc-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  gap: 1rem;
+}
+.saarc-item{
+    margin-top: 10px;
+}
+.saarc_item_box {
+//   background: $primary-gradient;
+  padding: 10px;
+  border-radius: 12px;
+  color: #787b7e;
+  border: 2px solid #e2e8f0;
+}
+.saarcbutton {
+  background: $primary-gradient;
+  border-radius: 12px;
+  border: none;
+  color: white;
+}

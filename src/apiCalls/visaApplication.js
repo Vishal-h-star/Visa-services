@@ -56,6 +56,8 @@ export const applicationSubmitStep2 = async (formData, applicationId) => {
   }
 };
 
+
+
 export const applicationSubmitStep3 = async (formData, applicationId) => {
   try {
     const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep3?applicationId=${applicationId}`, formData);
