@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import sampleImage from "../../assets/images/sample_image.jpeg";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
+import { applicationSubmitStep5 } from '../../apiCalls/visaApplication';
+import { toast } from "react-toastify";
 
 const Apply5 = () => {
-
+  const navigate = useNavigate();
   const params = useParams();
   const [formData, setFormData] = useState({
-    temporaryAppId: "asgsag",
     imageFile: null,
   });
 
@@ -20,11 +21,6 @@ const Apply5 = () => {
       setFormData({ ...formData, imageFile: file });
     }
   };
-
-//  useEffect(() => {
-
-//    }, [params.id])
-
 
   // ✅ Validation function
   const validateForm = () => {
@@ -52,14 +48,18 @@ const Apply5 = () => {
 
     try {
       // Simulate API request
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      console.log("Form submitted:", formData);
-      alert("Application submitted successfully!");
-      setFormData({
-        temporaryAppId: formData.temporaryAppId,
-        imageFile: null,
-      });
+      const formDataToSend = new FormData()
+      formDataToSend.append("mainImg", formData.imageFile);
+      const res = await applicationSubmitStep5(formDataToSend, params.id);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        // setIsSubmitting(true);
+        setIsSubmitting(false);
+        navigate(`/apply6/${res.data.data.uniqueId}`);
+      } else {
+        toast.error(`Some Error Happens!!`);
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Something went wrong. Please try again.");

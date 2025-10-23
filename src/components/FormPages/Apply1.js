@@ -140,7 +140,6 @@ const Apply1 = () => {
   const handleSubmit = async (e) => {
       e.preventDefault();
       console.log("Form Data:", formData);
-      // if (validateForm()) {
       console.log("hitting api");
       const res = await applicationSubmitStep1(formData, params.id);
       if (res.status === 200) {
@@ -152,7 +151,6 @@ const Apply1 = () => {
       } else {
         toast.error(`Some Error Happens!!`);
       }
-      // }
     };
 
   return (

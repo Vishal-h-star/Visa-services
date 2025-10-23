@@ -1,39 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import passportImage from "../../assets/images/passportsample_image.jpeg";
 import { FaRegImage } from "react-icons/fa";
 import { IoEyeOutline, IoClose } from "react-icons/io5";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
+import { getApplicationDataById, applicationSubmitStep6 } from '../../apiCalls/visaApplication';
+import { toast } from "react-toastify";
 
 const Apply6 = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const [formData, setFormData] = useState({
-    temporaryAppId: "asgsag",
-    imageFile: null,
+    passportCopy: null,
+    //business visa
+    businessCard: null,
+    businessInvitationLetter: null,
+    //medical, visa e-Ayush Visa, e ayush attendeant visa 
+    medicalInvitationLetter: null,
+    //conference visa
+    organizerInvitation: null,
+    politicalClearance: null,
+    eventClearance: null,
+
   });
+
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, 'res daa of application')
+    if (res.status === 200) {
+      setFormData(res.data.data)
+    }
+  }
+
+
+  useEffect(() => {
+    getApplicationData()
+  }, [params.id])
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
 
   // ✅ Handle file selection
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setFormData({ ...formData, passportCopy: file });
+  //   }
+  // };
+
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFormData({ ...formData, imageFile: file });
-    }
-  };
+  const { name, files } = e.target;
+
+  if (files && files.length > 0) {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: files.length > 1 ? Array.from(files) : files[0],
+    }));
+  }
+};
+
+
 
   // ✅ Validation function
   const validateForm = () => {
     const newErrors = {};
-    const { imageFile } = formData;
+    const { passportCopy } = formData;
 
-    if (!imageFile) {
-      newErrors.imageFile = "Please upload your passport image.";
-    } else if (!["image/jpeg", "image/png"].includes(imageFile.type)) {
-      newErrors.imageFile = "Only JPG and PNG formats are allowed.";
-    } else if (imageFile.size > 1024 * 1024) {
-      newErrors.imageFile = "Image size must be less than 1MB.";
+    if (!passportCopy) {
+      newErrors.passportCopy = "Please upload your passport image.";
+    } else if (!["image/jpeg", "image/png"].includes(passportCopy.type)) {
+      newErrors.passportCopy = "Only JPG and PNG formats are allowed.";
+    } else if (passportCopy.size > 1024 * 1024) {
+      newErrors.passportCopy = "Image size must be less than 1MB.";
     }
 
     setErrors(newErrors);
@@ -48,13 +86,26 @@ const Apply6 = () => {
     setIsSubmitting(true);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log("Form submitted:", formData);
-      alert("Application submitted successfully!");
-      setFormData({
-        temporaryAppId: formData.temporaryAppId,
-        imageFile: null,
-      });
+      // Simulate API request
+      const formDataToSend = new FormData()
+      formDataToSend.append("passportCopy", formData.passportCopy);
+      formDataToSend.append("businessCard", formData.businessCard); 
+      formDataToSend.append("businessInvitationLetter", formData.businessInvitationLetter); 
+      formDataToSend.append("medicalInvitationLetter", formData.medicalInvitationLetter); 
+      formDataToSend.append("organizerInvitation", formData.organizerInvitation); 
+      formDataToSend.append("politicalClearance", formData.politicalClearance); 
+      formDataToSend.append("eventClearance", formData.eventClearance); 
+
+      const res = await applicationSubmitStep6(formDataToSend, params.id);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        // setIsSubmitting(true);
+        setIsSubmitting(false);
+        navigate(`/Payment/${res.data.data.uniqueId}`);
+      } else {
+        toast.error(`Some Error Happens!!`);
+      }
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Something went wrong. Please try again.");
@@ -86,9 +137,9 @@ const Apply6 = () => {
         <form onSubmit={handleSubmit} className="enhanced-visa-form image-upload">
           <div className="form-section">
             <div className="section-header centered">
-              <h2>Upload Passport Page</h2>
+              <h2>Upload Documents</h2>
             </div>
-
+            {/* ALL TYPE */}
             <div className="form-grid full-row">
               <div className="form-field form-field-inline">
                 <label className="field-label">
@@ -102,29 +153,265 @@ const Apply6 = () => {
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
+                    name="passportCopy"
                     className="field-input"
                     style={{ backgroundColor: "#f8f9fa" }}
                     disabled={isSubmitting}
                   />
                 </div>
 
-                {errors.imageFile && (
-                  <p className="error-text">{errors.imageFile}</p>
+                {errors.passportCopy && (
+                  <p className="error-text">{errors.passportCopy}</p>
                 )}
 
                 {/* Show view button after uploading */}
-                {formData.imageFile && (
+                {formData.passportCopy && (
                   <button
                     type="button"
                     className="view-button"
                     onClick={() => setShowImageModal(true)}
                   >
                     <IoEyeOutline style={{ marginRight: "6px" }} />
-                    View Uploaded Image
+                    View Passport Copy
                   </button>
                 )}
               </div>
             </div>
+            {/* BUSINESS CATEGORY */}
+            {formData?.visaService === "business" && (
+              <>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        Copy of Business Card *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        name="businessCard"
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.businessCard && (
+                      <p className="error-text">{errors.businessCard}</p>
+                    )}
+
+                    {/* Show view button after uploading */}
+                    {formData.businessCard && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        Copy of Business Invitation Letter *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        name="businessInvitationLetter"
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.businessInvitationLetter && (
+                      <p className="error-text">{errors.businessInvitationLetter}</p>
+                    )}
+
+                    {/* Show view button after uploading */}
+                    {formData.businessInvitationLetter && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {formData?.visaService === "medical" && formData?.visaService === "medical_attendant" && formData?.visaService === "ayush" && formData?.visaService === "ayush_attendant" && (
+              <>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        System generated medical invitation letter in the defined format *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.imageFile && (
+                      <p className="error-text">{errors.imageFile}</p>
+                    )}
+
+                    {/* Show view button after uploading */}
+                    {formData.imageFile && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {formData?.visaService === "conference" && (
+              <>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        Invitation from organizer *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.imageFile && (
+                      <p className="error-text">{errors.imageFile}</p>
+                    )}
+
+                    {/* Show view button after uploading */}
+                    {formData.imageFile && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        Political clearance from Ministry of External Affairs (MEA), Government of India *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.imageFile && (
+                      <p className="error-text">{errors.imageFile}</p>
+                    )}
+
+                    {/* Show view button after uploading */}
+                    {formData.imageFile && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        Event clearance from Ministry of Home Affairs (MHA), Government of India *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.imageFile && (
+                      <p className="error-text">{errors.imageFile}</p>
+                    )}
+
+                    {/* Show view button after uploading */}
+                    {formData.imageFile && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+
+
 
             <div className="section-image">
               <p className="image-title">
@@ -180,7 +467,7 @@ const Apply6 = () => {
               <IoClose size={22} />
             </button>
             <img
-              src={URL.createObjectURL(formData.imageFile)}
+              src={URL.createObjectURL(formData.passportCopy)}
               alt="Uploaded Preview"
               className="uploaded-image-preview"
             />
