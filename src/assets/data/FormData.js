@@ -219,6 +219,14 @@ export const portsOfArrival = [
   },
 ];
 
+export const saarcContriesData = [
+  "India",
+  "Sri Lanka",
+  "Pakistan",
+  "Nepal",
+  "Bangladesh",
+];
+
 export const visaServices = [
   {
     value: "tourist",
