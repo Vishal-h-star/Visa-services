@@ -447,11 +447,57 @@ export const religions = [
 export const genders = ["MALE", "FEMALE", "OTHER"];
 
 export const educationLevels = [
-  "HIGHER SECONDARY",
+  "BELOW MATRICULATION",
   "GRADUATE",
+  "HIGHER SECONDARY",
+  "ILLITERATE",
+  "MATRICULATION",
+  "NA BEING MINOR",
+  "OTHERS",
   "POST GRADUATE",
-  "DOCTORATE",
-  "OTHER",
+  "PROFESSIONAL",
 ];
+
+export const occupations = [
+  "AIR FORCE",
+  "BUSINESS PERSON",
+  "CAMERAMAN",
+  "CHARITY/SOCIAL WORKER",
+  "CHARTERED ACCOUNTANT",
+  "COLLEGE/UNIVERSITY TEACHER",
+  "DIPLOMAT",
+  "DOCTOR",
+  "ENGINEER",
+  "FILM PRODUCER",
+  "GOVERNMENT SERVICE",
+  "HOUSE WIFE",
+  "JOURNALIST",
+  "LABOUR",
+  "LAWYER",
+  "MEDIA",
+  "MILITARY",
+  "MISSIONARY",
+  "NAVY",
+  "NEWS BROADCASTER",
+  "OFFICIAL",
+  "OTHERS",
+  "POLICE",
+  "PRESS",
+  "PRIVATE SERVICE",
+  "PUBLISHER",
+  "REPORTER",
+  "RESEARCHER",
+  "RETIRED",
+  "SEA MAN",
+  "SELF EMPLOYED/ FREELANCER",
+  "STUDENT",
+  "TRADER",
+  "TV PRODUCER",
+  "UN-EMPLOYED",
+  "UN OFFICIAL",
+  "WORKER",
+  "WRITER"
+];
+
 
 export const maritalStatuses = ["Single", "Married"];

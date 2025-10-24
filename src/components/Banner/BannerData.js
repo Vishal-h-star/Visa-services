@@ -1,4 +1,4 @@
-import imageOne from '../../assets/images/service/servicebanner2.jpeg'
+import imageOne from '../../assets/images/service/service_banner.jpeg'
 import imageTwo from '../../assets/images/service/servicebanner1.jpg'
 import imageThree from '../../assets/images/service/servicebaner3.jpg'
 

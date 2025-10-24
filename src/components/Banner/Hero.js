@@ -7,6 +7,7 @@ import AOS from "aos";
 
 
 const Hero = ({ slides }) => {
+    
     const [current, setCurrent] = useState(0);
     const length = slides.length
     const timeout = useRef(null);

@@ -99,7 +99,7 @@ const VisaApplicationForm = () => {
     }
 
     // Contact number validation
-    if (formData.contactNo && !/^\+\d{1,3}\d{7,15}$/.test(formData.contactNo)) {
+    if (formData.contactNo && !/^\d{7,15}$/.test(formData.contactNo)) {
       newErrors.contactNo =
         "Please enter a valid contact number with country code (e.g., +1234567890)";
     }
@@ -398,12 +398,11 @@ const VisaApplicationForm = () => {
                 </label>
                 <div className="input-container">
                   <input
-                    type="text"
+                    type="number"
                     name="contactNo"
                     value={formData.contactNo}
                     onChange={handleChange}
                     className={`field-input ${errors.contactNo ? "error" : ""}`}
-                    placeholder="+1234567890"
                   />
                 </div>
                 {errors.contactNo && (

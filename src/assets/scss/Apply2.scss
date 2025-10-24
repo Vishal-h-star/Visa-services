@@ -204,8 +204,9 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     display: flex;
     align-items: center;
     margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 2px solid $border-color;
+    background: green;
+    // padding-bottom: 1rem;
+    // border-bottom: 2px solid $border-color;
 
     .section-number {
       background: $primary-gradient;
@@ -222,7 +223,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     h2 {
       font-size: 1.4rem;
       font-weight: 700;
-      color: $text-dark;
+      // color: $text-dark;
     }
   }
 }
@@ -240,6 +241,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     color: $text-dark;
     margin: 0;
     text-align: center;
+    color:white
   }
 }
 
