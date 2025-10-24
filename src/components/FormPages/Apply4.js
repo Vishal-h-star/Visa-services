@@ -14,11 +14,11 @@ const Apply4 = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    applicationType: "Normal Processing",
+    applicationType: "",
     portOfArrival: "",
     visaService: "",
-    duration: "",
-    subVisaCategory: "",
+    serviceSubCategory: "",
+    serviceSubCat_subCategory: "",
     placeVisited1: "",
     placeVisited2: "",
     expectedPortOfExit: "",
@@ -185,8 +185,8 @@ const Apply4 = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log("hitting api",formData);
-      return;
-      const res = await applicationSubmitStep4(formData);
+      // return;
+      const res = await applicationSubmitStep4(formData, params.id);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
         toast.success(`🦄 ${res.data.message}`);
@@ -265,6 +265,7 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="visaService"
+                    readOnly
                     className="field-input"
                     value={formData.visaService}
                     onChange={handleChange}
@@ -274,14 +275,15 @@ const Apply4 = () => {
 
               <div className="form-field form-field-inline">
                 <div className="field-label">
-                  <span className="label-text">Duration of Visa (in Days)</span>
+                  <span className="label-text">serviceSubCategory of Visa (in Days)</span>
                 </div>
                 <div className="input-container">
                   <input
                     type="text"
-                    name="duration"
+                    readOnly
+                    name="serviceSubCategory"
                     className="field-input"
-                    value={formData.duration}
+                    value={formData.serviceSubCategory}
                     onChange={handleChange}
                   />
                 </div>
@@ -294,9 +296,10 @@ const Apply4 = () => {
                 <div className="input-container">
                   <input
                     type="text"
-                    name="subVisaCategory"
+                    readOnly
+                    name="serviceSubCat_subCategory"
                     className="field-input"
-                    value={formData.subVisaCategory}
+                    value={formData.serviceSubCat_subCategory}
                     onChange={handleChange}
                   />
                 </div>
@@ -309,6 +312,7 @@ const Apply4 = () => {
                 <div className="input-container">
                   <input
                     type="text"
+                    readOnly
                     name="portOfArrival"
                     className="field-input"
                     value={formData.portOfArrival}
