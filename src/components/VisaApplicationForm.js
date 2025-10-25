@@ -99,9 +99,9 @@ const VisaApplicationForm = () => {
     }
 
     // Contact number validation
-    if (formData.contactNo && !/^\d{7,15}$/.test(formData.contactNo)) {
+    if (formData.contactNo && !/^\d{6,15}$/.test(formData.contactNo)) {
       newErrors.contactNo =
-        "Please enter a valid contact number with country code (e.g., +1234567890)";
+        "Please enter a valid contact number with country code minimum 6 digit (e.g., 1234567890)";
     }
 
     // Date validation
@@ -121,24 +121,28 @@ const VisaApplicationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log("Form Data:", formData);
-    // return
-    if (validateForm()) {
-      console.log("hitting api");
-      const res = await newApplicationSubmit(formData);
-      if (res.status === 200) {
-        console.log(res.data, "data we get from back");
-        toast.success(`🦄 ${res.data.message}`);
-        // setIsSubmitting(true);
-        setIsSubmitting(false);
-        navigate(`/apply2/${res.data.data.uniqueId}`);
-      } else {
-        toast.error(`Some Error Happens!!`);
-      }
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log("Form Data:", formData);
+
+  const isValid = validateForm(); // Always run this
+  if (!isValid) {
+    toast.error("Please correct the highlighted errors before continuing.");
+    return;
+  }
+
+  console.log("hitting api");
+  const res = await newApplicationSubmit(formData);
+  if (res.status === 200) {
+    console.log(res.data, "data we get from back");
+    toast.success(`🦄 ${res.data.message}`);
+    setIsSubmitting(false);
+    navigate(`/apply2/${res.data.data.uniqueId}`);
+  } else {
+    toast.error(`Some Error Happens!!`);
+  }
+};
+
 
   return (
     <div className="enhanced-visa-container">
@@ -204,7 +208,7 @@ const VisaApplicationForm = () => {
                     }`}
                   >
                     <option value="">Select Passport Type</option>
-                    <option value="ordinary">Ordinary Passport</option>
+                    <option value="ordinary">ORDINARY PASSPORT</option>
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
@@ -267,12 +271,12 @@ const VisaApplicationForm = () => {
                       errors.nationality ? "error" : ""
                     }`}
                   >
-                    <option value="">Select Nationality</option>
+                    <option value="">SELECT NATIONALITIE</option>
                     {nationalities
                       .filter((option) => option.status === true)
                       .map((option) => (
                         <option key={option.value} value={option.value}>
-                          {option.label} - {option.value}
+                          {option.label}
                         </option>
                       ))}
                   </select>
@@ -297,7 +301,7 @@ const VisaApplicationForm = () => {
                       errors.portOfArrival ? "error" : ""
                     }`}
                   >
-                    <option value="">Select Port Of Arrival</option>
+                    <option value="">SELECT PORT OF ARRIVAL</option>
                     {portsOfArrival.map((option) => (
                       <option key={option.value} value={option.value}>
                         {option.label}
