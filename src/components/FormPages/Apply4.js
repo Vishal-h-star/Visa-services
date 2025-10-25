@@ -275,7 +275,7 @@ const Apply4 = () => {
 
               <div className="form-field form-field-inline">
                 <div className="field-label">
-                  <span className="label-text">serviceSubCategory of Visa (in Days)</span>
+                  <span className="label-text">service of Visa (in Days)</span>
                 </div>
                 <div className="input-container">
                   <input

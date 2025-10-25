@@ -116,7 +116,7 @@ const Apply2 = () => {
 
         <form onSubmit={handleSubmit} className="enhanced-visa-form">
           {/* Application Type Section */}
-          <div className="form-section">
+          {/* <div className="form-section">
             <div className="form-grid single-row">
               <div className="form-field">
                 <label className="field-label">
@@ -148,7 +148,7 @@ const Apply2 = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* Combined Personal + Passport Details Section */}
           <div className="form-section">
@@ -421,7 +421,7 @@ const Apply2 = () => {
               <div className="form-field form-field-inline">
                 <label className="field-label">
                   <span className="label-text">
-                    Nationality Acquired By / Naturalization *
+                    Did you acquire Nationality by birth or by naturalization? *
                   </span>
                 </label>
                 <div className="select-container">
@@ -432,8 +432,8 @@ const Apply2 = () => {
                     className="field-select"
                   >
                     <option value="">Select Nationality</option>
-                    <option value="By birth">By birth</option>
-                    <option value="By naturalization">By naturalization</option>
+                    <option value="By birth">By Birth</option>
+                    <option value="By naturalization">Naturalization</option>
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
@@ -594,7 +594,7 @@ const Apply2 = () => {
                 </div>
               </div>
 
-              {formData.otherPassport === "Yes" && (
+              {formData.otherPassport === "true" && (
                 <>
                   <div className="form-field form-field-inline">
                     <label className="field-label">
