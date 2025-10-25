@@ -9,6 +9,7 @@ import {
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { ImportantButtons } from "./../ImportantButtons";
+import pdf from "./../Service/Pdf";
 
 const Apply4 = () => {
   const params = useParams();
@@ -64,6 +65,8 @@ const Apply4 = () => {
       setFormData(res.data.data);
     }
   };
+
+  console.log(formData, "initial data");
 
   useEffect(() => {
     getApplicationData();
@@ -184,7 +187,7 @@ const Apply4 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("hitting api",formData);
+      console.log("hitting api", formData);
       // return;
       const res = await applicationSubmitStep4(formData, params.id);
       if (res.status === 200) {
@@ -396,6 +399,1762 @@ const Apply4 = () => {
                   </div>
                 )}
               </div>
+              {/* medical  SHORT TERM MEDICAL TREATMENT SELF  */}
+              {formData?.serviceSubCategory === "shortTerm-self" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "SHORT TERM MEDICAL TREATMENT SELF"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name of the Hospital where Medical treatment is to be
+                        carried out *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address of Hospital *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">State *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">District*</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Type of Medical Treatment required *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business  TO SET UP INDUSTRIAL/BUSINESS VENTURE " */}
+              {formData?.serviceSubCategory === "setup_business" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      {" "}
+                      Details of Purpose " TO SET UP INDUSTRIAL/BUSINESS VENTURE
+                      "
+                    </h2>
+                  </div>
+                  <p style={{ textAlign: "center" }}>
+                    Details of the Applicants Company
+                  </p>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Name *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Nature of Business/Product *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business SALE/PURCHASE/TRADE */}
+              {formData?.serviceSubCategory === "sale_purchase" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>Details of Purpose "SALE/PURCHASE/TRADE"</h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Applicants Company Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Nature of Business/Product *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {/* business ATTEND TECHNICAL/BUSINESS MEETING */}
+              {formData?.serviceSubCategory === "business_meetings" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "ATTEND TECHNICAL/BUSINESS MEETING"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Applicants Company Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of Indian Firm Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business "TO RECRUIT MANPOWER" */}
+              {formData.serviceSubCategory === "recruit_manpower" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>Details of Purpose "TO RECRUIT MANPOWER"</h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Applicants Company Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name and contact number of the company representative in
+                        India *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Nature of Job for which recruiting *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Places where recruitment is to be conducted *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business PARTICIPATION IN EXHIBITIONS,BUSINESS/TRADE FAIRS */}
+              {formData.serviceSubCategory === "exhibitions" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "PARTICIPATION IN
+                      EXHIBITIONS,BUSINESS/TRADE FAIRS"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Applicants Company Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name and address of the Exhibition/trade fair *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business EXPERT/SPECIALIST IN CONNECTION WITH AN
+                    ONGOING PROJECT */}
+              {formData.serviceSubCategory === "project_expert" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "EXPERT/SPECIALIST IN CONNECTION WITH
+                      AN ONGOING PROJECT"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Applicants Company Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Indian firm Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">website *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business CONDUCTING TOURS */}
+              {formData.serviceSubCategory === "conduct_tours" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>Details of Purpose "CONDUCTING TOURS"</h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name and address of the Travel Agency in native country
+                        *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Cities to be visited during the tour *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of the Travel agent/associate in India Name *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* business SPORTS RELATED ACTIVITY */}
+              {formData.serviceSubCategory === "sports_activity" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>Details of Purpose "SPORTS RELATED ACTIVITY"</h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name of the Sports event/tournament *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Whether the event is organized by Government/Amateur
+                        Federation/Association or is a Commercial Sports Event?
+                        *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <p style={{ textAlign: "center" }}>
+                    Duration of the Sports Event Tournament
+                  </p>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Event Start date *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Event End date *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <p style={{ textAlign: "center" }}>
+                    Venue of the Sports event/Tournament
+                  </p>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">State *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">District *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">PIN Code *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <p style={{ textAlign: "center" }}>
+                    Details of the organizer
+                  </p>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name of the Organizer *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone Number *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Email ID *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        If the sports event entails visit to Restricted or
+                        Protected areas in India. *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        If the sports event entails visit to Restricted or
+                        Protected areas in India. *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of your previous Sports related visit *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Tax Compliance details *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Whether you are participating in individual capacity or
+                        sponsored by the native Government/Private Company? *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+              {/* conference  TO ATTEND A
+                      CONFERENCE/SEMINAR/WORKSHOP ORGANIZED BY A MINISTRY OR
+                      DEPARTMENT OF THE GOVERNMENT OF INDIA,STATE GOVERNMENTS OR
+                      UT ADMINISTRATIONS AND THEIR SUBORDINATE/ ATTACHED
+                      ORGANIZATIONS AND PSUS" */}
+              {formData.serviceSubCategory === "attend_conference" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "TO ATTEND A
+                      CONFERENCE/SEMINAR/WORKSHOP ORGANIZED BY A MINISTRY OR
+                      DEPARTMENT OF THE GOVERNMENT OF INDIA,STATE GOVERNMENTS OR
+                      UT ADMINISTRATIONS AND THEIR SUBORDINATE/ ATTACHED
+                      ORGANIZATIONS AND PSUS"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name/subject of the conference *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Duration of conference Start date *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">End date *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Venue of conference Address *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">State *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">District *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Pincode *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Details of organizer of conference Name of organizer *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone no. *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Email id *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+
+               {formData.serviceSubCategory === 'patient_travelling_emedical_visa' &&( 
+                 <>
+                 <div className="section-header centered">
+                    <h2>
+                     Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON EMEDICAL VISA"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Name of the principal e-Medical Visa holder (i.e. the patient) *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                      Visa number of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                   <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                     Application id of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                   <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                     Passport number of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                   <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                     Date of birth of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                   <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                     Nationality of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                   
+                 </>
+               )}
+                
+                {/* e ayush visa   TREATMENT UNDER AYUSH SYSTEMS/INDIAN  */}
+              {formData.serviceSubCategory === "treatment_under_ayush_Indian_sytems" && (
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "TREATMENT UNDER AYUSH SYSTEMS/INDIAN
+                      SYSTEMS OF MEDICINE"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name of the Hospital where Medical treatment is to be
+                        carried out *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address of Hospital *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">State *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">District *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone *</span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Type of Medical Treatment required *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+
+               
+              {formData.serviceSubCategory === 'e-ayush_visa_holder' && (
+                 <>
+                    <div className="section-header centered">
+                    <h2>
+                    Details of Purpose "AS ATTENDANT TO AN E-AYUSH VISA HOLDER."
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Name of the principal e-Medical Visa holder (i.e. the patient) *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                    <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Visa number of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Application id of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                    <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Passport number of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                   <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Date of birth of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+
+                    <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                       Nationality of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                 </>
+              )}
 
               <div className="section-header centered">
                 <h2>Previous Visa/Currently valid Visa Details</h2>
@@ -761,7 +2520,11 @@ const Apply4 = () => {
                     </div>
 
                     <div className="child">
-                      <button type="button"  className="saarcbutton" onClick={handleAddSaarc}>
+                      <button
+                        type="button"
+                        className="saarcbutton"
+                        onClick={handleAddSaarc}
+                      >
                         Add
                       </button>
                     </div>
@@ -776,13 +2539,24 @@ const Apply4 = () => {
                   {formData.saarcDetails &&
                     formData.saarcDetails.length > 0 && (
                       <div className="saarc-list">
-                        <h4 className="saarc_details_heading">Added SAARC Visits</h4>
+                        <h4 className="saarc_details_heading">
+                          Added SAARC Visits
+                        </h4>
                         <div className="saarc_details_container">
                           {formData.saarcDetails.map((it, idx) => (
                             <div key={idx} className="saarc-item">
-                             <div className="flex_saarc saarc_item_box"> {it.country} </div>
-                             <div className="flex_saarc  saarc_item_box">  {it.year} </div>
-                              <div className="flex_saarc  saarc_item_box"> {it.visits} </div>
+                              <div className="flex_saarc saarc_item_box">
+                                {" "}
+                                {it.country}{" "}
+                              </div>
+                              <div className="flex_saarc  saarc_item_box">
+                                {" "}
+                                {it.year}{" "}
+                              </div>
+                              <div className="flex_saarc  saarc_item_box">
+                                {" "}
+                                {it.visits}{" "}
+                              </div>
                               <button
                                 type="button"
                                 className="saarcbutton"
