@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useParams } from "react-router-dom";
 import { portsOfArrival, saarcContriesData } from "../../assets/data/FormData";
 import {
@@ -42,6 +44,10 @@ const Apply4 = () => {
     referenceAddressHome: "",
     referencePhoneHome: "",
   });
+
+  const today = new Date();
+const tenYearsAgo = new Date();
+tenYearsAgo.setFullYear(today.getFullYear() - 10);
 
   const [saarcInput, setSaarcInput] = useState({
     country: "",
@@ -130,9 +136,9 @@ const Apply4 = () => {
     if (!formData.placeVisited1.trim()) {
       newErrors.placeVisited1 = "Place to visit is required";
     }
-    if (!formData.expectedPortOfExit) {
-      newErrors.expectedPortOfExit = "Expected port of exit is required";
-    }
+    // if (!formData.expectedPortOfExit) {
+    //   newErrors.expectedPortOfExit = "Expected port of exit is required";
+    // }
     if (!formData.referenceNameIndia.trim()) {
       newErrors.referenceNameIndia = "Reference name in India is required";
     }
@@ -371,7 +377,7 @@ const Apply4 = () => {
               <div className="form-field form-field-inline">
                 <div className="field-label">
                   <span className="label-text">
-                    Expected Port of Exit from India *
+                    Expected Port of Exit from India
                   </span>
                 </div>
                 <div className="select-container">
@@ -1805,18 +1811,21 @@ const Apply4 = () => {
                 </>
               )}
 
-               {formData.serviceSubCategory === 'patient_travelling_emedical_visa' &&( 
-                 <>
-                 <div className="section-header centered">
+              {formData.serviceSubCategory ===
+                "patient_travelling_emedical_visa" && (
+                <>
+                  <div className="section-header centered">
                     <h2>
-                     Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO INDIA ON EMEDICAL VISA"
+                      Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO
+                      INDIA ON EMEDICAL VISA"
                     </h2>
                   </div>
 
                   <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                       Name of the principal e-Medical Visa holder (i.e. the patient) *
+                        Name of the principal e-Medical Visa holder (i.e. the
+                        patient) *
                       </span>
                     </div>
                     <div className="input-container">
@@ -1834,7 +1843,7 @@ const Apply4 = () => {
                   <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                      Visa number of principal e-Medical Visa holder *
+                        Visa number of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -1849,10 +1858,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                   <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                     Application id of principal e-Medical Visa holder *
+                        Application id of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -1867,10 +1876,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                   <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                     Passport number of principal e-Medical Visa holder *
+                        Passport number of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -1885,10 +1894,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                   <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                     Date of birth of principal e-Medical Visa holder *
+                        Date of birth of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -1903,10 +1912,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                   <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                     Nationality of principal e-Medical Visa holder *
+                        Nationality of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -1920,12 +1929,12 @@ const Apply4 = () => {
                       />
                     </div>
                   </div>
-                   
-                 </>
-               )}
-                
-                {/* e ayush visa   TREATMENT UNDER AYUSH SYSTEMS/INDIAN  */}
-              {formData.serviceSubCategory === "treatment_under_ayush_Indian_sytems" && (
+                </>
+              )}
+
+              {/* e ayush visa   TREATMENT UNDER AYUSH SYSTEMS/INDIAN  */}
+              {formData.serviceSubCategory ===
+                "treatment_under_ayush_Indian_sytems" && (
                 <>
                   <div className="section-header centered">
                     <h2>
@@ -2037,37 +2046,20 @@ const Apply4 = () => {
                 </>
               )}
 
-               
-              {formData.serviceSubCategory === 'e-ayush_visa_holder' && (
-                 <>
-                    <div className="section-header centered">
+              {formData.serviceSubCategory === "e-ayush_visa_holder" && (
+                <>
+                  <div className="section-header centered">
                     <h2>
-                    Details of Purpose "AS ATTENDANT TO AN E-AYUSH VISA HOLDER."
+                      Details of Purpose "AS ATTENDANT TO AN E-AYUSH VISA
+                      HOLDER."
                     </h2>
                   </div>
 
                   <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                       Name of the principal e-Medical Visa holder (i.e. the patient) *
-                      </span>
-                    </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
-                        className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-
-                    <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                       Visa number of principal e-Medical Visa holder *
+                        Name of the principal e-Medical Visa holder (i.e. the
+                        patient) *
                       </span>
                     </div>
                     <div className="input-container">
@@ -2085,7 +2077,7 @@ const Apply4 = () => {
                   <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                       Application id of principal e-Medical Visa holder *
+                        Visa number of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -2100,10 +2092,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                    <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                       Passport number of principal e-Medical Visa holder *
+                        Application id of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -2118,10 +2110,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                   <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                       Date of birth of principal e-Medical Visa holder *
+                        Passport number of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -2136,10 +2128,10 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                    <div className="form-field form-field-inline">
+                  <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">
-                       Nationality of principal e-Medical Visa holder *
+                        Date of birth of principal e-Medical Visa holder *
                       </span>
                     </div>
                     <div className="input-container">
@@ -2153,7 +2145,25 @@ const Apply4 = () => {
                       />
                     </div>
                   </div>
-                 </>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Nationality of principal e-Medical Visa holder *
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        readOnly
+                        name="serviceSubCat_subCategory"
+                        className="field-input"
+                        // value={formData.serviceSubCat_subCategory}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
               )}
 
               <div className="section-header centered">
@@ -2282,7 +2292,7 @@ const Apply4 = () => {
                     </div>
                   </div>
 
-                  <div className="form-field form-field-inline">
+                  {/* <div className="form-field form-field-inline">
                     <div className="field-label">
                       <span className="label-text">Date of Issue</span>
                     </div>
@@ -2296,6 +2306,47 @@ const Apply4 = () => {
                         required
                       />
                     </div>
+                  </div> */}
+
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">Date of Issue *</span>
+                    </label>
+                    <div className="input-container">
+                      <DatePicker
+                        selected={
+                          formData.visitedIndiaBeforeDateOfIssue
+                            ? new Date(formData.visitedIndiaBeforeDateOfIssue)
+                            : null
+                        }
+                        onChange={(date) => {
+                          const formattedDate = date
+                            ? date.toISOString().split("T")[0]
+                            : "";
+                          handleChange({
+                            target: {
+                              name: "visitedIndiaBeforeDateOfIssue",
+                              value: formattedDate,
+                            },
+                          });
+                        }}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Select issue date"
+                        className={`field-input ${
+                          errors.visitedIndiaBeforeDateOfIssue ? "error" : ""
+                        }`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        minDate={tenYearsAgo}
+                        maxDate={today}
+                      />
+                    </div>
+                    {errors.visitedIndiaBeforeDateOfIssue && (
+                      <span className="error-message">
+                        {errors.visitedIndiaBeforeDateOfIssue}
+                      </span>
+                    )}
                   </div>
                 </>
               )}

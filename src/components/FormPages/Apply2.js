@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   getApplicationDataById,
   applicationSubmitStep2,
@@ -11,11 +13,17 @@ import {
   educationLevels,
 } from "../../assets/data/FormData";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 const Apply2 = () => {
   const navigate = useNavigate();
   const params = useParams();
+
+  // initialize today and tenYearsAgo helpers once
+  const today = new Date();
+  const tenYearsAgo = new Date();
+  tenYearsAgo.setFullYear(today.getFullYear() - 10);
+  tenYearsAgo.setHours(0, 0, 0, 0);
+
   const [formData, setFormData] = useState({
     applicationType: "",
     portOfArrival: "",
@@ -51,59 +59,237 @@ const Apply2 = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // fetch application data if editing
   const getApplicationData = async () => {
-    const res = await getApplicationDataById(params.id);
-    console.log(res, "res daa of application");
-    if (res.status === 200) {
-      setFormData(res.data.data);
+    try {
+      const res = await getApplicationDataById(params.id);
+      console.log(res, "res daa of application");
+      if (res.status === 200 && res.data && res.data.data) {
+        // merge to keep all keys
+        setFormData((prev) => ({ ...prev, ...res.data.data }));
+      }
+    } catch (err) {
+      console.error("Error fetching application data:", err);
     }
   };
 
   useEffect(() => {
-    getApplicationData();
+    if (params?.id) getApplicationData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    const newVal = type === "checkbox" ? checked : value;
+    setFormData((prev) => ({ ...prev, [name]: newVal }));
 
+    // clear field-specific error on change
     if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
+  };
+
+  // helper: accurate age calculation (considers month/day)
+  const calculateAge = (dobString) => {
+    if (!dobString) return null;
+    const dob = new Date(dobString);
+    const todayLocal = new Date();
+    let age = todayLocal.getFullYear() - dob.getFullYear();
+    const m = todayLocal.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && todayLocal.getDate() < dob.getDate())) age--;
+    return age;
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // list of base required fields (match your UI)
+    const requiredFields = [
+      "applicationType",
+      "portOfArrival",
+      "surname",
+      "givenName",
+      "gender",
+      "dateOfBirth",
+      "cityOfBirth",
+      "countryOfBirth",
+      "nationalId",
+      "religion",
+      "education",
+      "nationality",
+      "nationalityAcquired",
+      "livedInCountry",
+      "passportNumber",
+      "passportPlaceOfIssue",
+      "passportDateOfIssue",
+      "passportDateOfExpiry",
+    ];
+
+    requiredFields.forEach((f) => {
+      const val = formData[f];
+      if (
+        val === undefined ||
+        val === null ||
+        (typeof val === "string" && val.trim() === "")
+      ) {
+        newErrors[f] = "This field is required";
+      }
+    });
+
+    // conditional: previous names if nameChanged
+    if (formData.nameChanged) {
+      if (
+        !formData.previousSurname ||
+        (typeof formData.previousSurname === "string" &&
+          formData.previousSurname.trim() === "")
+      ) {
+        newErrors.previousSurname = "Please enter previous surname";
+      }
+      if (
+        !formData.previousName ||
+        (typeof formData.previousName === "string" &&
+          formData.previousName.trim() === "")
+      ) {
+        newErrors.previousName = "Please enter previous given name";
+      }
+    }
+
+    // conditional: nationality acquired details
+    if (formData.nationalityAcquired === "By naturalization") {
+      if (
+        !formData.nationalityAcquiredDetails ||
+        (typeof formData.nationalityAcquiredDetails === "string" &&
+          formData.nationalityAcquiredDetails.trim() === "")
+      ) {
+        newErrors.nationalityAcquiredDetails =
+          "Please select previous nationality";
+      }
+    }
+
+    // conditional: other passport fields required when otherPassport === "true"
+    if (formData.otherPassport === "true") {
+      const otherReq = [
+        "otherPassportCountryOfIssue",
+        "otherPassport_PassportNo",
+        "otherPassportDateOfIssue",
+        "otherPassportPlaceOfIssue",
+        "otherPassportNationaliyMentioned",
+      ];
+      otherReq.forEach((f) => {
+        const val = formData[f];
+        if (
+          val === undefined ||
+          val === null ||
+          (typeof val === "string" && val.trim() === "")
+        ) {
+          newErrors[f] = "This field is required";
+        }
+      });
+    }
+
+    // DOB age validation (>=18) with accurate month/day check
+    if (formData.dateOfBirth) {
+      const age = calculateAge(formData.dateOfBirth);
+      if (age === null) {
+        newErrors.dateOfBirth = "Invalid date";
+      } else if (age < 18) {
+        newErrors.dateOfBirth = "Applicant must be at least 18 years old";
+      }
+    }
+
+    // Passport Date of Issue validation: must be within last 10 years and not future
+    if (formData.passportDateOfIssue) {
+      const issue = new Date(formData.passportDateOfIssue);
+      // normalize to midnight for comparison
+      issue.setHours(0, 0, 0, 0);
+      const minIssue = new Date(tenYearsAgo);
+      minIssue.setHours(0, 0, 0, 0);
+      const maxIssue = new Date();
+      maxIssue.setHours(23, 59, 59, 999);
+
+      if (issue < minIssue || issue > maxIssue) {
+        newErrors.passportDateOfIssue =
+          "Issue date must be within the last 10 years";
+      }
+    }
+
+    // otherPassportDateOfIssue same constraint when present
+    if (formData.otherPassportDateOfIssue) {
+      const issue = new Date(formData.otherPassportDateOfIssue);
+      issue.setHours(0, 0, 0, 0);
+      const minIssue = new Date(tenYearsAgo);
+      minIssue.setHours(0, 0, 0, 0);
+      const maxIssue = new Date();
+      maxIssue.setHours(23, 59, 59, 999);
+
+      if (issue < minIssue || issue > maxIssue) {
+        newErrors.otherPassportDateOfIssue =
+          "Issue date must be within the last 10 years";
+      }
+    }
+
+    // Passport expiry must be after issue
+    if (formData.passportDateOfIssue && formData.passportDateOfExpiry) {
+      const issue = new Date(formData.passportDateOfIssue);
+      const expiry = new Date(formData.passportDateOfExpiry);
+      issue.setHours(0, 0, 0, 0);
+      expiry.setHours(0, 0, 0, 0);
+      if (expiry <= issue) {
+        newErrors.passportDateOfExpiry =
+          "Expiry date must be after the issue date";
+      }
+    }
+
+    // otherPassport expiry (if present) - if you had such a field, you'd validate similarly
+    // (not present in original form; left out)
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
-    // return;
-    // if (validateForm()) {
-    console.log("hitting api");
-    const res = await applicationSubmitStep2(formData, params.id);
-    if (res.status === 200) {
-      console.log(res.data, "data we get from back");
-      toast.success(`🦄 ${res.data.message}`);
-      // setIsSubmitting(true);
-      setIsSubmitting(false);
-      navigate(`/apply3/${res.data.data.uniqueId}`);
-    } else {
-      toast.error(`Some Error Happens!!`);
+    const ok = validateForm();
+    if (!ok) {
+      toast.error("Please correct the highlighted errors before continuing.");
+      // optional: scroll to first error (not included automatically)
+      return;
     }
-    // }
+
+    try {
+      setIsSubmitting(true);
+      console.log("Form Data:", formData);
+      const res = await applicationSubmitStep2(formData, params.id);
+      setIsSubmitting(false);
+      if (res.status === 200) {
+        console.log(res.data, "data we get from back");
+        toast.success(`🦄 ${res.data.message}`);
+        navigate(`/apply3/${res.data.data.uniqueId}`);
+      } else {
+        toast.error(`Some Error Happens!!`);
+      }
+    } catch (err) {
+      setIsSubmitting(false);
+      console.error(err);
+      toast.error("Error submitting application");
+    }
+  };
+
+  // helpers for DatePicker change handlers (to keep error clearing inline)
+  const handleDateChange = (name, date) => {
+    const formatted = date ? date.toISOString().split("T")[0] : "";
+    setFormData((prev) => ({ ...prev, [name]: formatted }));
+    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
   return (
     <div className="enhanced-visa-container">
-      {/* <div className="background-shapes">
+      {/* Background Elements (kept as in your original) */}
+      <div className="background-shapes">
         <div className="shape shape-1"></div>
         <div className="shape shape-2"></div>
         <div className="shape shape-3"></div>
-      </div> */}
+      </div>
 
       <div className="enhanced-visa-card">
         {/* Header Section */}
@@ -115,41 +301,6 @@ const Apply2 = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="enhanced-visa-form">
-          {/* Application Type Section */}
-          {/* <div className="form-section">
-            <div className="form-grid single-row">
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Application Type *</span>
-                </label>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    value={formData.applicationType}
-                    readOnly
-                    className="field-input"
-                    style={{ backgroundColor: "#f8f9fa" }}
-                  />
-                </div>
-              </div>
-
-              <div className="form-field">
-                <label className="field-label">
-                  <span className="label-text">Port of Arrival *</span>
-                </label>
-                <div className="input-container">
-                  <input
-                    type="text"
-                    value={formData.portOfArrival}
-                    readOnly
-                    className="field-input"
-                    style={{ backgroundColor: "#f8f9fa" }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div> */}
-
           {/* Combined Personal + Passport Details Section */}
           <div className="form-section">
             <div className="section-header centered">
@@ -166,11 +317,14 @@ const Apply2 = () => {
                   <input
                     type="text"
                     name="surname"
-                    value={formData.surname}
+                    value={formData.surname || ""}
                     onChange={handleChange}
-                    className="field-input"
+                    className={`field-input ${errors.surname ? "error" : ""}`}
                   />
                 </div>
+                {errors.surname && (
+                  <span className="error-message">{errors.surname}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -181,11 +335,14 @@ const Apply2 = () => {
                   <input
                     type="text"
                     name="givenName"
-                    value={formData.givenName}
+                    value={formData.givenName || ""}
                     onChange={handleChange}
-                    className="field-input"
+                    className={`field-input ${errors.givenName ? "error" : ""}`}
                   />
                 </div>
+                {errors.givenName && (
+                  <span className="error-message">{errors.givenName}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -197,11 +354,10 @@ const Apply2 = () => {
                     <input
                       type="checkbox"
                       name="nameChanged"
-                      checked={formData.nameChanged}
+                      checked={!!formData.nameChanged}
                       onChange={handleChange}
                       className="checkbox-input"
                     />
-                    {/* <span className="checkbox-custom"></span> */}
                     Have you ever changed your name?
                   </label>
                 </div>
@@ -217,12 +373,18 @@ const Apply2 = () => {
                       <input
                         type="text"
                         name="previousSurname"
-                        value={formData.previousSurname}
+                        value={formData.previousSurname || ""}
                         onChange={handleChange}
-                        className="field-input"
-                        required
+                        className={`field-input ${
+                          errors.previousSurname ? "error" : ""
+                        }`}
                       />
                     </div>
+                    {errors.previousSurname && (
+                      <span className="error-message">
+                        {errors.previousSurname}
+                      </span>
+                    )}
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -233,12 +395,16 @@ const Apply2 = () => {
                       <input
                         type="text"
                         name="previousName"
-                        value={formData.previousName}
+                        value={formData.previousName || ""}
                         onChange={handleChange}
-                        className="field-input"
-                        required
+                        className={`field-input ${
+                          errors.previousName ? "error" : ""
+                        }`}
                       />
                     </div>
+                    {errors.previousName && (
+                      <span className="error-message">{errors.previousName}</span>
+                    )}
                   </div>
                 </>
               )}
@@ -250,9 +416,9 @@ const Apply2 = () => {
                 <div className="select-container">
                   <select
                     name="gender"
-                    value={formData.gender}
+                    value={formData.gender || ""}
                     onChange={handleChange}
-                    className="field-select"
+                    className={`field-select ${errors.gender ? "error" : ""}`}
                   >
                     <option value="">Select Gender</option>
                     {genders.map((gender) => (
@@ -263,21 +429,41 @@ const Apply2 = () => {
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
+                {errors.gender && (
+                  <span className="error-message">{errors.gender}</span>
+                )}
               </div>
 
+              {/* Date of Birth */}
               <div className="form-field form-field-inline">
                 <label className="field-label">
                   <span className="label-text">Date of Birth *</span>
                 </label>
                 <div className="input-container">
-                  <input
-                    type="date"
-                    name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
-                    className="field-input"
+                  <DatePicker
+                    selected={
+                      formData.dateOfBirth ? new Date(formData.dateOfBirth) : null
+                    }
+                    onChange={(date) =>
+                      handleDateChange(
+                        "dateOfBirth",
+                        date ? date : null
+                      )
+                    }
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select your date of birth"
+                    className={`field-input ${
+                      errors.dateOfBirth ? "error" : ""
+                    }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    maxDate={new Date()}
                   />
                 </div>
+                {errors.dateOfBirth && (
+                  <span className="error-message">{errors.dateOfBirth}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -288,11 +474,14 @@ const Apply2 = () => {
                   <input
                     type="text"
                     name="cityOfBirth"
-                    value={formData.cityOfBirth}
+                    value={formData.cityOfBirth || ""}
                     onChange={handleChange}
-                    className="field-input"
+                    className={`field-input ${errors.cityOfBirth ? "error" : ""}`}
                   />
                 </div>
+                {errors.cityOfBirth && (
+                  <span className="error-message">{errors.cityOfBirth}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -302,9 +491,11 @@ const Apply2 = () => {
                 <div className="select-container">
                   <select
                     name="countryOfBirth"
-                    value={formData.countryOfBirth}
+                    value={formData.countryOfBirth || ""}
                     onChange={handleChange}
-                    className="field-select"
+                    className={`field-select ${
+                      errors.countryOfBirth ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Country of birth</option>
                     {nationalities.map((country) => (
@@ -315,6 +506,9 @@ const Apply2 = () => {
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
+                {errors.countryOfBirth && (
+                  <span className="error-message">{errors.countryOfBirth}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -325,11 +519,14 @@ const Apply2 = () => {
                   <input
                     type="text"
                     name="nationalId"
-                    value={formData.nationalId}
+                    value={formData.nationalId || ""}
                     onChange={handleChange}
-                    className="field-input"
+                    className={`field-input ${errors.nationalId ? "error" : ""}`}
                   />
                 </div>
+                {errors.nationalId && (
+                  <span className="error-message">{errors.nationalId}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -339,9 +536,9 @@ const Apply2 = () => {
                 <div className="select-container">
                   <select
                     name="religion"
-                    value={formData.religion}
+                    value={formData.religion || ""}
                     onChange={handleChange}
-                    className="field-select"
+                    className={`field-select ${errors.religion ? "error" : ""}`}
                   >
                     <option value=""> Select your religion</option>
                     {religions.map((religion) => (
@@ -352,19 +549,20 @@ const Apply2 = () => {
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
+                {errors.religion && (
+                  <span className="error-message">{errors.religion}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">
-                    Visible Identification Mark
-                  </span>
+                  <span className="label-text">Visible Identification Mark</span>
                 </label>
                 <div className="input-container">
                   <input
                     type="text"
                     name="identificationMark"
-                    value={formData.identificationMark}
+                    value={formData.identificationMark || ""}
                     onChange={handleChange}
                     className="field-input"
                   />
@@ -373,16 +571,14 @@ const Apply2 = () => {
 
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">
-                    Educational Qualification *
-                  </span>
+                  <span className="label-text">Educational Qualification *</span>
                 </label>
                 <div className="select-container">
                   <select
                     name="education"
-                    value={formData.education}
+                    value={formData.education || ""}
                     onChange={handleChange}
-                    className="field-select"
+                    className={`field-select ${errors.education ? "error" : ""}`}
                   >
                     <option value="">Select Qualification</option>
                     {educationLevels.map((level) => (
@@ -393,6 +589,9 @@ const Apply2 = () => {
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
+                {errors.education && (
+                  <span className="error-message">{errors.education}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -402,10 +601,9 @@ const Apply2 = () => {
                 <div className="select-container">
                   <select
                     name="nationality"
-                    value={formData.nationality}
-                    // onChange={handleChange}
-                    readOnly
-                    className="field-select"
+                    value={formData.nationality || ""}
+                    onChange={handleChange}
+                    className={`field-select ${errors.nationality ? "error" : ""}`}
                   >
                     <option value="">Select Nationality</option>
                     {nationalities.map((country) => (
@@ -416,6 +614,9 @@ const Apply2 = () => {
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
+                {errors.nationality && (
+                  <span className="error-message">{errors.nationality}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -427,9 +628,11 @@ const Apply2 = () => {
                 <div className="select-container">
                   <select
                     name="nationalityAcquired"
-                    value={formData.nationalityAcquired}
+                    value={formData.nationalityAcquired || ""}
                     onChange={handleChange}
-                    className="field-select"
+                    className={`field-select ${
+                      errors.nationalityAcquired ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Nationality</option>
                     <option value="By birth">By Birth</option>
@@ -437,6 +640,11 @@ const Apply2 = () => {
                   </select>
                   <span className="select-arrow">▼</span>
                 </div>
+                {errors.nationalityAcquired && (
+                  <span className="error-message">
+                    {errors.nationalityAcquired}
+                  </span>
+                )}
               </div>
 
               {formData.nationalityAcquired === "By naturalization" && (
@@ -447,26 +655,32 @@ const Apply2 = () => {
                   <div className="select-container">
                     <select
                       name="nationalityAcquiredDetails"
-                      value={formData.nationalityAcquiredDetails}
+                      value={formData.nationalityAcquiredDetails || ""}
                       onChange={handleChange}
-                      className="field-select"
-                      required
+                      className={`field-select ${
+                        errors.nationalityAcquiredDetails ? "error" : ""
+                      }`}
                     >
                       <option value="">Select Nationality</option>
                       {nationalities.map((country) => (
-                        <option value={country.value}>{country.label}</option>
+                        <option key={country.value} value={country.value}>
+                          {country.label}
+                        </option>
                       ))}
                     </select>
                     <span className="select-arrow">▼</span>
                   </div>
+                  {errors.nationalityAcquiredDetails && (
+                    <span className="error-message">
+                      {errors.nationalityAcquiredDetails}
+                    </span>
+                  )}
                 </div>
               )}
 
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">
-                    Lived in Country ≥ 2 years *
-                  </span>
+                  <span className="label-text">Lived in Country ≥ 2 years *</span>
                 </label>
                 <div className="radio-group">
                   <label className="radio-label">
@@ -493,6 +707,9 @@ const Apply2 = () => {
                     No
                   </label>
                 </div>
+                {errors.livedInCountry && (
+                  <span className="error-message">{errors.livedInCountry}</span>
+                )}
               </div>
 
               <div className="section-header centered">
@@ -508,11 +725,16 @@ const Apply2 = () => {
                   <input
                     type="text"
                     name="passportNumber"
-                    value={formData.passportNumber}
+                    value={formData.passportNumber || ""}
                     onChange={handleChange}
-                    className="field-input"
+                    className={`field-input ${
+                      errors.passportNumber ? "error" : ""
+                    }`}
                   />
                 </div>
+                {errors.passportNumber && (
+                  <span className="error-message">{errors.passportNumber}</span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -523,11 +745,18 @@ const Apply2 = () => {
                   <input
                     type="text"
                     name="passportPlaceOfIssue"
-                    value={formData.passportPlaceOfIssue}
+                    value={formData.passportPlaceOfIssue || ""}
                     onChange={handleChange}
-                    className="field-input"
+                    className={`field-input ${
+                      errors.passportPlaceOfIssue ? "error" : ""
+                    }`}
                   />
                 </div>
+                {errors.passportPlaceOfIssue && (
+                  <span className="error-message">
+                    {errors.passportPlaceOfIssue}
+                  </span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -535,14 +764,31 @@ const Apply2 = () => {
                   <span className="label-text">Date of Issue *</span>
                 </label>
                 <div className="input-container">
-                  <input
-                    type="date"
-                    name="passportDateOfIssue"
-                    value={formData.passportDateOfIssue}
-                    onChange={handleChange}
-                    className="field-input"
+                  <DatePicker
+                    selected={
+                      formData.passportDateOfIssue
+                        ? new Date(formData.passportDateOfIssue)
+                        : null
+                    }
+                    onChange={(date) => handleDateChange("passportDateOfIssue", date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select issue date"
+                    className={`field-input ${
+                      errors.passportDateOfIssue ? "error" : ""
+                    }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    // allow selection from tenYearsAgo up to today
+                    minDate={tenYearsAgo}
+                    maxDate={today}
                   />
                 </div>
+                {errors.passportDateOfIssue && (
+                  <span className="error-message">
+                    {errors.passportDateOfIssue}
+                  </span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -550,14 +796,28 @@ const Apply2 = () => {
                   <span className="label-text">Date of Expiry *</span>
                 </label>
                 <div className="input-container">
-                  <input
-                    type="date"
-                    name="passportDateOfExpiry"
-                    value={formData.passportDateOfExpiry}
-                    onChange={handleChange}
-                    className="field-input"
+                  <DatePicker
+                    selected={
+                      formData.passportDateOfExpiry
+                        ? new Date(formData.passportDateOfExpiry)
+                        : null
+                    }
+                    onChange={(date) => handleDateChange("passportDateOfExpiry", date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select expiry date"
+                    className={`field-input ${
+                      errors.passportDateOfExpiry ? "error" : ""
+                    }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
                   />
                 </div>
+                {errors.passportDateOfExpiry && (
+                  <span className="error-message">
+                    {errors.passportDateOfExpiry}
+                  </span>
+                )}
               </div>
 
               <div className="form-field form-field-inline">
@@ -592,6 +852,9 @@ const Apply2 = () => {
                     No
                   </label>
                 </div>
+                {errors.otherPassport && (
+                  <span className="error-message">{errors.otherPassport}</span>
+                )}
               </div>
 
               {formData.otherPassport === "true" && (
@@ -603,20 +866,26 @@ const Apply2 = () => {
                     <div className="select-container">
                       <select
                         name="otherPassportCountryOfIssue"
-                        value={formData.otherPassportCountryOfIssue}
+                        value={formData.otherPassportCountryOfIssue || ""}
                         onChange={handleChange}
-                        className="field-select"
-                        required
+                        className={`field-select ${
+                          errors.otherPassportCountryOfIssue ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Nationality</option>
                         {nationalities.map((country) => (
-                          <option key={country} value={country.value}>
+                          <option key={country.value} value={country.value}>
                             {country.label}
                           </option>
                         ))}
                       </select>
                       <span className="select-arrow">▼</span>
                     </div>
+                    {errors.otherPassportCountryOfIssue && (
+                      <span className="error-message">
+                        {errors.otherPassportCountryOfIssue}
+                      </span>
+                    )}
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -627,12 +896,18 @@ const Apply2 = () => {
                       <input
                         type="text"
                         name="otherPassport_PassportNo"
-                        value={formData.otherPassport_PassportNo}
+                        value={formData.otherPassport_PassportNo || ""}
                         onChange={handleChange}
-                        className="field-input"
-                        required
+                        className={`field-input ${
+                          errors.otherPassport_PassportNo ? "error" : ""
+                        }`}
                       />
                     </div>
+                    {errors.otherPassport_PassportNo && (
+                      <span className="error-message">
+                        {errors.otherPassport_PassportNo}
+                      </span>
+                    )}
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -640,15 +915,32 @@ const Apply2 = () => {
                       <span className="label-text">Date of Issue *</span>
                     </label>
                     <div className="input-container">
-                      <input
-                        type="date"
-                        name="otherPassportDateOfIssue"
-                        value={formData.otherPassportDateOfIssue}
-                        onChange={handleChange}
-                        className="field-input"
-                        required
+                      <DatePicker
+                        selected={
+                          formData.otherPassportDateOfIssue
+                            ? new Date(formData.otherPassportDateOfIssue)
+                            : null
+                        }
+                        onChange={(date) =>
+                          handleDateChange("otherPassportDateOfIssue", date)
+                        }
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Select other passport issue date"
+                        className={`field-input ${
+                          errors.otherPassportDateOfIssue ? "error" : ""
+                        }`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        minDate={tenYearsAgo}
+                        maxDate={today}
                       />
                     </div>
+                    {errors.otherPassportDateOfIssue && (
+                      <span className="error-message">
+                        {errors.otherPassportDateOfIssue}
+                      </span>
+                    )}
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -659,12 +951,18 @@ const Apply2 = () => {
                       <input
                         type="text"
                         name="otherPassportPlaceOfIssue"
-                        value={formData.otherPassportPlaceOfIssue}
+                        value={formData.otherPassportPlaceOfIssue || ""}
                         onChange={handleChange}
-                        className="field-input"
-                        required
+                        className={`field-input ${
+                          errors.otherPassportPlaceOfIssue ? "error" : ""
+                        }`}
                       />
                     </div>
+                    {errors.otherPassportPlaceOfIssue && (
+                      <span className="error-message">
+                        {errors.otherPassportPlaceOfIssue}
+                      </span>
+                    )}
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -676,20 +974,26 @@ const Apply2 = () => {
                     <div className="select-container">
                       <select
                         name="otherPassportNationaliyMentioned"
-                        value={formData.otherPassportNationaliyMentioned}
+                        value={formData.otherPassportNationaliyMentioned || ""}
                         onChange={handleChange}
-                        className="field-select"
-                        required
+                        className={`field-select ${
+                          errors.otherPassportNationaliyMentioned ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Nationality</option>
                         {nationalities.map((country) => (
-                          <option key={country} value={country.value}>
+                          <option key={country.value} value={country.value}>
                             {country.label}
                           </option>
                         ))}
                       </select>
                       <span className="select-arrow">▼</span>
                     </div>
+                    {errors.otherPassportNationaliyMentioned && (
+                      <span className="error-message">
+                        {errors.otherPassportNationaliyMentioned}
+                      </span>
+                    )}
                   </div>
                 </>
               )}
