@@ -249,6 +249,7 @@ const Apply2 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const ok = validateForm();
     if (!ok) {
       toast.error("Please correct the highlighted errors before continuing.");
@@ -260,10 +261,13 @@ const Apply2 = () => {
       setIsSubmitting(true);
       console.log("Form Data:", formData);
       const res = await applicationSubmitStep2(formData, params.id);
+
+  
+  
       setIsSubmitting(false);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
-        toast.success(`🦄 ${res.data.message}`);
+       // toast.success(`🦄 ${res.data.message}`);
         navigate(`/apply3/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
@@ -680,7 +684,11 @@ const Apply2 = () => {
 
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">Lived in Country ≥ 2 years *</span>
+
+                  <span className="label-text">
+                    Have you lived for at least two years in the country where you are applying visa? *
+                  </span>
+
                 </label>
                 <div className="radio-group">
                   <label className="radio-label">

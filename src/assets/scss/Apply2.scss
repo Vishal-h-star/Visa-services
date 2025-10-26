@@ -117,17 +117,6 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
-    background-size: cover;
-  }
-
   .header-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
