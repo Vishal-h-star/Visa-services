@@ -465,7 +465,7 @@ const Apply2 = () => {
               <div className="form-field form-field-inline">
                 <label className="field-label">
                   <span className="label-text">
-                    Lived in Country ≥ 2 years *
+                    Have you lived for at least two years in the country where you are applying visa? *
                   </span>
                 </label>
                 <div className="radio-group">
