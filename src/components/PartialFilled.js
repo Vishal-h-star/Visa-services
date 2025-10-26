@@ -20,8 +20,8 @@ const ApplicationForm = () => {
     const res = await getApplicationDataById(applicationNumber);
     console.log(res, 'res daa of application')
     if (res?.status === 200) {
-      console.log(res.data, 'rebsdjfdfvbjh')
-      navigate(`/Apply1/${applicationNumber}`)
+      console.log(res.data.data.uniqueId, 'rebsdjfdfvbjh')
+      navigate(`/Apply1/${res.data.data.uniqueId}`)
       // return
       // setFormData(res.data.data);
     }
