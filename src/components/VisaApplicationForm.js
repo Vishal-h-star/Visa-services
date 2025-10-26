@@ -415,45 +415,45 @@ const handleSubmit = async (e) => {
               </div>
 
               {/* Expected Arrival Date */}
-              <div className="form-field-horizontal">
-                <label className="field-label">
-                  <span className="label-text">Expected Date of Arrival *</span>
-                </label>
-                <div className="input-container">
-                  <DatePicker
-                    selected={
-                      formData.expectedArrival
-                        ? new Date(formData.expectedArrival)
-                        : null
-                    }
-                    onChange={(date) => {
-                      const formattedDate = date
-                        ? date.toISOString().split("T")[0]
-                        : "0";
-                      handleChange({
-                        target: {
-                          name: "expectedArrival",
-                          value: formattedDate,
-                        },
-                      });
-                    }}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText="Select expected arrival date"
-                    className={`field-input ${
-                      errors.expectedArrival ? "error" : ""
-                    }`}
-                    showMonthDropdown
-                    showYearDropdown
-                    dropdownMode="select"
-                    minDate={new Date()} // restrict to future dates only
-                  />
+                <div className="form-field-horizontal">
+                  <label className="field-label">
+                    <span className="label-text">Expected Date of Arrival *</span>
+                  </label>
+                  <div className="input-container">
+                    <DatePicker
+                      selected={
+                        formData.expectedArrival
+                          ? new Date(formData.expectedArrival)
+                          : null
+                      }
+                      onChange={(date) => {
+                        const formattedDate = date
+                          ? date.toISOString().split("T")[0]
+                          : "0";
+                        handleChange({
+                          target: {
+                            name: "expectedArrival",
+                            value: formattedDate,
+                          },
+                        });
+                      }}
+                      dateFormat="dd/MM/yyyy"
+                      placeholderText="Select expected arrival date"
+                      className={`field-input ${
+                        errors.expectedArrival ? "error" : ""
+                      }`}
+                      showMonthDropdown
+                      showYearDropdown
+                      dropdownMode="select"
+                      minDate={new Date()} // restrict to future dates only
+                    />
+                  </div>
+                  {errors.expectedArrival && (
+                    <span className="error-message">
+                      {errors.expectedArrival}
+                    </span>
+                  )}
                 </div>
-                {errors.expectedArrival && (
-                  <span className="error-message">
-                    {errors.expectedArrival}
-                  </span>
-                )}
-              </div>
 
               {/* Visa Service - Fixed structure with subcategories below each service */}
               <div className="form-field-horizontal radio-field">

@@ -1,7 +1,10 @@
 // EnhancedVisaForm.jsx
-import React, { useState ,useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import {
-  getApplicationDataById,applicationSubmitStep1
+  getApplicationDataById,
+  applicationSubmitStep1,
 } from "../../apiCalls/visaApplication";
 import { useParams } from "react-router-dom";
 import {
@@ -15,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 const Apply1 = () => {
   const navigate = useNavigate();
-   const params = useParams();
+  const params = useParams();
   const [formData, setFormData] = useState({
     applicationType: "",
     passportType: "",
@@ -36,18 +39,18 @@ const Apply1 = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const getApplicationData = async () => {
-      const res = await getApplicationDataById(params.id);
-      console.log(res, "res daa of application");
-      if (res.status === 200) {
-        console.log(res.data.data, 'res data from application')
-        setFormData(res.data.data);
-      }
-    };
-  
-    useEffect(() => {
-      getApplicationData();
-    }, [params.id]);
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, "res daa of application");
+    if (res.status === 200) {
+      console.log(res.data.data, "res data from application");
+      setFormData(res.data.data);
+    }
+  };
+
+  useEffect(() => {
+    getApplicationData();
+  }, [params.id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,8 +69,6 @@ const Apply1 = () => {
 
   const validateForm = () => {
     const newErrors = {};
-
-  
 
     // Required field validation
     const requiredFields = [
@@ -138,6 +139,7 @@ const Apply1 = () => {
   };
 
   const handleSubmit = async (e) => {
+
       e.preventDefault();
       console.log("Form Data:", formData);
       console.log("hitting api");
@@ -325,7 +327,7 @@ const Apply1 = () => {
               </div>
 
               {/* Date of Birth */}
-              <div className="form-field-horizontal">
+              {/* <div className="form-field-horizontal">
                 <label className="field-label">
                   <span className="label-text">Date of Birth *</span>
                 </label>
@@ -338,6 +340,41 @@ const Apply1 = () => {
                     className={`field-input ${
                       errors.dateOfBirth ? "error" : ""
                     }`}
+                  />
+                </div>
+                {errors.dateOfBirth && (
+                  <span className="error-message">{errors.dateOfBirth}</span>
+                )}
+              </div> */}
+
+              <div className="form-field-horizontal">
+                <label className="field-label">
+                  <span className="label-text">Date of Birth *</span>
+                </label>
+                <div className="input-container">
+                  <DatePicker
+                    selected={
+                      formData.dateOfBirth
+                        ? new Date(formData.dateOfBirth)
+                        : null
+                    }
+                    onChange={(date) => {
+                      const formattedDate = date
+                        ? date.toISOString().split("T")[0]
+                        : "";
+                      handleChange({
+                        target: { name: "dateOfBirth", value: formattedDate },
+                      });
+                    }}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select your date of birth"
+                    className={`field-input ${
+                      errors.dateOfBirth ? "error" : ""
+                    }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    maxDate={new Date()} // restrict DOB to past dates
                   />
                 </div>
                 {errors.dateOfBirth && (
@@ -410,7 +447,7 @@ const Apply1 = () => {
               </div>
 
               {/* Expected Arrival Date */}
-              <div className="form-field-horizontal">
+              {/* <div className="form-field-horizontal">
                 <label className="field-label">
                   <span className="label-text">Expected Date of Arrival *</span>
                 </label>
@@ -423,6 +460,45 @@ const Apply1 = () => {
                     className={`field-input ${
                       errors.expectedArrival ? "error" : ""
                     }`}
+                  />
+                </div>
+                {errors.expectedArrival && (
+                  <span className="error-message">
+                    {errors.expectedArrival}
+                  </span>
+                )}
+              </div> */}
+              <div className="form-field-horizontal">
+                <label className="field-label">
+                  <span className="label-text">Expected Date of Arrival *</span>
+                </label>
+                <div className="input-container">
+                  <DatePicker
+                    selected={
+                      formData.expectedArrival
+                        ? new Date(formData.expectedArrival)
+                        : null
+                    }
+                    onChange={(date) => {
+                      const formattedDate = date
+                        ? date.toISOString().split("T")[0]
+                        : "";
+                      handleChange({
+                        target: {
+                          name: "expectedArrival",
+                          value: formattedDate,
+                        },
+                      });
+                    }}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select expected arrival date"
+                    className={`field-input ${
+                      errors.expectedArrival ? "error" : ""
+                    }`}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    minDate={new Date()} // restrict to future dates only
                   />
                 </div>
                 {errors.expectedArrival && (
