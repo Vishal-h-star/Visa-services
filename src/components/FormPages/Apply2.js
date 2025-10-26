@@ -87,7 +87,7 @@ const Apply2 = () => {
     const res = await applicationSubmitStep2(formData, params.id);
     if (res.status === 200) {
       console.log(res.data, "data we get from back");
-      toast.success(`🦄 ${res.data.message}`);
+      // toast.success(`🦄 ${res.data.message}`);
       // setIsSubmitting(true);
       setIsSubmitting(false);
       navigate(`/apply3/${res.data.data.uniqueId}`);
