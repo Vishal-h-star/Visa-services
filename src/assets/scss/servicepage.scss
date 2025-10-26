@@ -1,10 +1,10 @@
 .servicepage_background-banner-1 {
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(33, 33, 33, 0.7),
-      rgba(66, 66, 66, 0.7)
-    ),
-    url(../images/service/servicebanner1.jpg);
+  // background-image: linear-gradient(
+  //     to right bottom,
+  //     rgba(33, 33, 33, 0.7),
+  //     rgba(66, 66, 66, 0.7)
+  //   ),
+  //   url(../images/service/servicebanner1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 5rem;
@@ -198,7 +198,7 @@
   .youtube-service {
     width: 100%;
     height: 370px;
-    background-image: url("../images/service/gpstracker.svg");
+    // background-image: url("../images/service/gpstracker.svg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

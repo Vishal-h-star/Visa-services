@@ -38,12 +38,12 @@
 }
 
 .services-bg {
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(33, 62, 77, 0.7),
-      rgba(33, 62, 77, 0.7)
-    ),
-    url(../images/bread-bg.jpg);
+  // background-image: linear-gradient(
+  //     to right bottom,
+  //     rgba(33, 62, 77, 0.7),
+  //     rgba(33, 62, 77, 0.7)
+  //   ),
+  //   url(../images/bread-bg.jpg);
   // background: rgba(68, 68, 68, 0.8);
   background-position: center;
   background-size: cover;
@@ -52,12 +52,12 @@
 }
 
 .services_background-banner-1{
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(33, 33, 33, 0.7),
-      rgba(66, 66, 66, 0.7)
-    ),
-    url(../images/service/servicebanner1.jpg);
+  // background-image: linear-gradient(
+  //     to right bottom,
+  //     rgba(33, 33, 33, 0.7),
+  //     rgba(66, 66, 66, 0.7)
+  //   ),
+  //   url(../images/service/servicebanner1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 5rem;
