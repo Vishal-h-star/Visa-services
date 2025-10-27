@@ -1,5 +1,4 @@
 @import "~bootstrap/scss/bootstrap.scss";
-@import "~aos/dist/aos.css";
 
 @import "variable";
 @import "base";
@@ -16,10 +15,7 @@
 @import './homePageContent.scss';
 @import './whatsappButton.scss';
 @import './PartialFilled.scss';
-@import "about";
 @import "career";
-@import "services";
-@import "servicepage";
 @import "button";
 @import "navbar";
 @import "testimonial";
@@ -42,7 +38,4 @@
 @import "sidebar";
 @import "Slider";
 @import "checkbox";
-@import "hardware";
-@import "similarproducts";
-@import "enquiry";
 @import "nodata";

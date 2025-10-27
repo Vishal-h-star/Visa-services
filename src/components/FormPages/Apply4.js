@@ -10,8 +10,6 @@ import {
 
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { ImportantButtons } from "./../ImportantButtons";
-import pdf from "./../Service/Pdf";
 
 const Apply4 = () => {
   const params = useParams();

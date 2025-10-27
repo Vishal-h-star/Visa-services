@@ -20,8 +20,19 @@ const Apply6 = () => {
     organizerInvitation: null,
     politicalClearance: null,
     eventClearance: null,
-
   });
+
+  const [userUploaded, setUserUploaded] = useState({
+    passportCopy: false,
+    businessCard: false,
+    businessInvitationLetter: false,
+    medicalInvitationLetter: false,
+    organizerInvitation: false,
+    politicalClearance: false,
+    eventClearance: false,
+  });
+  const [currentPreview, setCurrentPreview] = useState(null);
+
 
   const getApplicationData = async () => {
     const res = await getApplicationDataById(params.id);
@@ -40,14 +51,6 @@ const Apply6 = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
 
-  // ✅ Handle file selection
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) {
-  //     setFormData({ ...formData, passportCopy: file });
-  //   }
-  // };
-
   const handleFileChange = (e) => {
     const { name, files } = e.target;
 
@@ -55,6 +58,12 @@ const Apply6 = () => {
       setFormData((prev) => ({
         ...prev,
         [name]: files.length > 1 ? Array.from(files) : files[0],
+      }));
+
+      // mark this particular input as user-uploaded
+      setUserUploaded((prev) => ({
+        ...prev,
+        [name]: true,
       }));
     }
   };
@@ -118,12 +127,6 @@ const Apply6 = () => {
 
   return (
     <div className="enhanced-visa-container">
-      {/* Background Decorative Shapes */}
-      <div className="background-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-      </div>
 
       <div className="enhanced-visa-card">
         {/* Header Section */}
@@ -160,23 +163,24 @@ const Apply6 = () => {
                     style={{ backgroundColor: "#f8f9fa" }}
                     disabled={isSubmitting}
                   />
+                  {errors.passportCopy && (
+                    <p className="error-text">{errors.passportCopy}</p>
+                  )}
                 </div>
-
-                {errors.passportCopy && (
-                  <p className="error-text">{errors.passportCopy}</p>
-                )}
-
                 {/* Show view button after uploading */}
-                {/* {formData.passportCopy && (
+                {formData.passportCopy && userUploaded.passportCopy && (
                   <button
                     type="button"
                     className="view-button"
-                    onClick={() => setShowImageModal(true)}
+                    onClick={() => {
+                      setShowImageModal(true);
+                      setCurrentPreview(formData.passportCopy);
+                    }}
                   >
                     <IoEyeOutline style={{ marginRight: "6px" }} />
-                    View Passport Copy
+                    View Doc
                   </button>
-                )} */}
+                )}
               </div>
             </div>
             {/* BUSINESS CATEGORY */}
@@ -200,23 +204,27 @@ const Apply6 = () => {
                         style={{ backgroundColor: "#f8f9fa" }}
                         disabled={isSubmitting}
                       />
+                      {errors.businessCard && (
+                        <p className="error-text">{errors.businessCard}</p>
+                      )}
                     </div>
 
-                    {errors.businessCard && (
-                      <p className="error-text">{errors.businessCard}</p>
-                    )}
+
 
                     {/* Show view button after uploading */}
-                    {/* {formData.businessCard && (
+                    {formData.businessCard && userUploaded.businessCard && (
                       <button
                         type="button"
                         className="view-button"
-                        onClick={() => setShowImageModal(true)}
+                        onClick={() => {
+                          setShowImageModal(true);
+                          setCurrentPreview(formData.businessCard);
+                        }}
                       >
                         <IoEyeOutline style={{ marginRight: "6px" }} />
-                        View Uploaded Image
+                        View Doc
                       </button>
-                    )} */}
+                    )}
                   </div>
                 </div>
                 <div className="form-grid full-row">
@@ -237,23 +245,27 @@ const Apply6 = () => {
                         style={{ backgroundColor: "#f8f9fa" }}
                         disabled={isSubmitting}
                       />
+                      {errors.businessInvitationLetter && (
+                        <p className="error-text">{errors.businessInvitationLetter}</p>
+                      )}
                     </div>
 
-                    {errors.businessInvitationLetter && (
-                      <p className="error-text">{errors.businessInvitationLetter}</p>
-                    )}
+
 
                     {/* Show view button after uploading */}
-                    {/* {formData.businessInvitationLetter && (
+                    {formData.businessCard && userUploaded.businessInvitationLetter && (
                       <button
                         type="button"
                         className="view-button"
-                        onClick={() => setShowImageModal(true)}
+                        onClick={() => {
+                          setShowImageModal(true);
+                          setCurrentPreview(formData.businessInvitationLetter);
+                        }}
                       >
                         <IoEyeOutline style={{ marginRight: "6px" }} />
-                        View Uploaded Image
+                        View Doc
                       </button>
-                    )} */}
+                    )}
                   </div>
                 </div>
               </>
@@ -273,26 +285,31 @@ const Apply6 = () => {
                       <input
                         type="file"
                         accept="image/*"
+                        name="medicalInvitationLetter"
                         onChange={handleFileChange}
                         className="field-input"
                         style={{ backgroundColor: "#f8f9fa" }}
                         disabled={isSubmitting}
                       />
+
+                      {errors.medicalInvitationLetter && (
+                        <p className="error-text">{errors.medicalInvitationLetter}</p>
+                      )}
                     </div>
 
-                    {errors.imageFile && (
-                      <p className="error-text">{errors.imageFile}</p>
-                    )}
 
                     {/* Show view button after uploading */}
-                    {formData.imageFile && (
+                    {formData.medicalInvitationLetter && userUploaded.medicalInvitationLetter && (
                       <button
                         type="button"
                         className="view-button"
-                        onClick={() => setShowImageModal(true)}
+                        onClick={() => {
+                          setShowImageModal(true);
+                          setCurrentPreview(formData.medicalInvitationLetter);
+                        }}
                       >
                         <IoEyeOutline style={{ marginRight: "6px" }} />
-                        View Uploaded Image
+                        View Doc
                       </button>
                     )}
                   </div>
@@ -355,25 +372,30 @@ const Apply6 = () => {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
+                        name="organizerInvitation"
                         className="field-input"
                         style={{ backgroundColor: "#f8f9fa" }}
                         disabled={isSubmitting}
                       />
+                      {errors.organizerInvitation && (
+                        <p className="error-text">{errors.organizerInvitation}</p>
+                      )}
                     </div>
 
-                    {errors.imageFile && (
-                      <p className="error-text">{errors.imageFile}</p>
-                    )}
+
 
                     {/* Show view button after uploading */}
-                    {formData.imageFile && (
+                    {formData.organizerInvitation && userUploaded.organizerInvitation && (
                       <button
                         type="button"
                         className="view-button"
-                        onClick={() => setShowImageModal(true)}
+                        onClick={() => {
+                          setShowImageModal(true);
+                          setCurrentPreview(formData.organizerInvitation);
+                        }}
                       >
                         <IoEyeOutline style={{ marginRight: "6px" }} />
-                        View Uploaded Image
+                        View Doc
                       </button>
                     )}
                   </div>
@@ -391,25 +413,30 @@ const Apply6 = () => {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
+                        name="politicalClearance"
                         className="field-input"
                         style={{ backgroundColor: "#f8f9fa" }}
                         disabled={isSubmitting}
                       />
+
+                      {errors.politicalClearance && (
+                        <p className="error-text">{errors.politicalClearance}</p>
+                      )}
                     </div>
 
-                    {errors.imageFile && (
-                      <p className="error-text">{errors.imageFile}</p>
-                    )}
 
                     {/* Show view button after uploading */}
-                    {formData.imageFile && (
+                    {formData.politicalClearance && userUploaded.politicalClearance && (
                       <button
                         type="button"
                         className="view-button"
-                        onClick={() => setShowImageModal(true)}
+                        onClick={() => {
+                          setShowImageModal(true);
+                          setCurrentPreview(formData.politicalClearance);
+                        }}
                       >
                         <IoEyeOutline style={{ marginRight: "6px" }} />
-                        View Uploaded Image
+                        View Doc
                       </button>
                     )}
                   </div>
@@ -427,25 +454,30 @@ const Apply6 = () => {
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
+                        nanme="eventClearance"
                         className="field-input"
                         style={{ backgroundColor: "#f8f9fa" }}
                         disabled={isSubmitting}
                       />
+                      {errors.eventClearance && (
+                        <p className="error-text">{errors.eventClearance}</p>
+                      )}
                     </div>
 
-                    {errors.imageFile && (
-                      <p className="error-text">{errors.imageFile}</p>
-                    )}
+
 
                     {/* Show view button after uploading */}
-                    {formData.imageFile && (
+                    {formData.eventClearance && userUploaded.eventClearance && (
                       <button
                         type="button"
                         className="view-button"
-                        onClick={() => setShowImageModal(true)}
+                        onClick={() => {
+                          setShowImageModal(true);
+                          setCurrentPreview(formData.eventClearance);
+                        }}
                       >
                         <IoEyeOutline style={{ marginRight: "6px" }} />
-                        View Uploaded Image
+                        View Doc
                       </button>
                     )}
                   </div>
@@ -501,18 +533,17 @@ const Apply6 = () => {
       {/* ✅ Image Preview Modal */}
       {showImageModal && (
         <div className="image-modal-overlay" onClick={() => setShowImageModal(false)}>
-          <div
-            className="image-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-modal" onClick={() => setShowImageModal(false)}>
               <IoClose size={22} />
             </button>
-            <img
-              src={URL.createObjectURL(formData.passportCopy)}
-              alt="Uploaded Preview"
-              className="uploaded-image-preview"
-            />
+            {currentPreview && (
+              <img
+                src={URL.createObjectURL(currentPreview)}
+                alt="Uploaded Preview"
+                className="uploaded-image-preview"
+              />
+            )}
           </div>
         </div>
       )}
