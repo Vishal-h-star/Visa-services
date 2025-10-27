@@ -23,7 +23,6 @@ const Apply3 = () => {
     presentPostalCode: "",
     presentPhoneNo: "",
     presentMobileNo: "",
-    presentEmail: "",
     sameAsPermanent: false,
 
     // Permanent Address
@@ -65,7 +64,7 @@ const Apply3 = () => {
     pastOccupation: "",
 
     // Military/Police Organization
-    inMilitaryOrganization: false,
+    inMilitaryOrganization: "No",
     forceOrganizationName: "",
     forceOrganizationDesignation: "",
     forceOrganizationRank: "",
@@ -138,7 +137,6 @@ const Apply3 = () => {
       "presentPostalCode",
       "presentPhoneNo",
       "presentMobileNo",
-      "presentEmail",
       "fatherName",
       "fatherNationality",
       "fatherPlaceOfBirth",
@@ -161,11 +159,7 @@ const Apply3 = () => {
       }
     });
 
-    // Email validation
-    // if (formData.presentEmail && !/\S+@\S+\.\S+/.test(formData.presentEmail)) {
-    //   newErrors.presentEmail = "Please enter a valid email address";
-    // }
-
+   
     // Phone number validation
     if (
       formData.presentPhoneNo &&
@@ -182,7 +176,7 @@ const Apply3 = () => {
     }
 
     // Military organization fields validation if Yes is selected
-    if (formData.inMilitaryOrganization === true) {
+    if (formData.inMilitaryOrganization === "Yes") {
       const militaryFields = [
         "forceOrganizationName",
         "forceOrganizationDesignation",
@@ -433,25 +427,7 @@ const Apply3 = () => {
                 )}
               </div>
 
-              {/* <div className="form-field form-field-inline">
-                <label className="field-label">
-                  <span className="label-text">Email ID *</span>
-                </label>
-                <div className="input-container">
-                  <input
-                    type="email"
-                    name="presentEmail"
-                    value={formData.presentEmail}
-                    onChange={handleChange}
-                    className={`field-input ${errors.presentEmail ? "error" : ""
-                      }`}
-                    placeholder="your@email.com"
-                  />
-                </div>
-                {errors.presentEmail && (
-                  <span className="error-message">{errors.presentEmail}</span>
-                )}
-              </div> */}
+           
 
               <div className="form-field full-width">
                 <div className="checkbox-container">
@@ -1208,8 +1184,8 @@ const Apply3 = () => {
                     <input
                       type="radio"
                       name="inMilitaryOrganization"
-                      value={true}
-                      checked={formData.inMilitaryOrganization === true}
+                      value="Yes"
+                      checked={formData.inMilitaryOrganization === "Yes"}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -1220,8 +1196,8 @@ const Apply3 = () => {
                     <input
                       type="radio"
                       name="inMilitaryOrganization"
-                      value={false}
-                      checked={formData.inMilitaryOrganization === false}
+                      value="No"
+                      checked={formData.inMilitaryOrganization === "No"}
                       onChange={handleChange}
                       className="radio-input"
                     />
@@ -1231,7 +1207,7 @@ const Apply3 = () => {
                 </div>
               </div>
 
-              {formData.inMilitaryOrganization === true && (
+              {formData.inMilitaryOrganization === "Yes" && (
                 <div className="military-fields full-width">
                   <div className="form-grid">
                     <div className="form-field">
