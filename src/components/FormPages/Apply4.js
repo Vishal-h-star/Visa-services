@@ -43,11 +43,147 @@ const Apply4 = () => {
     referenceNameHome: "",
     referenceAddressHome: "",
     referencePhoneHome: "",
+
+    // medical shortTerm-self variable
+    stself_HospitalName: "",
+    stself_HospitalAddress: "",
+    stself_State: "",
+    stself_District: "",
+    stself_Phone: "",
+    stself_TreatmentType: "",
+
+    // business setup_business
+    setBuz_Name: "",
+    setBuz_Address: "",
+    setBuz_PhNo: "",
+    setBuz_Website: "",
+    setBuz_NatuOfBuz: "",
+
+    //  business sell_purchase
+    selPur_ApplicantsCompanyName: "",
+    selPur_Address: "",
+    selPur_PhNo: "",
+    selPur_website: "",
+    selPur_NatuOfBuz: "",
+
+    //  business business_meetings
+    buzMeet_ApplicantsCompanyName: "",
+    buzMeet_Address: "",
+    buzMeet_PhNo: "",
+    buzMeet_website: "",
+    buzMeet_DetIndFirmName: "",
+    buzMeet_IndFirmAddress: "",
+    buzMeet_IndFrimPhNo: "",
+    buzMeet_IndFirmWebsite: "",
+
+      //  business recruit_manpower
+      reManPow_ApplicantsCompanyName:"",
+      reManPow_Address:"",
+      reManPow_PhNo:"",
+      reManPow_website:"",
+      reManPow_NandCnoOfCopRepresentativeInIndia:"",
+      reManPow_NatureOfJob:"",
+      reManPow_PlaceRecruitmentConducted:"",
+
+      // business exhibitions
+      exh_ApplicantsCompanyName:"",
+      exh_Address:"",
+      exh_PhNo:"",
+      exh_website:"",
+      exh_NameAndAddOfExh:"",
+     
+      // business Project_expert
+      projExp_ApplicantsCompanyName:"",
+      projExp_Address:"",
+      projExp_PhNo:"",
+      projExp_website:"",
+      projExp_DetIndFirmName:"",
+      projExp_IndFirmAddress:"",
+      projExp_IndFrimPhNo:"",
+      projExp_IndFirmWebsite:"",
+
+    //  business conduct_tours
+    codTour_NandAddrsOfAgencyNativeCountry:"",
+    codTour_CitiesVisitedDuringTour:"",
+    codTour_TravelAgentNameAssociateInIndia:"",
+    codTour_Address:"",
+    codTour_PhNo:"",
+
+  //  business sports_activity
+    sportsAct_sportsEventName: '',
+    sportsAct_eventOrganizerType: '',
+    sportsAct_eventStartDate: '',
+    sportsAct_eventEndDate: '',
+    sportsAct_address: '',
+    sportsAct_state: '',
+    sportsAct_district: '',
+    sportsAct_pinCode: '',
+    sportsAct_organizerName: '',
+    sportsAct_phoneNumber: '',
+    sportsAct_emailId: '',
+    sportsAct_restrictedAreaVisit: '',
+    sportsAct_restrictedAreaDetails: '',
+    sportsAct_previousSportsVisitDetails: '',
+    sportsAct_taxComplianceDetails: '',
+    sportsAct_participationType: '',
+
+    // conference attend_conference
+
+      atendConf_nameOfConference: '',
+      atendConf_startDate: '',
+      atendConf_endDate: '',
+      atendConf_venueAddress: '',
+      atendConf_state: '',
+      atendConf_district: '',
+      atendConf_pincode: '',
+      atendConf_organizerName: '',
+      atendConf_organizerAddress: '',
+      atendConf_organizerPhone: '',
+      atendConf_organizerEmail: '',
+
+      //medical patient_travelling_emedical_visa
+      patientTravMedVisa_name: '',
+      patientTravMedVisa_visaNumber: '',
+      patientTravMedVisa_applicationId: '',
+      patientTravMedVisa_passportNumber: '',
+      patientTravMedVisa_dateOfBirth: '',
+      patientTravMedVisa_nationality: '',
+
+      // e aysh visa treatment_under_ayush_Indian_sytems
+        tayushInd_hospitalName: '',
+        tayushInd_hospitalAddress: '',
+        tayushInd_state: '',
+        tayushInd_district: '',
+        tayushInd_phone: '',
+        tayushInd_medicalTreatmentType: '',
+
+    // e ayush attendent  e-ayust_visa_holder
+
+      ayushAttendent_name: '',
+      ayushAttendent_visaNumber: '',
+      ayushAttendent_applicationId: '',
+      ayushAttendent_passportNumber: '',
+      ayushAttendent_dateOfBirth: '',
+      ayushAttendent_nationality: '',
+      
+
   });
 
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const getApplicationData = async () => {
+    const res = await getApplicationDataById(params.id);
+    console.log(res, "res daa of application");
+    if (res.status === 200) {
+      setFormData(res.data.data);
+    }
+  };
+  console.log(formData, "initial data");
+
   const today = new Date();
-const tenYearsAgo = new Date();
-tenYearsAgo.setFullYear(today.getFullYear() - 10);
+  const tenYearsAgo = new Date();
+  tenYearsAgo.setFullYear(today.getFullYear() - 10);
 
   const [saarcInput, setSaarcInput] = useState({
     country: "",
@@ -60,19 +196,6 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
   for (let i = 0; i < 4; i++) {
     years.push(currentYear - i);
   }
-
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const getApplicationData = async () => {
-    const res = await getApplicationDataById(params.id);
-    console.log(res, "res daa of application");
-    if (res.status === 200) {
-      setFormData(res.data.data);
-    }
-  };
-
-  console.log(formData, "initial data");
 
   useEffect(() => {
     getApplicationData();
@@ -95,8 +218,8 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
       }));
     }
   };
-  // saarcCountries handleChange
 
+  // saarcCountries handleChange
   const handleSaarcInputChange = (e) => {
     const { name, value } = e.target;
     setSaarcInput((prev) => ({ ...prev, [name]: value }));
@@ -424,11 +547,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="stself_HospitalName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.stself_HospitalName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -440,11 +562,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="stself_HospitalAddress"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.stself_HospitalAddress}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -456,11 +577,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="stself_State"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.stself_State}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -472,11 +592,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="stself_District"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.stself_District}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -487,12 +606,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="stself_Phone"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.stself_Phone}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -506,11 +624,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="stself_TreatmentType"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.stself_TreatmentType}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -521,7 +638,6 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                 <>
                   <div className="section-header centered">
                     <h2>
-                      {" "}
                       Details of Purpose " TO SET UP INDUSTRIAL/BUSINESS VENTURE
                       "
                     </h2>
@@ -537,11 +653,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="setBuz_Name"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.setBuz_Name}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -553,11 +668,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="setBuz_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.setBuz_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -568,12 +682,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="setBuz_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.setBuz_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -585,11 +698,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="setBuz_Website"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.setBuz_Website}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -603,11 +715,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="setBuz_NatuOfBuz"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.setBuz_NatuOfBuz}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -629,11 +740,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="selPur_ApplicantsCompanyName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.selPur_ApplicantsCompanyName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -645,11 +755,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="selPur_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.selPur_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -661,11 +770,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="selPur_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.selPur_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -677,11 +785,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="selPur_website"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.selPur_website}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -695,11 +802,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="selPur_NatuOfBuz"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.selPur_NatuOfBuz}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -724,11 +830,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_ApplicantsCompanyName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_ApplicantsCompanyName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -740,11 +845,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -756,11 +860,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -772,11 +875,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_website"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_website}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -790,11 +892,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_DetIndFirmName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_DetIndFirmName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -806,11 +907,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_IndFirmAddress"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_IndFirmAddress}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -822,11 +922,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_IndFrimPhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_IndFrimPhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -838,11 +937,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="buzMeet_IndFirmWebsite"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.buzMeet_IndFirmWebsite}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -864,11 +962,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_ApplicantsCompanyName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_ApplicantsCompanyName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -880,11 +977,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -896,11 +992,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -912,11 +1007,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_website"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_website}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -931,11 +1025,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_NandCnoOfCopRepresentativeInIndia"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_NandCnoOfCopRepresentativeInIndia}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -949,11 +1042,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_NatureOfJob"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_NatureOfJob}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -967,11 +1059,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="reManPow_PlaceRecruitmentConducted"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.reManPow_PlaceRecruitmentConducted}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -996,11 +1087,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="exh_ApplicantsCompanyName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.exh_ApplicantsCompanyName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1012,11 +1102,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="exh_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.exh_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1027,12 +1116,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="exh_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.exh_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1044,11 +1132,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="exh_website"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.exh_website}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1062,11 +1149,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="exh_NameAndAddOfExh"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.exh_NameAndAddOfExh}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1092,11 +1178,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="projExp_ApplicantsCompanyName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_ApplicantsCompanyName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1108,11 +1193,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="projExp_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1123,12 +1207,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="projExp_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1140,11 +1223,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="projExp_website"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_website}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1158,11 +1240,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="projExp_DetIndFirmName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_DetIndFirmName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1174,11 +1255,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="projExp_IndFirmAddress"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_IndFirmAddress}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1189,12 +1269,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="projExp_IndFrimPhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_IndFrimPhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1206,11 +1285,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="projExp_IndFirmWebsite"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.projExp_IndFirmWebsite}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1233,11 +1311,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="codTour_NandAddrsOfAgencyNativeCountry"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.codTour_NandAddrsOfAgencyNativeCountry}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1251,11 +1328,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="codTour_CitiesVisitedDuringTour"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.codTour_CitiesVisitedDuringTour}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1269,11 +1345,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="codTour_TravelAgentNameAssociateInIndia"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.codTour_TravelAgentNameAssociateInIndia}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1285,11 +1360,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="codTour_Address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.codTour_Address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1300,12 +1374,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="codTour_PhNo"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.codTour_PhNo}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1327,11 +1400,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_sportsEventName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_sportsEventName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1347,11 +1419,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_eventOrganizerType"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_eventOrganizerType}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1367,11 +1438,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_eventStartDate"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_eventStartDate}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1383,11 +1453,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_eventEndDate"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_eventEndDate}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1403,11 +1472,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_address"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_address}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1419,11 +1487,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_state"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_state}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1435,11 +1502,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_district"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_district}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1451,11 +1517,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_pinCode"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_pinCode}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1473,11 +1538,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_organizerName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_organizerName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1488,12 +1552,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="sportsAct_phoneNumber"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_phoneNumber}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1505,11 +1568,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_emailId"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_emailId}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1524,11 +1586,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_restrictedAreaVisit"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_restrictedAreaVisit}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1543,11 +1604,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_restrictedAreaDetails"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_restrictedAreaDetails}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1561,11 +1621,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_previousSportsVisitDetails"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_previousSportsVisitDetails}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1579,11 +1638,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_taxComplianceDetails"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_taxComplianceDetails}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1598,11 +1656,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="sportsAct_participationType"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.sportsAct_participationType}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1634,11 +1691,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_nameOfConference"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_nameOfConference}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1652,11 +1708,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_startDate"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_startDate}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1668,11 +1723,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_endDate"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_endDate}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1686,11 +1740,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_venueAddress"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_venueAddress}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1702,11 +1755,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_state"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_state}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1718,11 +1770,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_district"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_district}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1734,11 +1785,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_pincode"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_pincode}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1752,11 +1802,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_organizerName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_organizerName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1768,11 +1817,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_organizerAddress"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_organizerAddress}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1784,11 +1832,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_organizerPhone"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_organizerPhone}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1800,11 +1847,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="atendConf_organizerEmail"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.atendConf_organizerEmail}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1831,11 +1877,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="patientTravMedVisa_name"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.patientTravMedVisa_name}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1849,11 +1894,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="patientTravMedVisa_visaNumber"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.patientTravMedVisa_visaNumber}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1867,11 +1911,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="patientTravMedVisa_applicationId"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.patientTravMedVisa_applicationId}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1885,11 +1928,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="patientTravMedVisa_passportNumber"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.patientTravMedVisa_passportNumber}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1902,12 +1944,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="date"
+                        name="patientTravMedVisa_dateOfBirth"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.patientTravMedVisa_dateOfBirth}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1921,11 +1962,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="patientTravMedVisa_nationality"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.patientTravMedVisa_nationality}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1953,11 +1993,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="tayushInd_hospitalName"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.tayushInd_hospitalName}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1969,11 +2008,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="tayushInd_hospitalAddress"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.tayushInd_hospitalAddress}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -1985,11 +2023,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="tayushInd_state"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.tayushInd_state}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2001,11 +2038,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="tayushInd_district"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.tayushInd_district}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2016,12 +2052,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="number"
+                        name="tayushInd_phone"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.tayushInd_phone}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2035,16 +2070,17 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="tayushInd_medicalTreatmentType"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.tayushInd_medicalTreatmentType}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
                 </>
               )}
+
+              {/* e ayush attendent  */}
 
               {formData.serviceSubCategory === "e-ayush_visa_holder" && (
                 <>
@@ -2065,11 +2101,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="ayushAttendent_name"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.ayushAttendent_name}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2083,11 +2118,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="ayushAttendent_visaNumber"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.ayushAttendent_visaNumber}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2101,11 +2135,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="ayushAttendent_applicationId"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.ayushAttendent_applicationId}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2119,11 +2152,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="ayushAttendent_passportNumber"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.ayushAttendent_passportNumber}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2136,12 +2168,11 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        type="date"
+                        name="ayushAttendent_dateOfBirth"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.ayushAttendent_dateOfBirth}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
@@ -2155,11 +2186,10 @@ tenYearsAgo.setFullYear(today.getFullYear() - 10);
                     <div className="input-container">
                       <input
                         type="text"
-                        readOnly
-                        name="serviceSubCat_subCategory"
+                        name="ayushAttendent_nationality"
                         className="field-input"
-                        // value={formData.serviceSubCat_subCategory}
-                        // onChange={handleChange}
+                        value={formData.ayushAttendent_nationality}
+                        onChange={handleChange}
                       />
                     </div>
                   </div>
