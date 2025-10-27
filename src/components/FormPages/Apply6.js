@@ -25,7 +25,7 @@ const Apply6 = () => {
 
   const getApplicationData = async () => {
     const res = await getApplicationDataById(params.id);
-    console.log(res, 'res daa of application')
+    console.log(res.data.data, 'res daa of application')
     if (res.status === 200) {
       setFormData(res.data.data)
     }
@@ -49,15 +49,15 @@ const Apply6 = () => {
   // };
 
   const handleFileChange = (e) => {
-  const { name, files } = e.target;
+    const { name, files } = e.target;
 
-  if (files && files.length > 0) {
-    setFormData((prev) => ({
-      ...prev,
-      [name]: files.length > 1 ? Array.from(files) : files[0],
-    }));
-  }
-};
+    if (files && files.length > 0) {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: files.length > 1 ? Array.from(files) : files[0],
+      }));
+    }
+  };
 
 
 
@@ -89,17 +89,17 @@ const Apply6 = () => {
       // Simulate API request
       const formDataToSend = new FormData()
       formDataToSend.append("passportCopy", formData.passportCopy);
-      formDataToSend.append("businessCard", formData.businessCard); 
-      formDataToSend.append("businessInvitationLetter", formData.businessInvitationLetter); 
-      formDataToSend.append("medicalInvitationLetter", formData.medicalInvitationLetter); 
-      formDataToSend.append("organizerInvitation", formData.organizerInvitation); 
-      formDataToSend.append("politicalClearance", formData.politicalClearance); 
-      formDataToSend.append("eventClearance", formData.eventClearance); 
+      formDataToSend.append("businessCard", formData.businessCard);
+      formDataToSend.append("businessInvitationLetter", formData.businessInvitationLetter);
+      formDataToSend.append("medicalInvitationLetter", formData.medicalInvitationLetter);
+      formDataToSend.append("organizerInvitation", formData.organizerInvitation);
+      formDataToSend.append("politicalClearance", formData.politicalClearance);
+      formDataToSend.append("eventClearance", formData.eventClearance);
 
       const res = await applicationSubmitStep6(formDataToSend, params.id);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
-        toast.success(`🦄 ${res.data.message}`);
+        // toast.success(`🦄 ${res.data.message}`);
         // setIsSubmitting(true);
         setIsSubmitting(false);
         navigate(`/Payment/${res.data.data.uniqueId}`);
@@ -113,6 +113,8 @@ const Apply6 = () => {
       setIsSubmitting(false);
     }
   };
+
+  console.log(formData, 'form data we get from');
 
   return (
     <div className="enhanced-visa-container">
@@ -165,7 +167,7 @@ const Apply6 = () => {
                 )}
 
                 {/* Show view button after uploading */}
-                {formData.passportCopy && (
+                {/* {formData.passportCopy && (
                   <button
                     type="button"
                     className="view-button"
@@ -174,7 +176,7 @@ const Apply6 = () => {
                     <IoEyeOutline style={{ marginRight: "6px" }} />
                     View Passport Copy
                   </button>
-                )}
+                )} */}
               </div>
             </div>
             {/* BUSINESS CATEGORY */}
@@ -205,7 +207,7 @@ const Apply6 = () => {
                     )}
 
                     {/* Show view button after uploading */}
-                    {formData.businessCard && (
+                    {/* {formData.businessCard && (
                       <button
                         type="button"
                         className="view-button"
@@ -214,7 +216,7 @@ const Apply6 = () => {
                         <IoEyeOutline style={{ marginRight: "6px" }} />
                         View Uploaded Image
                       </button>
-                    )}
+                    )} */}
                   </div>
                 </div>
                 <div className="form-grid full-row">
@@ -242,7 +244,7 @@ const Apply6 = () => {
                     )}
 
                     {/* Show view button after uploading */}
-                    {formData.businessInvitationLetter && (
+                    {/* {formData.businessInvitationLetter && (
                       <button
                         type="button"
                         className="view-button"
@@ -251,13 +253,13 @@ const Apply6 = () => {
                         <IoEyeOutline style={{ marginRight: "6px" }} />
                         View Uploaded Image
                       </button>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </>
             )}
 
-            {formData?.visaService === "medical" && formData?.visaService === "medical_attendant" && formData?.visaService === "ayush" && formData?.visaService === "ayush_attendant" && (
+            {(formData?.visaService == "medical" || formData?.visaService == "ayush") && (
               <>
                 <div className="form-grid full-row">
                   <div className="form-field form-field-inline">
@@ -297,6 +299,46 @@ const Apply6 = () => {
                 </div>
               </>
             )}
+
+            {/* {(formData?.visaService === "medical_attendant" || formData?.visaService === "ayush_attendant") && (
+              <>
+                <div className="form-grid full-row">
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">
+                        System generated medical invitation letter in the defined format *
+                      </span>
+                    </label>
+
+                    <div className="input-container">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="field-input"
+                        style={{ backgroundColor: "#f8f9fa" }}
+                        disabled={isSubmitting}
+                      />
+                    </div>
+
+                    {errors.imageFile && (
+                      <p className="error-text">{errors.imageFile}</p>
+                    )}
+
+                    {formData.imageFile && (
+                      <button
+                        type="button"
+                        className="view-button"
+                        onClick={() => setShowImageModal(true)}
+                      >
+                        <IoEyeOutline style={{ marginRight: "6px" }} />
+                        View Uploaded Image
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </>
+            )} */}
 
             {formData?.visaService === "conference" && (
               <>
