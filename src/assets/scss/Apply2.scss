@@ -294,6 +294,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       -webkit-appearance: none;
       -moz-appearance: none;
       background-image: none;
+      text-transform: uppercase;
 
       &:focus {
         outline: none;
@@ -337,8 +338,9 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 // Make label and input inline
 .form-field-inline {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem; // space between label and input
+  margin-bottom: .75rem;
 
   .field-label {
     flex: 0 0 200px; // fixed width for labels
