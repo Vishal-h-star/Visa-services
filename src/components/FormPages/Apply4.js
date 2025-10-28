@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { nationalities } from "../../assets/data/FormData";
 import { useParams } from "react-router-dom";
 import { portsOfArrival, saarcContriesData } from "../../assets/data/FormData";
 import {
@@ -74,40 +75,40 @@ const Apply4 = () => {
     buzMeet_IndFrimPhNo: "",
     buzMeet_IndFirmWebsite: "",
 
-      //  business recruit_manpower
-      reManPow_ApplicantsCompanyName:"",
-      reManPow_Address:"",
-      reManPow_PhNo:"",
-      reManPow_website:"",
-      reManPow_NandCnoOfCopRepresentativeInIndia:"",
-      reManPow_NatureOfJob:"",
-      reManPow_PlaceRecruitmentConducted:"",
+    //  business recruit_manpower
+    reManPow_ApplicantsCompanyName: "",
+    reManPow_Address: "",
+    reManPow_PhNo: "",
+    reManPow_website: "",
+    reManPow_NandCnoOfCopRepresentativeInIndia: "",
+    reManPow_NatureOfJob: "",
+    reManPow_PlaceRecruitmentConducted: "",
 
-      // business exhibitions
-      exh_ApplicantsCompanyName:"",
-      exh_Address:"",
-      exh_PhNo:"",
-      exh_website:"",
-      exh_NameAndAddOfExh:"",
-     
-      // business Project_expert
-      projExp_ApplicantsCompanyName:"",
-      projExp_Address:"",
-      projExp_PhNo:"",
-      projExp_website:"",
-      projExp_DetIndFirmName:"",
-      projExp_IndFirmAddress:"",
-      projExp_IndFrimPhNo:"",
-      projExp_IndFirmWebsite:"",
+    // business exhibitions
+    exh_ApplicantsCompanyName: "",
+    exh_Address: "",
+    exh_PhNo: "",
+    exh_website: "",
+    exh_NameAndAddOfExh: "",
+
+    // business Project_expert
+    projExp_ApplicantsCompanyName: "",
+    projExp_Address: "",
+    projExp_PhNo: "",
+    projExp_website: "",
+    projExp_DetIndFirmName: "",
+    projExp_IndFirmAddress: "",
+    projExp_IndFrimPhNo: "",
+    projExp_IndFirmWebsite: "",
 
     //  business conduct_tours
-    codTour_NandAddrsOfAgencyNativeCountry:"",
-    codTour_CitiesVisitedDuringTour:"",
-    codTour_TravelAgentNameAssociateInIndia:"",
-    codTour_Address:"",
-    codTour_PhNo:"",
+    codTour_NandAddrsOfAgencyNativeCountry: "",
+    codTour_CitiesVisitedDuringTour: "",
+    codTour_TravelAgentNameAssociateInIndia: "",
+    codTour_Address: "",
+    codTour_PhNo: "",
 
-  //  business sports_activity
+    //  business sports_activity
     sportsAct_sportsEventName: '',
     sportsAct_eventOrganizerType: '',
     sportsAct_eventStartDate: '',
@@ -127,43 +128,43 @@ const Apply4 = () => {
 
     // conference attend_conference
 
-      atendConf_nameOfConference: '',
-      atendConf_startDate: '',
-      atendConf_endDate: '',
-      atendConf_venueAddress: '',
-      atendConf_state: '',
-      atendConf_district: '',
-      atendConf_pincode: '',
-      atendConf_organizerName: '',
-      atendConf_organizerAddress: '',
-      atendConf_organizerPhone: '',
-      atendConf_organizerEmail: '',
+    atendConf_nameOfConference: '',
+    atendConf_startDate: '',
+    atendConf_endDate: '',
+    atendConf_venueAddress: '',
+    atendConf_state: '',
+    atendConf_district: '',
+    atendConf_pincode: '',
+    atendConf_organizerName: '',
+    atendConf_organizerAddress: '',
+    atendConf_organizerPhone: '',
+    atendConf_organizerEmail: '',
 
-      //medical patient_travelling_emedical_visa
-      patientTravMedVisa_name: '',
-      patientTravMedVisa_visaNumber: '',
-      patientTravMedVisa_applicationId: '',
-      patientTravMedVisa_passportNumber: '',
-      patientTravMedVisa_dateOfBirth: '',
-      patientTravMedVisa_nationality: '',
+    //medical patient_travelling_emedical_visa
+    patientTravMedVisa_name: '',
+    patientTravMedVisa_visaNumber: '',
+    patientTravMedVisa_applicationId: '',
+    patientTravMedVisa_passportNumber: '',
+    patientTravMedVisa_dateOfBirth: '',
+    patientTravMedVisa_nationality: '',
 
-      // e aysh visa treatment_under_ayush_Indian_sytems
-        tayushInd_hospitalName: '',
-        tayushInd_hospitalAddress: '',
-        tayushInd_state: '',
-        tayushInd_district: '',
-        tayushInd_phone: '',
-        tayushInd_medicalTreatmentType: '',
+    // e aysh visa treatment_under_ayush_Indian_sytems
+    tayushInd_hospitalName: '',
+    tayushInd_hospitalAddress: '',
+    tayushInd_state: '',
+    tayushInd_district: '',
+    tayushInd_phone: '',
+    tayushInd_medicalTreatmentType: '',
 
     // e ayush attendent  e-ayust_visa_holder
 
-      ayushAttendent_name: '',
-      ayushAttendent_visaNumber: '',
-      ayushAttendent_applicationId: '',
-      ayushAttendent_passportNumber: '',
-      ayushAttendent_dateOfBirth: '',
-      ayushAttendent_nationality: '',
-      
+    ayushAttendent_name: '',
+    ayushAttendent_visaNumber: '',
+    ayushAttendent_applicationId: '',
+    ayushAttendent_passportNumber: '',
+    ayushAttendent_dateOfBirth: '',
+    ayushAttendent_nationality: '',
+
 
   });
 
@@ -461,9 +462,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="placeVisited1"
-                    className={`field-input ${
-                      errors.placeVisited1 ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.placeVisited1 ? "error" : ""
+                      }`}
                     value={formData.placeVisited1}
                     onChange={handleChange}
                     placeholder="Enter place to visit"
@@ -504,9 +504,8 @@ const Apply4 = () => {
                 <div className="select-container">
                   <select
                     name="expectedPortOfExit"
-                    className={`field-select ${
-                      errors.expectedPortOfExit ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.expectedPortOfExit ? "error" : ""
+                      }`}
                     value={formData.expectedPortOfExit}
                     onChange={handleChange}
                   >
@@ -767,7 +766,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         name="selPur_PhNo"
                         className="field-input"
                         value={formData.selPur_PhNo}
@@ -857,7 +856,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         name="buzMeet_PhNo"
                         className="field-input"
                         value={formData.buzMeet_PhNo}
@@ -919,7 +918,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         name="buzMeet_IndFrimPhNo"
                         className="field-input"
                         value={formData.buzMeet_IndFrimPhNo}
@@ -989,7 +988,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         name="reManPow_PhNo"
                         className="field-input"
                         value={formData.reManPow_PhNo}
@@ -1434,14 +1433,32 @@ const Apply4 = () => {
                       <span className="label-text">Event Start date *</span>
                     </div>
                     <div className="input-container">
-                      <input
-                        type="text"
-                        name="sportsAct_eventStartDate"
-                        className="field-input"
-                        value={formData.sportsAct_eventStartDate}
-                        onChange={handleChange}
+                      <DatePicker
+                        selected={
+                          formData.sportsAct_eventStartDate
+                            ? new Date(formData.sportsAct_eventStartDate)
+                            : null
+                        }
+                        onChange={(date) => {
+                          const formattedDate = date ? date.toISOString().split("T")[0] : "";
+                          handleChange({
+                            target: { name: "sportsAct_eventStartDate", value: formattedDate },
+                          });
+                        }}
+                        dateFormat="dd/MM/yyyy"
+                        // placeholderText="Select event start date"
+                        className={`field-input ${errors.sportsAct_eventStartDate ? "error" : ""
+                          }`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        minDate={new Date()} // 👈 optional: event cannot start before today
                       />
                     </div>
+                    {errors.sportsAct_eventStartDate && (
+                      <span className="error-message">{errors.sportsAct_eventStartDate}</span>
+                    )}
+
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -1449,14 +1466,36 @@ const Apply4 = () => {
                       <span className="label-text">Event End date *</span>
                     </div>
                     <div className="input-container">
-                      <input
-                        type="text"
-                        name="sportsAct_eventEndDate"
-                        className="field-input"
-                        value={formData.sportsAct_eventEndDate}
-                        onChange={handleChange}
+                      <DatePicker
+                        selected={
+                          formData.sportsAct_eventEndDate
+                            ? new Date(formData.sportsAct_eventEndDate)
+                            : null
+                        }
+                        onChange={(date) => {
+                          const formattedDate = date ? date.toISOString().split("T")[0] : "";
+                          handleChange({
+                            target: { name: "sportsAct_eventEndDate", value: formattedDate },
+                          });
+                        }}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Select event end date"
+                        className={`field-input ${errors.sportsAct_eventEndDate ? "error" : ""
+                          }`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        minDate={
+                          formData.sportsAct_eventStartDate
+                            ? new Date(formData.sportsAct_eventStartDate)
+                            : new Date()
+                        } // 👈 ensures end date is not before start date
                       />
                     </div>
+                    {errors.sportsAct_eventEndDate && (
+                      <span className="error-message">{errors.sportsAct_eventEndDate}</span>
+                    )}
+
                   </div>
 
                   <p style={{ textAlign: "center" }}>
@@ -1565,7 +1604,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="email"
                         name="sportsAct_emailId"
                         className="field-input"
                         value={formData.sportsAct_emailId}
@@ -1704,14 +1743,31 @@ const Apply4 = () => {
                       </span>
                     </div>
                     <div className="input-container">
-                      <input
-                        type="text"
-                        name="atendConf_startDate"
-                        className="field-input"
-                        value={formData.atendConf_startDate}
-                        onChange={handleChange}
+                      <DatePicker
+                        selected={
+                          formData.atendConf_startDate
+                            ? new Date(formData.atendConf_startDate)
+                            : null
+                        }
+                        onChange={(date) => {
+                          const formattedDate = date ? date.toISOString().split("T")[0] : "";
+                          handleChange({
+                            target: { name: "atendConf_startDate", value: formattedDate },
+                          });
+                        }}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Select start date"
+                        className={`field-input ${errors.atendConf_startDate ? "error" : ""}`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        minDate={new Date()} // 👈 optional — prevents picking past dates
                       />
                     </div>
+                    {errors.atendConf_startDate && (
+                      <span className="error-message">{errors.atendConf_startDate}</span>
+                    )}
+
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -1829,7 +1885,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="number"
                         name="atendConf_organizerPhone"
                         className="field-input"
                         value={formData.atendConf_organizerPhone}
@@ -1844,7 +1900,7 @@ const Apply4 = () => {
                     </div>
                     <div className="input-container">
                       <input
-                        type="text"
+                        type="email"
                         name="atendConf_organizerEmail"
                         className="field-input"
                         value={formData.atendConf_organizerEmail}
@@ -1857,226 +1913,239 @@ const Apply4 = () => {
 
               {formData.serviceSubCategory ===
                 "patient_travelling_emedical_visa" && (
-                <>
-                  <div className="section-header centered">
-                    <h2>
-                      Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO
-                      INDIA ON EMEDICAL VISA"
-                    </h2>
-                  </div>
+                  <>
+                    <div className="section-header centered">
+                      <h2>
+                        Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO
+                        INDIA ON EMEDICAL VISA"
+                      </h2>
+                    </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Name of the principal e-Medical Visa holder (i.e. the
-                        patient) *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Name of the principal e-Medical Visa holder (i.e. the
+                          patient) *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="patientTravMedVisa_name"
+                          className="field-input"
+                          value={formData.patientTravMedVisa_name}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="patientTravMedVisa_name"
-                        className="field-input"
-                        value={formData.patientTravMedVisa_name}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Visa number of principal e-Medical Visa holder *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Visa number of principal e-Medical Visa holder *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="patientTravMedVisa_visaNumber"
+                          className="field-input"
+                          value={formData.patientTravMedVisa_visaNumber}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="patientTravMedVisa_visaNumber"
-                        className="field-input"
-                        value={formData.patientTravMedVisa_visaNumber}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Application id of principal e-Medical Visa holder *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Application id of principal e-Medical Visa holder *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="patientTravMedVisa_applicationId"
+                          className="field-input"
+                          value={formData.patientTravMedVisa_applicationId}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="patientTravMedVisa_applicationId"
-                        className="field-input"
-                        value={formData.patientTravMedVisa_applicationId}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Passport number of principal e-Medical Visa holder *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Passport number of principal e-Medical Visa holder *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="patientTravMedVisa_passportNumber"
+                          className="field-input"
+                          value={formData.patientTravMedVisa_passportNumber}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="patientTravMedVisa_passportNumber"
-                        className="field-input"
-                        value={formData.patientTravMedVisa_passportNumber}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Date of birth of principal e-Medical Visa holder *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Date of birth of principal e-Medical Visa holder *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="date"
+                          name="patientTravMedVisa_dateOfBirth"
+                          className="field-input"
+                          value={formData.patientTravMedVisa_dateOfBirth}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="date"
-                        name="patientTravMedVisa_dateOfBirth"
-                        className="field-input"
-                        value={formData.patientTravMedVisa_dateOfBirth}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Nationality of principal e-Medical Visa holder *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <label className="field-label">
+                        <span className="label-text">Nationality *</span>
+                      </label>
+                      <div className="select-container">
+                        <select
+                          name="patientTravMedVisa_nationality"
+                          value={formData.patientTravMedVisa_nationality || ""}
+                          onChange={handleChange}
+                          className={`field-select ${errors.patientTravMedVisa_nationality ? "error" : ""
+                            }`}
+                        >
+                          <option value=""></option>
+                          {nationalities.map((nation) => (
+                            <option key={nation.value} value={nation.value}>
+                              {nation.label}
+                            </option>
+                          ))}
+                        </select>
+                        <span className="select-arrow">▼</span>
+                      </div>
+                      {errors.patientTravMedVisa_nationality && (
+                        <span className="error-message">
+                          {errors.patientTravMedVisa_nationality}
+                        </span>
+                      )}
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="patientTravMedVisa_nationality"
-                        className="field-input"
-                        value={formData.patientTravMedVisa_nationality}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
+
+
+                  </>
+                )}
 
               {/* e ayush visa   TREATMENT UNDER AYUSH SYSTEMS/INDIAN  */}
               {formData.serviceSubCategory ===
                 "treatment_under_ayush_Indian_sytems" && (
-                <>
-                  <div className="section-header centered">
-                    <h2>
-                      Details of Purpose "TREATMENT UNDER AYUSH SYSTEMS/INDIAN
-                      SYSTEMS OF MEDICINE"
-                    </h2>
-                  </div>
+                  <>
+                    <div className="section-header centered">
+                      <h2>
+                        Details of Purpose "TREATMENT UNDER AYUSH SYSTEMS/INDIAN
+                        SYSTEMS OF MEDICINE"
+                      </h2>
+                    </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Name of the Hospital where Medical treatment is to be
-                        carried out *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Name of the Hospital where Medical treatment is to be
+                          carried out *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="tayushInd_hospitalName"
+                          className="field-input"
+                          value={formData.tayushInd_hospitalName}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="tayushInd_hospitalName"
-                        className="field-input"
-                        value={formData.tayushInd_hospitalName}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">Address of Hospital *</span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">Address of Hospital *</span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="tayushInd_hospitalAddress"
+                          className="field-input"
+                          value={formData.tayushInd_hospitalAddress}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="tayushInd_hospitalAddress"
-                        className="field-input"
-                        value={formData.tayushInd_hospitalAddress}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">State *</span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">State *</span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="tayushInd_state"
+                          className="field-input"
+                          value={formData.tayushInd_state}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="tayushInd_state"
-                        className="field-input"
-                        value={formData.tayushInd_state}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">District *</span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">District *</span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="tayushInd_district"
+                          className="field-input"
+                          value={formData.tayushInd_district}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="tayushInd_district"
-                        className="field-input"
-                        value={formData.tayushInd_district}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">Phone *</span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">Phone *</span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="number"
+                          name="tayushInd_phone"
+                          className="field-input"
+                          value={formData.tayushInd_phone}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="number"
-                        name="tayushInd_phone"
-                        className="field-input"
-                        value={formData.tayushInd_phone}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
 
-                  <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Type of Medical Treatment required *
-                      </span>
+                    <div className="form-field form-field-inline">
+                      <div className="field-label">
+                        <span className="label-text">
+                          Type of Medical Treatment required *
+                        </span>
+                      </div>
+                      <div className="input-container">
+                        <input
+                          type="text"
+                          name="tayushInd_medicalTreatmentType"
+                          className="field-input"
+                          value={formData.tayushInd_medicalTreatmentType}
+                          onChange={handleChange}
+                        />
+                      </div>
                     </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
-                        name="tayushInd_medicalTreatmentType"
-                        className="field-input"
-                        value={formData.tayushInd_medicalTreatmentType}
-                        onChange={handleChange}
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
+                  </>
+                )}
 
               {/* e ayush attendent  */}
 
@@ -2176,21 +2245,33 @@ const Apply4 = () => {
                   </div>
 
                   <div className="form-field form-field-inline">
-                    <div className="field-label">
-                      <span className="label-text">
-                        Nationality of principal e-Medical Visa holder *
-                      </span>
-                    </div>
-                    <div className="input-container">
-                      <input
-                        type="text"
+                    <label className="field-label">
+                      <span className="label-text">Nationality of principal e-Medical Visa holder  *</span>
+                    </label>
+                    <div className="select-container">
+                      <select
                         name="ayushAttendent_nationality"
-                        className="field-input"
-                        value={formData.ayushAttendent_nationality}
+                        value={formData.ayushAttendent_nationality || ""}
                         onChange={handleChange}
-                      />
+                        className={`field-select ${errors.ayushAttendent_nationality ? "error" : ""
+                          }`}
+                      >
+                        <option value=""></option>
+                        {nationalities.map((country) => (
+                          <option key={country.value} value={country.value}>
+                            {country.label}
+                          </option>
+                        ))}
+                      </select>
+                      <span className="select-arrow">▼</span>
                     </div>
+                    {errors.ayushAttendent_nationality && (
+                      <span className="error-message">
+                        {errors.ayushAttendent_nationality}
+                      </span>
+                    )}
                   </div>
+
                 </>
               )}
 
@@ -2360,9 +2441,8 @@ const Apply4 = () => {
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Select issue date"
-                        className={`field-input ${
-                          errors.visitedIndiaBeforeDateOfIssue ? "error" : ""
-                        }`}
+                        className={`field-input ${errors.visitedIndiaBeforeDateOfIssue ? "error" : ""
+                          }`}
                         showMonthDropdown
                         showYearDropdown
                         dropdownMode="select"
@@ -2663,9 +2743,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameIndia"
-                    className={`field-input ${
-                      errors.referenceNameIndia ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceNameIndia ? "error" : ""
+                      }`}
                     value={formData.referenceNameIndia}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -2686,9 +2765,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressIndia"
-                    className={`field-input ${
-                      errors.referenceAddressIndia ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceAddressIndia ? "error" : ""
+                      }`}
                     value={formData.referenceAddressIndia}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -2711,9 +2789,8 @@ const Apply4 = () => {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneIndia"
-                    className={`field-input ${
-                      errors.referencePhoneIndia ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referencePhoneIndia ? "error" : ""
+                      }`}
                     value={formData.referencePhoneIndia}
                     onChange={handleChange}
                     placeholder="Enter phone number"
@@ -2736,9 +2813,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameHome"
-                    className={`field-input ${
-                      errors.referenceNameHome ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceNameHome ? "error" : ""
+                      }`}
                     value={formData.referenceNameHome}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -2759,9 +2835,8 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressHome"
-                    className={`field-input ${
-                      errors.referenceAddressHome ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referenceAddressHome ? "error" : ""
+                      }`}
                     value={formData.referenceAddressHome}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -2784,9 +2859,8 @@ const Apply4 = () => {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneHome"
-                    className={`field-input ${
-                      errors.referencePhoneHome ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.referencePhoneHome ? "error" : ""
+                      }`}
                     value={formData.referencePhoneHome}
                     onChange={handleChange}
                     placeholder="Enter phone number"
