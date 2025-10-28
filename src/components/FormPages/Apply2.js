@@ -154,6 +154,9 @@ const Apply2 = () => {
       }
     }
 
+  //   event start end date validation 
+
+
     // conditional: nationality acquired details
     if (formData.nationalityAcquired === "By naturalization") {
       if (
