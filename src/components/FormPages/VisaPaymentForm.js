@@ -107,6 +107,7 @@ const VisaPaymentForm = () => {
               <span className="value">${formData?.amountToPay}</span>
             </div>
           </div>
+          
         </div>
 
         {/* Payment Form Section */}

@@ -11,7 +11,7 @@ const NavLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/about" exact>
+        <NavLink to="/questions" exact>
           About
         </NavLink>
       </li>

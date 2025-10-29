@@ -498,3 +498,23 @@ export const occupations = [
 
 
 export const maritalStatuses = ["Single", "Married"];
+
+export const form_questions = [
+  { key: "arrested", label: "Have you ever been arrested?", 
+    child: { key: "givenDetailarrested", value: "Give Details"  } },
+  { key: "deported", label: "Have you ever been deported from any country?" , 
+    child: { key: "givenDetaildeported", value: "Give Details"  }
+  },
+  { key: "trafficking", label: "Have you ever been involved in human trafficking?",
+    child: { key: "givenDetailtrafficking", value: "Give Details"  }
+   },
+  { key: "cyberCrime", label: "Have you ever been involved in any cyber crime?",
+    child: { key: "givenDetailcyberCrime", value: "Give Details"  }
+   },
+  { key: "terrorismSupport", label: "Have you ever supported terrorism in any form?",
+    child: { key: "givenDetailterrorismSupport", value: "Give Details"  }
+   },
+  { key: "asylum", label: "Have you ever sought asylum in any country?",
+    child: { key: "givenDetailasylum", value: "Give Details"  }
+   },
+]
