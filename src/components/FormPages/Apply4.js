@@ -1993,16 +1993,32 @@ const Apply4 = () => {
                     <div className="form-field form-field-inline">
                       <div className="field-label">
                         <span className="label-text">
-                          Date of birth of principal e-Medical Visa holder *
+                          Date of birth of principal e-Medical Visa holder **
                         </span>
                       </div>
                       <div className="input-container">
-                        <input
-                          type="date"
-                          name="patientTravMedVisa_dateOfBirth"
-                          className="field-input"
-                          value={formData.patientTravMedVisa_dateOfBirth}
-                          onChange={handleChange}
+                        <DatePicker
+                          selected={
+                            formData.patientTravMedVisa_dateOfBirth
+                              ? new Date(formData.patientTravMedVisa_dateOfBirth)
+                              : null
+                          }
+                          onChange={(date) => {
+                            const formattedDate = date
+                              ? date.toISOString().split("T")[0]
+                              : "";
+                            handleChange({
+                              target: { name: "patientTravMedVisa_dateOfBirth", value: formattedDate },
+                            });
+                          }}
+                          dateFormat="dd/MM/yyyy"
+                          placeholderText="Date"
+                          className={`field-input ${errors.patientTravMedVisa_dateOfBirth ? "error" : ""
+                            }`}
+                          showMonthDropdown
+                          showYearDropdown
+                          dropdownMode="select"
+                          maxDate={new Date()}
                         />
                       </div>
                     </div>
@@ -2234,12 +2250,28 @@ const Apply4 = () => {
                       </span>
                     </div>
                     <div className="input-container">
-                      <input
-                        type="date"
-                        name="ayushAttendent_dateOfBirth"
-                        className="field-input"
-                        value={formData.ayushAttendent_dateOfBirth}
-                        onChange={handleChange}
+                      <DatePicker
+                        selected={
+                          formData.ayushAttendent_dateOfBirth
+                            ? new Date(formData.ayushAttendent_dateOfBirth)
+                            : null
+                        }
+                        onChange={(date) => {
+                          const formattedDate = date
+                            ? date.toISOString().split("T")[0]
+                            : "";
+                          handleChange({
+                            target: { name: "ayushAttendent_dateOfBirth", value: formattedDate },
+                          });
+                        }}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Select date"
+                        className={`field-input ${errors.ayushAttendent_dateOfBirth ? "error" : ""
+                          }`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        maxDate={new Date()} // restrict DOB to past dates
                       />
                     </div>
                   </div>
