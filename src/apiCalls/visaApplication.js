@@ -56,8 +56,6 @@ export const applicationSubmitStep2 = async (formData, applicationId) => {
   }
 };
 
-
-
 export const applicationSubmitStep3 = async (formData, applicationId) => {
   try {
     const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep3?applicationId=${applicationId}`, formData);
@@ -110,4 +108,15 @@ export const applicationSubmitStep6 = async (formData, applicationId) => {
   }
 };
 
-
+export const applicationSubmitStep7 = async (formData, applicationId) => {
+  try {
+    const res = await publicRequest.patch(`/visaapplication/applicationSubmitStep7?applicationId=${applicationId}`, formData);
+    console.log(res, "user");
+    if (res.status === 200) {
+      return res
+    }
+  } catch (err) {
+    console.log(err, "err for create user");
+    alert(err);
+  }
+};

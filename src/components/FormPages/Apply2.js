@@ -292,11 +292,7 @@ const Apply2 = () => {
   return (
     <div className="enhanced-visa-container">
       {/* Background Elements (kept as in your original) */}
-      <div className="background-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-      </div>
+      
 
       <div className="enhanced-visa-card">
         {/* Header Section */}
