@@ -271,7 +271,7 @@ const handleSubmit = async (e) => {
                       errors.nationality ? "error" : ""
                     }`}
                   >
-                    <option value="">SELECT NATIONALITIE</option>
+                    <option value="">SELECT NATIONALITY</option>
                     {nationalities
                       .filter((option) => option.status === true)
                       .map((option) => (

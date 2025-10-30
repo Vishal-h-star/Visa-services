@@ -35,7 +35,7 @@ const ApplicationForm = () => {
             <form className="application-form" onSubmit={handleSubmit}>
               <h2 className="form-title">Application Details</h2>
 
-              <div className="form-group flex">
+              <div className="form-group">
                 <div>
                   <label htmlFor="applicationNumber" className="form-label">
                     Enter your Application Number :

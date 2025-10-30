@@ -86,50 +86,7 @@ const MobileNavbar = () => {
                 </Link>
               </li>
 
-              {/* {navbarList.map((item, index) => {
-                return (
-                  <>
-                    <li
-                      className="menu-category"
-                      onClick={() => toggle(index)}
-                      key={index}
-                    >
-                      <button className="accordion-menu">
-                        <p className="menu-title">{item.catname}</p>
-
-                        <div>
-                          {clicked === index ? (
-                            <FiMinus className="cat-icon" />
-                          ) : (
-                            <FiPlus className="cat-icon" />
-                          )}
-                        </div>
-                      </button>
-
-                      {clicked === index ? (
-                        <ul className="submenu-category-list">
-                          {item.subcategory.map((subcat, index) => {
-                            return (
-                              <>
-                                <li className="submenu-category">
-                                  <Link
-                                    to="/"
-                                    className="submenu-title"
-                                    onClick={closeDrawerHandler}
-                                    key={index}
-                                  >
-                                    {subcat.subcatname}
-                                  </Link>
-                                </li>
-                              </>
-                            );
-                          })}
-                        </ul>
-                      ) : null}
-                    </li>
-                  </>
-                );
-              })} */}
+          
 
               <li className="menu-category">
                 <Link
@@ -195,7 +152,7 @@ const MobileNavbar = () => {
       <div className="mobile-navbar-heading">
         <p className="main-navigation__title">
         <Link to="/">
-            <img src={logo} alt="logo" width="150" />
+            <img src={logo} className="mobile-logo" alt="logo" width="100" />
           </Link>
         </p>
 
