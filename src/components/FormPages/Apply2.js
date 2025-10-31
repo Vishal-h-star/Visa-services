@@ -321,6 +321,7 @@ const Apply2 = () => {
                     type="text"
                     name="surname"
                     value={formData.surname || ""}
+                    readOnly
                     onChange={handleChange}
                     className={`field-input ${errors.surname ? "error" : ""}`}
                   />
@@ -339,6 +340,7 @@ const Apply2 = () => {
                     type="text"
                     name="givenName"
                     value={formData.givenName || ""}
+                    readOnly
                     onChange={handleChange}
                     className={`field-input ${errors.givenName ? "error" : ""}`}
                   />

@@ -287,7 +287,7 @@ const Apply1 = () => {
                       .filter((option) => option.status === true)
                       .map((option) => (
                         <option key={option.value} value={option.value}>
-                          {option.label} - {option.value}
+                          {option.label}
                         </option>
                       ))}
                   </select>
