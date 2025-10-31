@@ -604,8 +604,9 @@ const Apply2 = () => {
                 <div className="select-container">
                   <select
                     name="nationality"
+                    readonly
                     value={formData.nationality || ""}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                     className={`field-select ${errors.nationality ? "error" : ""}`}
                   >
                     <option value="">Select Nationality</option>
