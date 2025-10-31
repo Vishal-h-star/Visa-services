@@ -22,6 +22,7 @@ import Apply6 from "./components/FormPages/Apply6";
 import VisaFee from "./pages/VisaFee";
 import Apply1 from "./components/FormPages/Apply1";
 import FormQuestion from "./components/FormPages/FormQuestion";
+import Preview from "./components/FormPages/Preview";
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/Apply6/:id" exact element={<Apply6/>} />
         <Route path="/questions/:id" element={<FormQuestion/>} />
         <Route path="/Payment/:id" exact element={<VisaPaymentForm/>}/>
+         <Route path="/Preview/:id" exact element={<Preview/>}/>
         <Route exact path="/partial-Filled" element={<PartialFilled />} />
         <Route exact path="/visa-fee" element={<VisaFee />} />
         <Route exact path="/contact" elemenmt={<Contact />} />
