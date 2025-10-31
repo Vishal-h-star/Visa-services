@@ -1,8 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react'
-import styled, {css} from 'styled-components'
-import Button from '../../components/Button'
-import { IoMdArrowRoundForward } from 'react-icons/io'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import AOS from "aos";
 
 

@@ -117,34 +117,6 @@ const MobileNavbar = () => {
                 </Link>
               </li>
             </ul>
-
-            <div>
-              <ul className="mobile-social-container">
-                <li>
-                  <a href="#" className="social-link">
-                    {/* <BsFacebook /> */}
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" className="social-link">
-                    {/* <BsTwitter /> */}
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" className="social-link">
-                    {/* <BsInstagram /> */}
-                  </a>
-                </li>
-
-                <li>
-                  <a href="#" className="social-link">
-                    {/* <BsLinkedin /> */}
-                  </a>
-                </li>
-              </ul>
-            </div>
           </nav>
         </div>
       </SideDrawer>
