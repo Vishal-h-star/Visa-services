@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { form_questions } from "../../assets/data/FormData";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+    getApplicationDataById,
+    applicationSubmitStep7,
+} from "../../apiCalls/visaApplication";
+import { toast } from "react-toastify";
 
 const FormQuestion = () => {
-
+    const navigate = useNavigate();
+    const params = useParams();
     const [securityAnswers, setSecurityAnswers] = useState({
         arrested: "",
         deported: "",
@@ -22,14 +29,23 @@ const FormQuestion = () => {
     const [declared, setDeclared] = useState(false);
     const [error, setError] = useState("");
 
-    // const questionDetails = [
-    //     { key: "givenDetailarrested", value: "givenDetails" ,parent:"arrested" },
-    //     { key: "givenDetailarrested", value: "givenDetails" },
-    //     { key: "givenDetailarrested", value: "givenDetails" },
-    //     { key: "givenDetailarrested", value: "givenDetails" },
-    //     { key: "givenDetailarrested", value: "givenDetails" },
-    //     { key: "givenDetailarrested", value: "givenDetails" },
-    // ]
+    const getApplicationData = async () => {
+        try {
+            const res = await getApplicationDataById(params.id);
+            console.log(res, "res daa of application");
+            if (res.status === 200 && res.data && res.data.data) {
+                // merge to keep all keys
+                setSecurityAnswers((prev) => ({ ...prev, ...res.data.data }));
+            }
+        } catch (err) {
+            console.error("Error fetching application data:", err);
+        }
+    };
+
+    useEffect(() => {
+        if (params?.id) getApplicationData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [params.id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -37,25 +53,29 @@ const FormQuestion = () => {
             ...prev,
             [name]: value,
         }));
-
-        // if (error[name]) {
-        //     setError((prev) => ({
-        //         ...prev,
-        //         [name]: "",
-        //     }));
-        // }
-
     }
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!declared) {
             setError("Please accept the declaration.");
             return;
         }
-        alert("form submitted successfully ");
-        console.log("Form Data:", securityAnswers);
+        try {
+            console.log("Form Data:", securityAnswers);
+            const res = await applicationSubmitStep7(securityAnswers, params.id);
+
+            if (res.status === 200) {
+                console.log(res.data, "data we get from back");
+                navigate(`/apply3/${res.data.data.uniqueId}`);
+            } else {
+                toast.error(`Some Error Happens!!`);
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error("Error submitting application");
+        }
 
     }
 
@@ -82,16 +102,14 @@ const FormQuestion = () => {
                     <div className="payment-header">
                         <div className="application-info">
                             <div className="info-row">
-                                <span className="label">Application Type :</span>
+                                <span className="label">Application Type : <strong className="text-uppercase">{securityAnswers?.applicationType}</strong></span>
                                 <span className="value text-uppercase"></span>
                             </div>
                             <div className="info-row">
-                                <span className="label">Port of arrival :</span>
-                                <span className="value text-uppercase"></span>
+                                <span className="label">Port of arrival : <strong className="text-uppercase">{securityAnswers?.portOfArrival}</strong></span>
                             </div>
                             <div className="info-row">
-                                <span className="label">Temporary Application ID</span>
-                                <span className="value"></span>
+                                <span className="label">Temporary Application ID: <strong>{params?.id}</strong></span>
                             </div>
                         </div>
                     </div>

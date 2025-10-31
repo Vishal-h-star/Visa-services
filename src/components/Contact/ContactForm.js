@@ -4,7 +4,6 @@ import AOS from "aos";
 import countries from "i18n-iso-countries";
 import enLocale from "i18n-iso-countries/langs/en.json";
 import itLocale from "i18n-iso-countries/langs/it.json";
-import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
   const mounted = useRef(false);

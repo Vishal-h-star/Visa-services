@@ -1,8 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react'
-import styled, {css} from 'styled-components'
-import Button from '../../components/Button'
-import { IoMdArrowRoundForward } from 'react-icons/io'
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import AOS from "aos";
 
 
@@ -59,7 +55,7 @@ const Hero = ({ slides }) => {
         return null;
     }
     return (
-        <section className='hero-section' data-aos="fade-up" data-aos-duration='500'>
+        <section className='hero-section'>
             <div className='hero-wrapper'>
              {slides.map((slide, index) => {
                  return(
@@ -67,26 +63,11 @@ const Hero = ({ slides }) => {
                          {index === current && (
                               <div className='hero-slider'>
                               <img src={slide.image} alt={slide.alt} className='hero-image'/>
-                              {/* <div className='hero-content'>
-                                  <h1>{slide.title}</h1>
-                                  <p>{slide.price}</p>
-                                  <Button to={slide.path} primary="true"
-                                     css={`
-                                     max-width: 160px`}
-                                     >
-                                      {slide.label}
-                                      <Arrow />
-                                  </Button>
-                              </div> */}
                           </div>
                          )} 
                      </div>
                  )
              })}
-             <div className='slider-buttons'>
-                 <FaArrowLeft className='arrow-button' onClick={prevSlide}/>
-                 <FaArrowRight className='arrow-button' onClick={nextSlide}/>
-             </div>
             </div>
         </section>
     )

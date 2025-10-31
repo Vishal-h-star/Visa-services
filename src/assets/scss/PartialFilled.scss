@@ -1,52 +1,46 @@
-.partial-formContainer{
-     height: 61.5vh;
-}
-.form-title{
-    text-align: center;
-    margin-top: 2rem;
-}
+.partial-formContainer {
+    height: 61.5vh;
 
-.form-label{
-    font-size: 1.5rem;
-    font-weight: 600;
-}
+    .form-title {
+        text-align: center;
+        margin-top: 2rem;
+    }
 
-.flex{
-    display:flex;
-    justify-content:center;
-    align-items: center;
-    gap:3rem;
-}
-.form-input{
-     width: 100%;
-      padding:1.5rem 2rem;
-      border: 2px solid $border-color;
-      border-radius: 12px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      background: white;
-      font-family: "Inter", sans-serif;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: none;
-}
+    .form-group {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
 
-.submit-buttonPartial{
-  width: 20%;
-  background: $primary-gradient;
-  color: white;
-  border: none;
-  padding: 1.15rem 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 1rem auto; // This centers the button horizontally
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  overflow: hidden;
+        @media #{$xs-layout} {
+            gap: 1rem;
+            flex-direction: column;
+        }
+
+
+
+        .form-label {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+
+    .submit-buttonPartial {
+        // width: ;
+        background: $primary-gradient;
+        color: white;
+        border: none;
+        padding: 1rem 3.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 1rem auto; // This centers the button horizontally
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        overflow: hidden;
+    }
 }

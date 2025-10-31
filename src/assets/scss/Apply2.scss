@@ -145,7 +145,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
     font-size: 1rem;
-    margin-bottom: 1.12rem;
+    // margin-bottom: 1.12rem;
     display: inline-block;
     position: relative;
   }
@@ -283,7 +283,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     .field-input,
     .field-select {
       width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
+      padding: 1rem;
       border: 2px solid $border-color;
       border-radius: 12px;
       font-size: 1rem;

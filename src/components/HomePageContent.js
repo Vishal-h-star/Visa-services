@@ -10,7 +10,7 @@ export const HomePageContent = () => {
   return (
     <>
       <section className="homeContent">
-        <div className="container-fluid   homeInstructionsContainer">
+        <div className="container homeInstructionsContainer">
           <div className="row">
             <div className="col-lg-3 col-md-4 col-sm-6 col-12 ">
               <div class="side_item_one">

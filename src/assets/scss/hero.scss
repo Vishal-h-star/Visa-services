@@ -1,5 +1,5 @@
 .hero-section {
-  height: 62vh;
+  height: fit-content;
   max-height: 1100px;
   position: relative;
   overflow: hidden;
@@ -22,37 +22,14 @@
 }
 
 .hero-slider {
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    width: 100%;
-    height: 100vh;
-    background-size: cover;
-    bottom: 0vh;
-    left: 0;
-    overflow: hidden;
-    opacity: 0.4;
-    // background-color: rgba(0, 62, 77, 0.7);
-    // background: linear-gradient(
-    //   to right bottom,
-    //   rgba(0, 0, 0, 0.5) 0.2%,
-    //   rgba(0, 0, 0, 0.7) 0.2%,
-    //   rgba(0, 0, 0, 0.9) 0.2%
-    // );
-    // background: linear-gradient(to right bottom, rgba(9,9,121,1), rgba(0,212,255,1));
-    // background: linear-gradient(90deg, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%);
-    // background: linear-gradient(90deg, rgba(0,0,0,1) 100%, rgba(0,0,0,1) 100%);
-  }
 }
 .hero-slider {
   background-size: cover;
@@ -61,75 +38,11 @@
 }
 
 .hero-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  // max-width: 1600px;
-  // width: calc(100% - 800px);
-  width: auto;
-  color: #fff;
-
-  h1 {
-    font-size: clamp(1rem, 8vw, 1.5rem);
-    font-weight: 400;
-    text-transform: uppercase;
-    text-shadow: 10px 0 20px rgba(0, 0, 0, 0.9);
-    text-align: center;
-    margin-bottom: 0.8rem;
-    color: #fff;
-
-    // @media screen and (max-width: 480px){
-    //     font-size: 1.4rem;
-    // }
-  }
-
-  p {
-    text-shadow: 10px 0 20px rgba(0, 0, 0, 0.9);
-    font-size: 1rem;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 1.2rem;
-  }
-}
-
-.slider-buttons {
-  position: absolute;
-  bottom: 50px;
-  right: 50px;
-  display: flex;
-  z-index: 10;
-}
-
-.arrow-button {
-  height: 50px;
-  width: 50px;
-  color: #fff;
-  background: #000d1a;
-  cursor: pointer;
-  border-radius: 50px;
-  padding: 10px;
-  margin-right: 1rem;
-  user-select: none;
-  transition: 0.3s;
-
-  &:hover {
-    background: #ea1f00f5;
-    transform: sclae(1.05);
-  }
-}
