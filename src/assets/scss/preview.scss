@@ -1,0 +1,104 @@
+.enhanced-visa-container {
+
+    .enhanced-visa-card {
+
+        .previewDetails-container {
+
+            .details_heading {
+                text-align: center;
+                font-size: 1.34rem;
+                line-height: 29px;
+                margin-bottom: 0px;
+                padding: 3px 0;
+                background: $green;
+                color: white;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px
+            }
+
+
+
+            .Details-container {
+                margin-bottom: 1rem;
+                padding: 1rem;
+
+                .grid2 {
+                    display: grid;
+                    grid-template-columns: 3fr 1fr;
+                    gap: 10px
+                }
+
+                .left_content {
+                    min-width: 0;
+                    overflow-wrap: break-word;
+
+                    .preview_p {
+                        font-size: 16px;
+                        color: black;
+                        line-height: 22px;
+                        margin-bottom: 16px;
+                        text-align: justify;
+
+                        span {
+                            color: $green;
+                        }
+                    }
+
+                    .field {
+
+                        margin-bottom: 10px;
+
+                        span:first-of-type {
+                            margin-right: 0.44rem;
+                        }
+                    }
+                }
+
+                .right_content {
+                    min-width: 0;
+                    overflow-wrap: break-word;
+
+                    .previewImage_div {
+                        text-align: center;
+
+                        img {
+                            display: inline-block;
+                            width: 70%;
+                            border-radius: 10px;
+                        }
+                    }
+
+                    .field {
+                        margin-bottom: 10px;
+
+                        span:first-of-type {
+                            margin-right: 0.44rem;
+                        }
+                    }
+                }
+
+                .preview_buttons{
+                    margin-top: 3rem;
+                    display: flex;
+                    justify-content: center;
+                    gap:1rem;
+
+                    .submit-button{
+                        width:30%;
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+    .preview-card {
+        max-width: 900px;
+    }
+}
