@@ -68,7 +68,7 @@ const FormQuestion = () => {
 
             if (res.status === 200) {
                 console.log(res.data, "data we get from back");
-                navigate(`/apply3/${res.data.data.uniqueId}`);
+                navigate(`/Preview/${res.data.data.uniqueId}`);
             } else {
                 toast.error(`Some Error Happens!!`);
             }
@@ -83,22 +83,7 @@ const FormQuestion = () => {
     return (
         <>
             <div className="enhanced-visa-container">
-                <div className="background-shapes">
-                    <div className="shape shape-1"></div>
-                    <div className="shape shape-2"></div>
-                    <div className="shape shape-3"></div>
-                </div>
-
                 <div className="enhanced-visa-card">
-                    {/* <div className="form-header-section">
-                        <h1 className="form-title question_title">e-Visa Application</h1>
-                        <div className="formMainHeading">
-                            <p>Application Type: <strong>Id</strong></p>
-                            <p>Port of Arrival: <strong>Id</strong></p>
-                            <p>Temporary Application Id: <strong>Id</strong></p>
-                        </div>
-                    </div> */}
-
                     <div className="payment-header">
                         <div className="application-info">
                             <div className="info-row">

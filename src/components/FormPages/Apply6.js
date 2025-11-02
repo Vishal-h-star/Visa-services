@@ -111,7 +111,7 @@ const Apply6 = () => {
         // toast.success(`🦄 ${res.data.message}`);
         // setIsSubmitting(true);
         setIsSubmitting(false);
-        navigate(`/Payment/${res.data.data.uniqueId}`);
+        navigate(`/questions/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
       }
