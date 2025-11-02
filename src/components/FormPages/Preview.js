@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import image from '../../assets/images/previewImage.jpeg';
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import {
     getApplicationDataById,
     applicationSubmitStep7,
@@ -564,19 +564,19 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Visa Type&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.visaService}</span>
                             </div>
                             {/*Place Likely to be Visited 2  */}
                             <div className='field grid'>
                                 <span> <b>Place Likely to be Visited 2&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.placeVisited2}</span>
                             </div>
                             {/* Port of Exit from India */}
                             <div className='field grid'>
                                 <span> <b>Port of Exit from India&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.expectedPortOfExit}</span>
                             </div>
 
                         </div>
@@ -585,13 +585,13 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Place Likely to be Visited 1&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.placeVisited1}</span>
                             </div>
                             {/*Port of Arrival in India  */}
                             <div className='field grid'>
                                 <span> <b>Port of Arrival in India&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.portOfArrival}</span>
                             </div>
 
                         </div>
@@ -630,7 +630,7 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Countries Visited in Last 10 years&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.countryVisitedLast10Years}</span>
                             </div>
                         </div>
                     </div>
@@ -654,19 +654,19 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Reference Name in India&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.referenceNameIndia}</span>
                             </div>
                             {/*Phone No.  */}
                             <div className='field grid'>
                                 <span> <b>Phone No.&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.referencePhoneIndia}</span>
                             </div>
                             {/*Address  */}
                             <div className='field grid'>
                                 <span> <b>Address&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.referenceAddressIndia}</span>
                             </div>
 
                         </div>
@@ -675,29 +675,29 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Address&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.referenceAddressHome}</span>
                             </div>
                             {/* Reference Name in BARBADOS */}
                             <div className='field grid'>
-                                <span> <b>Reference Name in BARBADOS&nbsp;&nbsp;:</b></span>
+                                <span> <b>Reference Name in Home Country&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.referenceNameHome}</span>
                             </div>
                             {/* Phone No. */}
                             <div className='field grid'>
                                 <span> <b>Phone No.&nbsp;&nbsp;:</b></span>
 
-                                <span> -</span>
+                                <span> {applicantData?.referencePhoneHome}</span>
                             </div>
 
                         </div>
                     </div>
 
-                    <h2 className='details_heading'>Additional Question Details</h2>
+                    {/* <h2 className='details_heading'>Additional Question Details</h2> */}
 
                     <div className='Details-container'>
 
-                        <div className='field grid2'>
+                        {/* <div className='field grid2'>
                             <span> <b>1. Have you ever been arrested/ prosecuted/ convicted by Court of Law of any country?&nbsp;&nbsp;:</b></span>
 
                             <span>{applicantData?.arrested}</span>
@@ -731,17 +731,24 @@ const Preview = () => {
                             <span> <b>6. Have you sought asylum (political or otherwise)in any country?&nbsp;&nbsp;:</b></span>
 
                             <span>{applicantData?.asylum}</span>
-                        </div>
+                        </div> */}
 
 
                         <div className='preview_buttons'>
-                            <button className='submit-button'>
-                                Modify/Edit
-                            </button>
+                            <Link to={`/Payment/${applicantData?.uniqueId}`}>
+                                <button className='submit-button'>
+                                    Verified and Continue
+                                </button>
+                            </Link>
 
-                            <button className='submit-button'>
-                                Verified and Continue
-                            </button>
+                            <Link to={`/apply1/${applicantData?.uniqueId}`}>
+                                <button className='submit-button'>
+                                    Modify/Edit
+                                </button>
+                            </Link>
+
+
+
                         </div>
 
                     </div>

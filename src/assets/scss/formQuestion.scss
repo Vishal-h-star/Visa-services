@@ -4,8 +4,9 @@
 }
 }
 .questionsForm{
-    display: grid;
-    grid-template-columns: 1fr 2fr;
+    display: flex;
+    justify-content: space-between;
+    // grid-template-columns: 1fr 2fr;
 }
 
 .subInput_div {

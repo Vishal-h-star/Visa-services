@@ -467,6 +467,7 @@ const Apply4 = () => {
                     value={formData.placeVisited1}
                     onChange={handleChange}
                     placeholder="Enter place to visit"
+                    required
                   />
                 </div>
                 {errors.placeVisited1 && (
@@ -2564,7 +2565,6 @@ const Apply4 = () => {
                     className="field-input"
                     value={formData.countryVisitedLast10Years}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
