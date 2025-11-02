@@ -6,6 +6,9 @@ $greatvibes: "Great Vibes", cursive;
 $lobster: "Lobster", cursive;
 $josefin: "Josefin Sans", sans-serif;
 
+// button color
+$primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 // text Colors ---------------
 
 $white: #ffffff;
@@ -19,6 +22,7 @@ $navy-blue-shade: #2c3e50;
 // bg Colors ---------------
 
 $bg-white: #ffffff;
+$bg-lighgrey:#f3f4f6;
 $bg-black: #000000;
 $bg-grey: #f6f6f8;
 $bg-purple: #f0e0ff;

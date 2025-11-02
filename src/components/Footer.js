@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="disclaimer">
           <p>
             Disclaimer: <br />
-            indiavisaonlines.com is a commercial website. We are not the
+            www.indiansvisaonline.com is a commercial website. We are not the
             Embassy/Consulate/High Commission or the representative of any
             Government Department of India. We provide expert guidance on Indian
             visa applications. If you prefer a non-guided service, you can visit

@@ -11,17 +11,17 @@ const NavLinks = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/questions" exact>
+        <NavLink to="/AboutUs" exact>
           About
         </NavLink>
       </li>
       <li>
-        <NavLink to="/blogs" exact>
+        <NavLink to="/privacy" exact>
           Privacy
         </NavLink>
       </li>
       <li>
-        <NavLink to="/products" exact>
+        <NavLink to="/documentRequired" exact>
           <span> Document</span>
         </NavLink>
       </li>
@@ -217,7 +217,7 @@ const NavLinks = () => {
         </div>
       </li> */}
       <li>
-        <NavLink to="/services" exact>
+        <NavLink to="/service" exact>
           Services
         </NavLink>
       </li>

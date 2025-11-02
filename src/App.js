@@ -11,18 +11,29 @@ import MainNavigation from "./components/Navigation/MainNavigation";
 import MobileNavbar from "./components/Navigation/MobileNavbar";
 import ScrollToTop from "./components/ScrollTop";
 import Footer from "./components/Footer";
-import VisaApplicationForm from "./components/VisaApplicationForm";
+
+// main forms
 import PartialFilled from "./components/PartialFilled";
+import VisaPaymentForm from "./components/FormPages/VisaPaymentForm"
+
+// formPages 
+import VisaApplicationForm from "./components/VisaApplicationForm";
+import Apply1 from "./components/FormPages/Apply1";
 import Apply2 from "./components/FormPages/Apply2";
 import Apply3 from "./components/FormPages/Apply3";
-import VisaPaymentForm from "./components/FormPages/VisaPaymentForm";
 import Apply4 from "./components/FormPages/Apply4";
 import Apply5 from "./components/FormPages/Apply5";
 import Apply6 from "./components/FormPages/Apply6";
-import VisaFee from "./pages/VisaFee";
-import Apply1 from "./components/FormPages/Apply1";
 import FormQuestion from "./components/FormPages/FormQuestion";
+import VisaFee from "./pages/VisaFee";
 import Preview from "./components/FormPages/Preview";
+
+// navpages
+import AboutUs from "./components/NavbarPages/AboutUs";
+import { Privacy } from "./components/NavbarPages/Privacy";
+import { DocumentRequired } from "./components/NavbarPages/DocumentRequired";
+import { Service } from "./components/NavbarPages/Service";
+import TermConditions from "./components/NavbarPages/TermConditions";
 
 function App() {
 
@@ -34,21 +45,34 @@ function App() {
       <MainNavigation />
       <MobileNavbar />
       <Routes>
+
+        {/* main pages */}
         <Route exact path="/" element={<Home />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/documentRequired" element={<DocumentRequired />} />
+        <Route path="/Terms-and-Conditions" element={ <TermConditions/>}/>
+
+        {/* button pages */}
         <Route exact path="/Apply" element={<VisaApplicationForm />} />
-        <Route exact path="/Apply1/:id" element={<Apply1/>} />
-        {/* <Route exact path="/Apply/:id" element={<VisaApplicationForm />} /> */}
-        <Route exact path="/Apply2/:id" element={<Apply2 />} />
-        <Route path="/Apply3/:id" exact element={<Apply3 />} />
-        <Route path="/Apply4/:id" exact element={<Apply4/>} />
-        <Route path="/Apply5/:id" exact element={<Apply5/>} />
-        <Route path="/Apply6/:id" exact element={<Apply6/>} />
-        <Route path="/questions/:id" element={<FormQuestion/>} />
-        <Route path="/Payment/:id" exact element={<VisaPaymentForm/>}/>
-         <Route path="/Preview/:id" exact element={<Preview/>}/>
+        <Route path="/Payment/:id" exact element={<VisaPaymentForm />} />
         <Route exact path="/partial-Filled" element={<PartialFilled />} />
         <Route exact path="/visa-fee" element={<VisaFee />} />
-        <Route exact path="/contact" elemenmt={<Contact />} />
+
+        {/* form pages */}
+        <Route exact path="/Apply1/:id" element={<Apply1 />} />
+        <Route exact path="/Apply2/:id" element={<Apply2 />} />
+        <Route path="/Apply3/:id" exact element={<Apply3 />} />
+        <Route path="/Apply4/:id" exact element={<Apply4 />} />
+        <Route path="/Apply5/:id" exact element={<Apply5 />} />
+        <Route path="/Apply6/:id" exact element={<Apply6 />} />
+        <Route path="/questions/:id" element={<FormQuestion />} />
+        <Route path="/Preview/:id" exact element={<Preview />} />
+
+
+        <Route exact path="/contact" element={<Contact />} />
+
       </Routes>
       <Footer />
 
