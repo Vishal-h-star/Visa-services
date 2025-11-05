@@ -99,7 +99,7 @@ const TermConditions = () => {
                     <div className="pageRightSide col-lg-9 col-md-8 col-sm-12 col-12 ">
                         <div class="containt">
                             <h4 class="condition_h4">
-                                <b>Terms And Conditions (India Visa)</b>
+                                <b>Terms And Conditions</b>
                             </h4>
 
                             <ol className='privacyList'>
