@@ -99,7 +99,7 @@ const MobileNavbar = () => {
                 </Link>
               </li>
 
-              <li className="menu-category">
+              {/* <li className="menu-category">
                 <Link
                   to="/Faq"
                   className="menu-title"
@@ -107,6 +107,7 @@ const MobileNavbar = () => {
                 >
                   Faq
                 </Link>
+
               </li>
 
               <li className="menu-category">
@@ -158,7 +159,6 @@ const MobileNavbar = () => {
                   Contact US
                 </Link>
               </li>
-
             </ul>
           </nav>
         </div>
