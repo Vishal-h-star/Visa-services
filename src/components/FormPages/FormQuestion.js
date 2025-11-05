@@ -179,7 +179,7 @@ const FormQuestion = () => {
                                             required
                                             className="undertaking-checkbox"
                                         />
-                                        &nbsp; "name",
+                                        &nbsp; <b style={{textTransform:"uppercase"}}>{securityAnswers?.surname}</b>&nbsp; ,
                                         hereby declare that the information furnished above is correct to the best of my knowledge and belief. In case the information is found false at any stage, I am liable for legal action/deportation/blacklisting or any other action as deemed fit by the Government of India.
                                     </label>
                                 </div>

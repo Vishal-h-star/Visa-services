@@ -1,19 +1,30 @@
 .contact-section {
-  padding-top: 3rem;
+  padding-top: 1rem;
 
-  @media #{$xs-layout}{
+  @media #{$xs-layout} {
     padding: 1rem;
   }
+
   .contact-content {
 
-    h4 {
-      color: $theme-hover-color;
-      text-transform: uppercase;
-      font-weight: 600;
-      line-height: 10px;
 
-      @media #{$xs-layout}{
-        display: none;
+    h4 {
+      // color: $theme-hover-color;
+      // text-transform: uppercase;
+      // font-weight: 600;
+      // line-height: 10px;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      background: blue;
+      padding: 0.68rem 0rem;
+      border-radius: 15px;
+      color: white;
+      font-size: 1.5rem;
+      margin-bottom: 3rem;
+
+      @media #{$xs-layout} {
+        padding: 1.5rem 0;
+        margin-bottom: 1.5rem;
       }
     }
 
@@ -22,7 +33,7 @@
       font-size: 1.5rem;
       line-height: 40px;
 
-      @media #{$xs-med-layout}{
+      @media #{$xs-med-layout} {
         font-size: 1.2rem;
         line-height: 30px;
       }
@@ -33,9 +44,11 @@
       font-weight: 500;
     }
 
+
     .contact-text-section {
       .contact-list {
         list-style-type: none;
+        padding: 0;
 
         .contact-lists {
           background-color: #f4f4f4;
@@ -43,14 +56,15 @@
           padding: 20px;
           display: flex;
           align-items: center;
+          border-radius: 15px;
 
-          @media #{$xs-layout}{
+          @media #{$xs-layout} {
             margin: 0 0 15px;
             padding: 12px;
           }
 
           .contact-icon {
-            color: $theme-hover-color;
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -58,11 +72,11 @@
             padding: 1rem;
             height: 60px;
             margin-right: 30px;
-            border-radius: 8px;
-            background-color: rgba(234, 31, 0, 0.2);
+
 
             svg {
               font-size: 2.5rem;
+              color: blue;
             }
           }
 
@@ -76,13 +90,13 @@
               line-height: 20px;
             }
 
-            p{
+            p {
               line-height: 20px;
             }
           }
         }
       }
-      
+
     }
 
     .contact-form-section {
@@ -90,19 +104,36 @@
         background-color: #f4f4f4;
         margin: 0 0 20px;
         padding: 20px;
-        display: flex;
         align-items: center;
+        border-radius: 15px;
+
+        .contact-authentication {
+
+
+
+          .Contactform-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+          }
+
+        }
       }
+
       input,
       select {
         height: 45px;
       }
+
       textarea {
         height: 110px;
       }
+
       .form-control {
         margin: 0;
-        padding: 0 15px;
+        padding: 25px 15px;
         max-width: 100%;
         width: 100%;
         border: none;
@@ -110,6 +141,7 @@
         vertical-align: middle;
         margin: .5rem 0;
         font-size: 15px;
+        border-radius: 10px;
         transition: border-color 0.5s ease;
       }
 
@@ -138,6 +170,7 @@
           .social-icons__facebook:hover {
             color: #1877f2;
           }
+
           .social-icons__instagram:hover {
             color: #e4405f;
           }
@@ -152,5 +185,6 @@
         }
       }
     }
+
   }
 }

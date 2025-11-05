@@ -4,7 +4,7 @@ import MainHeader from "./MainHeader";
 import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "../Backdrop";
-import logo  from "../../assets/images/main-logo1.png";
+import logo  from "../../assets/images/NewLogo.jpg";
 
 const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);

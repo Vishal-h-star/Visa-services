@@ -35,7 +35,6 @@ const ContactForm = () => {
     name: "",
     number: "",
     email: "",
-    country: "IN",
     message: "",
   };
   const [formValues, setFormValues] = useState(initialValues);
@@ -53,26 +52,27 @@ const ContactForm = () => {
     const errorCheck = validate(formValues);
     setFormErrors(errorCheck);
     setIsSubmit(true);
-    if (Object.keys(errorCheck).length === 0) {
-      const res = await fetch(
-        "https://woms-312009-default-rtdb.firebaseio.com/contactform.json",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            formValues,
-          }),
-        }
-      );
-      if (res) {
-        alert("Form Submitted Successfully, We Respond to your message soon.");
-        resetInput();
-      } else {
-        alert("some error");
-      }
-    }
+    console.log(formValues)
+    // if (Object.keys(errorCheck).length === 0) {
+    //   const res = await fetch(
+    //     "https://woms-312009-default-rtdb.firebaseio.com/contactform.json",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         formValues,
+    //       }),
+    //     }
+    //   );
+    //   if (res) {
+    //     alert("Form Submitted Successfully, We Respond to your message soon.");
+    //     resetInput();
+    //   } else {
+    //     alert("some error");
+    //   }
+    // }
   };
 
   const resetInput = () => {
@@ -118,9 +118,7 @@ const ContactForm = () => {
     }
 
     //rating
-    if (!values.country) {
-      errors.country = "Please select Country";
-    }
+   
     return errors;
   };
 
@@ -138,14 +136,15 @@ const ContactForm = () => {
         data-aos="flip-right"
         data-aos-duration="700"
       >
+          
         <div className="contact-authentication">
-          <h2 className="text-center mb-4">Send Us a Message</h2>
-          <form method="POST">
-            <div className="form-row">
-              <div className="form-group col-md-6 mb-2">
-                <label>
+        <h2 className="text-center mb-4">Send Us a Message</h2>
+          <form onSubmit={handleSubmit} method="POST">
+            <div className="Contactform-row ">
+              <div className="Contactform-group  mb-2">
+                {/* <label>
                   Name<span className="text-red font-weight-bold">**</span>
-                </label>
+                </label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -156,10 +155,10 @@ const ContactForm = () => {
                 />
                 <small className="text-red">{formErrors.name}</small>
               </div>
-              <div className="form-group col-md-6 mb-2">
-                <label>
+              <div className="Contactform-group  mb-2">
+                {/* <label>
                   Contact<span className="text-red font-weight-bold">**</span>
-                </label>
+                </label> */}
                 <input
                   type="text"
                   className="form-control"
@@ -170,8 +169,8 @@ const ContactForm = () => {
                 />
                 <small className="text-red">{formErrors.number}</small>
               </div>
-              <div className="form-group col-md-6 mb-2">
-                <label>Email</label>
+              <div className="Contactform-group mb-2">
+                {/* <label>Email</label> */}
                 <input
                   type="email"
                   name="email"
@@ -182,36 +181,8 @@ const ContactForm = () => {
                 />
                 <small className="text-red">{formErrors.email}</small>
               </div>
-              <div className="form-group col-md-6 mb-2">
-                <label>Country</label>
-                {/* <select
-                  name="country"
-                  className="form-control"
-                  value={formValues.country}
-                  onChange={handleChange}
-                >
-                  <option value="">Select Country</option>
-                  <option value="india">India</option>
-                  <option value="pakistan">pakistan</option>
-                  <option value="china">china</option>
-                  <option value="russia">russia</option>
-                </select> */}
-                <select
-                  value={formValues.country}
-                  onChange={handleChange}
-                  name="country"
-                  className="form-control"
-                >
-                  {countryArr.map(({ label, value }) => (
-                    <option key={value} value={value}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
-                <small className="text-red">{formErrors.country}</small>
-              </div>
-              <div className="form-group col-12 mb-3">
-                <label>Your Message</label>
+              <div className="Contactform-group  mb-3">
+                {/* <label>Your Message</label> */}
                 <textarea
                   row="5"
                   className="form-control"
@@ -224,10 +195,10 @@ const ContactForm = () => {
               </div>
              
               {/* <ReCAPTCHA sitekey="6LceamAfAAAAAAr1YMkQNzabwMNmWJJPERzfouqq" onChange={onChange} /> */}
-              <div className="form-group col-md-6">
-                <Button type="submit" onClick={handleSubmit}>
+              <div className="form-group text-center ">
+                <button type="submit" className="submit-button" onClick={handleSubmit}>
                   SUBMIT
-                </Button>
+                </button>
               </div>
             </div>
           </form>

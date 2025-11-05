@@ -5,7 +5,7 @@ import Backdrop from "../Backdrop";
 import SideDrawer from "./SideDrawer";
 import { navbarList } from "../../assets/data/NavData";
 import { Link } from "react-router-dom";
-import logo  from "../../assets/images/main-logo1.png";
+import logo  from "../../assets/images/NewLogo.jpg";
 
 import { BsFacebook, BsTwitter, BsInstagram, BsLinkedin } from "react-icons/bs";
 import { IoMenuOutline, IoHomeOutline } from "react-icons/io5";
@@ -57,40 +57,41 @@ const MobileNavbar = () => {
                   Home
                 </Link>
               </li>
+
               <li className="menu-category">
                 <Link
-                  to="/about"
+                  to="/AboutUs"
                   className="menu-title"
                   onClick={closeDrawerHandler}
                 >
                   About Us
                 </Link>
               </li>
+
               <li className="menu-category">
                 <Link
-                  to="/blogs"
+                  to="/privacy"
                   className="menu-title"
                   onClick={closeDrawerHandler}
                 >
-                  Blogs
+                   Privacy
                 </Link>
               </li>
 
               <li className="menu-category">
                 <Link
-                  to="/products"
+                  to="/documentRequired"
                   className="menu-title"
                   onClick={closeDrawerHandler}
                 >
-                  Products
+                  Document Required
                 </Link>
               </li>
 
-          
 
               <li className="menu-category">
                 <Link
-                  to="/services"
+                  to="/service"
                   className="menu-title"
                   onClick={closeDrawerHandler}
                 >
@@ -100,14 +101,64 @@ const MobileNavbar = () => {
 
               {/* <li className="menu-category">
                 <Link
+                  to="/Faq"
+                  className="menu-title"
+                  onClick={closeDrawerHandler}
+                >
+                  Faq
+                </Link>
+
+              </li>
+
+              <li className="menu-category">
+                <Link
+                  to="/Terms-and-Conditions"
+                  className="menu-title"
+                  onClick={closeDrawerHandler}
+                >
+                  Terms And Conditions
+                </Link>
+              </li>
+
+               <li className="menu-category">
+                <Link
+                  to="/Refund-Policy"
+                  className="menu-title"
+                  onClick={closeDrawerHandler}
+                >
+                 Refund Policy
+                </Link>
+              </li>
+
+               <li className="menu-category">
+                <Link
+                  to="/Instruction"
+                  className="menu-title"
+                  onClick={closeDrawerHandler}
+                >
+               Instruction for Applications
+                </Link>
+              </li>
+
+               <li className="menu-category">
+                <Link
+                  to="/Visa-Fee-Details"
+                  className="menu-title"
+                  onClick={closeDrawerHandler}
+                >
+                 visa Fee Details
+                </Link>
+              </li>
+
+               <li className="menu-category">
+                <Link
                   to="/contact"
                   className="menu-title"
                   onClick={closeDrawerHandler}
                 >
-                  Contact
+                  Contact US
                 </Link>
-              </li> */}
-             
+              </li>
             </ul>
           </nav>
         </div>

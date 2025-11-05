@@ -48,11 +48,17 @@
                     }
 
                     .pageIcon_div {
-                        text-align: center;
+                        // text-align: center;
+                        padding-left: 1rem;
+
+                        @media (max-width: 768px) {
+                         text-align: center;
+                         padding-left: 0;
+                        }
 
                         span {
                             display: inline-block;
-                            font-size: 13px;
+                            font-size: 0.8rem;
                             margin-bottom: 10px;
                             // border-bottom: 1px solid #e0e0e0;
                             // border-top: 1px solid #e0e0e0;
@@ -66,7 +72,6 @@
 
                             .media_mail_icon {
                                 font-size: 26px;
-
 
                             }
                         }
@@ -121,7 +126,7 @@
                         color: white;
                     }
 
-                    .condition_h4{
+                    .condition_h4 {
                         margin-bottom: 3rem;
                     }
 
@@ -189,6 +194,33 @@
                             p {
                                 margin: 0 15px;
                             }
+                        }
+                    }
+
+                    .table-container {
+                        padding: 1rem;
+
+                        h6 {
+                            font-size: 1.41rem;
+                            color: blue;
+                        }
+
+                        .visa-fees-table {
+                            width: 100%;
+
+                            tr {
+                                border-bottom: 1px solid #ddd;
+
+                                th {
+                                    padding: 0.5rem;
+                                }
+
+                                td {
+                                    padding: 0.5rem 1rem;
+                                    color: $green;
+                                }
+                            }
+
                         }
                     }
                 }
