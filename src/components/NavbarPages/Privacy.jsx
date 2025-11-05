@@ -1,7 +1,5 @@
 import React from 'react'
-import user from '../../assets/images/user_support.png'
-import { IoLogoWhatsapp } from "react-icons/io";
-import { MdEmail } from "react-icons/md";
+import PagesLeftSideSupporAndLinkFormet from './PagesLeftSideSupporAndLinkFormet';
 
 
 export const Privacy = () => {
@@ -9,93 +7,8 @@ export const Privacy = () => {
         <section className="main_Content">
             <div className="container">
                 <div className="row">
-                    <div className="pageLeftSide col-lg-3 col-md-4 col-sm-12 col-12 ">
-                        <div class="leftSide_itemOne ">
-                            <span class="leftSide_itemOneHeading"><b>Support</b></span>
-                            <div class="leftSide_itemImageDiv">
-                                {/* <FaHeadset className='support_icon' /> */}
-                                <img src={user} alt="" />
-                            </div>
-                            <div class="pageIcon_div">
-                                <span> <IoLogoWhatsapp className='media_icon' /><i>&nbsp;&nbsp;-(91)8376836323</i></span>
-                                <hr className='pageLine' />
-                                <span> <MdEmail className='media_mail_icon' /><i>&nbsp; &nbsp; -(91)8376836323</i></span>
-                                {/* <hr  className='pageLine'/> */}
-                            </div>
-                        </div>
-
-                        <div class="leftSide_itemtwo">
-                            <ul>
-                                <li>
-                                    <a href="/">
-                                        <b> Home</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/about">
-                                        <b> About Us</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/PrivacyPolicy">
-                                        <b> Privacy</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/termCondition">
-                                        <b> Document Required</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/Service">
-                                        <b> Services</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/Faq">
-                                        <b> FAQ</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/Terms-and-Conditions">
-                                        <b> Terms And Conditions</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/Refund-Policy">
-                                        <b>Refund Policy </b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/Instruction">
-                                        <b> Instruction For Applicants</b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/Visa-Fee-Details">
-                                        <b>Visa Fee Details </b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                                <li>
-                                    <a href="/contact">
-                                        <b>Contact us </b>
-                                    </a>
-                                </li>
-                                <hr className='pagelinkLine'></hr>
-                            </ul>
-                        </div>
-
-                    </div>
+                   
+                   <PagesLeftSideSupporAndLinkFormet/>
 
                     <div className="pageRightSide col-lg-9 col-md-8 col-sm-12 col-12 ">
                         <div class="containt">
