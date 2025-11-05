@@ -107,6 +107,7 @@ const MobileNavbar = () => {
                 >
                   Faq
                 </Link>
+
               </li>
 
               <li className="menu-category">
