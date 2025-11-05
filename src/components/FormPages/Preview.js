@@ -148,7 +148,6 @@ const Preview = () => {
                             {/* Passport type */}
                             <div className='field grid'>
                                 <span> <b>Passport Type&nbsp;&nbsp;:</b></span>
-
                                 <span>{applicantData?.passportType}</span>
                             </div>
                             {/* surname */}
@@ -432,49 +431,53 @@ const Preview = () => {
                     </div>
 
 
-                    <h2 className='details_heading'>Applicant's Spouse Detail</h2>
-                    <div className=' Details-container grid'>
-                        {/* <div className='left_content'>
+                    {applicantData?.maritalStatuses === "Married" && (
+                        <>
+                            <h2 className='details_heading'>Applicant's Spouse Detail</h2>
+                            <div className=' Details-container grid'>
+                                {/* <div className='left_content'>
                             <div className='field grid'>
                                 <span> <b>Marital Status&nbsp;&nbsp;:</b></span>
 
                                 <span> {applicantData?.maritalStatus}</span>
                             </div>
                         </div> */}
-                        <div className='left_content'>
-                            {/* Mother's Name */}
-                            <div className='field grid'>
-                                <span> <b>Spouse Name &nbsp;&nbsp;:</b></span>
+                                <div className='left_content'>
+                                    {/* Mother's Name */}
+                                    <div className='field grid'>
+                                        <span> <b>Spouse Name &nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.spouseName}</span>
-                            </div>
-                            {/*Mother's Previous Nationality  */}
-                            <div className='field grid'>
-                                <span> <b>Spouse Nationality/Region &nbsp;&nbsp;:</b></span>
+                                        <span> {applicantData?.spouseName}</span>
+                                    </div>
+                                    {/*Mother's Previous Nationality  */}
+                                    <div className='field grid'>
+                                        <span> <b>Spouse Nationality/Region &nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.SpouseNationality}</span>
-                            </div>
-                            {/*Mother's Country of Birth  */}
-                            <div className='field grid'>
-                                <span> <b>Spouse Previous Nationality &nbsp;&nbsp;:</b></span>
-                                <span> {applicantData?.SpousePrevNationality}</span>
-                            </div>
-                        </div>
-                        <div className='right_content'>
-                            {/*Mother's Nationality */}
-                            <div className='field grid'>
-                                <span> <b>Spouse Place of Birth &nbsp;&nbsp;:</b></span>
+                                        <span> {applicantData?.SpouseNationality}</span>
+                                    </div>
+                                    {/*Mother's Country of Birth  */}
+                                    <div className='field grid'>
+                                        <span> <b>Spouse Previous Nationality &nbsp;&nbsp;:</b></span>
+                                        <span> {applicantData?.SpousePrevNationality}</span>
+                                    </div>
+                                </div>
+                                <div className='right_content'>
+                                    {/*Mother's Nationality */}
+                                    <div className='field grid'>
+                                        <span> <b>Spouse Place of Birth &nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.SpouseBirthPlace}</span>
-                            </div>
-                            {/*  Mother's Place of Birth*/}
-                            <div className='field grid'>
-                                <span> <b>Spouse Country of Birth &nbsp;&nbsp;:</b></span>
+                                        <span> {applicantData?.SpouseBirthPlace}</span>
+                                    </div>
+                                    {/*  Mother's Place of Birth*/}
+                                    <div className='field grid'>
+                                        <span> <b>Spouse Country of Birth &nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.SpouseCtryOfBirth}</span>
+                                        <span> {applicantData?.SpouseCtryOfBirth}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </>
+                    )}
 
                     <h2 className='details_heading'>Professional /Occupation Details</h2>
                     <div className=' Details-container grid'>

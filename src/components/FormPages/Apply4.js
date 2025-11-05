@@ -404,7 +404,7 @@ const Apply4 = () => {
                 </div>
               </div>
 
-              <div className="form-field form-field-inline">
+              {/* <div className="form-field form-field-inline">
                 <div className="field-label">
                   <span className="label-text">service of Visa (in Days)</span>
                 </div>
@@ -418,7 +418,7 @@ const Apply4 = () => {
                     onChange={handleChange}
                   />
                 </div>
-              </div>
+              </div> */}
 
               <div className="form-field form-field-inline">
                 <div className="field-label">

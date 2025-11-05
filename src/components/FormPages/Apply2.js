@@ -191,14 +191,14 @@ const Apply2 = () => {
     }
 
     // DOB age validation (>=18) with accurate month/day check
-    if (formData.dateOfBirth) {
-      const age = calculateAge(formData.dateOfBirth);
-      if (age === null) {
-        newErrors.dateOfBirth = "Invalid date";
-      } else if (age < 18) {
-        newErrors.dateOfBirth = "Applicant must be at least 18 years old";
-      }
-    }
+    // if (formData.dateOfBirth) {
+    //   const age = calculateAge(formData.dateOfBirth);
+    //   if (age === null) {
+    //     newErrors.dateOfBirth = "Invalid date";
+    //   } else if (age < 18) {
+    //     newErrors.dateOfBirth = "Applicant must be at least 18 years old";
+    //   }
+    // }
 
     // Passport Date of Issue validation: must be within last 10 years and not future
     if (formData.passportDateOfIssue) {
