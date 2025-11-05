@@ -17,7 +17,13 @@
             .grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 10px
+                gap: 10px;
+
+                @media (max-width: 768px) {
+                    grid-template-columns: 1fr;
+                }
+
+
             }
 
 
@@ -49,11 +55,14 @@
                     }
 
                     .field {
-
                         margin-bottom: 10px;
 
                         span:first-of-type {
                             margin-right: 0.44rem;
+                        }
+
+                         span:nth-of-type(2) {
+                             text-transform: uppercase;
                         }
                     }
                 }
@@ -78,17 +87,20 @@
                         span:first-of-type {
                             margin-right: 0.44rem;
                         }
+                         span:nth-of-type(2) {
+                             text-transform: uppercase;
+                        }
                     }
                 }
 
-                .preview_buttons{
+                .preview_buttons {
                     margin-top: 3rem;
                     display: flex;
                     justify-content: center;
-                    gap:1rem;
+                    gap: 1rem;
 
-                    .submit-button{
-                        width:100%;
+                    .submit-button {
+                        width: 100%;
                     }
                 }
 
@@ -101,4 +113,5 @@
     .preview-card {
         max-width: 900px;
     }
+
 }

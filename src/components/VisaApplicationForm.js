@@ -112,36 +112,39 @@ const VisaApplicationForm = () => {
     }
 
     const dob = new Date(formData.dateOfBirth);
-    const age = today.getFullYear() - dob.getFullYear();
-    if (formData.dateOfBirth && age < 18) {
-      newErrors.dateOfBirth = "Applicant must be at least 18 years old";
+    const todayDate = new Date();
+
+    if (formData.dateOfBirth) {
+      if (dob > todayDate) {
+        newErrors.dateOfBirth = "Date of birth cannot be in the future";
+      }
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  console.log("Form Data:", formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
 
-  const isValid = validateForm(); // Always run this
-  if (!isValid) {
-    toast.error("Please correct the highlighted errors before continuing.");
-    return;
-  }
+    const isValid = validateForm(); // Always run this
+    if (!isValid) {
+      toast.error("Please correct the highlighted errors before continuing.");
+      return;
+    }
 
-  console.log("hitting api");
-  const res = await newApplicationSubmit(formData);
-  if (res.status === 200) {
-    console.log(res.data, "data we get from back");
-    toast.success(`🦄 ${res.data.message}`);
-    setIsSubmitting(false);
-    navigate(`/apply2/${res.data.data.uniqueId}`);
-  } else {
-    toast.error(`Some Error Happens!!`);
-  }
-};
+    console.log("hitting api");
+    const res = await newApplicationSubmit(formData);
+    if (res.status === 200) {
+      console.log(res.data, "data we get from back");
+      toast.success(`🦄 ${res.data.message}`);
+      setIsSubmitting(false);
+      navigate(`/apply2/${res.data.data.uniqueId}`);
+    } else {
+      toast.error(`Some Error Happens!!`);
+    }
+  };
 
 
   return (
@@ -173,9 +176,8 @@ const handleSubmit = async (e) => {
                     name="applicationType"
                     value={formData.applicationType}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.applicationType ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.applicationType ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Application Type</option>
                     {applicationTypes.map((option) => (
@@ -203,9 +205,8 @@ const handleSubmit = async (e) => {
                     name="passportType"
                     value={formData.passportType}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.passportType ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.passportType ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">ORDINARY PASSPORT</option>
@@ -267,9 +268,8 @@ const handleSubmit = async (e) => {
                     name="nationality"
                     value={formData.nationality}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.nationality ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.nationality ? "error" : ""
+                      }`}
                   >
                     <option value="">SELECT NATIONALITY</option>
                     {nationalities
@@ -297,9 +297,8 @@ const handleSubmit = async (e) => {
                     name="portOfArrival"
                     value={formData.portOfArrival}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.portOfArrival ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.portOfArrival ? "error" : ""
+                      }`}
                   >
                     <option value="">SELECT PORT OF ARRIVAL</option>
                     {portsOfArrival.map((option) => (
@@ -337,9 +336,8 @@ const handleSubmit = async (e) => {
                     }}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="Select your date of birth"
-                    className={`field-input ${
-                      errors.dateOfBirth ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.dateOfBirth ? "error" : ""
+                      }`}
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
@@ -382,9 +380,8 @@ const handleSubmit = async (e) => {
                     name="confirmEmail"
                     value={formData.confirmEmail}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.confirmEmail ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.confirmEmail ? "error" : ""
+                      }`}
                     placeholder="confirm@email.com"
                   />
                 </div>
@@ -415,45 +412,44 @@ const handleSubmit = async (e) => {
               </div>
 
               {/* Expected Arrival Date */}
-                <div className="form-field-horizontal">
-                  <label className="field-label">
-                    <span className="label-text">Expected Date of Arrival *</span>
-                  </label>
-                  <div className="input-container">
-                    <DatePicker
-                      selected={
-                        formData.expectedArrival
-                          ? new Date(formData.expectedArrival)
-                          : null
-                      }
-                      onChange={(date) => {
-                        const formattedDate = date
-                          ? date.toISOString().split("T")[0]
-                          : "0";
-                        handleChange({
-                          target: {
-                            name: "expectedArrival",
-                            value: formattedDate,
-                          },
-                        });
-                      }}
-                      dateFormat="dd/MM/yyyy"
-                      placeholderText="Select expected arrival date"
-                      className={`field-input ${
-                        errors.expectedArrival ? "error" : ""
+              <div className="form-field-horizontal">
+                <label className="field-label">
+                  <span className="label-text">Expected Date of Arrival *</span>
+                </label>
+                <div className="input-container">
+                  <DatePicker
+                    selected={
+                      formData.expectedArrival
+                        ? new Date(formData.expectedArrival)
+                        : null
+                    }
+                    onChange={(date) => {
+                      const formattedDate = date
+                        ? date.toISOString().split("T")[0]
+                        : "0";
+                      handleChange({
+                        target: {
+                          name: "expectedArrival",
+                          value: formattedDate,
+                        },
+                      });
+                    }}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText="Select expected arrival date"
+                    className={`field-input ${errors.expectedArrival ? "error" : ""
                       }`}
-                      showMonthDropdown
-                      showYearDropdown
-                      dropdownMode="select"
-                      minDate={new Date()} // restrict to future dates only
-                    />
-                  </div>
-                  {errors.expectedArrival && (
-                    <span className="error-message">
-                      {errors.expectedArrival}
-                    </span>
-                  )}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    minDate={new Date()} // restrict to future dates only
+                  />
                 </div>
+                {errors.expectedArrival && (
+                  <span className="error-message">
+                    {errors.expectedArrival}
+                  </span>
+                )}
+              </div>
 
               {/* Visa Service - Fixed structure with subcategories below each service */}
               <div className="form-field-horizontal radio-field">
@@ -487,9 +483,8 @@ const handleSubmit = async (e) => {
                         {service.options &&
                           formData.visaService === service.value && (
                             <div
-                              className={`nested-options ${
-                                errors.serviceSubCategory ? "error" : ""
-                              }`}
+                              className={`nested-options ${errors.serviceSubCategory ? "error" : ""
+                                }`}
                             >
                               <div className="radio-buttons-horizontal">
                                 {service.options.map((option) => (
@@ -498,12 +493,11 @@ const handleSubmit = async (e) => {
                                     className="nested-group"
                                   >
                                     <label
-                                      className={`radio-button-label nested ${
-                                        formData.serviceSubCategory ===
-                                        option.value
+                                      className={`radio-button-label nested ${formData.serviceSubCategory ===
+                                          option.value
                                           ? "active"
                                           : ""
-                                      }`}
+                                        }`}
                                     >
                                       <input
                                         type="radio"
@@ -524,17 +518,16 @@ const handleSubmit = async (e) => {
                                     {/* --- Sub-options (Level 3) --- */}
                                     {option.subOption &&
                                       formData.serviceSubCategory ===
-                                        option.value && (
+                                      option.value && (
                                         <div className="nested-options level3">
                                           {option.subOption.map((sub) => (
                                             <label
                                               key={sub.value}
-                                              className={`radio-button-label nested ${
-                                                formData.serviceSubCat_subCategory ===
-                                                sub.value
+                                              className={`radio-button-label nested ${formData.serviceSubCat_subCategory ===
+                                                  sub.value
                                                   ? "active"
                                                   : ""
-                                              }`}
+                                                }`}
                                             >
                                               <input
                                                 type="radio"
