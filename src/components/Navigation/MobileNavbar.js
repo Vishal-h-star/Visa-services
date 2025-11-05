@@ -156,9 +156,10 @@ const MobileNavbar = () => {
                   className="menu-title"
                   onClick={closeDrawerHandler}
                 >
-                  Contact US
+                  Contact
                 </Link>
-              </li>
+              </li> */}
+             
             </ul>
           </nav>
         </div>

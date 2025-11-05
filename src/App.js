@@ -82,7 +82,7 @@ function App() {
         <Route path="/Preview/:id" exact element={<Preview />} />
 
 
-
+        {/* <Route exact path="/contact" element={<Contact />} /> */}
 
       </Routes>
       <Footer />
