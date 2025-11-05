@@ -34,6 +34,10 @@ import { Privacy } from "./components/NavbarPages/Privacy";
 import { DocumentRequired } from "./components/NavbarPages/DocumentRequired";
 import { Service } from "./components/NavbarPages/Service";
 import TermConditions from "./components/NavbarPages/TermConditions";
+import Refund from "./components/NavbarPages/Refund";
+import Faq from "./components/NavbarPages/Faq";
+import Instructionspage from "./components/NavbarPages/Instructionspage";
+import FeesDetails from "./components/NavbarPages/FeesDetails";
 
 function App() {
 
@@ -51,8 +55,15 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/service" element={<Service />} />
+        <Route exact path="/contact" element={<Contact />} />
         <Route path="/documentRequired" element={<DocumentRequired />} />
-        <Route path="/Terms-and-Conditions" element={ <TermConditions/>}/>
+        <Route path="/Faq" element={<Faq />} />
+        <Route path="/Instruction" element={<Instructionspage />} />
+        <Route path="/Visa-Fee-Details" element={<FeesDetails />} />
+
+        {/* other important pages */}
+        <Route path="/Terms-and-Conditions" element={<TermConditions />} />
+        <Route path="/Refund-Policy" element={<Refund />} />
 
         {/* button pages */}
         <Route exact path="/Apply" element={<VisaApplicationForm />} />

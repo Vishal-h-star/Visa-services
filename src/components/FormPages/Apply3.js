@@ -1208,9 +1208,8 @@ const Apply3 = () => {
               </div>
 
               {formData.inMilitaryOrganization === "Yes" && (
-                <div className="military-fields full-width">
-                  <div className="form-grid">
-                    <div className="form-field">
+                <div className="military-fields ">
+                    <div className="form-field form-field-inline">
                       <label className="field-label">
                         <span className="label-text">Organization *</span>
                       </label>
@@ -1233,7 +1232,7 @@ const Apply3 = () => {
                       )}
                     </div>
 
-                    <div className="form-field">
+                    <div className="form-field form-field-inline">
                       <label className="field-label">
                         <span className="label-text">Designation *</span>
                       </label>
@@ -1256,7 +1255,7 @@ const Apply3 = () => {
                       )}
                     </div>
 
-                    <div className="form-field">
+                    <div className="form-field form-field-inline">
                       <label className="field-label">
                         <span className="label-text">Rank *</span>
                       </label>
@@ -1279,7 +1278,7 @@ const Apply3 = () => {
                       )}
                     </div>
 
-                    <div className="form-field">
+                    <div className="form-field form-field-inline">
                       <label className="field-label">
                         <span className="label-text">Place of Position *</span>
                       </label>
@@ -1301,7 +1300,6 @@ const Apply3 = () => {
                         </span>
                       )}
                     </div>
-                  </div>
                 </div>
               )}
             </div>
