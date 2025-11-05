@@ -57,7 +57,7 @@ const FeesDetails = () => {
                                     <tbody>
                                         {countryFeesPrice.map((data) => (
                                             <tr key={data.country}>
-                                            <td  style={{color:"black"}}><strong>{data.country}</strong></td>
+                                                <td style={{ color: "black" }}><strong>{data.country}</strong></td>
                                                 <td >{data.thirtyDaysPrice}</td>
                                                 <td >{data.oneYearPrice}</td>
                                                 <td>{data.fiveYearPrice}</td>
@@ -69,6 +69,14 @@ const FeesDetails = () => {
                                 </table>
                             </div>
 
+
+                            <div className='all_services'>
+                                <div className="dis-content">
+                                    <h6>Additional / Urgent Processing Fee:</h6>
+                                    <p><b>If you require urgent visa processing, an additional fee of $60 will be charged for all visa categories. Urgent applications are processed within 48 to 72 business hours.</b></p>
+                                </div>
+
+                            </div>
 
                         </div>
                     </div>
