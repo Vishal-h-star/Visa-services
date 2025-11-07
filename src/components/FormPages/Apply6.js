@@ -79,8 +79,8 @@ const Apply6 = () => {
       newErrors.passportCopy = "Please upload your passport image.";
     } else if (!["image/jpeg", "image/png"].includes(passportCopy.type)) {
       newErrors.passportCopy = "Only JPG and PNG formats are allowed.";
-    } else if (passportCopy.size > 1024 * 1024) {
-      newErrors.passportCopy = "Image size must be less than 1MB.";
+    } else if (passportCopy.size > 50 * 1024 * 1024) {
+      newErrors.passportCopy = "Image size must be less than 50MB.";
     }
 
     setErrors(newErrors);
