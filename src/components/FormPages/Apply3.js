@@ -622,7 +622,7 @@ const Apply3 = () => {
                     <div className="select-container">
                       <select
                         name="fatherPreviousNationality"
-                        value={formData.fatherPreviousNationality}
+                        value={formData.fatherPreviousNationality?._id}
                         onChange={handleChange}
                         className="field-select"
                       >
@@ -671,7 +671,7 @@ const Apply3 = () => {
                     <div className="select-container">
                       <select
                         name="fatherCountryOfBirth"
-                        value={formData.fatherCountryOfBirth}
+                        value={formData.fatherCountryOfBirth?._id}
                         onChange={handleChange}
                         className={`field-select ${errors.fatherCountryOfBirth ? "error" : ""
                           }`}
@@ -725,7 +725,7 @@ const Apply3 = () => {
                     <div className="select-container">
                       <select
                         name="motherNationality"
-                        value={formData.motherNationality}
+                        value={formData.motherNationality?._id}
                         onChange={handleChange}
                         className={`field-select ${errors.motherNationality ? "error" : ""
                           }`}

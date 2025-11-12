@@ -16,7 +16,7 @@ export const Privacy = () => {
                                 <b>E-Visa Privacy Policy</b>
                             </h4>
                             <p>
-                                At E-visa Services ("we," "us," "our"), your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website <a className="webLink" href="https://indiansvisaonline.com/" target='_blank'>Visit Indian eVisa Website</a> and use our services to apply for an India visa.
+                                At E-visa Services ("we," "us," "our"), your privacy is important to us. This Privacy Policy explains how we collect, use, and protect your personal information when you visit our website <a className="webLink" href="https://indiansvisaonline.com/" target='_blank'>www.indiansvisaonline.com</a> and use our services to apply for an India visa.
 
                             </p>
 
