@@ -53,22 +53,12 @@ const VisaPaymentForm = () => {
     try {
       const response = await PaypalPaymentApproval(data?.orderID, params?.id);
       console.log(response, 'res from app')
-      // const response = await axios.post(
-      //   `${requestUrl}/paypal/capture-paypal-order`,
-      //   {
-      //     orderID: data.orderID,
-      //   }
-      // );
-      // if (response.data.success) {
-      //   alert("Payment successful!");
-      //   navigate("/register", {
-      //     state: {
-      //       selectedSubId: selectedSub.subId,
-      //       selectedSubName: selectedSub.subName,
-      //       licenses: licenseCounts[selectedSub.subId],
-      //     },
-      //   });
-      // }
+      if (response.data.status === "success") {
+        toast.success(`OrderID : ${response?.data?.capture?.id}`)
+        setTimeout(() => {
+          navigate(`/`)
+        }, 500);
+      }
     } catch (error) {
       console.error("Error capturing PayPal order:", error);
     }
@@ -100,7 +90,7 @@ const VisaPaymentForm = () => {
               <span className="value">${formData?.amountToPay}</span>
             </div>
           </div>
-          
+
         </div>
 
         {/* Payment Form Section */}
@@ -150,7 +140,7 @@ const VisaPaymentForm = () => {
           {/* Action Buttons */}
           <div className="action-buttons">
 
-            <PayPalScriptProvider options={{ clientId: "AZMiySmjW-ll8ocR2k986jXCRQxmDhle378hvSkqt8ydLfSPCxWBjf9pKEW1t0-jk6AcbmoFpEAdrpCg", currency: "USD", }}>
+            <PayPalScriptProvider options={{ clientId: "AWm7v9GMPCRDEo5JjiygcphmF1lfxHRQmtrXh3tVAdRYqeQxntOSsgWnuixJt4iwWSecvdLWpmF9Ed3L", currency: "USD", }}>
               <PayPalButtons
                 createOrder={createOrder}
                 onApprove={onApprove}

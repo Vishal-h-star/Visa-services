@@ -6,9 +6,9 @@ import {
   getApplicationDataById,
   applicationSubmitStep1,
 } from "../../apiCalls/visaApplication";
+import { getCountryList } from "../../apiCalls/masterapis";
 import { useParams } from "react-router-dom";
 import {
-  nationalities,
   portsOfArrival,
   visaServices,
   applicationTypes,
@@ -19,6 +19,8 @@ import { useNavigate } from "react-router-dom";
 const Apply1 = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const [countryData, setCountryData] = useState([])
+
   const [formData, setFormData] = useState({
     applicationType: "",
     passportType: "",
@@ -140,20 +142,30 @@ const Apply1 = () => {
 
   const handleSubmit = async (e) => {
 
-      e.preventDefault();
-      console.log("Form Data:", formData);
-      console.log("hitting api");
-      const res = await applicationSubmitStep1(formData, params.id);
-      if (res.status === 200) {
-        console.log(res.data, "data we get from back");
-        // toast.success(`🦄 ${res.data.message}`);
-        // setIsSubmitting(true);
-        setIsSubmitting(false);
-        navigate(`/apply2/${res.data.data.uniqueId}`);
-      } else {
-        toast.error(`Some Error Happens!!`);
-      }
-    };
+    e.preventDefault();
+    console.log("Form Data:", formData);
+    console.log("hitting api");
+    const res = await applicationSubmitStep1(formData, params.id);
+    if (res.status === 200) {
+      console.log(res.data, "data we get from back");
+      // toast.success(`🦄 ${res.data.message}`);
+      // setIsSubmitting(true);
+      setIsSubmitting(false);
+      navigate(`/apply2/${res.data.data.uniqueId}`);
+    } else {
+      toast.error(`Some Error Happens!!`);
+    }
+  };
+
+  const getCountryData = async () => {
+    const res = await getCountryList();
+
+    setCountryData(res)
+  }
+
+  useEffect(() => {
+    getCountryData()
+  }, [])
 
   return (
     <div className="enhanced-visa-container">
@@ -184,9 +196,8 @@ const Apply1 = () => {
                     name="applicationType"
                     value={formData.applicationType}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.applicationType ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.applicationType ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Application Type</option>
                     {applicationTypes.map((option) => (
@@ -214,9 +225,8 @@ const Apply1 = () => {
                     name="passportType"
                     value={formData.passportType}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.passportType ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.passportType ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">Ordinary Passport</option>
@@ -276,18 +286,17 @@ const Apply1 = () => {
                 <div className="select-container">
                   <select
                     name="nationality"
-                    value={formData.nationality}
+                    value={formData?.nationality?._id}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.nationality ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.nationality ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Nationality</option>
-                    {nationalities
+                    {countryData
                       .filter((option) => option.status === true)
                       .map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
+                        <option key={option._id} value={option._id}>
+                          {option.countryName}
                         </option>
                       ))}
                   </select>
@@ -308,9 +317,8 @@ const Apply1 = () => {
                     name="portOfArrival"
                     value={formData.portOfArrival}
                     onChange={handleChange}
-                    className={`field-select ${
-                      errors.portOfArrival ? "error" : ""
-                    }`}
+                    className={`field-select ${errors.portOfArrival ? "error" : ""
+                      }`}
                   >
                     <option value="">Select Port Of Arrival</option>
                     {portsOfArrival.map((option) => (
@@ -368,9 +376,8 @@ const Apply1 = () => {
                     }}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="Select your date of birth"
-                    className={`field-input ${
-                      errors.dateOfBirth ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.dateOfBirth ? "error" : ""
+                      }`}
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
@@ -413,9 +420,8 @@ const Apply1 = () => {
                     name="confirmEmail"
                     value={formData.confirmEmail}
                     onChange={handleChange}
-                    className={`field-input ${
-                      errors.confirmEmail ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.confirmEmail ? "error" : ""
+                      }`}
                     placeholder="confirm@email.com"
                   />
                 </div>
@@ -492,9 +498,8 @@ const Apply1 = () => {
                     }}
                     dateFormat="dd/MM/yyyy"
                     placeholderText="Select expected arrival date"
-                    className={`field-input ${
-                      errors.expectedArrival ? "error" : ""
-                    }`}
+                    className={`field-input ${errors.expectedArrival ? "error" : ""
+                      }`}
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
@@ -540,9 +545,8 @@ const Apply1 = () => {
                         {service.options &&
                           formData.visaService === service.value && (
                             <div
-                              className={`nested-options ${
-                                errors.serviceSubCategory ? "error" : ""
-                              }`}
+                              className={`nested-options ${errors.serviceSubCategory ? "error" : ""
+                                }`}
                             >
                               <div className="radio-buttons-horizontal">
                                 {service.options.map((option) => (
@@ -551,12 +555,11 @@ const Apply1 = () => {
                                     className="nested-group"
                                   >
                                     <label
-                                      className={`radio-button-label nested ${
-                                        formData.serviceSubCategory ===
+                                      className={`radio-button-label nested ${formData.serviceSubCategory ===
                                         option.value
-                                          ? "active"
-                                          : ""
-                                      }`}
+                                        ? "active"
+                                        : ""
+                                        }`}
                                     >
                                       <input
                                         type="radio"
@@ -577,17 +580,16 @@ const Apply1 = () => {
                                     {/* --- Sub-options (Level 3) --- */}
                                     {option.subOption &&
                                       formData.serviceSubCategory ===
-                                        option.value && (
+                                      option.value && (
                                         <div className="nested-options level3">
                                           {option.subOption.map((sub) => (
                                             <label
                                               key={sub.value}
-                                              className={`radio-button-label nested ${
-                                                formData.serviceSubCat_subCategory ===
+                                              className={`radio-button-label nested ${formData.serviceSubCat_subCategory ===
                                                 sub.value
-                                                  ? "active"
-                                                  : ""
-                                              }`}
+                                                ? "active"
+                                                : ""
+                                                }`}
                                             >
                                               <input
                                                 type="radio"
