@@ -445,7 +445,7 @@ const Apply2 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
+                  {/* <span className="select-arrow">▼</span> */}
                 </div>
                 {errors.gender && (
                   <span className="error-message">{errors.gender}</span>
@@ -521,7 +521,6 @@ const Apply2 = () => {
                         </option>
                       ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.countryOfBirth && (
                   <span className="error-message">{errors.countryOfBirth}</span>
@@ -564,7 +563,6 @@ const Apply2 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.religion && (
                   <span className="error-message">{errors.religion}</span>
@@ -604,7 +602,6 @@ const Apply2 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.education && (
                   <span className="error-message">{errors.education}</span>
@@ -644,7 +641,6 @@ const Apply2 = () => {
                     <option value="By birth">By Birth</option>
                     <option value="By naturalization">Naturalization</option>
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.nationalityAcquired && (
                   <span className="error-message">
@@ -674,7 +670,6 @@ const Apply2 = () => {
                           </option>
                         ))}
                     </select>
-                    <span className="select-arrow">▼</span>
                   </div>
                   {errors.nationalityAcquiredDetails && (
                     <span className="error-message">
@@ -885,7 +880,6 @@ const Apply2 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.otherPassportCountryOfIssue && (
                       <span className="error-message">
@@ -990,7 +984,6 @@ const Apply2 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.otherPassportNationaliyMentioned && (
                       <span className="error-message">

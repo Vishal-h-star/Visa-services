@@ -428,9 +428,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     readOnly
-                    name="serviceSubCat_subCategory"
+                    name="serviceSubCategory"
                     className="field-input"
-                    value={formData.serviceSubCat_subCategory}
+                    value={formData.serviceSubCategory}
                     onChange={handleChange}
                   />
                 </div>
@@ -2043,7 +2043,6 @@ const Apply4 = () => {
                             </option>
                           ))}
                         </select>
-                        <span className="select-arrow">▼</span>
                       </div>
                       {errors.patientTravMedVisa_nationality && (
                         <span className="error-message">
@@ -2296,7 +2295,6 @@ const Apply4 = () => {
                           </option>
                         ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.ayushAttendent_nationality && (
                       <span className="error-message">

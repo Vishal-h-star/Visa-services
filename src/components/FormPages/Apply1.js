@@ -206,7 +206,6 @@ const Apply1 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.applicationType && (
                   <span className="error-message">
@@ -231,7 +230,6 @@ const Apply1 = () => {
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">Ordinary Passport</option>
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.passportType && (
                   <span className="error-message">{errors.passportType}</span>
@@ -300,7 +298,6 @@ const Apply1 = () => {
                         </option>
                       ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.nationality && (
                   <span className="error-message">{errors.nationality}</span>
@@ -327,7 +324,6 @@ const Apply1 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.portOfArrival && (
                   <span className="error-message">{errors.portOfArrival}</span>
@@ -573,7 +569,7 @@ const Apply1 = () => {
                                         className="radio-button-input"
                                       />
                                       <span className="radio-button-text">
-                                        {option.label}
+                                        {option.label}...
                                       </span>
                                     </label>
 

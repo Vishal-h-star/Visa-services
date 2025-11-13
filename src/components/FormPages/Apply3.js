@@ -172,7 +172,6 @@ const Apply3 = () => {
       "presentState",
       "presentPostalCode",
       "presentPhoneNo",
-      "presentMobileNo",
       "fatherName",
       "fatherNationality",
       "fatherPlaceOfBirth",
@@ -189,8 +188,9 @@ const Apply3 = () => {
       "employerPhoneNo",
     ];
 
-    requiredFields.forEach((field) => {
-      if (!formData[field] || formData[field].trim() === "") {
+    requiredFields?.forEach((field) => {
+      const value = formData[field];
+      if (!value || String(value).trim() === "") {
         newErrors[field] = "This field is required";
       }
     });
@@ -204,12 +204,12 @@ const Apply3 = () => {
       newErrors.presentPhoneNo = "Please enter a valid phone number";
     }
 
-    if (
-      formData.presentMobileNo &&
-      !/^\d{10,15}$/.test(formData.presentMobileNo.replace(/\D/g, ""))
-    ) {
-      newErrors.presentMobileNo = "Please enter a valid mobile number";
-    }
+    // if (
+    //   formData.presentMobileNo &&
+    //   !/^\d{10,15}$/.test(formData.presentMobileNo.replace(/\D/g, ""))
+    // ) {
+    //   newErrors.presentMobileNo = "Please enter a valid mobile number";
+    // }
 
     // Military organization fields validation if Yes is selected
     if (formData.inMilitaryOrganization === "Yes") {
@@ -234,7 +234,7 @@ const Apply3 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("hitting api");
+      console.log(formData, "hitting api");
       const res = await applicationSubmitStep3(formData, params.id);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
@@ -375,7 +375,6 @@ const Apply3 = () => {
                         </option>
                       ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.presentCountry && (
                   <span className="error-message">{errors.presentCountry}</span>
@@ -446,7 +445,7 @@ const Apply3 = () => {
 
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">Mobile No *</span>
+                  <span className="label-text">Mobile No</span>
                 </label>
                 <div className="input-container">
                   <input
@@ -454,16 +453,15 @@ const Apply3 = () => {
                     name="presentMobileNo"
                     value={formData.presentMobileNo}
                     onChange={handleChange}
-                    className={`field-input ${errors.presentMobileNo ? "error" : ""
-                      }`}
+                    className="field-input"
                     placeholder="Enter mobile number"
                   />
                 </div>
-                {errors.presentMobileNo && (
+                {/* {errors.presentMobileNo && (
                   <span className="error-message">
                     {errors.presentMobileNo}
                   </span>
-                )}
+                )} */}
               </div>
 
 
@@ -604,7 +602,6 @@ const Apply3 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.fatherNationality && (
                       <span className="error-message">
@@ -634,7 +631,6 @@ const Apply3 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                   </div>
 
@@ -684,7 +680,6 @@ const Apply3 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.fatherCountryOfBirth && (
                       <span className="error-message">
@@ -738,7 +733,6 @@ const Apply3 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.motherNationality && (
                       <span className="error-message">
@@ -768,7 +762,6 @@ const Apply3 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                   </div>
 
@@ -818,7 +811,6 @@ const Apply3 = () => {
                             </option>
                           ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.motherCountryOfBirth && (
                       <span className="error-message">
@@ -854,7 +846,6 @@ const Apply3 = () => {
                           </option>
                         ))}
                       </select>
-                      <span className="select-arrow">▼</span>
                     </div>
                     {errors.maritalStatus && (
                       <span className="error-message">
@@ -909,7 +900,6 @@ const Apply3 = () => {
                                 </option>
                               ))}
                           </select>
-                          <span className="select-arrow">▼</span>
                         </div>
                         {errors.presentCountry && (
                           <span className="error-message">
@@ -942,7 +932,6 @@ const Apply3 = () => {
                                 </option>
                               ))}
                           </select>
-                          <span className="select-arrow">▼</span>
                         </div>
                         {errors.presentCountry && (
                           <span className="error-message">
@@ -997,7 +986,6 @@ const Apply3 = () => {
                                 </option>
                               ))}
                           </select>
-                          <span className="select-arrow">▼</span>
                         </div>
                         {errors.presentCountry && (
                           <span className="error-message">
@@ -1092,7 +1080,6 @@ const Apply3 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.presentOccupation && (
                   <span className="error-message">
@@ -1199,7 +1186,6 @@ const Apply3 = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
               </div>
 
