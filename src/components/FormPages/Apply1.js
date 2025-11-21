@@ -56,11 +56,26 @@ const Apply1 = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
 
+    setFormData((prev) => {
+      let updated = {
+        ...prev,
+        [name]: value,
+      };
+
+      // 👉 When visaService changes, empty some fields
+      if (name === "visaService") {
+        updated = {
+          ...updated,
+          serviceSubCategory: "",
+          serviceSubCat_subCategory: "",
+        };
+      }
+
+      return updated;
+    });
+
+    // 👉 Clear error for the current field
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -330,27 +345,6 @@ const Apply1 = () => {
                 )}
               </div>
 
-              {/* Date of Birth */}
-              {/* <div className="form-field-horizontal">
-                <label className="field-label">
-                  <span className="label-text">Date of Birth *</span>
-                </label>
-                <div className="input-container">
-                  <input
-                    type="date"
-                    name="dateOfBirth"
-                    value={formData.dateOfBirth}
-                    onChange={handleChange}
-                    className={`field-input ${
-                      errors.dateOfBirth ? "error" : ""
-                    }`}
-                  />
-                </div>
-                {errors.dateOfBirth && (
-                  <span className="error-message">{errors.dateOfBirth}</span>
-                )}
-              </div> */}
-
               <div className="form-field-horizontal">
                 <label className="field-label">
                   <span className="label-text">Date of Birth *</span>
@@ -448,28 +442,7 @@ const Apply1 = () => {
                 )}
               </div>
 
-              {/* Expected Arrival Date */}
-              {/* <div className="form-field-horizontal">
-                <label className="field-label">
-                  <span className="label-text">Expected Date of Arrival *</span>
-                </label>
-                <div className="input-container">
-                  <input
-                    type="date"
-                    name="expectedArrival"
-                    value={formData.expectedArrival}
-                    onChange={handleChange}
-                    className={`field-input ${
-                      errors.expectedArrival ? "error" : ""
-                    }`}
-                  />
-                </div>
-                {errors.expectedArrival && (
-                  <span className="error-message">
-                    {errors.expectedArrival}
-                  </span>
-                )}
-              </div> */}
+
               <div className="form-field-horizontal">
                 <label className="field-label">
                   <span className="label-text">Expected Date of Arrival *</span>
@@ -625,122 +598,6 @@ const Apply1 = () => {
                   )}
                 </div>
               </div>
-
-              {/* <div className="form-field-horizontal radio-field">
-                <label className="field-label">
-                  <span className="label-text">Visa Service *</span>
-                </label>
-
-                <div className="radio-buttons-container">
-                  <div className="radio-buttons-horizontal">
-                    {visaServices.map((service) => (
-                      <div
-                        key={service.value}
-                        className="service-option-wrapper"
-                      >
-                        
-                        <label className="radio-button-label">
-                          <input
-                            type="radio"
-                            name="visaService"
-                            value={service.value}
-                            checked={formData.visaService === service.value}
-                            onChange={handleChange}
-                          />
-                          <span className="radio-button-text">
-                            {service.label}
-                          </span>
-                        </label>
-
-                       
-                        {service.options &&
-                          formData.visaService === service.value && (
-                            <div
-                              className={`nested-options ${
-                                errors.serviceSubCategory ? "error" : ""
-                              }`}
-                            >
-                              <div className="radio-buttons-horizontal">
-                                {service.options.map((option) => (
-                                  <div
-                                    key={option.value}
-                                    className="nested-group"
-                                  >
-                                    <label
-                                      className={`radio-button-label nested ${
-                                        formData.serviceSubCategory ===
-                                        option.value
-                                          ? "active"
-                                          : ""
-                                      }`}
-                                    >
-                                      <input
-                                        type="radio"
-                                        name="serviceSubCategory"
-                                        value={option.value}
-                                        checked={
-                                          formData.serviceSubCategory ===
-                                          option.value
-                                        }
-                                        onChange={handleChange}
-                                      />
-                                      <span className="radio-button-text">
-                                        {option.label}
-                                      </span>
-                                    </label>
-
-                                 
-                                    {option.subOption &&
-                                      formData.serviceSubCategory ===
-                                        option.value && (
-                                        <div className="nested-options level3">
-                                          {option.subOption.map((sub) => (
-                                            <label
-                                              key={sub.value}
-                                              className={`radio-button-label nested ${
-                                                formData.serviceSubCat_subCategory ===
-                                                sub.value
-                                                  ? "active"
-                                                  : ""
-                                              }`}
-                                            >
-                                              <input
-                                                type="radio"
-                                                name="serviceSubCat_subCategory"
-                                                value={sub.value}
-                                                checked={
-                                                  formData.serviceSubCat_subCategory ===
-                                                  sub.value
-                                                }
-                                                onChange={handleChange}
-                                              />
-                                              <span className="radio-button-text">
-                                                {sub.label}
-                                              </span>
-                                            </label>
-                                          ))}
-                                        </div>
-                                      )}
-                                  </div>
-                                ))}
-                              </div>
-
-                              {errors.serviceSubCategory && (
-                                <span className="error-message">
-                                  {errors.serviceSubCategory}
-                                </span>
-                              )}
-                            </div>
-                          )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {errors.visaService && (
-                    <span className="error-message">{errors.visaService}</span>
-                  )}
-                </div>
-              </div> */}
             </div>
           </div>
 

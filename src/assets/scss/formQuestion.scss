@@ -1,12 +1,17 @@
-.form-header-section{
-    .question_title{
-    margin-bottom: 1.5rem;
+.form-header-section {
+    .question_title {
+        margin-bottom: 1.5rem;
+    }
 }
-}
-.questionsForm{
+
+.questionsForm {
     display: flex;
     justify-content: space-between;
-    // grid-template-columns: 1fr 2fr;
+
+    @media #{$xs-layout} {
+        flex-direction: column;
+        gap: 0;
+    }
 }
 
 .subInput_div {
@@ -24,7 +29,7 @@
 }
 
 .questionLabeldiv>label {
-     font-size: 1.1rem;
+    font-size: 1.1rem;
     font-weight: 500;
 
 }
@@ -35,13 +40,11 @@
     width: 100%;
     padding: 8px 10px;
 }
-.question_declear{
+
+.question_declear {
     margin-top: 4rem;
 }
-.questionForm_button{
+
+.questionForm_button {
     margin-top: 2rem;
 }
-
-  @media (max-width: 768px) {
-      
-  }

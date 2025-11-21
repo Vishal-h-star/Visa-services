@@ -318,7 +318,43 @@ const Apply2 = () => {
           </div>
         </div>
 
+        
+
         <form onSubmit={handleSubmit} className="enhanced-visa-form">
+
+           <div className="form-section">
+            <div className="form-grid">
+              <div className="form-field">
+                <label className="field-label">
+                  <span className="label-text">Application Type *</span>
+                </label>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    value={formData.applicationType}
+                    readOnly
+                    className="field-input"
+                    style={{ backgroundColor: "#f8f9fa" }}
+                  />
+                </div>
+              </div>
+
+              <div className="form-field">
+                <label className="field-label">
+                  <span className="label-text">Port of Arrival *</span>
+                </label>
+                <div className="input-container">
+                  <input
+                    type="text"
+                    value={formData.portOfArrival}
+                    readOnly
+                    className="field-input"
+                    style={{ backgroundColor: "#f8f9fa" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
           {/* Combined Personal + Passport Details Section */}
           <div className="form-section">
             <div className="section-header centered">

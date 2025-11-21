@@ -197,7 +197,6 @@ const VisaApplicationForm = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.applicationType && (
                   <span className="error-message">
@@ -222,7 +221,6 @@ const VisaApplicationForm = () => {
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">ORDINARY PASSPORT</option>
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.passportType && (
                   <span className="error-message">{errors.passportType}</span>
@@ -293,7 +291,6 @@ const VisaApplicationForm = () => {
                         </option>
                       ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.nationality && (
                   <span className="error-message">{errors.nationality}</span>
@@ -320,7 +317,6 @@ const VisaApplicationForm = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.portOfArrival && (
                   <span className="error-message">{errors.portOfArrival}</span>

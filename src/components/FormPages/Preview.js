@@ -170,6 +170,10 @@ const Preview = () => {
                                 <span> <b>Gender &nbsp;&nbsp;:</b></span>
                                 <span>{applicantData?.gender}</span>
                             </div>
+                             <div className='field grid'>
+                                <span> <b>Nationality&nbsp;&nbsp;:</b></span>
+                                <span>{applicantData?.nationality?.countryName}</span>
+                            </div>
                             {/* Country of Birth*/}
                             <div className='field grid'>
                                 <span> <b>Country of Birth&nbsp;&nbsp;:</b></span>

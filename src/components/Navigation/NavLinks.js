@@ -31,11 +31,11 @@ const NavLinks = () => {
           Services
         </NavLink>
       </li>
-      {/* <li>
+      <li>
         <NavLink to="/contact" exact>
           Contact
         </NavLink>
-      </li> */}
+      </li>
       
     </ul>
   );

@@ -430,7 +430,7 @@ const Apply4 = () => {
                     readOnly
                     name="serviceSubCategory"
                     className="field-input"
-                    value={formData.serviceSubCategory}
+                    value={formData.serviceSubCat_subCategory ? formData.serviceSubCat_subCategory : formData.serviceSubCategory}
                     onChange={handleChange}
                   />
                 </div>

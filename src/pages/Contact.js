@@ -66,7 +66,7 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   {/* <h4 className="contact-tect-heading">Mail Address</h4> */}
-                  <p className="text-left">8376836323</p>
+                  <p className="text-left">indianvisaonlines@gmail.com</p>
                 </div>
               </li>
             </ul>
