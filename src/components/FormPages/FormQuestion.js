@@ -11,18 +11,18 @@ const FormQuestion = () => {
     const navigate = useNavigate();
     const params = useParams();
     const [securityAnswers, setSecurityAnswers] = useState({
-        arrested: "",
-        deported: "",
-        trafficking: "",
-        cyberCrime: "",
-        terrorismSupport: "",
-        asylum: "",
-        givenDetailarrested: "",
-        givenDetaildeported: "",
-        givenDetailtrafficking: "",
-        givenDetailcyberCrime: "",
-        givenDetailterrorismSupport: "",
-        givenDetailasylum: "",
+        arrested: "No",
+        deported: "No",
+        trafficking: "No",
+        cyberCrime: "No",
+        terrorismSupport: "No",
+        asylum: "No",
+        givenDetailarrested: "No",
+        givenDetaildeported: "No",
+        givenDetailtrafficking: "No",
+        givenDetailcyberCrime: "No",
+        givenDetailterrorismSupport: "No",
+        givenDetailasylum: "No",
     });
 
 

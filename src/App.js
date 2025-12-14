@@ -81,7 +81,6 @@ function App() {
         <Route path="/questions/:id" element={<FormQuestion />} />
         <Route path="/Preview/:id" exact element={<Preview />} />
 
-
         {/* <Route exact path="/contact" element={<Contact />} /> */}
 
       </Routes>

@@ -171,7 +171,7 @@ const Apply3 = () => {
       "presentCountry",
       "presentState",
       "presentPostalCode",
-      "presentPhoneNo",
+      // "presentPhoneNo",
       "fatherName",
       "fatherNationality",
       "fatherPlaceOfBirth",
@@ -197,12 +197,12 @@ const Apply3 = () => {
 
 
     // Phone number validation
-    if (
-      formData.presentPhoneNo &&
-      !/^\d{7,15}$/.test(formData.presentPhoneNo.replace(/\D/g, ""))
-    ) {
-      newErrors.presentPhoneNo = "Please enter a valid phone number";
-    }
+    // if (
+    //   formData.presentPhoneNo &&
+    //   !/^\d{7,15}$/.test(formData.presentPhoneNo.replace(/\D/g, ""))
+    // ) {
+    //   newErrors.presentPhoneNo = "Please enter a valid phone number";
+    // }
 
     // if (
     //   formData.presentMobileNo &&

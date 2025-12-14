@@ -11,7 +11,7 @@ const VisaPaymentForm = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    agreeTerms: false
+    agreeTerms: true
   });
 
   const getApplicationData = async () => {
