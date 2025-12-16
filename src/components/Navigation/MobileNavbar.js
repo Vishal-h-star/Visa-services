@@ -98,6 +98,15 @@ const MobileNavbar = () => {
                   Services
                 </Link>
               </li>
+                <li className="menu-category">
+                <Link
+                  to="/contact"
+                  className="menu-title"
+                  onClick={closeDrawerHandler}
+                >
+                  Contact
+                </Link>
+              </li>
 
               {/* <li className="menu-category">
                 <Link

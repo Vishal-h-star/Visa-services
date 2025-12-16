@@ -30,7 +30,7 @@ const Contact = () => {
            </div>
           {/* <h2 className="contact-head">Get in Touch And We’ll Help Your Business</h2> */}
 
-          <div className="contact-text-section col-lg-6  col-12">
+          <div className="contact-text-section col-lg-12  col-12">
 
             {/* <p className="desc-section">
               Welcome to WOM Solutions a software development company with
@@ -66,15 +66,15 @@ const Contact = () => {
                 </div>
                 <div className="contact-text">
                   {/* <h4 className="contact-tect-heading">Mail Address</h4> */}
-                  <p className="text-left">sales@womsolutions.in</p>
+                  <p className="text-left">indianvisaonlines@gmail.com</p>
                 </div>
               </li>
             </ul>
 
           </div>
-          <div className="contact-form-section col-lg-6  col-12">
+          {/* <div className="contact-form-section col-lg-6  col-12">
             <ContactForm />
-          </div>
+          </div> */}
 
         </div>
       </div>

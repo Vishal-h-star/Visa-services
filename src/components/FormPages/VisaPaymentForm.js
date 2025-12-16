@@ -11,7 +11,7 @@ const VisaPaymentForm = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    agreeTerms: false
+    agreeTerms: true
   });
 
   const getApplicationData = async () => {
@@ -38,19 +38,10 @@ const VisaPaymentForm = () => {
     try {
       const response = await PaypalPayment(params?.id);
       console.log(response, 'response')
-      toast.success(`OrderID : ${response?.data?.orderID}`)
-      setTimeout(() => {
-        navigate(`/`)
-      }, 500);
-
-      // const response = await axios.post(
-      //   `${requestUrl}/paypal/create-paypal-order`,
-      //   {
-      //     subId: selectedSub.subId,
-      //     licenses: licenseCounts[selectedSub.subId],
-      //     billingCycle, // NEW
-      //   }
-      // );
+      // toast.success(`OrderID : ${response?.data?.orderID}`)
+      // setTimeout(() => {
+      //   navigate(`/`)
+      // }, 500);
       return response?.data?.orderID;
     } catch (error) {
       console.error("Error creating PayPal order:", error);
@@ -58,24 +49,16 @@ const VisaPaymentForm = () => {
   };
 
   const onApprove = async (data) => {
+    console.log(data, 'data')
     try {
-      const response = await PaypalPaymentApproval()
-      // const response = await axios.post(
-      //   `${requestUrl}/paypal/capture-paypal-order`,
-      //   {
-      //     orderID: data.orderID,
-      //   }
-      // );
-      // if (response.data.success) {
-      //   alert("Payment successful!");
-      //   navigate("/register", {
-      //     state: {
-      //       selectedSubId: selectedSub.subId,
-      //       selectedSubName: selectedSub.subName,
-      //       licenses: licenseCounts[selectedSub.subId],
-      //     },
-      //   });
-      // }
+      const response = await PaypalPaymentApproval(data?.orderID, params?.id);
+      console.log(response, 'res from app')
+      if (response.data.status === "success") {
+        toast.success(`OrderID : ${response?.data?.capture?.id}`)
+        setTimeout(() => {
+          navigate(`/`)
+        }, 500);
+      }
     } catch (error) {
       console.error("Error capturing PayPal order:", error);
     }
@@ -107,7 +90,7 @@ const VisaPaymentForm = () => {
               <span className="value">${formData?.amountToPay}</span>
             </div>
           </div>
-          
+
         </div>
 
         {/* Payment Form Section */}
@@ -157,7 +140,7 @@ const VisaPaymentForm = () => {
           {/* Action Buttons */}
           <div className="action-buttons">
 
-            <PayPalScriptProvider options={{ clientId: "AZMiySmjW-ll8ocR2k986jXCRQxmDhle378hvSkqt8ydLfSPCxWBjf9pKEW1t0-jk6AcbmoFpEAdrpCg", currency: "USD", }}>
+            <PayPalScriptProvider options={{ clientId: "AWm7v9GMPCRDEo5JjiygcphmF1lfxHRQmtrXh3tVAdRYqeQxntOSsgWnuixJt4iwWSecvdLWpmF9Ed3L", currency: "USD", }}>
               <PayPalButtons
                 createOrder={createOrder}
                 onApprove={onApprove}

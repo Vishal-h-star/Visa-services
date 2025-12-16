@@ -271,7 +271,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       font-weight: 600;
       color: $text-dark;
       font-size: 0.9rem;
-      text-transform: uppercase;
+      // text-transform: uppercase;
       letter-spacing: 0.5px;
     }
   }
@@ -290,9 +290,9 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       transition: all 0.3s ease;
       background: white;
       font-family: "Inter", sans-serif;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+      // appearance: none;
+      // -webkit-appearance: none;
+      // -moz-appearance: none;
       background-image: none;
       text-transform: uppercase;
 
@@ -310,7 +310,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 
       &:read-only {
         background-color: #f8f9fa;
-        color: $text-light;
+        // color: $text-light;
         cursor: pointer;
       }
     }
@@ -612,7 +612,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 
   .radio-group {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0;
   }
 }
 

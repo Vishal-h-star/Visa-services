@@ -198,7 +198,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     display: flex;
     flex: 0 0 250px;
     margin-bottom: 0;
-    justify-content: flex-end;
+    // justify-content: flex-end;
     align-items: center;
 
     .label-text {
@@ -207,7 +207,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       font-size: 0.95rem;
       text-transform: none;
       letter-spacing: 0.3px;
-      white-space: nowrap;
+      // white-space: nowrap;
     }
   }
 
@@ -228,9 +228,9 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
       transition: all 0.3s ease;
       background: white;
       font-family: "Inter", sans-serif;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
+      // appearance: none;
+      // -webkit-appearance: none;
+      // -moz-appearance: none;
       background-image: none;
       text-transform: uppercase;
 
@@ -352,6 +352,7 @@ $shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
     color: $text-dark;
     transition: color 0.3s ease;
     flex: 1;
+    word-break: break-word;
   }
 }
 

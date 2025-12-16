@@ -170,10 +170,14 @@ const Preview = () => {
                                 <span> <b>Gender &nbsp;&nbsp;:</b></span>
                                 <span>{applicantData?.gender}</span>
                             </div>
+                             <div className='field grid'>
+                                <span> <b>Nationality&nbsp;&nbsp;:</b></span>
+                                <span>{applicantData?.nationality?.countryName}</span>
+                            </div>
                             {/* Country of Birth*/}
                             <div className='field grid'>
                                 <span> <b>Country of Birth&nbsp;&nbsp;:</b></span>
-                                <span>{applicantData?.countryOfBirth}</span>
+                                <span>{applicantData?.countryOfBirth?.countryName}</span>
                             </div>
                             {/* Religion */}
                             <div className='field grid'>
@@ -227,7 +231,7 @@ const Preview = () => {
                                         <div className='field grid'>
                                             <span> <b>Country of Issue &nbsp;&nbsp;:</b></span>
 
-                                            <span> {applicantData?.otherPassportCountryOfIssue}</span>
+                                            <span> {applicantData?.otherPassportCountryOfIssue?.countryName}</span>
                                         </div>
                                         <div className='field grid'>
                                             <span> <b>Passport No &nbsp;&nbsp;:</b></span>
@@ -247,7 +251,7 @@ const Preview = () => {
                                         <div className='field grid'>
                                             <span> <b>Nationality Mentioned Therein &nbsp;&nbsp;:</b></span>
 
-                                            <span> {applicantData?.otherPassportNationaliyMentioned}</span>
+                                            <span> {applicantData?.otherPassportNationaliyMentioned?.countryName}</span>
                                         </div>
                                     </>
                                 ) : (
@@ -286,7 +290,7 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Country&nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.presentCountry}</span>
+                                <span> {applicantData?.presentCountry?.countryName}</span>
                             </div>
                             {/* Postal/Zip Code */}
                             <div className='field grid'>
@@ -367,13 +371,13 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Father's Previous Nationality&nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.fatherPreviousNationality}</span>
+                                <span> {applicantData?.fatherPreviousNationality?.countryName}</span>
                             </div>
                             {/*Father's Country of Birth  */}
                             <div className='field grid'>
                                 <span> <b>Father's Country of Birth&nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.fatherCountryOfBirth}</span>
+                                <span> {applicantData?.fatherCountryOfBirth?.countryName}</span>
                             </div>
                         </div>
                         <div className='right_content'>
@@ -381,7 +385,7 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Father's Nationality&nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.fatherNationality}</span>
+                                <span> {applicantData?.fatherNationality?.countryName}</span>
                             </div>
                             {/*  Father's Place of Birth*/}
                             <div className='field grid'>
@@ -406,12 +410,12 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Mother's Previous Nationality&nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.motherPreviousNationality}</span>
+                                <span> {applicantData?.motherPreviousNationality?.countryName}</span>
                             </div>
                             {/*Mother's Country of Birth  */}
                             <div className='field grid'>
                                 <span> <b>Mother's Country of Birth&nbsp;&nbsp;:</b></span>
-                                <span> {applicantData?.motherCountryOfBirth}</span>
+                                <span> {applicantData?.motherCountryOfBirth?.countryName}</span>
                             </div>
                         </div>
                         <div className='right_content'>
@@ -419,7 +423,7 @@ const Preview = () => {
                             <div className='field grid'>
                                 <span> <b>Mother's Nationality&nbsp;&nbsp;:</b></span>
 
-                                <span> {applicantData?.motherNationality}</span>
+                                <span> {applicantData?.motherNationality?.countryName}</span>
                             </div>
                             {/*  Mother's Place of Birth*/}
                             <div className='field grid'>
@@ -453,12 +457,12 @@ const Preview = () => {
                                     <div className='field grid'>
                                         <span> <b>Spouse Nationality/Region &nbsp;&nbsp;:</b></span>
 
-                                        <span> {applicantData?.SpouseNationality}</span>
+                                        <span> {applicantData?.SpouseNationality?.countryName}</span>
                                     </div>
                                     {/*Mother's Country of Birth  */}
                                     <div className='field grid'>
                                         <span> <b>Spouse Previous Nationality &nbsp;&nbsp;:</b></span>
-                                        <span> {applicantData?.SpousePrevNationality}</span>
+                                        <span> {applicantData?.SpousePrevNationality?.countryName}</span>
                                     </div>
                                 </div>
                                 <div className='right_content'>
@@ -472,7 +476,7 @@ const Preview = () => {
                                     <div className='field grid'>
                                         <span> <b>Spouse Country of Birth &nbsp;&nbsp;:</b></span>
 
-                                        <span> {applicantData?.SpouseCtryOfBirth}</span>
+                                        <span> {applicantData?.SpouseCtryOfBirth?.countryName}</span>
                                     </div>
                                 </div>
                             </div>

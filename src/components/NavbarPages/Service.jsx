@@ -19,7 +19,7 @@ export const Service = () => {
 
                             </p>
                             <p>
-                                At E Visa Services <a className="webLink" href="https://indiansvisaonline.com/" target='_blank'>Visit Indian eVisa Website</a>, we specialize in simplifying this process. As one of the leading service providers for Indian e-Visa assistance, we ensure your application is error-free, secure, and processed efficiently. Below are the exclusive benefits we offer — services that are not provided by the official government website.
+                                At E Visa Services <a className="webLink" href="https://indiansvisaonline.com/" target='_blank'>www.indiansvisaonline.com</a>, we specialize in simplifying this process. As one of the leading service providers for Indian e-Visa assistance, we ensure your application is error-free, secure, and processed efficiently. Below are the exclusive benefits we offer — services that are not provided by the official government website.
                             </p>
 
                             <div className='all_services'>

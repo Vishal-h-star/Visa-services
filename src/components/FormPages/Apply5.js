@@ -31,8 +31,8 @@ const Apply5 = () => {
       newErrors.imageFile = "Please upload your image.";
     } else if (!["image/jpeg", "image/png"].includes(imageFile.type)) {
       newErrors.imageFile = "Only JPG and PNG formats are allowed.";
-    } else if (imageFile.size > 1024 * 1024) {
-      newErrors.imageFile = "Image size must be less than 1MB.";
+    } else if (imageFile.size > 1024 * 1024 * 10) {
+      newErrors.imageFile = "Image size must be less than 10MB.";
     }
 
     setErrors(newErrors);

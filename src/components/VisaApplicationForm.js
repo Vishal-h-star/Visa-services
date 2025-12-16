@@ -1,20 +1,21 @@
 // EnhancedVisaForm.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import {
-  nationalities,
   portsOfArrival,
   visaServices,
   applicationTypes,
 } from "../assets/data/FormData";
 import { newApplicationSubmit } from "../apiCalls/visaApplication";
+import { getCountryList } from "../apiCalls/masterapis"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const VisaApplicationForm = () => {
   const navigate = useNavigate();
+  const [countryData, setCountryData] = useState([])
   const [formData, setFormData] = useState({
     applicationType: "",
     passportType: "",
@@ -138,13 +139,23 @@ const VisaApplicationForm = () => {
     const res = await newApplicationSubmit(formData);
     if (res.status === 200) {
       console.log(res.data, "data we get from back");
-      toast.success(`🦄 ${res.data.message}`);
+      // toast.success(`🦄 ${res.data.message}`);
       setIsSubmitting(false);
       navigate(`/apply2/${res.data.data.uniqueId}`);
     } else {
       toast.error(`Some Error Happens!!`);
     }
   };
+
+  const getCountryData = async () => {
+    const res = await getCountryList();
+
+    setCountryData(res)
+  }
+
+  useEffect(() =>{
+    getCountryData()
+  }, [])
 
 
   return (
@@ -186,7 +197,6 @@ const VisaApplicationForm = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.applicationType && (
                   <span className="error-message">
@@ -211,7 +221,6 @@ const VisaApplicationForm = () => {
                     <option value="">Select Passport Type</option>
                     <option value="ordinary">ORDINARY PASSPORT</option>
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.passportType && (
                   <span className="error-message">{errors.passportType}</span>
@@ -272,15 +281,16 @@ const VisaApplicationForm = () => {
                       }`}
                   >
                     <option value="">SELECT NATIONALITY</option>
-                    {nationalities
+                    {countryData
                       .filter((option) => option.status === true)
                       .map((option) => (
-                        <option key={option.value} value={option.value}>
-                          {option.label}
+                        <option key={option._id} 
+                        value={option._id}
+                        >
+                          {option.countryName}
                         </option>
                       ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.nationality && (
                   <span className="error-message">{errors.nationality}</span>
@@ -307,7 +317,6 @@ const VisaApplicationForm = () => {
                       </option>
                     ))}
                   </select>
-                  <span className="select-arrow">▼</span>
                 </div>
                 {errors.portOfArrival && (
                   <span className="error-message">{errors.portOfArrival}</span>

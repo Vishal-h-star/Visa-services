@@ -11,7 +11,6 @@ export const PaypalPayment = async (applicationId) => {
             console.log(res, 'res in stats')
             return res
         }
-        // return res;
     }
     catch (err) {
         console.log(err, 'err')
@@ -20,11 +19,21 @@ export const PaypalPayment = async (applicationId) => {
     }
 }
 
-export const PaypalPaymentApproval = async () => {
+export const PaypalPaymentApproval = async (orderID, applicationId) => {
     try {
-        console.log('sfdhf')
+        console.log(applicationId,'applicationId')
+        console.log(orderID,'orderID')
+
+        const res = await publicRequest.post(`/payments/capture-paypal-order?applicationId=${applicationId}&orderID=${orderID}`);
+        console.log(res, 'res')
+        if(res.status == 200){
+            console.log(res, 'res in stats')
+            return res
+        }
     }
     catch (err) {
         console.log(err, 'err')
+        toast.error(err?.response?.data?.message)
+        return err;
     }
 }

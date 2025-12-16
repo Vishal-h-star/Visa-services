@@ -416,8 +416,8 @@ export const visaServices = [
 
 export const applicationTypes = [
   {
-    value: "NORMAL-PROCESSING (3 TO 5) BUSINESS DAYS",
-    label: "NORMAL PROCESSING (3 TO 5) BUSINESS DAYS",
+    value: "NORMAL-PROCESSING (3 TO 7) BUSINESS DAYS",
+    label: "NORMAL PROCESSING (3 TO 7) BUSINESS DAYS",
   },
   {
     value: "URGENT-PROCESSING (48 TO 72) BUSINESS HOURS",

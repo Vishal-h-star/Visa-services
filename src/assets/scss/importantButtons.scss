@@ -21,14 +21,15 @@
   outline: none;
   border: 0;
   border-radius: 5px;
-  background: #1877f2;
-  ;
+  // background: #1877f2;
+  // ;
   color: white;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
-  width: 80%;
+  width: 100%;
   transition: all 0.5s;
+  height: 100%;
 
   &:hover,
   &:active {
@@ -40,4 +41,16 @@
   &:focus {
     outline: none;
   }
+}
+
+.imp_buttons.orange {
+  background-color: #e75c17;
+}
+
+.imp_buttons.green {
+  background-color: #00a63f;
+}
+
+.imp_buttons.blue {
+  background-color: #3f4fb0;
 }
