@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const getCountryList = async () => {
   try {
     const res = await publicRequest.get(`/visaCharges/getAllCountry`);
-    console.log(res, "country list");
+    // console.log(res, "country list");
     if (res.status === 200) {
       return res.data.data
     }
