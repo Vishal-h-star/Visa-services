@@ -109,63 +109,61 @@ const Apply4 = () => {
     codTour_PhNo: "",
 
     //  business sports_activity
-    sportsAct_sportsEventName: '',
-    sportsAct_eventOrganizerType: '',
-    sportsAct_eventStartDate: '',
-    sportsAct_eventEndDate: '',
-    sportsAct_address: '',
-    sportsAct_state: '',
-    sportsAct_district: '',
-    sportsAct_pinCode: '',
-    sportsAct_organizerName: '',
-    sportsAct_phoneNumber: '',
-    sportsAct_emailId: '',
-    sportsAct_restrictedAreaVisit: '',
-    sportsAct_restrictedAreaDetails: '',
-    sportsAct_previousSportsVisitDetails: '',
-    sportsAct_taxComplianceDetails: '',
-    sportsAct_participationType: '',
+    sportsAct_sportsEventName: "",
+    sportsAct_eventOrganizerType: "",
+    sportsAct_eventStartDate: "",
+    sportsAct_eventEndDate: "",
+    sportsAct_address: "",
+    sportsAct_state: "",
+    sportsAct_district: "",
+    sportsAct_pinCode: "",
+    sportsAct_organizerName: "",
+    sportsAct_phoneNumber: "",
+    sportsAct_emailId: "",
+    sportsAct_restrictedAreaVisit: "",
+    sportsAct_restrictedAreaDetails: "",
+    sportsAct_previousSportsVisitDetails: "",
+    sportsAct_taxComplianceDetails: "",
+    sportsAct_participationType: "",
 
     // conference attend_conference
 
-    atendConf_nameOfConference: '',
-    atendConf_startDate: '',
-    atendConf_endDate: '',
-    atendConf_venueAddress: '',
-    atendConf_state: '',
-    atendConf_district: '',
-    atendConf_pincode: '',
-    atendConf_organizerName: '',
-    atendConf_organizerAddress: '',
-    atendConf_organizerPhone: '',
-    atendConf_organizerEmail: '',
+    atendConf_nameOfConference: "",
+    atendConf_startDate: "",
+    atendConf_endDate: "",
+    atendConf_venueAddress: "",
+    atendConf_state: "",
+    atendConf_district: "",
+    atendConf_pincode: "",
+    atendConf_organizerName: "",
+    atendConf_organizerAddress: "",
+    atendConf_organizerPhone: "",
+    atendConf_organizerEmail: "",
 
     //medical patient_travelling_emedical_visa
-    patientTravMedVisa_name: '',
-    patientTravMedVisa_visaNumber: '',
-    patientTravMedVisa_applicationId: '',
-    patientTravMedVisa_passportNumber: '',
-    patientTravMedVisa_dateOfBirth: '',
-    patientTravMedVisa_nationality: '',
+    patientTravMedVisa_name: "",
+    patientTravMedVisa_visaNumber: "",
+    patientTravMedVisa_applicationId: "",
+    patientTravMedVisa_passportNumber: "",
+    patientTravMedVisa_dateOfBirth: "",
+    patientTravMedVisa_nationality: "",
 
     // e aysh visa treatment_under_ayush_Indian_sytems
-    tayushInd_hospitalName: '',
-    tayushInd_hospitalAddress: '',
-    tayushInd_state: '',
-    tayushInd_district: '',
-    tayushInd_phone: '',
-    tayushInd_medicalTreatmentType: '',
+    tayushInd_hospitalName: "",
+    tayushInd_hospitalAddress: "",
+    tayushInd_state: "",
+    tayushInd_district: "",
+    tayushInd_phone: "",
+    tayushInd_medicalTreatmentType: "",
 
     // e ayush attendent  e-ayust_visa_holder
 
-    ayushAttendent_name: '',
-    ayushAttendent_visaNumber: '',
-    ayushAttendent_applicationId: '',
-    ayushAttendent_passportNumber: '',
-    ayushAttendent_dateOfBirth: '',
-    ayushAttendent_nationality: '',
-
-
+    ayushAttendent_name: "",
+    ayushAttendent_visaNumber: "",
+    ayushAttendent_applicationId: "",
+    ayushAttendent_passportNumber: "",
+    ayushAttendent_dateOfBirth: "",
+    ayushAttendent_nationality: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -314,9 +312,18 @@ const Apply4 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+
+    if (isSubmitting) return;
+
+    const isValid = validateForm(); // Always run this
+    if (!isValid) {
+      toast.error("Please correct the highlighted errors before continuing.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
       console.log("hitting api", formData);
-      // return;
       const res = await applicationSubmitStep4(formData, params.id);
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
@@ -326,7 +333,11 @@ const Apply4 = () => {
         navigate(`/apply5/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
+        setIsSubmitting(false);
       }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setIsSubmitting(false);
     }
   };
 
@@ -430,7 +441,11 @@ const Apply4 = () => {
                     readOnly
                     name="serviceSubCategory"
                     className="field-input"
-                    value={formData.serviceSubCat_subCategory ? formData.serviceSubCat_subCategory : formData.serviceSubCategory}
+                    value={
+                      formData.serviceSubCat_subCategory
+                        ? formData.serviceSubCat_subCategory
+                        : formData.serviceSubCategory
+                    }
                     onChange={handleChange}
                   />
                 </div>
@@ -462,8 +477,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="placeVisited1"
-                    className={`field-input ${errors.placeVisited1 ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.placeVisited1 ? "error" : ""
+                    }`}
                     value={formData.placeVisited1}
                     onChange={handleChange}
                     placeholder="Enter place to visit"
@@ -505,8 +521,9 @@ const Apply4 = () => {
                 <div className="select-container">
                   <select
                     name="expectedPortOfExit"
-                    className={`field-select ${errors.expectedPortOfExit ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.expectedPortOfExit ? "error" : ""
+                    }`}
                     value={formData.expectedPortOfExit}
                     onChange={handleChange}
                   >
@@ -1025,7 +1042,9 @@ const Apply4 = () => {
                         type="text"
                         name="reManPow_NandCnoOfCopRepresentativeInIndia"
                         className="field-input"
-                        value={formData.reManPow_NandCnoOfCopRepresentativeInIndia}
+                        value={
+                          formData.reManPow_NandCnoOfCopRepresentativeInIndia
+                        }
                         onChange={handleChange}
                       />
                     </div>
@@ -1441,15 +1460,21 @@ const Apply4 = () => {
                             : null
                         }
                         onChange={(date) => {
-                          const formattedDate = date ? date.toISOString().split("T")[0] : "";
+                          const formattedDate = date
+                            ? date.toISOString().split("T")[0]
+                            : "";
                           handleChange({
-                            target: { name: "sportsAct_eventStartDate", value: formattedDate },
+                            target: {
+                              name: "sportsAct_eventStartDate",
+                              value: formattedDate,
+                            },
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
                         // placeholderText="Select event start date"
-                        className={`field-input ${errors.sportsAct_eventStartDate ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.sportsAct_eventStartDate ? "error" : ""
+                        }`}
                         showMonthDropdown
                         showYearDropdown
                         dropdownMode="select"
@@ -1457,9 +1482,10 @@ const Apply4 = () => {
                       />
                     </div>
                     {errors.sportsAct_eventStartDate && (
-                      <span className="error-message">{errors.sportsAct_eventStartDate}</span>
+                      <span className="error-message">
+                        {errors.sportsAct_eventStartDate}
+                      </span>
                     )}
-
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -1474,15 +1500,21 @@ const Apply4 = () => {
                             : null
                         }
                         onChange={(date) => {
-                          const formattedDate = date ? date.toISOString().split("T")[0] : "";
+                          const formattedDate = date
+                            ? date.toISOString().split("T")[0]
+                            : "";
                           handleChange({
-                            target: { name: "sportsAct_eventEndDate", value: formattedDate },
+                            target: {
+                              name: "sportsAct_eventEndDate",
+                              value: formattedDate,
+                            },
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Select event end date"
-                        className={`field-input ${errors.sportsAct_eventEndDate ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.sportsAct_eventEndDate ? "error" : ""
+                        }`}
                         showMonthDropdown
                         showYearDropdown
                         dropdownMode="select"
@@ -1494,9 +1526,10 @@ const Apply4 = () => {
                       />
                     </div>
                     {errors.sportsAct_eventEndDate && (
-                      <span className="error-message">{errors.sportsAct_eventEndDate}</span>
+                      <span className="error-message">
+                        {errors.sportsAct_eventEndDate}
+                      </span>
                     )}
-
                   </div>
 
                   <p style={{ textAlign: "center" }}>
@@ -1751,14 +1784,21 @@ const Apply4 = () => {
                             : null
                         }
                         onChange={(date) => {
-                          const formattedDate = date ? date.toISOString().split("T")[0] : "";
+                          const formattedDate = date
+                            ? date.toISOString().split("T")[0]
+                            : "";
                           handleChange({
-                            target: { name: "atendConf_startDate", value: formattedDate },
+                            target: {
+                              name: "atendConf_startDate",
+                              value: formattedDate,
+                            },
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Select start date"
-                        className={`field-input ${errors.atendConf_startDate ? "error" : ""}`}
+                        className={`field-input ${
+                          errors.atendConf_startDate ? "error" : ""
+                        }`}
                         showMonthDropdown
                         showYearDropdown
                         dropdownMode="select"
@@ -1766,9 +1806,10 @@ const Apply4 = () => {
                       />
                     </div>
                     {errors.atendConf_startDate && (
-                      <span className="error-message">{errors.atendConf_startDate}</span>
+                      <span className="error-message">
+                        {errors.atendConf_startDate}
+                      </span>
                     )}
-
                   </div>
 
                   <div className="form-field form-field-inline">
@@ -1914,254 +1955,257 @@ const Apply4 = () => {
 
               {formData.serviceSubCategory ===
                 "patient_travelling_emedical_visa" && (
-                  <>
-                    <div className="section-header centered">
-                      <h2>
-                        Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO
-                        INDIA ON EMEDICAL VISA"
-                      </h2>
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "TO ACCOMPANY PATIENT TRAVELLING TO
+                      INDIA ON EMEDICAL VISA"
+                    </h2>
+                  </div>
+
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name of the principal e-Medical Visa holder (i.e. the
+                        patient) *
+                      </span>
                     </div>
-
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Name of the principal e-Medical Visa holder (i.e. the
-                          patient) *
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="patientTravMedVisa_name"
-                          className="field-input"
-                          value={formData.patientTravMedVisa_name}
-                          onChange={handleChange}
-                        />
-                      </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="patientTravMedVisa_name"
+                        className="field-input"
+                        value={formData.patientTravMedVisa_name}
+                        onChange={handleChange}
+                      />
                     </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Visa number of principal e-Medical Visa holder *
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="patientTravMedVisa_visaNumber"
-                          className="field-input"
-                          value={formData.patientTravMedVisa_visaNumber}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Visa number of principal e-Medical Visa holder *
+                      </span>
                     </div>
-
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Application id of principal e-Medical Visa holder *
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="patientTravMedVisa_applicationId"
-                          className="field-input"
-                          value={formData.patientTravMedVisa_applicationId}
-                          onChange={handleChange}
-                        />
-                      </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="patientTravMedVisa_visaNumber"
+                        className="field-input"
+                        value={formData.patientTravMedVisa_visaNumber}
+                        onChange={handleChange}
+                      />
                     </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Passport number of principal e-Medical Visa holder *
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="patientTravMedVisa_passportNumber"
-                          className="field-input"
-                          value={formData.patientTravMedVisa_passportNumber}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Application id of principal e-Medical Visa holder *
+                      </span>
                     </div>
-
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Date of birth of principal e-Medical Visa holder **
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <DatePicker
-                          selected={
-                            formData.patientTravMedVisa_dateOfBirth
-                              ? new Date(formData.patientTravMedVisa_dateOfBirth)
-                              : null
-                          }
-                          onChange={(date) => {
-                            const formattedDate = date
-                              ? date.toISOString().split("T")[0]
-                              : "";
-                            handleChange({
-                              target: { name: "patientTravMedVisa_dateOfBirth", value: formattedDate },
-                            });
-                          }}
-                          dateFormat="dd/MM/yyyy"
-                          placeholderText="Date"
-                          className={`field-input ${errors.patientTravMedVisa_dateOfBirth ? "error" : ""
-                            }`}
-                          showMonthDropdown
-                          showYearDropdown
-                          dropdownMode="select"
-                          maxDate={new Date()}
-                        />
-                      </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="patientTravMedVisa_applicationId"
+                        className="field-input"
+                        value={formData.patientTravMedVisa_applicationId}
+                        onChange={handleChange}
+                      />
                     </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <label className="field-label">
-                        <span className="label-text">Nationality *</span>
-                      </label>
-                      <div className="select-container">
-                        <select
-                          name="patientTravMedVisa_nationality"
-                          value={formData.patientTravMedVisa_nationality || ""}
-                          onChange={handleChange}
-                          className={`field-select ${errors.patientTravMedVisa_nationality ? "error" : ""
-                            }`}
-                        >
-                          <option value=""></option>
-                          {nationalities.map((nation) => (
-                            <option key={nation.value} value={nation.value}>
-                              {nation.label}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                      {errors.patientTravMedVisa_nationality && (
-                        <span className="error-message">
-                          {errors.patientTravMedVisa_nationality}
-                        </span>
-                      )}
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Passport number of principal e-Medical Visa holder *
+                      </span>
                     </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="patientTravMedVisa_passportNumber"
+                        className="field-input"
+                        value={formData.patientTravMedVisa_passportNumber}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Date of birth of principal e-Medical Visa holder **
+                      </span>
+                    </div>
+                    <div className="input-container">
+                      <DatePicker
+                        selected={
+                          formData.patientTravMedVisa_dateOfBirth
+                            ? new Date(formData.patientTravMedVisa_dateOfBirth)
+                            : null
+                        }
+                        onChange={(date) => {
+                          const formattedDate = date
+                            ? date.toISOString().split("T")[0]
+                            : "";
+                          handleChange({
+                            target: {
+                              name: "patientTravMedVisa_dateOfBirth",
+                              value: formattedDate,
+                            },
+                          });
+                        }}
+                        dateFormat="dd/MM/yyyy"
+                        placeholderText="Date"
+                        className={`field-input ${
+                          errors.patientTravMedVisa_dateOfBirth ? "error" : ""
+                        }`}
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select"
+                        maxDate={new Date()}
+                      />
+                    </div>
+                  </div>
 
-                  </>
-                )}
+                  <div className="form-field form-field-inline">
+                    <label className="field-label">
+                      <span className="label-text">Nationality *</span>
+                    </label>
+                    <div className="select-container">
+                      <select
+                        name="patientTravMedVisa_nationality"
+                        value={formData.patientTravMedVisa_nationality || ""}
+                        onChange={handleChange}
+                        className={`field-select ${
+                          errors.patientTravMedVisa_nationality ? "error" : ""
+                        }`}
+                      >
+                        <option value=""></option>
+                        {nationalities.map((nation) => (
+                          <option key={nation.value} value={nation.value}>
+                            {nation.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    {errors.patientTravMedVisa_nationality && (
+                      <span className="error-message">
+                        {errors.patientTravMedVisa_nationality}
+                      </span>
+                    )}
+                  </div>
+                </>
+              )}
 
               {/* e ayush visa   TREATMENT UNDER AYUSH SYSTEMS/INDIAN  */}
               {formData.serviceSubCategory ===
                 "treatment_under_ayush_Indian_sytems" && (
-                  <>
-                    <div className="section-header centered">
-                      <h2>
-                        Details of Purpose "TREATMENT UNDER AYUSH SYSTEMS/INDIAN
-                        SYSTEMS OF MEDICINE"
-                      </h2>
-                    </div>
+                <>
+                  <div className="section-header centered">
+                    <h2>
+                      Details of Purpose "TREATMENT UNDER AYUSH SYSTEMS/INDIAN
+                      SYSTEMS OF MEDICINE"
+                    </h2>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Name of the Hospital where Medical treatment is to be
-                          carried out *
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="tayushInd_hospitalName"
-                          className="field-input"
-                          value={formData.tayushInd_hospitalName}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Name of the Hospital where Medical treatment is to be
+                        carried out *
+                      </span>
                     </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="tayushInd_hospitalName"
+                        className="field-input"
+                        value={formData.tayushInd_hospitalName}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">Address of Hospital *</span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="tayushInd_hospitalAddress"
-                          className="field-input"
-                          value={formData.tayushInd_hospitalAddress}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Address of Hospital *</span>
                     </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="tayushInd_hospitalAddress"
+                        className="field-input"
+                        value={formData.tayushInd_hospitalAddress}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">State *</span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="tayushInd_state"
-                          className="field-input"
-                          value={formData.tayushInd_state}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">State *</span>
                     </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="tayushInd_state"
+                        className="field-input"
+                        value={formData.tayushInd_state}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">District *</span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="tayushInd_district"
-                          className="field-input"
-                          value={formData.tayushInd_district}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">District *</span>
                     </div>
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="tayushInd_district"
+                        className="field-input"
+                        value={formData.tayushInd_district}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">Phone *</span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="number"
-                          name="tayushInd_phone"
-                          className="field-input"
-                          value={formData.tayushInd_phone}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">Phone *</span>
                     </div>
+                    <div className="input-container">
+                      <input
+                        type="number"
+                        name="tayushInd_phone"
+                        className="field-input"
+                        value={formData.tayushInd_phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
 
-                    <div className="form-field form-field-inline">
-                      <div className="field-label">
-                        <span className="label-text">
-                          Type of Medical Treatment required *
-                        </span>
-                      </div>
-                      <div className="input-container">
-                        <input
-                          type="text"
-                          name="tayushInd_medicalTreatmentType"
-                          className="field-input"
-                          value={formData.tayushInd_medicalTreatmentType}
-                          onChange={handleChange}
-                        />
-                      </div>
+                  <div className="form-field form-field-inline">
+                    <div className="field-label">
+                      <span className="label-text">
+                        Type of Medical Treatment required *
+                      </span>
                     </div>
-                  </>
-                )}
+                    <div className="input-container">
+                      <input
+                        type="text"
+                        name="tayushInd_medicalTreatmentType"
+                        className="field-input"
+                        value={formData.tayushInd_medicalTreatmentType}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
 
               {/* e ayush attendent  */}
 
@@ -2261,13 +2305,17 @@ const Apply4 = () => {
                             ? date.toISOString().split("T")[0]
                             : "";
                           handleChange({
-                            target: { name: "ayushAttendent_dateOfBirth", value: formattedDate },
+                            target: {
+                              name: "ayushAttendent_dateOfBirth",
+                              value: formattedDate,
+                            },
                           });
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Select date"
-                        className={`field-input ${errors.ayushAttendent_dateOfBirth ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.ayushAttendent_dateOfBirth ? "error" : ""
+                        }`}
                         showMonthDropdown
                         showYearDropdown
                         dropdownMode="select"
@@ -2278,15 +2326,18 @@ const Apply4 = () => {
 
                   <div className="form-field form-field-inline">
                     <label className="field-label">
-                      <span className="label-text">Nationality of principal e-Medical Visa holder  *</span>
+                      <span className="label-text">
+                        Nationality of principal e-Medical Visa holder *
+                      </span>
                     </label>
                     <div className="select-container">
                       <select
                         name="ayushAttendent_nationality"
                         value={formData.ayushAttendent_nationality || ""}
                         onChange={handleChange}
-                        className={`field-select ${errors.ayushAttendent_nationality ? "error" : ""
-                          }`}
+                        className={`field-select ${
+                          errors.ayushAttendent_nationality ? "error" : ""
+                        }`}
                       >
                         <option value=""></option>
                         {nationalities.map((country) => (
@@ -2302,7 +2353,6 @@ const Apply4 = () => {
                       </span>
                     )}
                   </div>
-
                 </>
               )}
 
@@ -2472,8 +2522,9 @@ const Apply4 = () => {
                         }}
                         dateFormat="dd/MM/yyyy"
                         placeholderText="Select issue date"
-                        className={`field-input ${errors.visitedIndiaBeforeDateOfIssue ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.visitedIndiaBeforeDateOfIssue ? "error" : ""
+                        }`}
                         showMonthDropdown
                         showYearDropdown
                         dropdownMode="select"
@@ -2773,8 +2824,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameIndia"
-                    className={`field-input ${errors.referenceNameIndia ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceNameIndia ? "error" : ""
+                    }`}
                     value={formData.referenceNameIndia}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -2795,8 +2847,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressIndia"
-                    className={`field-input ${errors.referenceAddressIndia ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceAddressIndia ? "error" : ""
+                    }`}
                     value={formData.referenceAddressIndia}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -2819,8 +2872,9 @@ const Apply4 = () => {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneIndia"
-                    className={`field-input ${errors.referencePhoneIndia ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referencePhoneIndia ? "error" : ""
+                    }`}
                     value={formData.referencePhoneIndia}
                     onChange={handleChange}
                     placeholder="Enter phone number"
@@ -2843,8 +2897,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceNameHome"
-                    className={`field-input ${errors.referenceNameHome ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceNameHome ? "error" : ""
+                    }`}
                     value={formData.referenceNameHome}
                     onChange={handleChange}
                     placeholder="Enter reference name"
@@ -2865,8 +2920,9 @@ const Apply4 = () => {
                   <input
                     type="text"
                     name="referenceAddressHome"
-                    className={`field-input ${errors.referenceAddressHome ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referenceAddressHome ? "error" : ""
+                    }`}
                     value={formData.referenceAddressHome}
                     onChange={handleChange}
                     placeholder="Enter address"
@@ -2889,8 +2945,9 @@ const Apply4 = () => {
                     pattern="[0-9]*"
                     inputmode="numeric"
                     name="referencePhoneHome"
-                    className={`field-input ${errors.referencePhoneHome ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.referencePhoneHome ? "error" : ""
+                    }`}
                     value={formData.referencePhoneHome}
                     onChange={handleChange}
                     placeholder="Enter phone number"
@@ -3173,7 +3230,8 @@ const Apply4 = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`submit-button ${isSubmitting ? "submitting" : ""}`}
+            style={{ cursor: isSubmitting ? "not-allowed" : "pointer" }}
+            className="submit-button"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

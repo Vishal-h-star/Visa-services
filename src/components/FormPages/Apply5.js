@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import sampleImage from "../../assets/images/sample_image.jpeg";
-import { useParams, useNavigate } from 'react-router-dom';
-import { applicationSubmitStep5 } from '../../apiCalls/visaApplication';
+import { useParams, useNavigate } from "react-router-dom";
+import { applicationSubmitStep5 } from "../../apiCalls/visaApplication";
 import { toast } from "react-toastify";
 
 const Apply5 = () => {
@@ -42,13 +42,16 @@ const Apply5 = () => {
   // ✅ Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
     try {
       // Simulate API request
-      const formDataToSend = new FormData()
+      const formDataToSend = new FormData();
       formDataToSend.append("mainImg", formData.imageFile);
       const res = await applicationSubmitStep5(formDataToSend, params.id);
       if (res.status === 200) {
@@ -59,6 +62,7 @@ const Apply5 = () => {
         navigate(`/apply6/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
+        setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -88,7 +92,10 @@ const Apply5 = () => {
         </div>
 
         {/* Form Section */}
-        <form onSubmit={handleSubmit} className="enhanced-visa-form image-upload">
+        <form
+          onSubmit={handleSubmit}
+          className="enhanced-visa-form image-upload"
+        >
           <div className="form-section">
             <div className="section-header centered">
               <h2>Upload Photograph</h2>
@@ -97,7 +104,9 @@ const Apply5 = () => {
             <div className="form-grid full-row">
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">Image * (Upload your image)</span>
+                  <span className="label-text">
+                    Image * (Upload your image)
+                  </span>
                 </label>
 
                 <div className="input-container">
@@ -120,11 +129,13 @@ const Apply5 = () => {
             <div className="section-image">
               <div className="payment-notice">
                 <p>
-                  Kindly ensure that the photo is as per specifications mentioned below.
-                  In case you are not ready for photo upload, you can do it later.
-                  Please note down the Temporary Application ID, close the window and
-                  press <b>Save and Exit</b>. You can complete your application later
-                  using <b>Complete Partially Filled Form</b> option on the home page.
+                  Kindly ensure that the photo is as per specifications
+                  mentioned below. In case you are not ready for photo upload,
+                  you can do it later. Please note down the Temporary
+                  Application ID, close the window and press{" "}
+                  <b>Save and Exit</b>. You can complete your application later
+                  using <b>Complete Partially Filled Form</b> option on the home
+                  page.
                 </p>
               </div>
             </div>
@@ -142,7 +153,8 @@ const Apply5 = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`submit-button ${isSubmitting ? "submitting" : ""}`}
+            style={{ cursor: isSubmitting ? "not-allowed" : "pointer" }}
+            className="submit-button"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

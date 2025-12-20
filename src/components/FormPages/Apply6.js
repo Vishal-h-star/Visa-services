@@ -90,6 +90,9 @@ const Apply6 = () => {
   // ✅ Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if(isSubmitting) return
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -114,6 +117,7 @@ const Apply6 = () => {
         navigate(`/questions/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
+         setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -512,7 +516,8 @@ const Apply6 = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`submit-button ${isSubmitting ? "submitting" : ""}`}
+            style={{ cursor: isSubmitting ? "not-allowed" : "pointer" }}
+            className="submit-button"
             disabled={isSubmitting}
           >
             {isSubmitting ? (

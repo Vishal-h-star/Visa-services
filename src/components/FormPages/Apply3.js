@@ -11,7 +11,7 @@ import { getCountryList } from "../../apiCalls/masterapis";
 const Apply3 = () => {
   const navigate = useNavigate();
   const params = useParams();
-  const [countryData, setCountryData] = useState([])
+  const [countryData, setCountryData] = useState([]);
 
   const [formData, setFormData] = useState({
     // Application Information
@@ -130,7 +130,7 @@ const Apply3 = () => {
     "UN-EMPLOYED",
     "UN OFFICIAL",
     "WORKER",
-    "WRITER"
+    "WRITER",
   ];
 
   const handleChange = (e) => {
@@ -195,7 +195,6 @@ const Apply3 = () => {
       }
     });
 
-
     // Phone number validation
     // if (
     //   formData.presentPhoneNo &&
@@ -233,7 +232,17 @@ const Apply3 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
+
+    if (isSubmitting) return;
+
+    const isValid = validateForm(); // Always run this
+    if (!isValid) {
+      toast.error("Please correct the highlighted errors before continuing.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
       console.log(formData, "hitting api");
       const res = await applicationSubmitStep3(formData, params.id);
       if (res.status === 200) {
@@ -244,18 +253,22 @@ const Apply3 = () => {
         navigate(`/apply4/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
+        setIsSubmitting(false);
       }
+    } catch (error) {
+      console.error("Submission error:", error);
+      setIsSubmitting(false);
     }
   };
 
   const getCountryData = async () => {
     const res = await getCountryList();
-    setCountryData(res)
-  }
+    setCountryData(res);
+  };
 
   useEffect(() => {
-    getCountryData()
-  }, [])
+    getCountryData();
+  }, []);
 
   return (
     <div className="enhanced-visa-container">
@@ -323,8 +336,9 @@ const Apply3 = () => {
                     name="presentHouseNo"
                     value={formData.presentHouseNo}
                     onChange={handleChange}
-                    className={`field-input ${errors.presentHouseNo ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.presentHouseNo ? "error" : ""
+                    }`}
                     placeholder="Enter house number and street"
                   />
                 </div>
@@ -343,8 +357,9 @@ const Apply3 = () => {
                     name="presentVillageTownCity"
                     value={formData.presentVillageTownCity}
                     onChange={handleChange}
-                    className={`field-input ${errors.presentVillageTownCity ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.presentVillageTownCity ? "error" : ""
+                    }`}
                     placeholder="Enter village/town/city"
                   />
                 </div>
@@ -364,16 +379,16 @@ const Apply3 = () => {
                     name="presentCountry"
                     value={formData.presentCountry?._id}
                     onChange={handleChange}
-                    className={`field-select ${errors.presentCountry ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.presentCountry ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Country</option>
-                    {countryData
-                      .map((option) => (
-                        <option key={option._id} value={option._id}>
-                          {option.countryName}
-                        </option>
-                      ))}
+                    {countryData.map((option) => (
+                      <option key={option._id} value={option._id}>
+                        {option.countryName}
+                      </option>
+                    ))}
                   </select>
                 </div>
                 {errors.presentCountry && (
@@ -391,8 +406,9 @@ const Apply3 = () => {
                     name="presentState"
                     value={formData.presentState}
                     onChange={handleChange}
-                    className={`field-input ${errors.presentState ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.presentState ? "error" : ""
+                    }`}
                     placeholder="Enter state/province"
                   />
                 </div>
@@ -411,8 +427,9 @@ const Apply3 = () => {
                     name="presentPostalCode"
                     value={formData.presentPostalCode}
                     onChange={handleChange}
-                    className={`field-input ${errors.presentPostalCode ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.presentPostalCode ? "error" : ""
+                    }`}
                     placeholder="Enter postal code"
                   />
                 </div>
@@ -433,8 +450,9 @@ const Apply3 = () => {
                     name="presentPhoneNo"
                     value={formData.presentPhoneNo}
                     onChange={handleChange}
-                    className={`field-input ${errors.presentPhoneNo ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.presentPhoneNo ? "error" : ""
+                    }`}
                     placeholder="Enter phone number"
                   />
                 </div>
@@ -463,8 +481,6 @@ const Apply3 = () => {
                   </span>
                 )} */}
               </div>
-
-
 
               <div className="form-field full-width">
                 <div className="checkbox-container">
@@ -572,8 +588,9 @@ const Apply3 = () => {
                         name="fatherName"
                         value={formData.fatherName}
                         onChange={handleChange}
-                        className={`field-input ${errors.fatherName ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.fatherName ? "error" : ""
+                        }`}
                         placeholder="Enter father's name"
                       />
                     </div>
@@ -591,16 +608,16 @@ const Apply3 = () => {
                         name="fatherNationality"
                         value={formData.fatherNationality?._id}
                         onChange={handleChange}
-                        className={`field-select ${errors.fatherNationality ? "error" : ""
-                          }`}
+                        className={`field-select ${
+                          errors.fatherNationality ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Nationality</option>
-                        {countryData
-                          .map((option) => (
-                            <option key={option._id} value={option._id}>
-                              {option.countryName}
-                            </option>
-                          ))}
+                        {countryData.map((option) => (
+                          <option key={option._id} value={option._id}>
+                            {option.countryName}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     {errors.fatherNationality && (
@@ -624,12 +641,11 @@ const Apply3 = () => {
                         className="field-select"
                       >
                         <option value="">Select Previous Nationality</option>
-                        {countryData
-                          .map((option) => (
-                            <option key={option._id} value={option._id}>
-                              {option.countryName}
-                            </option>
-                          ))}
+                        {countryData.map((option) => (
+                          <option key={option._id} value={option._id}>
+                            {option.countryName}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -646,8 +662,9 @@ const Apply3 = () => {
                         name="fatherPlaceOfBirth"
                         value={formData.fatherPlaceOfBirth}
                         onChange={handleChange}
-                        className={`field-input ${errors.fatherPlaceOfBirth ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.fatherPlaceOfBirth ? "error" : ""
+                        }`}
                         placeholder="Enter place of birth"
                       />
                     </div>
@@ -669,16 +686,16 @@ const Apply3 = () => {
                         name="fatherCountryOfBirth"
                         value={formData.fatherCountryOfBirth?._id}
                         onChange={handleChange}
-                        className={`field-select ${errors.fatherCountryOfBirth ? "error" : ""
-                          }`}
+                        className={`field-select ${
+                          errors.fatherCountryOfBirth ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Country</option>
-                        {countryData
-                          .map((option) => (
-                            <option key={option._id} value={option._id}>
-                              {option.countryName}
-                            </option>
-                          ))}
+                        {countryData.map((option) => (
+                          <option key={option._id} value={option._id}>
+                            {option.countryName}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     {errors.fatherCountryOfBirth && (
@@ -703,8 +720,9 @@ const Apply3 = () => {
                         name="motherName"
                         value={formData.motherName}
                         onChange={handleChange}
-                        className={`field-input ${errors.motherName ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.motherName ? "error" : ""
+                        }`}
                         placeholder="Enter mother's name"
                       />
                     </div>
@@ -722,16 +740,16 @@ const Apply3 = () => {
                         name="motherNationality"
                         value={formData.motherNationality?._id}
                         onChange={handleChange}
-                        className={`field-select ${errors.motherNationality ? "error" : ""
-                          }`}
+                        className={`field-select ${
+                          errors.motherNationality ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Nationality</option>
-                        {countryData
-                          .map((option) => (
-                            <option key={option._id} value={option._id}>
-                              {option.countryName}
-                            </option>
-                          ))}
+                        {countryData.map((option) => (
+                          <option key={option._id} value={option._id}>
+                            {option.countryName}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     {errors.motherNationality && (
@@ -755,12 +773,11 @@ const Apply3 = () => {
                         className="field-select"
                       >
                         <option value="">Select Previous Nationality</option>
-                        {countryData
-                          .map((option) => (
-                            <option key={option._id} value={option._id}>
-                              {option.countryName}
-                            </option>
-                          ))}
+                        {countryData.map((option) => (
+                          <option key={option._id} value={option._id}>
+                            {option.countryName}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -777,8 +794,9 @@ const Apply3 = () => {
                         name="motherPlaceOfBirth"
                         value={formData.motherPlaceOfBirth}
                         onChange={handleChange}
-                        className={`field-input ${errors.motherPlaceOfBirth ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.motherPlaceOfBirth ? "error" : ""
+                        }`}
                         placeholder="Enter place of birth"
                       />
                     </div>
@@ -800,16 +818,16 @@ const Apply3 = () => {
                         name="motherCountryOfBirth"
                         value={formData.motherCountryOfBirth?._id}
                         onChange={handleChange}
-                        className={`field-select ${errors.motherCountryOfBirth ? "error" : ""
-                          }`}
+                        className={`field-select ${
+                          errors.motherCountryOfBirth ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Country</option>
-                        {countryData
-                          .map((option) => (
-                            <option key={option._id} value={option._id}>
-                              {option.countryName}
-                            </option>
-                          ))}
+                        {countryData.map((option) => (
+                          <option key={option._id} value={option._id}>
+                            {option.countryName}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     {errors.motherCountryOfBirth && (
@@ -836,8 +854,9 @@ const Apply3 = () => {
                         name="maritalStatus"
                         value={formData.maritalStatus}
                         onChange={handleChange}
-                        className={`field-select ${errors.maritalStatus ? "error" : ""
-                          }`}
+                        className={`field-select ${
+                          errors.maritalStatus ? "error" : ""
+                        }`}
                       >
                         <option value="">Select Marital Status</option>
                         {maritalStatuses.map((status) => (
@@ -866,8 +885,9 @@ const Apply3 = () => {
                             name="spouseName"
                             value={formData.spouseName}
                             onChange={handleChange}
-                            className={`field-input ${errors.spouseName ? "error" : ""
-                              }`}
+                            className={`field-input ${
+                              errors.spouseName ? "error" : ""
+                            }`}
                             placeholder="Enter spouse name"
                           />
                         </div>
@@ -889,16 +909,16 @@ const Apply3 = () => {
                             name="SpouseNationality"
                             value={formData.SpouseNationality?._id}
                             onChange={handleChange}
-                            className={`field-select ${errors.SpouseNationality ? "error" : ""
-                              }`}
+                            className={`field-select ${
+                              errors.SpouseNationality ? "error" : ""
+                            }`}
                           >
                             <option value="">Select nationality</option>
-                            {countryData
-                              .map((option) => (
-                                <option key={option._id} value={option._id}>
-                                  {option.countryName}
-                                </option>
-                              ))}
+                            {countryData.map((option) => (
+                              <option key={option._id} value={option._id}>
+                                {option.countryName}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         {errors.presentCountry && (
@@ -920,17 +940,16 @@ const Apply3 = () => {
                             value={formData.SpousePrevNationality?._id}
                             onChange={handleChange}
                             className="field-select"
-                          // className={`field-select ${
-                          //   errors.SpousePrevNationality ? "error" : ""
-                          // }`}
+                            // className={`field-select ${
+                            //   errors.SpousePrevNationality ? "error" : ""
+                            // }`}
                           >
                             <option value="">Select nationality</option>
-                            {countryData
-                              .map((option) => (
-                                <option key={option._id} value={option._id}>
-                                  {option.countryName}
-                                </option>
-                              ))}
+                            {countryData.map((option) => (
+                              <option key={option._id} value={option._id}>
+                                {option.countryName}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         {errors.presentCountry && (
@@ -952,8 +971,9 @@ const Apply3 = () => {
                             name="SpouseBirthPlace"
                             value={formData.SpouseBirthPlace}
                             onChange={handleChange}
-                            className={`field-input ${errors.SpouseBirthPlace ? "error" : ""
-                              }`}
+                            className={`field-input ${
+                              errors.SpouseBirthPlace ? "error" : ""
+                            }`}
                             placeholder="Birth place"
                           />
                         </div>
@@ -975,16 +995,16 @@ const Apply3 = () => {
                             name="SpouseCtryOfBirth"
                             value={formData.SpouseCtryOfBirth?._id}
                             onChange={handleChange}
-                            className={`field-select ${errors.SpouseCtryOfBirth ? "error" : ""
-                              }`}
+                            className={`field-select ${
+                              errors.SpouseCtryOfBirth ? "error" : ""
+                            }`}
                           >
                             <option value="">Select Country</option>
-                            {countryData
-                              .map((option) => (
-                                <option key={option._id} value={option._id}>
-                                  {option.countryName}
-                                </option>
-                              ))}
+                            {countryData.map((option) => (
+                              <option key={option._id} value={option._id}>
+                                {option.countryName}
+                              </option>
+                            ))}
                           </select>
                         </div>
                         {errors.presentCountry && (
@@ -1046,8 +1066,9 @@ const Apply3 = () => {
                           name="grandparentPakistaniYes"
                           value={formData.grandparentPakistaniYes}
                           onChange={handleChange}
-                          className={`field-input ${errors.grandparentPakistaniYes ? "error" : ""
-                            }`}
+                          className={`field-input ${
+                            errors.grandparentPakistaniYes ? "error" : ""
+                          }`}
                           placeholder="Give details"
                         />
                       </div>
@@ -1070,8 +1091,9 @@ const Apply3 = () => {
                     name="presentOccupation"
                     value={formData.presentOccupation}
                     onChange={handleChange}
-                    className={`field-select ${errors.presentOccupation ? "error" : ""
-                      }`}
+                    className={`field-select ${
+                      errors.presentOccupation ? "error" : ""
+                    }`}
                   >
                     <option value="">Select Occupation</option>
                     {occupations.map((occupation) => (
@@ -1098,8 +1120,9 @@ const Apply3 = () => {
                     name="employerName"
                     value={formData.employerName}
                     onChange={handleChange}
-                    className={`field-input ${errors.employerName ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.employerName ? "error" : ""
+                    }`}
                     placeholder="Enter employer name"
                   />
                 </div>
@@ -1134,8 +1157,9 @@ const Apply3 = () => {
                     name="employerAddress"
                     value={formData.employerAddress}
                     onChange={handleChange}
-                    className={`field-input ${errors.employerAddress ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.employerAddress ? "error" : ""
+                    }`}
                     placeholder="Enter employer address"
                   />
                 </div>
@@ -1156,8 +1180,9 @@ const Apply3 = () => {
                     name="employerPhoneNo"
                     value={formData.employerPhoneNo}
                     onChange={handleChange}
-                    className={`field-input ${errors.employerPhoneNo ? "error" : ""
-                      }`}
+                    className={`field-input ${
+                      errors.employerPhoneNo ? "error" : ""
+                    }`}
                     placeholder="Enter phone number"
                   />
                 </div>
@@ -1235,8 +1260,9 @@ const Apply3 = () => {
                         name="forceOrganizationName"
                         value={formData.forceOrganizationName}
                         onChange={handleChange}
-                        className={`field-input ${errors.forceOrganizationName ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.forceOrganizationName ? "error" : ""
+                        }`}
                         placeholder="Enter Force organization name"
                       />
                     </div>
@@ -1257,8 +1283,9 @@ const Apply3 = () => {
                         name="forceOrganizationDesignation"
                         value={formData.forceOrganizationDesignation}
                         onChange={handleChange}
-                        className={`field-input ${errors.forceOrganizationDesignation ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.forceOrganizationDesignation ? "error" : ""
+                        }`}
                         placeholder="Enter designation"
                       />
                     </div>
@@ -1279,8 +1306,9 @@ const Apply3 = () => {
                         name="forceOrganizationRank"
                         value={formData.forceOrganizationRank}
                         onChange={handleChange}
-                        className={`field-input ${errors.forceOrganizationRank ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.forceOrganizationRank ? "error" : ""
+                        }`}
                         placeholder="Enter rank"
                       />
                     </div>
@@ -1301,8 +1329,9 @@ const Apply3 = () => {
                         name="forceorganizationPlace"
                         value={formData.forceorganizationPlace}
                         onChange={handleChange}
-                        className={`field-input ${errors.forceorganizationPlace ? "error" : ""
-                          }`}
+                        className={`field-input ${
+                          errors.forceorganizationPlace ? "error" : ""
+                        }`}
                         placeholder="Enter place of position"
                       />
                     </div>
@@ -1318,8 +1347,9 @@ const Apply3 = () => {
           </div>
           <button
             type="submit"
-            className={`submit-button ${isSubmitting ? "submitting" : ""}`}
-            disabled={isSubmitting}
+             style={{ cursor: isSubmitting ? "not-allowed" : "pointer" }}
+            className="submit-button"
+            disabled={isSubmitting} 
           >
             {isSubmitting ? (
               <>
