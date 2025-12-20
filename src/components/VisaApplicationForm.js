@@ -35,7 +35,6 @@ const VisaApplicationForm = () => {
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -148,7 +147,7 @@ const VisaApplicationForm = () => {
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
         // toast.success(`🦄 ${res.data.message}`);
-        setIsSubmitting(false);
+         setIsLoading(false);
         navigate(`/apply2/${res.data.data.uniqueId}`);
       } else {
         toast.error(`Some Error Happens!!`);
