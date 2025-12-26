@@ -1,39 +1,41 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import { useTranslation } from "react-i18next";
 
 const NavLinks = () => {
+  const { t } = useTranslation("common");
+
   return (
     <ul className="nav-links">
       <li>
         <NavLink to="/" exact>
-          Home
+         { t("nav.home")}
         </NavLink>
       </li>
       <li>
         <NavLink to="/AboutUs" exact>
-          About
+          { t("nav.about")}
         </NavLink>
       </li>
       <li>
         <NavLink to="/privacy" exact>
-          Privacy
+          { t("nav.privacy")}
         </NavLink>
       </li>
       <li>
         <NavLink to="/documentRequired" exact>
-          <span> Document</span>
+          <span>  { t("nav.document")}</span>
         </NavLink>
       </li>
     
       <li>
         <NavLink to="/service" exact>
-          Services
+          { t("nav.services")}
         </NavLink>
       </li>
       <li>
         <NavLink to="/contact" exact>
-          Contact
+         { t("nav.contact")}
         </NavLink>
       </li>
       

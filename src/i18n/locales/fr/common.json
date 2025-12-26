@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "privacy": "Confidentialité",
+    "document": "Documents",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "mainheading": "e-Visa pour l’Inde en ligne",
+  "buttons": {
+    "applyEvisa": "Postuler ici pour le e-Visa",
+    "partialFill": "Modifier ou compléter une demande partiellement remplie",
+    "makePayment": "Effectuer le paiement pour le formulaire complété"
+  },
+  "home": {
+    "section1": {
+      "title1": "À propos du e-Visa pour l’Inde :",
+      "desc1": "Le service e-Visa est un programme qui permet aux voyageurs souhaitant se rendre en Inde de faire une demande de visa en ligne. Il a été lancé par le Gouvernement de l’Inde en octobre 2014 afin de rendre les voyages en Inde plus simples et sans tracas pour les visiteurs internationaux. Le e-Visa est autorisé pour un maximum de deux entrées au cours d’une année civile. Le Gouvernement indien a également classé les visas en plusieurs catégories : e-Visa Touristique, e-Visa Affaires, e-Visa Conférence, e-Visa Médical et e-Visa d’Accompagnateur Médical, qui sont plus rapides et plus faciles à demander en ligne. Les demandeurs peuvent postuler à l’une de ces catégories de e-Visa en fonction de l’objectif de leur visite en Inde. La procédure de e-Visa est entièrement en ligne, sans aucune paperasse, et le visa est envoyé par e-mail. Les demandeurs doivent voyager avec une copie imprimée du e-Visa ainsi qu’un passeport valide, qui seront vérifiés par les autorités indiennes de l’immigration afin d’obtenir l’entrée sur le territoire indien, avec l’apposition d’un tampon sur le passeport pour le e-Visa approuvé.",
+      "desc2": "Le processus de délivrance du e-Visa est entièrement en ligne, où les voyageurs remplissent le formulaire de demande de visa, soumettent les documents requis et paient les frais de visa. Les demandeurs sont priés de remplir le formulaire de demande de visa avec précision. Une confirmation sera envoyée par e-mail après la soumission de la demande. Le résultat du e-Visa sera envoyé à l’adresse e-mail fournie par le demandeur dans le formulaire de demande de visa."
+    }
+  }
+}

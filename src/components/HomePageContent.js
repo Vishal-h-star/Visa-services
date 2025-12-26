@@ -5,8 +5,13 @@ import image3 from '../assets/images/homeContentImages/homeImage3.png'
 import image4 from '../assets/images/homeContentImages/homeImage4.png'
 import image5 from '../assets/images/homeContentImages/homeImage5.png'
 import image6 from '../assets/images/homeContentImages/homeImage6.jpg'
+import { useTranslation } from "react-i18next";
 
 export const HomePageContent = () => {
+  const {t} =  useTranslation('common')
+  const home = t("common:home");
+
+
   return (
     <>
       <section className="homeContent">
@@ -145,36 +150,13 @@ export const HomePageContent = () => {
             <div className="col-lg-9 col-md-4 col-sm-6 col-12 ">
               <div class="containt">
                 <h4>
-                  <b> </b> About e-Visa for India:
+                  <b> {t("home.section1.title1")}</b> 
                 </h4>
                 <p>
-                  The e-Visa service is a program that allows travelers willing
-                  to travel to India have to apply for the visa online. It is
-                  initiated by the Government of India in October 2014 to make
-                  traveling to India a memorable and hassle-free experience for
-                  international visitors. e- Visa is allowed for a maximum of
-                  two visits in a calendar year. Indian Government has further
-                  categories visa into e-Tourist Visa, e-Business Visa,
-                  e-Conference, e-Medical Visa and e-Medical Attendant Visa
-                  which is quicker and easier to apply online. The applicants
-                  can apply for any of these e-Visa categories depending upon
-                  their purpose of visit to India. e-Visa procedure is complete
-                  online no paperwork is required and will be sent through
-                  email. Applicants have to carry a printed copy of e-Visa and
-                  valid passport while traveling which will be verified by
-                  Indian officers at immigration to gain entry into the Indian
-                  mainland and will get a stamp on the passport of approved
-                  e-Visa.
+                    {t("home.section1.desc1")}
                 </p>
                 <p>
-                  This process of issuing an e-Visa is completely online where
-                  travellers can fill the visa application and have to submit
-                  his/her application on this website with required documents
-                  and pay the visa fee. The applicant is requested to fill the
-                  Visa Application Form accurately. Applicants will get a
-                  confirmation by email. The e-Visa results will be sent to the
-                  registered email address which is mentioned by the applicant
-                  in their visa application form.
+                 {t("home.section1.desc2")}
                 </p>
                 <h4>
                   <b> </b> About Indian e-Tourist Visa:

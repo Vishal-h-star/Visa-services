@@ -1,0 +1,23 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "privacy": "Privacy",
+        "document": "Document",
+        "services": "services",
+        "contact": "Contact"
+    },
+    "mainheading": "India e-Visa Online",
+    "buttons": {
+        "applyEvisa": "Apply here For E-Visa",
+        "partialFill": "Amend or Complete Partially Filled Application",
+        "makePayment": "Make Payment For Complete Form`"
+    },
+    "home": {
+        "section1": {
+            "title1": "About e-Visa for India:",
+            "desc1": "The e-Visa service is a program that allows travelers willing to travel to India have to apply for the visa online. It is initiated by the Government of India in October 2014 to make traveling to India a memorable and hassle-free experience for international visitors. e- Visa is allowed for a maximum of two visits in a calendar year. Indian Government has further categories visa into e-Tourist Visa, e-Business Visa, e-Conference, e-Medical Visa and e-Medical Attendant Visa which is quicker and easier to apply online. The applicants can apply for any of these e-Visa categories depending upon their purpose of visit to India. e-Visa procedure is complete online no paperwork is required and will be sent through email. Applicants have to carry a printed copy of e-Visa and valid passport while traveling which will be verified by Indian officers at immigration to gain entry into the Indian mainland and will get a stamp on the passport of approved e-Visa.",
+            "desc2":"This process of issuing an e-Visa is completely online where travellers can fill the visa application and have to submit his/her application on this website with required documents and pay the visa fee. The applicant is requested to fill the Visa Application Form accurately. Applicants will get a confirmation by email. The e-Visa results will be sent to the registered email address which is mentioned by the applicant in their visa application form."
+        }
+    }
+}
