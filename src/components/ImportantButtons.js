@@ -11,10 +11,10 @@ export const ImportantButtons = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-4 col-md-4 col-sm-6 col-12 text-center my-2">
-               <Link to='/Apply'><button className='imp_buttons orange'>{t("buttons.applyEvisa")}</button></Link>
+               <Link to='/Apply'><button className='imp_buttons blue'>{t("buttons.applyEvisa")}</button></Link>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-6 col-12  text-center my-2">
-              <Link to='/partial-Filled'><button className='imp_buttons green'>{t("buttons.partialFill")}</button></Link>
+              <Link to='/partial-Filled'><button className='imp_buttons blue'>{t("buttons.partialFill")}</button></Link>
             </div>
             <div className="col-lg-4 col-md-4 col-sm-6 col-12  text-center my-2">
                <Link to='/visa-fee'><button className='imp_buttons blue'> {t("buttons.makePayment")}</button></Link>
