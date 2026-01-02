@@ -102,40 +102,44 @@ export const HomePageContent = () => {
 
               <div class="side_item_three">
                 <div class="m4">
-                  <img src={image1} alt="kk" />
+                  <img loading="lazy" src={image1} alt="kk" />
                 </div>
                 <div>
                   <img
+                    loading="lazy"
                     src={image2}
                     alt="kk"
                   />
                 </div>
                 <div>
                   <img
+                    loading="lazy"
                     src={image3}
                     alt="kk"
                   />
                 </div>
               </div>
 
-        
+
               <div class="side_item_four">
-       
+
                 <div>
                   <img
-       
-       src={image4}
+                    loading="lazy"
+                    src={image4}
                     alt="kk"
                   />
                 </div>
                 <div>
                   <img
+                    loading="lazy"
                     src={image5}
                     alt="kk"
                   />
                 </div>
                 <div>
                   <img
+                    loading="lazy"
                     src={image6}
                     alt="kk"
                   />

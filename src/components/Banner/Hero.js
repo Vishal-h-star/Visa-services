@@ -62,7 +62,7 @@ const Hero = ({ slides }) => {
                      <div className='hero-slide' key={index}>
                          {index === current && (
                               <div className='hero-slider'>
-                              <img src={slide.image} alt={slide.alt} className='hero-image'/>
+                              <img loading="lazy" src={slide.image} alt={slide.alt} className='hero-image'/>
                           </div>
                          )} 
                      </div>
