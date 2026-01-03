@@ -1,9 +1,12 @@
 import React from 'react'
 
 import PagesLeftSideSupporAndLinkFormet from './PagesLeftSideSupporAndLinkFormet';
+import { useTranslation } from 'react-i18next';
 
 
 export const DocumentRequired = () => {
+    const {t} = useTranslation("docsContent")
+    const docRequired = t("docsContent:docRequired")
     return (
         <section className="main_Content">
             <div className="container">
@@ -11,77 +14,78 @@ export const DocumentRequired = () => {
                     <PagesLeftSideSupporAndLinkFormet/>
 
                     <div className="pageRightSide col-lg-9 col-md-8 col-sm-12 col-12 ">
-                        <div class="containt">
+                        <div className="containt">
                             <h4>
-                                <b>Document Required</b>
+                                <b>{t("title")}</b>
                             </h4>
-                            <p>All documents uploaded by the applicant including business cards, invitation letters, etc. must be in the English language, failing which e-Visa application would be liable for rejection.</p>
+                            <p>{t("docRequired.note")}</p>
 
                             <div className="documentContent">
-                                <h5>What are the documents required for Indian e-Visa?</h5>
+                                <h5>{t("docRequired.title")}</h5>
 
-                                <h6>For e-Tourist Visa
+                                <h6>{t("docRequired.eTouristVisa.title")}
                                 </h6>
                                 <p>
-                                    <b>1.</b> Scanned Photograph and Bio Page of the passport showing the Photograph and Details.
+                                    <b>1.</b> {t("docRequired.eTouristVisa.documents.doc1")}
                                 </p>
 
-                                <h6>For e-Medical Visa
+                                <h6>{t("docRequired.eMedicalVisa.title")}
                                 </h6>
                                 <p>
-                                    <b>1.</b> Scanned Photograph and Bio Page of the passport showing the Photograph and Details.
+                                    <b>1.</b> {t("docRequired.eMedicalVisa.documents.doc1")}
                                     <br />
-                                    <b>2.</b> Copy of Medical Letter from the Hospital concerned in India on its letterhead.
+                                    <b>2.</b> {t("docRequired.eMedicalVisa.documents.doc2")}
                                 </p>
 
-                                <h6>For e-Business Visa
+                                <h6>{t("docRequired.eBusinessVisa.title")}
                                 </h6>
                                 <p>
-                                    <b>1.</b> Scanned Photograph and Bio Page of the passport showing the Photograph and Details.
+                                    <b>1.</b> {t("docRequired.eBusinessVisa.documents.doc1")}
                                     <br />
-                                    <b>2.</b> Copy of Business Card of the travelling person or a letter from the Company for the purpose of travel.
+                                    <b>2.</b> {t("docRequired.eBusinessVisa.documents.doc2")}
                                 </p>
 
-                                <h6>For e-Business Visa visiting "To deliver lecture/s under Global Initiative for Academic Networks (GIAN)"</h6>
-                                <p><b>1.</b> Scanned Bio Page of the passport showing the Photograph and Details.
+                                <h6>{t("docRequired.eBusinessVisaGIAN.title")}</h6>
+
+                                <p><b>1.</b> {t("docRequired.eBusinessVisaGIAN.documents.doc1")}
                                     <br />
-                                    <b>3.</b> Invitation of the host institute to the foreign faculty.
+                                    <b>2.</b> {t("docRequired.eBusinessVisaGIAN.documents.doc2")}
                                     <br />
-                                    <b>3.</b> Copy of the sanction order under GIAN issued by the National Coordinating Institute viz. IIT Kharagpur.
+                                    <b>3.</b> {t("docRequired.eBusinessVisaGIAN.documents.doc3")}
                                     <br />
-                                    <b>4.</b> Copy of the synopsis of the courses to be taken up by the faculty.
+                                    <b>4.</b> {t("docRequired.eBusinessVisaGIAN.documents.doc4")}
                                 </p>
 
-                                <h6>The digital photograph to be uploaded along with the Visa application should meet the following requirements:</h6>
+                                <h6>{t("docRequired.photoRequire.title")}</h6>
 
                                 <p>
-                                    <b>1.</b> Format – JPEG.
+                                    <b>1.</b> {t("docRequired.photoRequire.format")}.
                                     <br />
-                                    <b>2.</b> Size
+                                    <b>2.</b> {t("docRequired.photoRequire.size.title")}
                                     <ul>
-                                        <li>Minimum 20 KB</li>
-                                        <li>Maximum 2 MB</li>
+                                        <li>{t("docRequired.photoRequire.size.min")}</li>
+                                        <li>{t("docRequired.photoRequire.size.max")}</li>
                                     </ul>
-                                    <b>3.</b> The height and width of the Photo must be equal.
+                                    <b>3.</b>{t("docRequired.photoRequire.dimensions")}
                                     <br />
-                                    <b>4.</b> Photo should present full face, front view, eyes open and without spectacles.
+                                    <b>4.</b>{t("docRequired.photoRequire.composition")}
                                     <br />
-                                    <b> 5.</b> Center head within frame and present full head from top of hair to bottom of chin.
+                                    <b> 5.</b> {t("docRequired.photoRequire.framing")}
                                     <br />
-                                    <b>6.</b> Background should be plain light colored or white background.
+                                    <b>6.</b>{t("docRequired.photoRequire.background")}
                                     <br />
-                                    <b>7.</b> No shadows on the face or on the background.
+                                    <b>7.</b> {t("docRequired.photoRequire.lighting")}
                                     <br />
-                                    <b>8.</b> Without borders.
+                                    <b>8.</b> {t("docRequired.photoRequire.borders")}
                                     <br />
-                                    <b>9.</b> Live expert support team assistance during filling of application:
+                                    <b>9.</b> {t("docRequired.liveSupport.title")}
                                     <ul>
-                                        <li>Our team of trained professionals provide live assistance to the applicants during submission of their e visa application process. The users can choose to make use of our assistance through phone or by email.</li>
+                                        <li>{t("docRequired.liveSupport.description")}</li>
                                     </ul>
-                                    <b>10.</b> More payment options for payment of e visa fees:
+                                    <b>10.</b> {t("docRequired.paymentOptions.title")}
                                     <ul>
                                         <li>
-                                            The authorized e-Visa approval site accepts payments only through credit/debit cards and PayPal. We also accept payments through Internet/Mobile banking/Bank transfer.
+                                            {t("docRequired.paymentOptions.description")}
                                         </li>
                                     </ul>
 

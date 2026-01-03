@@ -1,0 +1,59 @@
+{
+    "title": "Nödvändiga Dokument",
+    "docRequired": {
+        "note": "Alla dokument som laddas upp av sökanden, inklusive visitkort, inbjudningsbrev etc., måste vara på engelska. Annars kan e-visumansökan komma att avvisas.",
+        "title": "Vilka dokument behövs för indiskt e-visum?",
+        "eTouristVisa": {
+            "title": "För e-turistvisum",
+            "documents": {
+                "doc1": "Skannat foto och biometriska sidan av passet som visar fotografiet och uppgifterna."
+            }
+        },
+        "eMedicalVisa": {
+            "title": "För e-medicinskt visum",
+            "documents": {
+                "doc1": "Skannat foto och biometriska sidan av passet som visar fotografiet och uppgifterna.",
+                "doc2": "Kopia av medicinskt brev från det berörda sjukhuset i Indien på dess brevpapper."
+            }
+        },
+        "eBusinessVisa": {
+            "title": "För e-affärsvisum",
+            "documents": {
+                "doc1": "Skannat foto och biometriska sidan av passet som visar fotografiet och uppgifterna.",
+                "doc2": "Kopia av visitkort för den resande personen eller ett brev från företaget som anger resans syfte."
+            }
+        },
+        "eBusinessVisaGIAN": {
+            "title": "För e-affärsvisum för besök \"För att hålla föreläsningar under Global Initiative for Academic Networks (GIAN)\"",
+            "documents": {
+                "doc1": "Skannad biometrisk sida av passet som visar fotografiet och uppgifterna.",
+                "doc2": "Inbjudan från värdinstitutet till den utländska läraren.",
+                "doc3": "Kopia av beviljandebeslutet under GIAN utfärdat av det nationella koordinerande institutet, dvs. IIT Kharagpur.",
+                "doc4": "Kopia av sammanfattningen av de kurser som läraren ska genomföra."
+            }
+        },
+        "photoRequire": {
+            "title": "Det digitala fotot som ska laddas upp tillsammans med visumansökan måste uppfylla följande krav:",
+            "format": "Format – JPEG",
+            "size": {
+                "title": "Filstorlek",
+                "min": "Minst 20 KB",
+                "max": "Maximalt 2 MB"
+            },
+            "dimensions": "Fotoets höjd och bredd måste vara lika (kvadratiskt).",
+            "composition": "Fotot ska visa hela ansiktet, framifrån, med öppna ögon och utan glasögon.",
+            "framing": "Centrera ansiktet inom ramen och visa hela huvudet från hårlinjen till hakans nederkant.",
+            "background": "Bakgrunden ska vara enkel ljusfärgad eller vit.",
+            "lighting": "Inga skuggor på ansiktet eller bakgrunden.",
+            "borders": "Utan kanter."
+        },
+        "liveSupport": {
+            "title": "Live-expertstöd under ansökningsprocessen:",
+            "description": "Vårt team av utbildade experter ger live-assistans till sökande under inlämningen av deras e-visumansökan. Användarna kan välja att få vår hjälp via telefon eller e-post."
+        },
+        "paymentOptions": {
+            "title": "Fler betalningsalternativ för e-visumavgifter:",
+            "description": "Den auktoriserade e-visumgodkännandewebbplatsen accepterar endast betalningar via kredit-/debetkort och PayPal. Vi accepterar också betalningar via internet-/mobilbank och banköverföring."
+        }
+    }
+}

@@ -8,33 +8,33 @@ const NavLinks = () => {
   return (
     <ul className="nav-links">
       <li>
-        <NavLink to="/" exact>
+        <NavLink to="/" >
          { t("nav.home")}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/AboutUs" exact>
+        <NavLink to="/AboutUs" >
           { t("nav.about")}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/privacy" exact>
+        <NavLink to="/privacy">
           { t("nav.privacy")}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/documentRequired" exact>
+        <NavLink to="/documentRequired">
           <span>  { t("nav.document")}</span>
         </NavLink>
       </li>
     
       <li>
-        <NavLink to="/service" exact>
+        <NavLink to="/service">
           { t("nav.services")}
         </NavLink>
       </li>
       <li>
-        <NavLink to="/contact" exact>
+        <NavLink to="/contact">
          { t("nav.contact")}
         </NavLink>
       </li>

@@ -14,9 +14,9 @@ import Footer from "./components/Footer";
 
 // main forms
 import PartialFilled from "./components/PartialFilled";
-import VisaPaymentForm from "./components/FormPages/VisaPaymentForm"
+import VisaPaymentForm from "./components/FormPages/VisaPaymentForm";
 
-// formPages 
+// formPages
 import VisaApplicationForm from "./components/VisaApplicationForm";
 import Apply1 from "./components/FormPages/Apply1";
 import Apply2 from "./components/FormPages/Apply2";
@@ -40,22 +40,19 @@ import Instructionspage from "./components/NavbarPages/Instructionspage";
 import FeesDetails from "./components/NavbarPages/FeesDetails";
 
 function App() {
-
   return (
     <BrowserRouter>
-
       <ToastContainer />
       <ScrollToTop />
       <MainNavigation />
       <MobileNavbar />
       <Routes>
-
         {/* main pages */}
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/service" element={<Service />} />
-        <Route exact path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/documentRequired" element={<DocumentRequired />} />
         <Route path="/Faq" element={<Faq />} />
         <Route path="/Instruction" element={<Instructionspage />} />
@@ -66,23 +63,22 @@ function App() {
         <Route path="/Refund-Policy" element={<Refund />} />
 
         {/* button pages */}
-        <Route exact path="/Apply" element={<VisaApplicationForm />} />
-        <Route path="/Payment/:id" exact element={<VisaPaymentForm />} />
-        <Route exact path="/partial-Filled" element={<PartialFilled />} />
-        <Route exact path="/visa-fee" element={<VisaFee />} />
+        <Route path="/Apply" element={<VisaApplicationForm />} />
+        <Route path="/Payment/:id" element={<VisaPaymentForm />} />
+        <Route path="/partial-Filled" element={<PartialFilled />} />
+        <Route path="/visa-fee" element={<VisaFee />} />
 
         {/* form pages */}
-        <Route exact path="/Apply1/:id" element={<Apply1 />} />
-        <Route exact path="/Apply2/:id" element={<Apply2 />} />
-        <Route path="/Apply3/:id" exact element={<Apply3 />} />
-        <Route path="/Apply4/:id" exact element={<Apply4 />} />
-        <Route path="/Apply5/:id" exact element={<Apply5 />} />
-        <Route path="/Apply6/:id" exact element={<Apply6 />} />
+        <Route path="/Apply1/:id" element={<Apply1 />} />
+        <Route path="/Apply2/:id" element={<Apply2 />} />
+        <Route path="/Apply3/:id" element={<Apply3 />} />
+        <Route path="/Apply4/:id" element={<Apply4 />} />
+        <Route path="/Apply5/:id" element={<Apply5 />} />
+        <Route path="/Apply6/:id" element={<Apply6 />} />
         <Route path="/questions/:id" element={<FormQuestion />} />
-        <Route path="/Preview/:id" exact element={<Preview />} />
+        <Route path="/Preview/:id" element={<Preview />} />
 
         {/* <Route exact path="/contact" element={<Contact />} /> */}
-
       </Routes>
       <Footer />
 
