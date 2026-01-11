@@ -2,7 +2,7 @@ import React from 'react'
 
 import PagesLeftSideSupporAndLinkFormet from './PagesLeftSideSupporAndLinkFormet';
 
-export const Service = () => {
+const Service = () => {
     return (
         <section className="main_Content">
             <div className="container">
@@ -81,3 +81,5 @@ export const Service = () => {
         </section>
     )
 }
+
+export default Service;
