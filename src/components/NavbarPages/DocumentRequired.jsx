@@ -3,7 +3,7 @@ import React from 'react'
 import PagesLeftSideSupporAndLinkFormet from './PagesLeftSideSupporAndLinkFormet';
 
 
-export const DocumentRequired = () => {
+const DocumentRequired = () => {
     return (
         <section className="main_Content">
             <div className="container">
@@ -97,3 +97,5 @@ export const DocumentRequired = () => {
         </section>
     )
 }
+
+export default DocumentRequired

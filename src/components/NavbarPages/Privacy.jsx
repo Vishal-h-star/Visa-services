@@ -2,7 +2,7 @@ import React from 'react'
 import PagesLeftSideSupporAndLinkFormet from './PagesLeftSideSupporAndLinkFormet';
 
 
-export const Privacy = () => {
+const Privacy = () => {
     return (
         <section className="main_Content">
             <div className="container">
@@ -153,3 +153,5 @@ export const Privacy = () => {
         </section>
     )
 }
+
+export default Privacy;
