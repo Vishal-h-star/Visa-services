@@ -25,7 +25,7 @@ const VisaApplicationForm = () => {
     portOfArrival: "",
     dateOfBirth: "",
     email: "",
-    confirmEmail: "",
+    // confirmEmail: "",
     contactNo: "",
     expectedArrival: "",
     visaService: "",
@@ -65,7 +65,6 @@ const VisaApplicationForm = () => {
       "portOfArrival",
       "dateOfBirth",
       "email",
-      "confirmEmail",
       "contactNo",
       "expectedArrival",
       "visaService",
@@ -96,9 +95,9 @@ const VisaApplicationForm = () => {
     }
 
     // Email confirmation validation
-    if (formData.email !== formData.confirmEmail) {
-      newErrors.confirmEmail = "Emails do not match";
-    }
+    // if (formData.email !== formData.confirmEmail) {
+    //   newErrors.confirmEmail = "Emails do not match";
+    // }
 
     // Contact number validation
     if (formData.contactNo && !/^\d{6,15}$/.test(formData.contactNo)) {
@@ -133,6 +132,7 @@ const VisaApplicationForm = () => {
     if(isLoading) return
 
     const isValid = validateForm(); // Always run this
+      console.log(isValid)
     if (!isValid) {
       toast.error("Please correct the highlighted errors before continuing.");
       return;
@@ -394,7 +394,7 @@ const VisaApplicationForm = () => {
               </div>
 
               {/* Confirm Email */}
-              <div className="form-field-horizontal">
+              {/* <div className="form-field-horizontal">
                 <label className="field-label">
                   <span className="label-text">Re-enter Email *</span>
                 </label>
@@ -413,7 +413,7 @@ const VisaApplicationForm = () => {
                 {errors.confirmEmail && (
                   <span className="error-message">{errors.confirmEmail}</span>
                 )}
-              </div>
+              </div> */}
 
               {/* Contact Number */}
               <div className="form-field-horizontal">
