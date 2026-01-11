@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 
 const DocumentRequired = () => {
+    const {t} = useTranslation("docsContent")
     return (
         <section className="main_Content">
             <div className="container">
