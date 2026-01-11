@@ -1,0 +1,59 @@
+{
+    "title": "Document Required",
+    "docRequired": {
+        "note": "All documents uploaded by the applicant including business cards, invitation letters, etc. must be in the English language, failing which e-Visa application would be liable for rejection.",
+        "title": "What are the documents required for Indian e-Visa?",
+        "eTouristVisa": {
+            "title": "For e-Tourist Visa",
+            "documents": {
+                "doc1": "Scanned Photograph and Bio Page of the passport showing the Photograph and Details."
+            }
+        },
+        "eMedicalVisa": {
+            "title": "For e-Medical Visa",
+            "documents": {
+                "doc1": "Scanned Photograph and Bio Page of the passport showing the Photograph and Details.",
+                "doc2": "Copy of Medical Letter from the Hospital concerned in India on its letterhead."
+            }
+        },
+        "eBusinessVisa": {
+            "title": "For e-Business Visa",
+            "documents": {
+                "doc1": "Scanned Photograph and Bio Page of the passport showing the Photograph and Details.",
+                "doc2": "Copy of Business Card of the travelling person or a letter from the Company for the purpose of travel."
+            }
+        },
+        "eBusinessVisaGIAN": {
+            "title": "For e-Business Visa visiting \"To deliver lecture/s under Global Initiative for Academic Networks (GIAN)\"",
+            "documents": {
+                "doc1": "Scanned Bio Page of the passport showing the Photograph and Details.",
+                "doc2": "Invitation of the host institute to the foreign faculty.",
+                "doc3": "Copy of the sanction order under GIAN issued by the National Coordinating Institute viz. IIT Kharagpur.",
+                "doc4": "Copy of the synopsis of the courses to be taken up by the faculty."
+            }
+        },
+        "photoRequire": {
+            "title": "The digital photograph to be uploaded along with the Visa application should meet the following requirements:",
+            "format": "Format – JPEG",
+            "size": {
+                "title": "Size",
+                "min": "Minimum 20 KB",
+                "max": "Maximum 2 MB"
+            },
+            "dimensions": "The height and width of the Photo must be equal.",
+            "composition": "Photo should present full face, front view, eyes open and without spectacles.",
+            "framing": "Center head within frame and present full head from top of hair to bottom of chin.",
+            "background": "Background should be plain light colored or white background.",
+            "lighting": "No shadows on the face or on the background.",
+            "borders": "Without borders."
+        },
+        "liveSupport": {
+            "title": "Live expert support team assistance during filling of application:",
+            "description": "Our team of trained professionals provide live assistance to the applicants during submission of their e visa application process. The users can choose to make use of our assistance through phone or by email."
+        },
+        "paymentOptions": {
+            "title": "More payment options for payment of e visa fees:",
+            "description": "The authorized e-Visa approval site accepts payments only through credit/debit cards and PayPal. We also accept payments through Internet/Mobile banking/Bank transfer."
+        }
+    }
+}

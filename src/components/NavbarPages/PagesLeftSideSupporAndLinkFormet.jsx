@@ -6,13 +6,13 @@ import { MdEmail } from "react-icons/md";
 const PagesLeftSideSupporAndLinkFormet = () => {
     return (
         <div className="pageLeftSide col-lg-3 col-md-4 col-sm-12 col-12 ">
-            <div class="leftSide_itemOne ">
-                <span class="leftSide_itemOneHeading"><b>Support</b></span>
-                <div class="leftSide_itemImageDiv">
+            <div className="leftSide_itemOne ">
+                <span className="leftSide_itemOneHeading"><b>Support</b></span>
+                <div className="leftSide_itemImageDiv">
                     {/* <FaHeadset className='support_icon' /> */}
                     <img src={user} alt="" />
                 </div>
-                <div class="pageIcon_div">
+                <div className="pageIcon_div">
                     <span> <IoLogoWhatsapp className='media_icon' /><i>&nbsp;&nbsp;-(91)8376836323</i></span>
                     <hr className='pageLine' />
                     <span> <MdEmail className='media_mail_icon' /><i> -indianvisaonlines@gmail.com</i></span>
@@ -20,7 +20,7 @@ const PagesLeftSideSupporAndLinkFormet = () => {
                 </div>
             </div>
 
-            <div class="leftSide_itemtwo">
+            <div className="leftSide_itemtwo">
                 <ul>
                     <li>
                         <a href="/">

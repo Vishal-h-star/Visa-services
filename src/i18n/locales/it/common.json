@@ -1,0 +1,63 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "Informazioni",
+        "privacy": "Privacy",
+        "document": "Documento",
+        "services": "Servizi",
+        "faqs": "FAQ",
+        "termsCondition": "Termini e Condizioni",
+        "refund": "Politica di Rimborso",
+        "instAppl": "Istruzioni per i Richiedenti",
+        "feeDetails": "Dettagli Tariffe Visto",
+        "contact": "Contatti"
+    },
+    "mainheading": "India e-Visa Online",
+    "buttons": {
+        "applyEvisa": "Richiedi qui l'e-Visa",
+        "partialFill": "Modifica o Completa Domanda Parzialmente Compilata",
+        "makePayment": "Effettua Pagamento per Modulo Completo"
+    },
+    "home": {
+        "impCard": {
+            "title": "Istruzioni importanti",
+            "desc": "Il servizio e-Visa è un programma che consente ai viaggiatori che desiderano recarsi in India di richiedere il visto online."
+        },
+        "section1": {
+            "title1": "Informazioni sull'e-Visa per l'India:",
+            "desc1": "Il servizio e-Visa è un programma che consente ai viaggiatori che desiderano recarsi in India di richiedere il visto online. È stato avviato dal Governo indiano nell'ottobre 2014 per rendere il viaggio in India un'esperienza memorabile e senza problemi per i visitatori internazionali. L'e-Visa è consentito per un massimo di due visite in un anno solare. Il Governo indiano ha ulteriormente categorizzato il visto in e-Visa Turistico, e-Visa Affari, e-Visa Conferenze, e-Visa Medico e e-Visa Accompagnatore Medico che sono più veloci e facili da richiedere online. I richiedenti possono fare domanda per una di queste categorie di e-Visa a seconda dello scopo della loro visita in India. La procedura e-Visa è completamente online, non è richiesta documentazione cartacea e verrà inviata via email. I richiedenti devono portare con sé una copia stampata dell'e-Visa e un passaporto valido durante il viaggio, che verranno verificati dagli ufficiali indiani all'immigrazione per ottenere l'ingresso nel territorio indiano e riceveranno un timbro sul passaporto dell'e-Visa approvato.",
+            "desc2": "Questo processo di emissione dell'e-Visa è completamente online dove i viaggiatori possono compilare la domanda di visto e devono inviare la propria domanda su questo sito web con i documenti richiesti e pagare la tariffa del visto. Si richiede al richiedente di compilare accuratamente il Modulo di Domanda Visto. I richiedenti riceveranno una conferma via email. I risultati dell'e-Visa verranno inviati all'indirizzo email registrato che è stato indicato dal richiedente nel modulo di domanda visto."
+        },
+        "section2": {
+            "title2": "Informazioni sull'e-Visa Turistico indiano:",
+            "desc1": "I turisti/visitatori internazionali possono richiedere l'e-Visa Turistico indiano in qualsiasi momento e atterrare in uno qualsiasi degli aeroporti o porti marittimi indiani scelti che sono elencati nella sezione. La validità dell'e-Visa è di 30 giorni/1 anno/5 anni dalla data di emissione dell'ETA (Autorizzazione di Viaggio Elettronica) con doppio ingresso o ingressi multipli. Deve essere utilizzato entro il suo periodo di validità. Il loro soggiorno continuo durante ogni visita in India non deve superare i 90/180 giorni (secondo le loro nazionalità) dalla data di arrivo in India.",
+            "desc2": "I turisti possono anche usufruire di questa facilità entro 24-48 ore lavorative per viaggi urgenti. Seleziona Tipo di Domanda e scegli Elaborazione Urgente (24-48 ore lavorative) durante la compilazione del modulo di domanda visto. Il nostro tempo di consegna inizia dopo che la domanda è completa con tutte le informazioni e i documenti richiesti per elaborarla. Lo scopo di un e-Visa turistico può essere Programmi di Yoga a Breve Termine, Ricreazione/Visite Turistiche, Incontrare Amici o Parenti, ecc."
+        },
+        "section3": {
+            "title3": "Informazioni sull'e-Visa Affari indiano:",
+            "desc1": "L'e-Visa Affari è per quei visitatori che vogliono viaggiare in India per creare Industrie/Iniziative Commerciali, Vendita/Acquisto/Commercio, Partecipare a Riunioni Tecniche/Affari, Reclutare Personale, Partecipare a Fiere/Esposizioni Commerciali, Essere Esperto/Specialista in connessione con un progetto in corso, Condurre Tour, Tenere Conferenze nell'ambito dell'Iniziativa Globale per le Reti Accademiche (GIAN). I viaggiatori d'affari devono avere il loro Biglietto da Visita o una Lettera di Invito della loro azienda che indichi lo scopo del viaggio.",
+            "desc2": "I richiedenti possono anche richiedere un e-Visa Affari urgente che può essere ottenuto entro 24-48 ore lavorative compilando un modulo di domanda e selezionando Elaborazione Urgente (24-48 ore lavorative) sotto Tipo di Domanda. Il visto affari è disponibile per quei viaggiatori che viaggiano per conto delle loro aziende e possono anche ottenere i servizi dell'e-Visa Affari. La validità dell'e-Visa Affari è di 365 giorni dalla data di emissione dell'ETA (Autorizzazione di Viaggio Elettronica) con ingressi multipli. Il loro soggiorno continuo durante ogni visita non deve superare i 90/180 giorni (secondo le loro nazionalità) dalla data di arrivo in India."
+        },
+        "section4": {
+            "title4": "Informazioni sull'e-Visa Medico indiano:",
+            "desc1": "L'e-Visa Medico è per viaggi medici forniti a visitatori/pazienti che vogliono recarsi in India per qualche trattamento medico in Ospedale indiano, solo visite mediche a breve termine sono accettabili. La validità di questo e-Visa medico è di 180 giorni dalla data di emissione dell'ETA (Autorizzazione di Viaggio Elettronica) con triplo ingresso. Il loro soggiorno continuo durante ogni visita non deve superare i 60 giorni dalla data di arrivo in India. Una persona deve avere una lettera dall'ospedale indiano sul loro intestatario su dove dovrebbe avvenire il trattamento.",
+            "desc2": "Il visto medico indiano non richiede alcuna visita all'ambasciata indiana. Il richiedente può semplicemente compilare le informazioni esatte su questo sito web allegando i documenti richiesti e pagare la tariffa del visto, e ricevere facilmente i risultati dell'e-Visa via email. L'e-Visa Medico indiano non solo ti farà risparmiare tempo e denaro, ma renderà anche i tuoi viaggi di missione medica in India più sicuri e confortevoli."
+        },
+        "section5": {
+            "title5": "Informazioni sull'e-Visa Accompagnatore Medico indiano:",
+            "desc1": "L'e-Visa Accompagnatore Medico è per coloro che vengono insieme a pazienti medici per fare da accompagnatori per qualche trattamento medico in Ospedale indiano. Saranno concessi massimo due e-Visa accompagnatore medico contro un e-Visa medico. La validità dell'e-Visa Accompagnatore Medico è di 180 giorni dalla data di emissione dell'ETA (Autorizzazione di Viaggio Elettronica) con doppio ingresso. Il loro soggiorno continuo durante ogni visita non deve superare i 60 giorni dalla data di arrivo in India."
+        },
+        "section6": {
+            "title6": "Informazioni sull'e-Visa Conferenze indiano:",
+            "desc1": "L'e-Visa Conferenze consente al richiedente di partecipare a seminari, conferenze e workshop in India. Il richiedente deve avere la lettera di invito ricevuta da istituzioni governative, ONG, ONU, qualsiasi ministero o dipartimento governativo o agenzie specializzate mentre richiede l'e-Visa Conferenze. È valido solo per 30 giorni con ingresso singolo."
+        },
+        "section7": {
+            "title7": "Quali Aeroporti e Porti Marittimi accettano l'e-Visa India?",
+            "desc1": "La struttura è valida per l'ingresso attraverso 31 aeroporti designati (cioè Ahmedabad, Amritsar, Bagdogra, Bengaluru, Bhubaneshwar, Calicut, Chennai, Chandigarh, Cochin, Coimbatore, Delhi, Gaya, Goa, Guwahati, Hyderabad, Jaipur, Kolkata, Lucknow, Madurai, Mangalore, Mumbai, Nagpur, Portblair, Indore, Kannur, Pune, Trichy, Thiruvananthapuram, Varanasi, Vishakhapatnam) e 5 porti marittimi designati (cioè Cochin, Mormugao, Mangalore, Mumbai, Chennai). Tuttavia, la persona straniera può uscire da qualsiasi posto di controllo immigrazione consentito (ICPS) in India. L'e-Visa è un visto a doppio, triplo o multiplo ingresso e il secondo ingresso può essere effettuato entro 90 o 60 giorni (entro 90/60 giorni dal tuo primo arrivo). Tuttavia, lo straniero può uscire da qualsiasi posto di controllo immigrazione autorizzato (ICPs) in India."
+        },
+        "section8": {
+            "title8": "Se sei cittadino di uno dei seguenti paesi, sei idoneo per l'eVisa.",
+            "desc1": "Albania, Andorra, Angola, Anguilla, Antigua e Barbuda, Argentina, Armenia, Aruba, Australia, Austria, Azerbaijan, Bahamas, Barbados, Belgio, Belize, Bolivia, Bosnia ed Erzegovina, Botswana, Brasile, Brunei, Bulgaria, Burundi, Canada, Cambogia, Camerun, Capo Verde, Isole Cayman, Cile, Colombia, Comore, Isole Cook, Costa Rica, Costa d'Avorio, Croazia, Cuba, Cipro, Repubblica Ceca, Danimarca, Gibuti, Dominica, Repubblica Dominicana, Timor Est (Repubblica Democratica di), Ecuador, El Salvador, Eritrea, Estonia, Figi, Finlandia, Francia, Gabon, Gambia, Georgia, Germania, Ghana, Grecia, Grenada, Guatemala, Guinea, Guyana, Haiti, Honduras, Ungheria, Islanda, Indonesia, Iran, Irlanda, Israele, Italia, Giamaica, Giappone, Giordania, Kazakistan, Kenya, Kiribati, Laos, Lettonia, Lesotho, Liberia, Liechtenstein, Lituania, Lussemburgo, Madagascar, Malawi, Malesia, Mali, Malta, Isole Marshall, Mauritius, Messico, Micronesia, Moldavia, Monaco, Mongolia, Montenegro, Montserrat, Mozambico, Myanmar, Namibia, Nauru, Paesi Bassi, Nuova Zelanda, Nicaragua, Niger, Isola di Niue, Norvegia, Oman, Palau, Palestina, Panama, Papua Nuova Guinea, Paraguay, Perù, Filippine, Polonia, Portogallo, Qatar, Repubblica di Corea, Repubblica di Macedonia, Romania, Russia, Ruanda, Saint Kitts e Nevis, Santa Lucia, Saint Vincent e Grenadine, Samoa, San Marino, Senegal, Serbia, Seychelles, Sierra Leone, Singapore, Slovacchia, Slovenia, Isole Salomone, Sud Africa, Spagna, Sri Lanka, Suriname, Swaziland, Svezia, Svizzera, Taiwan, Tagikistan, Tanzania, Thailandia, Tonga, Trinidad e Tobago, Isole Turks e Caicos, Tuvalu, Emirati Arabi Uniti, Uganda, Ucraina, Uruguay, Regno Unito, Stati Uniti d'America, Uzbekistan, Vanuatu, Città del Vaticano-Santa Sede, Venezuela, Vietnam, Zambia e Zimbabwe."
+        }
+    }
+}
