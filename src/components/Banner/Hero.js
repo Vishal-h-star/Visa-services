@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react'
-import AOS from "aos";
 
 
 const Hero = ({ slides }) => {
@@ -7,20 +6,6 @@ const Hero = ({ slides }) => {
     const [current, setCurrent] = useState(0);
     const length = slides.length
     const timeout = useRef(null);
-
-    const mounted = useRef(false);
-
-
-    useEffect(() => {
-      mounted.current = true;
-      if (mounted.current) {
-        AOS.init({
-          duration: 50,
-        });
-        AOS.refresh();
-      }
-      return () => (mounted.current = false);
-    }, []);
 
     useEffect(() => {
         const nextSlide = () => {
@@ -62,7 +47,7 @@ const Hero = ({ slides }) => {
                      <div className='hero-slide' key={index}>
                          {index === current && (
                               <div className='hero-slider'>
-                              <img src={slide.image} alt={slide.alt} className='hero-image'/>
+                              <img loading="lazy" src={slide.image} alt={slide.alt} className='hero-image'/>
                           </div>
                          )} 
                      </div>

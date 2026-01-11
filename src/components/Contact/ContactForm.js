@@ -1,35 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import Button from "../Button";
-import AOS from "aos";
-import countries from "i18n-iso-countries";
-import enLocale from "i18n-iso-countries/langs/en.json";
-import itLocale from "i18n-iso-countries/langs/it.json";
 
 const ContactForm = () => {
   const mounted = useRef(false);
-
-  useEffect(() => {
-    mounted.current = true;
-    if (mounted.current) {
-      AOS.init({
-        duration: 50,
-      });
-      AOS.refresh();
-    }
-    return () => (mounted.current = false);
-  }, []);
-
-  countries.registerLocale(enLocale);
-  countries.registerLocale(itLocale);
-
-  const countryObj = countries.getNames("en", { select: "official" });
-
-  const countryArr = Object.entries(countryObj).map(([key, value]) => {
-    return {
-      label: value,
-      value: key,
-    };
-  });
 
   const initialValues = {
     name: "",
@@ -53,26 +25,7 @@ const ContactForm = () => {
     setFormErrors(errorCheck);
     setIsSubmit(true);
     console.log(formValues)
-    // if (Object.keys(errorCheck).length === 0) {
-    //   const res = await fetch(
-    //     "https://woms-312009-default-rtdb.firebaseio.com/contactform.json",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({
-    //         formValues,
-    //       }),
-    //     }
-    //   );
-    //   if (res) {
-    //     alert("Form Submitted Successfully, We Respond to your message soon.");
-    //     resetInput();
-    //   } else {
-    //     alert("some error");
-    //   }
-    // }
+  
   };
 
   const resetInput = () => {
@@ -122,19 +75,13 @@ const ContactForm = () => {
     return errors;
   };
 
-  function onChange(value) {
-    // setFormValues({isverified: true})
-    setValid(true);
-    console.log("Captcha value:", value);
-  }
-   
+
 
   return (
     <>
       <div
         className="contact-auth-section"
-        data-aos="flip-right"
-        data-aos-duration="700"
+     
       >
           
         <div className="contact-authentication">
@@ -194,7 +141,6 @@ const ContactForm = () => {
                 <small className="text-red">{formErrors.message}</small>
               </div>
              
-              {/* <ReCAPTCHA sitekey="6LceamAfAAAAAAr1YMkQNzabwMNmWJJPERzfouqq" onChange={onChange} /> */}
               <div className="form-group text-center ">
                 <button type="submit" className="submit-button" onClick={handleSubmit}>
                   SUBMIT

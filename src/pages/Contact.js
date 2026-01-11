@@ -3,23 +3,9 @@ import ContactForm from "../components/Contact/ContactForm";
 import { MdPhone } from "react-icons/md";
 import { FaRegEnvelope } from "react-icons/fa";
 import { FiMapPin } from 'react-icons/fi';
-import AOS from "aos";
 
 const Contact = () => {
 
-  const mounted = useRef(false);
-
-
-  useEffect(() => {
-    mounted.current = true;
-    if (mounted.current) {
-      AOS.init({
-        duration: 50,
-      });
-      AOS.refresh();
-    }
-    return () => (mounted.current = false);
-  }, []);
 
   return (
     <>
@@ -39,7 +25,7 @@ const Contact = () => {
             </p> */}
 
             <ul className="contact-list">
-              <li className="contact-lists" data-aos="flip-left" data-aos-duration='600'>
+              <li className="contact-lists" >
                 <div className="contact-icon">
                   <FiMapPin />
                 </div>
@@ -51,7 +37,7 @@ const Contact = () => {
                 </div>
 
               </li>
-              <li className="contact-lists" data-aos="flip-left" data-aos-duration='800'>
+              <li className="contact-lists" >
                 <div className="contact-icon">
                   <MdPhone />
                 </div>
