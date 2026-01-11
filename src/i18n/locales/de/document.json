@@ -1,0 +1,59 @@
+{
+    "title": "Erforderliche Dokumente",
+    "docRequired": {
+        "note": "Alle vom Antragsteller hochgeladenen Dokumente, einschließlich Visitenkarten, Einladungsschreiben usw., müssen in englischer Sprache vorliegen. Andernfalls kann der e-Visa-Antrag abgelehnt werden.",
+        "title": "Welche Dokumente werden für das indische e-Visa benötigt?",
+        "eTouristVisa": {
+            "title": "Für das e-Touristenvisum",
+            "documents": {
+                "doc1": "Gescanntes Passfoto und biometrische Seite des Reisepasses, die das Foto und die Details zeigen."
+            }
+        },
+        "eMedicalVisa": {
+            "title": "Für das e-Medizinvisum",
+            "documents": {
+                "doc1": "Gescanntes Passfoto und biometrische Seite des Reisepasses, die das Foto und die Details zeigen.",
+                "doc2": "Kopie eines medizinischen Begleitschreibens vom behandelnden Krankenhaus in Indien auf dessen Briefpapier."
+            }
+        },
+        "eBusinessVisa": {
+            "title": "Für das e-Geschäftsvisum",
+            "documents": {
+                "doc1": "Gescanntes Passfoto und biometrische Seite des Reisepasses, die das Foto und die Details zeigen.",
+                "doc2": "Kopie der Visitenkarte der reisenden Person oder ein Schreiben des Unternehmens mit der Reisezweckangabe."
+            }
+        },
+        "eBusinessVisaGIAN": {
+            "title": "Für das e-Geschäftsvisum für einen Besuch \"Zur Abhaltung von Vorträgen im Rahmen von GIAN (Global Initiative for Academic Networks)\"",
+            "documents": {
+                "doc1": "Gescannte biometrische Seite des Reisepasses, die das Foto und die Details zeigt.",
+                "doc2": "Einladung der gastgebenden Einrichtung an die ausländische Lehrkraft.",
+                "doc3": "Kopie des Förderbescheids unter GIAN, ausgestellt durch das nationale Koordinierungsinstitut, d.h. IIT Kharagpur.",
+                "doc4": "Kopie der Kursübersicht der vom Dozenten zu unterrichtenden Kurse."
+            }
+        },
+        "photoRequire": {
+            "title": "Das zusammen mit dem Visumantrag hochzuladende digitale Foto muss folgende Anforderungen erfüllen:",
+            "format": "Format – JPEG",
+            "size": {
+                "title": "Dateigröße",
+                "min": "Mindestens 20 KB",
+                "max": "Maximal 2 MB"
+            },
+            "dimensions": "Höhe und Breite des Fotos müssen gleich sein (quadratisch).",
+            "composition": "Das Foto muss das gesamte Gesicht zeigen, frontal, mit geöffneten Augen und ohne Brille.",
+            "framing": "Das Gesicht zentriert im Bild, der gesamte Kopf von der Haargrenze bis zum Kinn muss sichtbar sein.",
+            "background": "Hintergrund sollte einfarbig hell oder weiß sein.",
+            "lighting": "Keine Schatten auf dem Gesicht oder dem Hintergrund.",
+            "borders": "Ohne Bildränder."
+        },
+        "liveSupport": {
+            "title": "Live-Unterstützung durch ein Expertenteam während der Antragsausfüllung:",
+            "description": "Unser Team geschulter Fachkräfte bietet Antragstellern live Unterstützung während des Einreichungsprozesses für ihr e-Visa. Die Nutzer können wählen, ob sie unsere Hilfe per Telefon oder E-Mail in Anspruch nehmen möchten."
+        },
+        "paymentOptions": {
+            "title": "Weitere Zahlungsmöglichkeiten für die e-Visa-Gebühren:",
+            "description": "Die offizielle e-Visa-Genehmigungsstelle akzeptiert Zahlungen nur per Kredit-/Debitkarte und PayPal. Wir akzeptieren auch Zahlungen per Internet-/Mobile-Banking und Überweisung."
+        }
+    }
+}

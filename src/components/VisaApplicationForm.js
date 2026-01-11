@@ -31,6 +31,7 @@ const VisaApplicationForm = () => {
     visaService: "",
     serviceSubCategory: "",
     serviceSubCat_subCategory: "",
+    // chnages by vishl
   });
 
   const [errors, setErrors] = useState({});
