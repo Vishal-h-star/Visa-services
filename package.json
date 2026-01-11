@@ -1,19 +1,16 @@
 {
   "name": "India-Visa-Services",
-  "homepage": "http://wheelsonmap.com/",
+  "homepage": "https://indiansvisaonline.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@paypal/react-paypal-js": "^8.9.2",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
-    "aos": "^2.3.4",
     "axios": "^1.12.2",
     "bootstrap": "^5.3.8",
     "date-fns": "^4.1.0",
-    "i18n-iso-countries": "^7.14.0",
     "react": "^19.2.0",
     "react-accessible-accordion": "^5.0.1",
     "react-bootstrap": "^2.10.10",
@@ -26,9 +23,6 @@
     "react-select": "^5.10.2",
     "react-toastify": "^11.0.5",
     "react-transition-group": "^4.4.5",
-    "redux": "^5.0.1",
-    "redux-persist": "^6.0.0",
-    "redux-thunk": "^3.1.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
