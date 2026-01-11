@@ -185,7 +185,6 @@ const Apply3 = () => {
       "presentOccupation",
       "employerName",
       "employerAddress",
-      "employerPhoneNo",
     ];
 
     requiredFields?.forEach((field) => {
@@ -1172,7 +1171,7 @@ const Apply3 = () => {
 
               <div className="form-field form-field-inline">
                 <label className="field-label">
-                  <span className="label-text">Phone No. *</span>
+                  <span className="label-text">Phone No. </span>
                 </label>
                 <div className="input-container">
                   <input

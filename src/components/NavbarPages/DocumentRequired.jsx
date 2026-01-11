@@ -4,9 +4,7 @@ import PagesLeftSideSupporAndLinkFormet from './PagesLeftSideSupporAndLinkFormet
 import { useTranslation } from 'react-i18next';
 
 
-export const DocumentRequired = () => {
-    const {t} = useTranslation("docsContent")
-    const docRequired = t("docsContent:docRequired")
+const DocumentRequired = () => {
     return (
         <section className="main_Content">
             <div className="container">
@@ -101,3 +99,5 @@ export const DocumentRequired = () => {
         </section>
     )
 }
+
+export default DocumentRequired

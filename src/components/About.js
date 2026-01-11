@@ -5,21 +5,10 @@ import { AiFillCar } from "react-icons/ai";
 import { GiSteeringWheel } from 'react-icons/gi'
 import { SiTransportforlondon } from "react-icons/si";
 import { FaWarehouse } from "react-icons/fa";
-import AOS from "aos";
 
 const About = () => {
 
-  const mounted = useRef(false);
-  useEffect(() => {
-    mounted.current = true;
-    if (mounted.current) {
-      AOS.init({
-        duration: 50,
-      });
-      AOS.refresh();
-    }
-    return () => (mounted.current = false);
-  }, []);
+
   return (
     <>
       <section className="about_wrapper pt-1">
@@ -28,7 +17,7 @@ const About = () => {
             <div className="col-md-5 col-sm-12 mb-4 mb-md-0">
               <h2 className="">About Us</h2>
               <p className="sub-text">WHAT WE CAN DO FOR YOU</p>
-              <img src={AboutImg} alt="wom-solution-about-img" className="img-fluid" data-aos="fade-right" data-aos-duration='700' />
+              <img src={AboutImg} alt="wom-solution-about-img" className="img-fluid"  />
             </div>
             <div className="col-md-7 col-sm-12 text-md-start">
               <div className="row">
