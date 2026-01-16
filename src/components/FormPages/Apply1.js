@@ -30,7 +30,7 @@ const Apply1 = () => {
     portOfArrival: "",
     dateOfBirth: "",
     email: "",
-    confirmEmail: "",
+    // confirmEmail: "",
     contactNo: "",
     expectedArrival: "",
     visaService: "",
@@ -97,7 +97,7 @@ const Apply1 = () => {
       "portOfArrival",
       "dateOfBirth",
       "email",
-      "confirmEmail",
+      // "confirmEmail",
       "contactNo",
       "expectedArrival",
       "visaService",
@@ -128,9 +128,9 @@ const Apply1 = () => {
     }
 
     // Email confirmation validation
-    if (formData.email !== formData.confirmEmail) {
-      newErrors.confirmEmail = "Emails do not match";
-    }
+    // if (formData.email !== formData.confirmEmail) {
+    //   newErrors.confirmEmail = "Emails do not match";
+    // }
 
     // Contact number validation
     if (formData.contactNo && !/^\+\d{1,3}\d{7,15}$/.test(formData.contactNo)) {
@@ -413,7 +413,7 @@ const Apply1 = () => {
               </div>
 
               {/* Confirm Email */}
-              <div className="form-field-horizontal">
+              {/* <div className="form-field-horizontal">
                 <label className="field-label">
                   <span className="label-text">Re-enter Email *</span>
                 </label>
@@ -432,7 +432,7 @@ const Apply1 = () => {
                 {errors.confirmEmail && (
                   <span className="error-message">{errors.confirmEmail}</span>
                 )}
-              </div>
+              </div> */}
 
               {/* Contact Number */}
               <div className="form-field-horizontal">
