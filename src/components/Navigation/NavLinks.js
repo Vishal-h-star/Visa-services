@@ -38,6 +38,12 @@ const NavLinks = () => {
          { t("nav.contact")}
         </NavLink>
       </li>
+
+       <li>
+        <NavLink to="/apply" className="urgent-apply">
+         { t("nav.urgentApply")}
+        </NavLink>
+      </li>
       
     </ul>
   );

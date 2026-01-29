@@ -10,7 +10,9 @@
     "refund": "Politique de remboursement",
     "instAppl": "Instructions pour les demandeurs",
     "feeDetails": "Détails des frais de visa",
-    "contact": "Contact"
+    "contact": "Contact",
+        "urgentApply": "Apply Now"
+
 },
   "mainheading": "e-Visa en ligne pour l'Inde",
   "buttons": {

@@ -4,20 +4,20 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  width: fit-content;
+  height: fit-content;
+
+}
+
+.logo_div {
+  width: 100px;
+  height: 70px;
+
+}
+
+.logo_div a img {
   width: 100%;
-   height:fit-content;
-
-}
-
-.logo_div{
- width:100px;
- height: 70px;
- 
-}
-
-.logo_div a img{
-width:100%;
-height: 100%;
+  height: 100%;
 }
 
 .main-navigation__menu-btn {
@@ -40,12 +40,12 @@ height: 100%;
 
 .main-navigation__title {
   color: $theme-hover-color;
-  margin:19px 0;
+  margin: 19px 0;
   overflow: hidden;
   max-height: 80px;
 }
 
-.mobile-logo{
+.mobile-logo {
   object-fit: cover;
 
 }
@@ -56,9 +56,9 @@ height: 100%;
   font-weight: 600;
   color: $theme-hover-color;
 
-  @media #{$lg-md-layout}{
-  font-size: 1.13rem;
-  padding: 0 .5rem;
+  @media #{$lg-md-layout} {
+    font-size: 1.13rem;
+    padding: 0 .5rem;
   }
 }
 
@@ -111,7 +111,7 @@ height: 100%;
       justify-content: space-between;
       align-items: center;
 
-      .menu-title{
+      .menu-title {
         margin: 0;
         font-family: "Poppins", sans-serif;
         text-decoration: none;
@@ -120,7 +120,8 @@ height: 100%;
         color: $theme-color;
         line-height: 25px;
       }
-      .menu-close-btn{
+
+      .menu-close-btn {
         border: none;
         background-color: #fff;
       }
@@ -149,10 +150,11 @@ height: 100%;
           border: none;
           background-color: #fff;
 
-          & > div {
+          &>div {
             font-size: 16px;
           }
         }
+
         .submenu-category-list {
           margin-left: 10px;
           transition: 0.5s ease-in-out;

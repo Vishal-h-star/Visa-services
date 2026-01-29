@@ -37,6 +37,13 @@
   color: $theme-hover-color;
 }
 
+.urgent-apply {
+  background-color: $theme-hover-color;
+  color: $white !important;
+  border-radius: 8px;
+  padding: 5px 12px !important;
+}
+
 @media (min-width: 991px) {
   .nav-links {
     flex-direction: row;

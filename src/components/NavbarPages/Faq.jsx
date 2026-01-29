@@ -10,7 +10,7 @@ const Faq = () => {
                      <PagesLeftSideSupporAndLinkFormet/>
 
                     <div className="pageRightSide col-lg-9 col-md-8 col-sm-12 col-12 ">
-                        <div class="containt">
+                        <div className="containt">
                             <h4>
                                 <b>Frequently Asked Questions (FAQ)</b>
                             </h4>

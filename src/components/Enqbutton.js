@@ -4,7 +4,7 @@ import '../assets/scss/enqbutton.scss'
 const Enqbutton = () => {
   return (
     <>
-    <button class="enquiry-button">Enquiry now</button>
+    <button className="enquiry-button">Enquiry now</button>
     </>
   )
 }
