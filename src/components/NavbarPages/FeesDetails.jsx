@@ -48,10 +48,10 @@ const FeesDetails = () => {
                                     <thead>
                                         <tr>
                                             <th>Country</th>
-                                            <th>30 Days</th>
-                                            <th>1 Year</th>
-                                            <th>5 Years</th>
-                                            <th>Business/Mdeical Conference</th>
+                                            <th>30 Days (visa)</th>
+                                            <th>1 Year (visa)</th>
+                                            <th>5 Years (visa)</th>
+                                            <th>Business/Medical Conference</th>
                                         </tr>
                                     </thead>
                                     <tbody>
