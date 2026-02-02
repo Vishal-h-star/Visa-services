@@ -11,7 +11,8 @@ import axios from 'axios';
 
 
 export const BASE_URL = "https://visa-backend.worldtour.cloud/api/";
-export const ImageUrl = "https://visa-backend.worldtour.cloud/file/images/";
+export const ImageUrl = "https://visa-backend.worldtour.cloud/file/images/"; 
+
 
 
 const TOKEN = localStorage.getItem("UserDetailToken");

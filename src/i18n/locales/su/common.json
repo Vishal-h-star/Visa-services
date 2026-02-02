@@ -1,0 +1,63 @@
+{
+    "nav": {
+        "home": "Hem",
+        "about": "Om oss",
+        "privacy": "Integritet",
+        "document": "Dokument",
+        "services": "Tjänster",
+        "faqs": "Vanliga frågor",
+        "termsCondition": "Villkor och bestämmelser",
+        "refund": "Återbetalningspolicy",
+        "instAppl": "Instruktioner för sökande",
+        "feeDetails": "Visumavgifter Detaljer",
+        "contact": "Kontakt"
+    },
+    "mainheading": "Indien e-Visa Online",
+    "buttons": {
+        "applyEvisa": "Ansök om e-Visa här",
+        "partialFill": "Ändra eller slutför delvis ifylld ansökan",
+        "makePayment": "Gör betalning för komplett formulär"
+    },
+    "home": {
+        "impCard": {
+            "title": "Viktiga instruktioner",
+            "desc": "e-Visa-tjänsten är ett program som gör det möjligt för resenärer som vill resa till Indien att ansöka om visum online."
+        },
+        "section1": {
+            "title1": "Om e-Visa för Indien:",
+            "desc1": "e-Visa-tjänsten är ett program som gör det möjligt för resenärer som vill resa till Indien att ansöka om visum online. Det initierades av Indiens regering i oktober 2014 för att göra resor till Indien till en minnesvärd och problemfri upplevelse för internationella besökare. e-Visa tillåts för maximalt två besök under ett kalenderår. Indiens regering har vidare kategoriserat visum i e-Turistvisum, e-Affärsvisum, e-Konferensvisum, e-Medicinskt visum och e-Medicinskt följeslagarvisum som är snabbare och enklare att ansöka om online. Sökande kan ansöka om någon av dessa e-Visa-kategorier beroende på deras syfte med besöket i Indien. e-Visa-proceduren är helt online, inget pappersarbete krävs och kommer att skickas via e-post. Sökande måste bära med sig ett utskrivet exemplar av e-Visa och ett giltigt pass när de reser, som kommer att kontrolleras av indiska tjänstemän vid immigration för att få inträde till det indiska fastlandet och kommer att få ett stämpel på passet av det godkända e-Visa.",
+            "desc2": "Denna process för att utfärda ett e-Visa är helt online där resenärer kan fylla i visumansökan och måste skicka in sin ansökan på denna webbplats med nödvändiga handlingar och betala visumavgiften. Sökanden ombeds fylla i visumansökningsformuläret korrekt. Sökande kommer att få en bekräftelse via e-post. e-Visa-resultaten kommer att skickas till den registrerade e-postadressen som anges av sökanden i deras visumansökningsformulär."
+        },
+        "section2": {
+            "title2": "Om indiska e-Turistvisumet:",
+            "desc1": "Turister/Internationella besökare kan ansöka om indiska e-Turistvisumet när som helst och landa på valfri indisk flygplats eller hamn som listas i avsnittet. e-Visa:s giltighet är 30 dagar/1 år/5 år från utfärdandedatumet för ETA (Electronic Travel Authorization) med dubbel eller multipel inträde. Det måste utnyttjas inom dess giltighetstid. Deras kontinuerliga vistelse under varje besök i Indien får inte överstiga 90/180 dagar (enligt deras nationaliteter) från ankomstdatumet till Indien.",
+            "desc2": "Turister kan också utnyttja denna facilitet inom 24 till 48 arbetsdagar för brådskande resor. Välj Ansökningstyp och välj Brådskande behandling (24 till 48 arbetsdagar) när du fyller i visumansökningsformuläret. Vår leveranstid börjar efter att ansökan är komplett med all information och handlingar som krävs för att behandla den. Syftet med ett e-Turistvisum kan vara Korttidsyogaprogram, Rekreation/Sightseeing, Träffa vänner eller släktingar, etc."
+        },
+        "section3": {
+            "title3": "Om indiska e-Affärsvisumet:",
+            "desc1": "e-Affärsvisumet är för de besökare som vill resa till Indien för att etablera industrier/affärsföretag, försäljning/köp/handel, delta i tekniska/affärsmöten, rekrytera personal, delta på utställningar/affärs-/handelsmässor, expert/specialist i samband med ett pågående projekt, genomföra rundturer, hålla föreläsningar under Global Initiative for Academic Networks (GIAN). Affärsresenärer måste ha sitt visitkort eller en inbjudningsbrev från sitt företag som anger resans syfte.",
+            "desc2": "Sökande kan också ansöka om ett brådskande e-Affärsvisum som kan utnyttjas inom 24 till 48 arbetsdagar genom att fylla i ett ansökningsformulär och välja Brådskande behandling (24 till 48 arbetsdagar) under Ansökningstyp. Affärsvisum är tillgängligt för de resenärer som reser på uppdrag av sina företag också kan få tjänsterna från e-Affärsvisumet. e-Affärsvisumets giltighet är 365 dagar från utfärdandedatumet för ETA (Electronic Travel Authorization) med multipel inträde. Deras kontinuerliga vistelse under varje besök får inte överstiga 90/180 dagar (enligt deras nationaliteter) från ankomstdatumet till Indien."
+        },
+        "section4": {
+            "title4": "Om indiska e-Medicinska visumet:",
+            "desc1": "e-Medicinska visumet är för medicinska resor som tillhandahålls till besökare/patienter som vill resa till Indien för någon medicinsk behandling i indiskt sjukhus, endast korttids medicinska besök är acceptabla. Detta e-Medicinska visums giltighet är 180 dagar från utfärdandedatumet för ETA (Electronic Travel Authorization) med trippel inträde. Deras kontinuerliga vistelse under varje besök får inte överstiga 60 dagar från ankomstdatumet till Indien. En person måste ha ett brev från det indiskt sjukhuset på deras brevpapper om var behandlingen ska äga rum.",
+            "desc2": "Indiskt medicinskt visum kräver inget besök till Indiens ambassad. Sökande kan helt enkelt fylla i exakt information på denna webbplats bifogat med de nödvändiga handlingarna och betala visumavgiften, och enkelt ta emot e-Visa-resultat via e-post. Indiskt e-Medicinskt visum kommer inte bara att spara din tid och pengar utan också göra dina medicinska missionsresor till Indien säkrare och bekvämare."
+        },
+        "section5": {
+            "title5": "Om indiska e-Medicinskt följeslagarvisum:",
+            "desc1": "e-Medicinskt följeslagarvisum är för dem som kommer tillsammans med medicinska patienter för att ge sällskap för någon medicinsk behandling i indiskt sjukhus. Maximalt två e-Medicinska följeslagarvisum kommer att beviljas mot ett e-Medicinskt visum. e-Medicinskt följeslagarvisums giltighet är 180 dagar från utfärdandedatumet för ETA (Electronic Travel Authorization) med dubbel inträde. Deras kontinuerliga vistelse under varje besök får inte överstiga 60 dagar från ankomstdatumet till Indien."
+        },
+        "section6": {
+            "title6": "Om indiska e-Konferensvisumet:",
+            "desc1": "e-Konferensvisumet låter sökanden dyka upp på seminarier, konferenser och workshops i Indien. Sökanden behöver ha inbjudningsbrevet mottaget från statliga institutioner, NGO:er, FN, något ministerium eller regeringsavdelning eller de specialiserade agenturerna när de ansöker om e-Konferensvisum. Det är endast giltigt i 30 dagar med enkel inträde."
+        },
+        "section7": {
+            "title7": "Vilka flygplatser och hamnar accepterar Indiens e-Visa?",
+            "desc1": "Faciliteten är giltig för inträde genom 31 utsedda flygplatser (dvs. Ahmedabad, Amritsar, Bagdogra, Bengaluru, Bhubaneshwar, Calicut, Chennai, Chandigarh, Cochin, Coimbatore, Delhi, Gaya, Goa, Guwahati, Hyderabad, Jaipur, Kolkata, Lucknow, Madurai, Mangalore, Mumbai, Nagpur, Portblair, Indore, Kannur, Pune, Trichy, Thiruvananthapuram, Varanasi, Vishakhapatnam) och 5 utsedda hamnar (dvs. Cochin, Mormugao, Mangalore, Mumbai, Chennai). Dock kan den utländska personen ta utresa från någon av de tillåtna invandringskontrollposterna (ICPS) i Indien. e-Visa är dubbel, trippel eller multipel inträdesvisum och den andra inträden kan göras inom 90 eller 60 dagar (inom 90/60 dagar från din första ankomst). Dock kan utlänningen ta utresa från någon av de auktoriserade invandringskontrollposterna (ICPs) i Indien."
+        },
+        "section8": {
+            "title8": "Om du är medborgare i något av följande länder, är du berättigad till eVisa.",
+            "desc1": "Albanien, Andorra, Angola, Anguilla, Antigua och Barbuda, Argentina, Armenien, Aruba, Australien, Österrike, Azerbajdzjan, Bahamas, Barbados, Belgien, Belize, Bolivia, Bosnien och Hercegovina, Botswana, Brasilien, Brunei, Bulgarien, Burundi, Kanada, Kambodja, Kamerun, Kap Verde, Caymanöarna, Chile, Colombia, Komorerna, Cooköarna, Costa Rica, Elfenbenskusten, Kroatien, Kuba, Cypern, Tjeckien, Danmark, Djibouti, Dominica, Dominikanska republiken, Östtimor (Demokratiska republiken), Ecuador, El Salvador, Eritrea, Estland, Fiji, Finland, Frankrike, Gabon, Gambia, Georgien, Tyskland, Ghana, Grekland, Grenada, Guatemala, Guinea, Guyana, Haiti, Honduras, Ungern, Island, Indonesien, Iran, Irland, Israel, Italien, Jamaica, Japan, Jordanien, Kazakstan, Kenya, Kiribati, Laos, Lettland, Lesotho, Liberia, Liechtenstein, Litauen, Luxemburg, Madagaskar, Malawi, Malaysia, Mali, Malta, Marshallöarna, Mauritius, Mexiko, Mikronesien, Moldavien, Monaco, Mongoliet, Montenegro, Montserrat, Moçambique, Myanmar, Namibia, Nauru, Nederländerna, Nya Zeeland, Nicaragua, Niger, Niue, Norge, Oman, Palau, Palestina, Panama, Papua Nya Guinea, Paraguay, Peru, Filippinerna, Polen, Portugal, Qatar, Republiken Korea, Republiken Makedonien, Rumänien, Ryssland, Rwanda, Saint Kitts och Nevis, Saint Lucia, Saint Vincent och Grenadinerna, Samoa, San Marino, Senegal, Serbien, Seychellerna, Sierra Leone, Singapore, Slovakien, Slovenien, Salomonöarna, Sydafrika, Spanien, Sri Lanka, Surinam, Swaziland, Sverige, Schweiz, Taiwan, Tadzjikistan, Tanzania, Thailand, Tonga, Trinidad och Tobago, Turks- och Caicosöarna, Tuvalu, Förenade Arabemiraten, Uganda, Ukraina, Uruguay, Storbritannien, USA, Uzbekistan, Vanuatu, Vatikanstaten, Venezuela, Vietnam, Zambia och Zimbabwe."
+        }
+    }
+}

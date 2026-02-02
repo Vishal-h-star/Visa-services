@@ -5,6 +5,7 @@ import NavLinks from "./NavLinks";
 import SideDrawer from "./SideDrawer";
 import Backdrop from "../Backdrop";
 import logo  from "../../assets/images/NewLogo.jpg";
+import LangSwitcher from "../LangSwitch/LangSwitcher";
 
 const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -28,13 +29,14 @@ const MainNavigation = (props) => {
 
       <MainHeader>
         {/* <div className='container'> */}
-
+           
         <div className="navigation__box">
            <div className="logo_div">
              <Link to="/">
             <img src={logo} alt="logo" width="100px" height={'100px'}  />
           </Link>
            </div>
+          
           <button className="main-navigation__menu-btn" onClick={drawerHandle}>
             {drawerIsOpen ? (
               <i className="fa fa-times" aria-hidden="true"></i>
@@ -46,6 +48,7 @@ const MainNavigation = (props) => {
         <nav className="main-navigation__header-nav">
           <NavLinks />
         </nav>
+         <LangSwitcher/>
         {/* </div> */}
       </MainHeader>
     </React.Fragment>

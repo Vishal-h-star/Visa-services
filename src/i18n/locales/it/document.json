@@ -1,0 +1,59 @@
+{
+    "title": "Documenti Richiesti",
+    "docRequired": {
+        "note": "Tutti i documenti caricati dal richiedente, inclusi biglietti da visita, lettere di invito, ecc., devono essere in lingua inglese. In caso contrario, la domanda di e-Visa potrebbe essere soggetta a rifiuto.",
+        "title": "Quali documenti sono richiesti per l'e-Visa indiano?",
+        "eTouristVisa": {
+            "title": "Per l'e-Visa Turistico",
+            "documents": {
+                "doc1": "Fotografia scannerizzata e pagina biometrica del passaporto che mostri la fotografia e i dettagli."
+            }
+        },
+        "eMedicalVisa": {
+            "title": "Per l'e-Visa Medico",
+            "documents": {
+                "doc1": "Fotografia scannerizzata e pagina biometrica del passaporto che mostri la fotografia e i dettagli.",
+                "doc2": "Copia della lettera medica dell'ospedale interessato in India su carta intestata."
+            }
+        },
+        "eBusinessVisa": {
+            "title": "Per l'e-Visa Affari",
+            "documents": {
+                "doc1": "Fotografia scannerizzata e pagina biometrica del passaporto che mostri la fotografia e i dettagli.",
+                "doc2": "Copia del biglietto da visita della persona che viaggia o una lettera dell'azienda che indichi lo scopo del viaggio."
+            }
+        },
+        "eBusinessVisaGIAN": {
+            "title": "Per l'e-Visa Affari per visitare \"Per tenere conferenze nell'ambito di GIAN (Global Initiative for Academic Networks)\"",
+            "documents": {
+                "doc1": "Pagina biometrica scannerizzata del passaporto che mostri la fotografia e i dettagli.",
+                "doc2": "Invito dell'istituto ospitante al docente straniero.",
+                "doc3": "Copia dell'ordine di concessione sotto GIAN emesso dall'Istituto Nazionale Coordinatore, ovvero l'IIT Kharagpur.",
+                "doc4": "Copia della sinossi dei corsi che il docente terrà."
+            }
+        },
+        "photoRequire": {
+            "title": "La fotografia digitale da caricare insieme alla domanda di visto deve soddisfare i seguenti requisiti:",
+            "format": "Formato – JPEG",
+            "size": {
+                "title": "Dimensione",
+                "min": "Minimo 20 KB",
+                "max": "Massimo 2 MB"
+            },
+            "dimensions": "L'altezza e la larghezza della foto devono essere uguali (quadrata).",
+            "composition": "La foto deve mostrare l'intero viso, vista frontale, occhi aperti e senza occhiali.",
+            "framing": "Centrare il viso all'interno della cornice e mostrare l'intera testa dalla sommità dei capelli alla base del mento.",
+            "background": "Lo sfondo deve essere semplice, di colore chiaro o bianco.",
+            "lighting": "Nessuna ombra sul viso o sullo sfondo.",
+            "borders": "Senza bordi."
+        },
+        "liveSupport": {
+            "title": "Assistenza in diretta da un team di esperti durante la compilazione della domanda:",
+            "description": "Il nostro team di professionisti qualificati fornisce assistenza in tempo reale ai richiedenti durante la presentazione della domanda di e-Visa. Gli utenti possono scegliere di usufruire della nostra assistenza tramite telefono o email."
+        },
+        "paymentOptions": {
+            "title": "Più opzioni di pagamento per le tasse dell'e-Visa:",
+            "description": "Il sito autorizzato per l'approvazione dell'e-Visa accetta pagamenti solo tramite carte di credito/debito e PayPal. Accettiamo anche pagamenti tramite internet/mobile banking e bonifico bancario."
+        }
+    }
+}

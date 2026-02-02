@@ -42,10 +42,8 @@ const Instructionspage = lazy(() => import("./components/NavbarPages/Instruction
 const FeesDetails = lazy(() => import("./components/NavbarPages/FeesDetails"));
 
 function App() {
-
   return (
     <BrowserRouter>
-
       <ToastContainer />
       <ScrollToTop />
       <MainNavigation />

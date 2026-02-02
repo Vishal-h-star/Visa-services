@@ -1,0 +1,59 @@
+{
+    "title": "Documentos Requeridos",
+    "docRequired": {
+        "note": "Todos los documentos cargados por el solicitante, incluyendo tarjetas de presentación, cartas de invitación, etc., deben estar en idioma inglés. De lo contrario, la solicitud de e-Visa podría ser rechazada.",
+        "title": "¿Qué documentos se requieren para la e-Visa india?",
+        "eTouristVisa": {
+            "title": "Para la e-Visa de Turista",
+            "documents": {
+                "doc1": "Fotografía escaneada y página biométrica del pasaporte que muestre la fotografía y los detalles."
+            }
+        },
+        "eMedicalVisa": {
+            "title": "Para la e-Visa Médica",
+            "documents": {
+                "doc1": "Fotografía escaneada y página biométrica del pasaporte que muestre la fotografía y los detalles.",
+                "doc2": "Copia de la carta médica del hospital correspondiente en India en su membrete oficial."
+            }
+        },
+        "eBusinessVisa": {
+            "title": "Para la e-Visa de Negocios",
+            "documents": {
+                "doc1": "Fotografía escaneada y página biométrica del pasaporte que muestre la fotografía y los detalles.",
+                "doc2": "Copia de la tarjeta de presentación de la persona que viaja o una carta de la empresa indicando el propósito del viaje."
+            }
+        },
+        "eBusinessVisaGIAN": {
+            "title": "Para la e-Visa de Negocios para visitar \"Para impartir conferencias bajo la Iniciativa Global para Redes Académicas (GIAN)\"",
+            "documents": {
+                "doc1": "Página biométrica escaneada del pasaporte que muestre la fotografía y los detalles.",
+                "doc2": "Invitación de la institución anfitriona al profesor extranjero.",
+                "doc3": "Copia de la orden de autorización bajo GIAN emitida por el Instituto Coordinador Nacional, es decir, IIT Kharagpur.",
+                "doc4": "Copia de la sinopsis de los cursos que impartirá el profesor."
+            }
+        },
+        "photoRequire": {
+            "title": "La fotografía digital que se cargará junto con la solicitud de visa debe cumplir con los siguientes requisitos:",
+            "format": "Formato – JPEG",
+            "size": {
+                "title": "Tamaño del archivo",
+                "min": "Mínimo 20 KB",
+                "max": "Máximo 2 MB"
+            },
+            "dimensions": "La altura y el ancho de la fotografía deben ser iguales (cuadrada).",
+            "composition": "La fotografía debe mostrar el rostro completo, de frente, con los ojos abiertos y sin gafas.",
+            "framing": "Centrar el rostro dentro del marco y mostrar toda la cabeza desde la parte superior del cabello hasta la base de la barbilla.",
+            "background": "El fondo debe ser liso, de color claro o blanco.",
+            "lighting": "Sin sombras en el rostro o en el fondo.",
+            "borders": "Sin bordes."
+        },
+        "liveSupport": {
+            "title": "Asistencia en vivo de un equipo de expertos durante la cumplimentación de la solicitud:",
+            "description": "Nuestro equipo de profesionales capacitados proporciona asistencia en tiempo real a los solicitantes durante el proceso de presentación de su solicitud de e-Visa. Los usuarios pueden elegir utilizar nuestra asistencia por teléfono o por correo electrónico."
+        },
+        "paymentOptions": {
+            "title": "Más opciones de pago para las tarifas de la e-Visa:",
+            "description": "El sitio autorizado de aprobación de e-Visa acepta pagos solo a través de tarjetas de crédito/débito y PayPal. También aceptamos pagos a través de banca por internet/móvil y transferencia bancaria."
+        }
+    }
+}

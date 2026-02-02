@@ -31,6 +31,7 @@ const VisaApplicationForm = () => {
     visaService: "",
     serviceSubCategory: "",
     serviceSubCat_subCategory: "",
+    // chnages by vishl
   });
 
   const [errors, setErrors] = useState({});
@@ -127,7 +128,9 @@ const VisaApplicationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     console.log("Form Data:", formData);
+    const currentFormData = { ...formData };
 
     if(isLoading) return
 
@@ -142,8 +145,9 @@ const VisaApplicationForm = () => {
     console.log("hitting api");
 
     try {
-      const res = await newApplicationSubmit(formData);
-
+      // const res = await newApplicationSubmit(formData);
+      const res = await newApplicationSubmit(currentFormData);
+      
       if (res.status === 200) {
         console.log(res.data, "data we get from back");
         // toast.success(`🦄 ${res.data.message}`);
@@ -399,7 +403,7 @@ const VisaApplicationForm = () => {
                 </label>
                 <div className="input-container">
                   <input
-                    type="email"
+                    type="text"
                     name="confirmEmail"
                     value={formData.confirmEmail}
                     onChange={handleChange}

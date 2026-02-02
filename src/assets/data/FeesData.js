@@ -23,7 +23,7 @@ export const countryFeesPrice = [
     { country: "Vanuatu", thirtyDaysPrice: "$39", oneYearPrice: "$49", fiveYearPrice: "$69", businessMedConfPrice: "$69" },
     { country: "Japan", thirtyDaysPrice: "$59", oneYearPrice: "$79", fiveYearPrice: "$99", businessMedConfPrice: "$99" },
     { country: "Singapore", thirtyDaysPrice: "$59", oneYearPrice: "$79", fiveYearPrice: "$99", businessMedConfPrice: "$99" },
-    { country: "Sri Lanka", thirtyDaysPrice: "$59", oneYearPrice: "$79", fiveYearPrice: "$99", businessMedConfPrice: "$99" },
+    { country: "Sri Lanka", thirtyDaysPrice: "$69", oneYearPrice: "$69", fiveYearPrice: "$139", businessMedConfPrice: "$139" },
     { country: "Albania", thirtyDaysPrice: "$65", oneYearPrice: "$85", fiveYearPrice: "$175", businessMedConfPrice: "$189" },
     { country: "Andorra", thirtyDaysPrice: "$65", oneYearPrice: "$85", fiveYearPrice: "$175", businessMedConfPrice: "$189" },
     { country: "Angola", thirtyDaysPrice: "$65", oneYearPrice: "$85", fiveYearPrice: "$175", businessMedConfPrice: "$189" },

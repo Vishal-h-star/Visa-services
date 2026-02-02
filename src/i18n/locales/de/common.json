@@ -1,0 +1,63 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "about": "Über uns",
+        "privacy": "Datenschutz",
+        "document": "Dokument",
+        "services": "Dienstleistungen",
+        "faqs": "FAQ",
+        "termsCondition": "Allgemeine Geschäftsbedingungen",
+        "refund": "Rückerstattungsrichtlinie",
+        "instAppl": "Anleitung für Antragsteller",
+        "feeDetails": "Visagebühren Details",
+        "contact": "Kontakt"
+    },
+    "mainheading": "Indien e-Visa Online",
+    "buttons": {
+        "applyEvisa": "Hier e-Visa beantragen",
+        "partialFill": "Teilweise ausgefüllten Antrag bearbeiten oder vervollständigen",
+        "makePayment": "Zahlung für vollständiges Formular leisten"
+    },
+    "home": {
+        "impCard": {
+            "title": "Wichtige Anweisungen",
+            "desc": "Der e-Visa-Service ist ein Programm, das Reisenden, die nach Indien reisen möchten, ermöglicht, das Visum online zu beantragen."
+        },
+        "section1": {
+            "title1": "Über e-Visa für Indien:",
+            "desc1": "Der e-Visa-Service ist ein Programm, das Reisenden, die nach Indien reisen möchten, ermöglicht, das Visum online zu beantragen. Es wurde von der indischen Regierung im Oktober 2014 initiiert, um Reisen nach Indien zu einem unvergesslichen und problemlosen Erlebnis für internationale Besucher zu machen. Das e-Visa ist für maximal zwei Besuche pro Kalenderjahr erlaubt. Die indische Regierung hat Visa weiter kategorisiert in e-Touristenvisum, e-Geschäftsvisum, e-Konferenzvisum, e-Medizinisches Visum und e-Begleitervisum für medizinische Zwecke, die schneller und einfacher online beantragt werden können. Antragsteller können je nach Zweck ihres Indienbesuchs eines dieser e-Visa-Kategorien beantragen. Das e-Visa-Verfahren ist vollständig online, es sind keine Papierdokumente erforderlich und es wird per E-Mail versendet. Antragsteller müssen während der Reise eine ausgedruckte Kopie des e-Visas und einen gültigen Reisepass mitführen, die von indischen Beamten bei der Einreise überprüft werden, um Einlass in das indische Festland zu erhalten, und erhalten einen Stempel des genehmigten e-Visas im Reisepass.",
+            "desc2": "Dieser Prozess der Ausstellung eines e-Visas ist vollständig online, bei dem Reisende das Visumantragsformular ausfüllen und ihren Antrag auf dieser Website mit den erforderlichen Dokumenten einreichen und die Visagebühr bezahlen müssen. Der Antragsteller wird gebeten, das Visumantragsformular genau auszufüllen. Antragsteller erhalten eine Bestätigung per E-Mail. Die e-Visa-Ergebnisse werden an die registrierte E-Mail-Adresse gesendet, die der Antragsteller in seinem Visumantragsformular angegeben hat."
+        },
+        "section2": {
+            "title2": "Über das indische e-Touristenvisum:",
+            "desc1": "Touristen/Internationale Besucher können das indische e-Touristenvisum jederzeit beantragen und an einem beliebigen indischen Flughafen oder Seehafen landen, die im Abschnitt aufgeführt sind. Die Gültigkeit des e-Visas beträgt 30 Tage/1 Jahr/5 Jahre ab dem Ausstellungsdatum der ETA (Electronic Travel Authorization) mit doppelter oder mehrfacher Einreise. Es muss innerhalb seiner Gültigkeitsdauer in Anspruch genommen werden. Ihr durchgehender Aufenthalt während jedes Indienbesuchs sollte 90/180 Tage (je nach Nationalität) ab dem Einreisedatum nach Indien nicht überschreiten.",
+            "desc2": "Touristen können diese Einrichtung auch innerhalb von 24 bis 48 Geschäftsstunden für dringende Reisen in Anspruch nehmen. Wählen Sie beim Ausfüllen des Visumantragsformulars den Antragstyp und wählen Sie Dringende Bearbeitung (24 bis 48 Geschäftsstunden). Unsere Bearbeitungszeit beginnt, nachdem der Antrag mit allen zur Bearbeitung erforderlichen Informationen und Dokumenten vollständig ist. Der Zweck eines e-Touristenvisums können Kurzzeit-Yoga-Programme, Erholung/Sightseeing, Treffen mit Freunden oder Verwandten usw. sein."
+        },
+        "section3": {
+            "title3": "Über das indische e-Geschäftsvisum:",
+            "desc1": "Das e-Geschäftsvisum ist für Besucher, die nach Indien reisen möchten, um Industrien/Geschäftsunternehmen zu gründen, Verkauf/Kauf/Handel zu betreiben, an technischen/Geschäftstreffen teilzunehmen, Personal zu rekrutieren, an Ausstellungen/Geschäfts-/Handelsmessen teilzunehmen, Experten/Spezialisten im Zusammenhang mit einem laufenden Projekt zu sein, Touren durchzuführen, Vorträge im Rahmen der Global Initiative for Academic Networks (GIAN) zu halten. Geschäftsreisende müssen ihre Visitenkarte oder ein Einladungsschreiben ihres Unternehmens mit Angabe des Reisezwecks haben.",
+            "desc2": "Die Antragsteller können auch ein dringendes e-Geschäftsvisum beantragen, das innerhalb von 24 bis 48 Geschäftsstunden in Anspruch genommen werden kann, indem sie ein Antragsformular ausfüllen und unter Antragstyp Dringende Bearbeitung (24 bis 48 Geschäftsstunden) wählen. Geschäftsvisa sind für Reisende verfügbar, die im Namen ihrer Unternehmen reisen und auch die Dienstleistungen des e-Geschäftsvisums in Anspruch nehmen können. Die Gültigkeit des e-Geschäftsvisums beträgt 365 Tage ab dem Ausstellungsdatum der ETA (Electronic Travel Authorization) mit mehrfacher Einreise. Ihr durchgehender Aufenthalt während jedes Besuchs sollte 90/180 Tage (je nach Nationalität) ab dem Einreisedatum nach Indien nicht überschreiten."
+        },
+        "section4": {
+            "title4": "Über das indische e-Medizinische Visum:",
+            "desc1": "Das e-Medizinische Visum ist für medizinische Reisen für Besucher/Patienten, die nach Indien reisen möchten, um eine medizinische Behandlung in einem indischen Krankenhaus zu erhalten. Nur kurzfristige medizinische Besuche sind akzeptabel. Die Gültigkeit dieses e-Medizinischen Visums beträgt 180 Tage ab dem Ausstellungsdatum der ETA (Electronic Travel Authorization) mit dreifacher Einreise. Ihr durchgehender Aufenthalt während jedes Besuchs sollte 60 Tage ab dem Einreisedatum nach Indien nicht überschreiten. Eine Person muss ein Schreiben des indischen Krankenhauses auf dessen Briefkopf darüber haben, wo die Behandlung stattfinden soll.",
+            "desc2": "Das indische medizinische Visum erfordert keinen Besuch in der indischen Botschaft. Der Antragsteller kann einfach die genauen Informationen auf dieser Website ausfüllen, die erforderlichen Dokumente anhängen und die Visagebühr bezahlen und erhält leicht die e-Visa-Ergebnisse per E-Mail. Das indische e-Medizinische Visum spart nicht nur Zeit und Geld, sondern macht auch Ihre medizinischen Missionsreisen nach Indien sicherer und komfortabler."
+        },
+        "section5": {
+            "title5": "Über das indische e-Begleitervisum für medizinische Zwecke:",
+            "desc1": "Das e-Begleitervisum für medizinische Zwecke ist für diejenigen, die medizinische Patienten zu einer medizinischen Behandlung in ein indisches Krankenhaus begleiten. Maximal zwei e-Begleitervisa für medizinische Zwecke werden gegen ein e-Medizinisches Visum gewährt. Die Gültigkeit des e-Begleitervisums für medizinische Zwecke beträgt 180 Tage ab dem Ausstellungsdatum der ETA (Electronic Travel Authorization) mit doppelter Einreise. Ihr durchgehender Aufenthalt während jedes Besuchs sollte 60 Tage ab dem Einreisedatum nach Indien nicht überschreiten."
+        },
+        "section6": {
+            "title6": "Über das indische e-Konferenzvisum:",
+            "desc1": "Das e-Konferenzvisum ermöglicht es dem Antragsteller, an Seminaren, Konferenzen und Workshops in Indien teilzunehmen. Der Antragsteller muss beim Beantragen des e-Konferenzvisums das Einladungsschreiben von einer Regierungseinrichtung, NGOs, der UNO, einem Ministerium oder einer Regierungsabteilung oder den spezialisierten Agenturen erhalten haben. Es ist nur 30 Tage mit einer einzigen Einreise gültig."
+        },
+        "section7": {
+            "title7": "Welche Flughäfen & Seehäfen akzeptieren das Indien e-Visa?",
+            "desc1": "Die Einrichtung ist für die Einreise über 31 bestimmte Flughäfen (d.h. Ahmedabad, Amritsar, Bagdogra, Bengaluru, Bhubaneshwar, Calicut, Chennai, Chandigarh, Cochin, Coimbatore, Delhi, Gaya, Goa, Guwahati, Hyderabad, Jaipur, Kolkata, Lucknow, Madurai, Mangalore, Mumbai, Nagpur, Portblair, Indore, Kannur, Pune, Trichy, Thiruvananthapuram, Varanasi, Vishakhapatnam) und 5 bestimmte Seehäfen (d.h. Cochin, Mormugao, Mangalore, Mumbai, Chennai) gültig. Allerdings kann die ausländische Person von jedem der erlaubten Einwanderungskontrollstellen (ICPS) in Indien ausreisen. Das e-Visa ist ein Visum mit doppelter, dreifacher oder mehrfacher Einreise, und die zweite Einreise kann innerhalb von 90 oder 60 Tagen (innerhalb von 90/60 Tagen nach Ihrer ersten Ankunft) erfolgen. Allerdings kann der Ausländer von jeder der autorisierten Einwanderungskontrollstellen (ICPs) in Indien ausreisen."
+        },
+        "section8": {
+            "title8": "Wenn Sie Staatsangehöriger eines der folgenden Länder sind, sind Sie für das eVisa berechtigt.",
+            "desc1": "Albanien, Andorra, Angola, Anguilla, Antigua & Barbuda, Argentinien, Armenien, Aruba, Australien, Österreich, Aserbaidschan, Bahamas, Barbados, Belgien, Belize, Bolivien, Bosnien & Herzegowina, Botswana, Brasilien, Brunei, Bulgarien, Burundi, Kanada, Kambodscha, Kamerun, Kap Verde, Cayman Islands, Chile, Kolumbien, Komoren, Cookinseln, Costa Rica, Elfenbeinküste, Kroatien, Kuba, Zypern, Tschechische Republik, Dänemark, Dschibuti, Dominica, Dominikanische Republik, Osttimor (Demokratische Republik), Ecuador, El Salvador, Eritrea, Estland, Fidschi, Finnland, Frankreich, Gabun, Gambia, Georgien, Deutschland, Ghana, Griechenland, Grenada, Guatemala, Guinea, Guyana, Haiti, Honduras, Ungarn, Island, Indonesien, Iran, Irland, Israel, Italien, Jamaika, Japan, Jordanien, Kasachstan, Kenia, Kiribati, Laos, Lettland, Lesotho, Liberia, Liechtenstein, Litauen, Luxemburg, Madagaskar, Malawi, Malaysia, Mali, Malta, Marshallinseln, Mauritius, Mexiko, Mikronesien, Moldawien, Monaco, Mongolei, Montenegro, Montserrat, Mosambik, Myanmar, Namibia, Nauru, Niederlande, Neuseeland, Nicaragua, Niger, Niue Island, Norwegen, Oman, Palau, Palästina, Panama, Papua-Neuguinea, Paraguay, Peru, Philippinen, Polen, Portugal, Katar, Republik Korea, Republik Mazedonien, Rumänien, Russland, Ruanda, St. Kitts und Nevis, St. Lucia, St. Vincent & die Grenadinen, Samoa, San Marino, Senegal, Serbien, Seychellen, Sierra Leone, Singapur, Slowakei, Slowenien, Salomonen, Südafrika, Spanien, Sri Lanka, Suriname, Eswatini, Schweden, Schweiz, Taiwan, Tadschikistan, Tansania, Thailand, Tonga, Trinidad & Tobago, Turks- und Caicosinseln, Tuvalu, Vereinigte Arabische Emirate, Uganda, Ukraine, Uruguay, Vereinigtes Königreich, Vereinigte Staaten von Amerika, Usbekistan, Vanuatu, Vatikanstadt-Heiliger Stuhl, Venezuela, Vietnam, Sambia und Simbabwe."
+        }
+    }
+}
